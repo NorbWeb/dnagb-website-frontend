@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-gray: #f8f9fa;
+  --color-dark-gray: #343a40;
+
+  --navbar-height: 4rem;
+  --main-height: calc(100vh - 2 * var(--navbar-height));
+  --header-bg: var(--color-gray);
+  --footer-bg: var(--color-gray);
+  --navbar-text: var(--color-dark-gray);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0%;
+  margin: 0%;
+}

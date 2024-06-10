@@ -1,0 +1,39 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  nav {
+    width: 100%;
+  }
+  ul {
+    margin: 0;
+    height: var(--navbar-height);
+    padding: 0.75rem 1.5rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.2em;
+  }
+
+  a {
+    color: var(--navbar-text);
+    text-decoration: none;
+  }
+}
+
+#header {
+  background-color: var(--header-bg);
+}
+
+#main {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  height: var(--main-height);
+}
+
+#footer {
+  background-color: var(--footer-bg);
+}
