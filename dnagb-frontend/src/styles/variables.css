@@ -1,0 +1,26 @@
+:root {
+  font-size: 16px;
+
+  /* ~~~~~~~~~~ text ~~~~~~~~~~ */
+  --text: var(--grey-900);
+  --text-inverse: var(--grey-100);
+
+  /* ~~~~~~~~~~ background & text ~~~~~~~~~~ */
+  --header-bg: var(--grey-900);
+  --header-text: var(--text-inverse);
+  --main-bg: var(--grey-200);
+  --main-text: var(--text);
+  --footer-bg: var(--grey-900);
+  --footer-text: var(--text-inverse);
+
+  /* ~~~~~~~~~~ layout ~~~~~~~~~~ */
+  --header-height: 4rem;
+  --footer-height: 4rem;
+  --main-height: calc(100vh - (var(--header-height) + var(--footer-height)));
+
+  /* ~~~~~~~~~~ button ~~~~~~~~~~ */
+  --button-bg: var(--primary-500);
+  --button-text: var(--text);
+  --button-hover-bg: var(--primary-600);
+  --button-hover-text: var(--text);
+}
