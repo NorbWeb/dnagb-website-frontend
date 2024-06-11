@@ -1,63 +1,7 @@
-<header id="header" class="navbar">
-  <nav>
-    <ul>
-      <li>
-        <a
-          class="header-button"
-          routerLink="/home"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-        >
-          <img src="../assets/logo.png" alt="Logo" />
-        </a>
-      </li>
-      <li>
-        <a
-          class="header-button"
-          routerLink="/up-to-date"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          >Aktuelles</a
-        >
-      </li>
-    </ul>
-  </nav>
-</header>
+<app-header></app-header>
 <main id="main">
   <div class="content">
     <router-outlet />
   </div>
 </main>
-<footer id="footer" class="navbar">
-  <nav>
-    <ul>
-      <li>
-        <a
-          class="footer-button"
-          routerLink="/imprint"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          >Impressumn</a
-        >
-      </li>
-      <li>
-        <a
-          class="footer-button"
-          routerLink="/contact"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          >Kontakt</a
-        >
-      </li>
-      <li>
-        <a
-          class="footer-button"
-          routerLink="/privacy"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          >Datenschutz</a
-        >
-      </li>
-    </ul>
-  </nav>
-</footer>
+<app-footer></app-footer>

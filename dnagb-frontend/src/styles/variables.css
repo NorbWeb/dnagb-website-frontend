@@ -1,22 +1,28 @@
 :root {
   font-size: 16px;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
 
   /* ~~~~~~~~~~ text ~~~~~~~~~~ */
   --text: var(--grey-900);
   --text-inverse: var(--grey-100);
 
-  /* ~~~~~~~~~~ background & text ~~~~~~~~~~ */
+  /* ~~~~~~~~~~ header ~~~~~~~~~~ */
   --header-bg: var(--grey-900);
-  --header-text: var(--text-inverse);
+  --header-height: 6rem;
+
+  /* ~~~~~~~~~~ main ~~~~~~~~~~ */
   --main-bg: var(--grey-200);
   --main-text: var(--text);
-  --footer-bg: var(--grey-900);
-  --footer-text: var(--text-inverse);
-
-  /* ~~~~~~~~~~ layout ~~~~~~~~~~ */
-  --header-height: 4rem;
-  --footer-height: 4rem;
   --main-height: calc(100vh - (var(--header-height) + var(--footer-height)));
+
+  /* ~~~~~~~~~~ footer ~~~~~~~~~~ */
+  --footer-bg: var(--grey-900);
+  --footer-height: 4rem;
+
+  /* ~~~~~~~~~~ nav-link ~~~~~~~~~~ */
+  --nav-link-text: var(--text-inverse);
+  --nav-link-hover: var(--primary-500);
+  --nav-link-active: var(--primary-500);
 
   /* ~~~~~~~~~~ button ~~~~~~~~~~ */
   --button-bg: var(--primary-500);

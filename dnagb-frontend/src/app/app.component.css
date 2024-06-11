@@ -1,53 +1,5 @@
-.navbar {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  nav {
-    width: 100%;
-  }
-  ul {
-    margin: 0;
-    padding: 0.75rem 1.5rem;
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 1.2em;
-  }
-
-  a {
-    text-decoration: none;
-  }
-}
-
-.header-button {
-  color: var(--text-inverse);
-  font-size: 1em;
-  padding: 0.5em 1em;
-  border-radius: 0.3em;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  &:hover {
-    color: var(--header-button-hover-text);
-  }
-  &.active {
-    color: var(--header-button-hover-text);
-  }
-}
-
-#header {
-  background-color: var(--header-bg);
-  height: var(--header-height);
-}
-
 #main {
   width: 100%;
   padding: 0.75rem 1.5rem;
   height: var(--main-height);
-}
-
-#footer {
-  background-color: var(--footer-bg);
-  height: var(--footer-height);
 }
