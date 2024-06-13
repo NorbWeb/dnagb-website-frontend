@@ -21,12 +21,12 @@
 
   /* ~~~~~~~~~~ nav-link ~~~~~~~~~~ */
   --nav-link-text: var(--text-inverse);
-  --nav-link-hover: var(--primary-500);
-  --nav-link-active: var(--primary-500);
+  --nav-link-hover: var(--primary);
+  --nav-link-active: var(--primary);
 
   /* ~~~~~~~~~~ button ~~~~~~~~~~ */
-  --button-bg: var(--primary-500);
-  --button-text: var(--text);
-  --button-hover-bg: var(--primary-600);
-  --button-hover-text: var(--text);
+  --button-bg: var(--primary);
+  --button-text: var(--primary-text);
+  --button-hover-bg: var(--primary-darken);
+  --button-hover-text: var(--primary-text);
 }
