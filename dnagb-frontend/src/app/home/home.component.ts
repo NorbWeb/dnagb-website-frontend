@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { StateService } from '../0_global-services/state.service';
+
+interface Title {
+  short: string;
+  long_1: string;
+  long_2: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -7,6 +14,13 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {
-  title = { short: 'DNagB', long: 'Deutscher Naginata Bund e.V.' };
+export class HomeComponent implements OnInit {
+  title!: Title;
+
+  constructor(private state: StateService) {}
+
+  ngOnInit(): void {
+    this.title = this.state.getSettings().appSettings.title;
+    console.log(this.state.getSettings().appSettings.title);
+  }
 }

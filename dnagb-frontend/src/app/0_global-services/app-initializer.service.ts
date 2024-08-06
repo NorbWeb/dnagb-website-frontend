@@ -1,11 +1,13 @@
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../environment/env';
 import { UtilsService } from './utils.service';
+import { StateService } from './state.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppInitializerService {
+  constructor(private state: StateService) {}
   utils = inject(UtilsService);
   init(): Promise<void> {
     return new Promise(async (resolve, reject) => {
@@ -17,14 +19,23 @@ export class AppInitializerService {
         settings.data.secondary,
         settings.data.secondary_text
       );
+      this.state.updateSettings({
+        ...this.state.getSettings(),
+        appSettings: {
+          title: {
+            long_1: settings.data.title_long_1,
+            long_2: settings.data.title_long_2,
+            short: settings.data.title_short,
+          },
+        },
+      });
       resolve();
     });
   }
 
-  private getAppSettings() {
-    return fetch(`${environment.cmsUrl}/items/settings`).then((res) =>
-      res.json()
-    );
+  private async getAppSettings() {
+    const res = await fetch(`${environment.cmsUrl}/items/settings`);
+    return await res.json();
   }
 
   private setColors(
