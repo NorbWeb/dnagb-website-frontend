@@ -1,6 +1,7 @@
 :root {
   font-size: 16px;
-  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Quattrocento Sans", "Open Sans", "Helvetica Neue", sans-serif;
+  color: var(--text);
 
   /* ~~~~~~~~~~ text ~~~~~~~~~~ */
   --text: var(--grey-900);
@@ -25,8 +26,23 @@
   --nav-link-active: var(--primary);
 
   /* ~~~~~~~~~~ button ~~~~~~~~~~ */
-  --button-bg: var(--primary);
-  --button-text: var(--primary-text);
-  --button-hover-bg: var(--primary-darken);
-  --button-hover-text: var(--primary-text);
+  --button-fill-bg: var(--primary);
+  --button-fill-text: var(--primary-text);
+  --button-fill-border: var(--primary);
+  --button-fill-hover-bg: var(--primary-lighten);
+  --button-fill-hover-text: var(--primary-text);
+  --button-fill-hover-border: var(--primary-lighten);
+  --button-fill-active-bg: var(--primary-darken);
+  --button-fill-active-text: var(--primary-text);
+  --button-fill-active-border: var(--primary-darken);
+
+  --button-outline-bg: transparent;
+  --button-outline-text: var(--text);
+  --button-outline-border: var(--primary);
+  --button-outline-hover-bg: var(--primary-lighten);
+  --button-outline-hover-text: var(--primary-text);
+  --button-outline-hover-border: var(--primary-lighten);
+  --button-outline-active-bg: var(--primary-darken);
+  --button-outline-active-text: var(--primary-text);
+  --button-outline-active-border: var(--primary-darken);
 }

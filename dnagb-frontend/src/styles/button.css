@@ -1,13 +1,50 @@
 .nag_button {
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
   padding: 0.5rem 1rem;
+  font-family: "Quattrocento Sans";
+  font-weight: bold;
   font-size: 1em;
   text-align: center;
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    background-color: var(--button-hover-bg);
-    color: var(--button-hover-text);
+  transition: all 0.15s ease-in-out;
+  border: 0.125rem solid;
+  border-radius: 0.25rem;
+
+  &.button-fill {
+    background-color: var(--button-fill-bg);
+    color: var(--button-fill-text);
+    border-color: var(--button-fill-border);
+
+    &:hover {
+      background-color: var(--button-fill-hover-bg);
+      color: var(--button-fill-hover-text);
+      border-color: var(--button-fill-hover-border);
+    }
+
+    &:active {
+      background-color: var(--button-fill-active-bg);
+      color: var(--button-fill-active-text);
+      border-color: var(--button-fill-active-border);
+    }
+  }
+
+  &.button-outline {
+    background-color: var(--button-outline-bg);
+    color: var(--button-outline-text);
+    border-color: var(--button-outline-border);
+    &.dark-bg {
+      color: var(--text-inverse);
+      background-color: var(--grey-900);
+    }
+
+    &:hover {
+      background-color: var(--button-outline-hover-bg);
+      color: var(--button-outline-hover-text);
+      border-color: var(--button-outline-hover-border);
+    }
+
+    &:active {
+      background-color: var(--button-outline-active-bg);
+      color: var(--button-outline-active-text);
+      border-color: var(--button-outline-active-border);
+    }
   }
 }
