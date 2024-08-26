@@ -23,6 +23,12 @@
   font-weight: bold;
   font-style: italic;
 }
+@font-face {
+  font-family: "Fira Sans";
+  src: url("./assets/fonts/Fira_Sans/FiraSans-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
 
 * {
   box-sizing: border-box;
@@ -33,4 +39,35 @@ body {
   color: var(--text);
   padding: 0%;
   margin: 0%;
+}
+
+.break-point-mantle {
+  margin: auto;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .break-point-mantle {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .break-point-mantle {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .break-point-mantle {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .break-point-mantle {
+    width: 1400px;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .break-point-mantle {
+    width: 1400px;
+  }
 }
