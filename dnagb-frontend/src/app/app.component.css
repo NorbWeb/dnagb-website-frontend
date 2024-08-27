@@ -1,5 +1,5 @@
 #main {
   width: 100%;
-  height: var(--main-height);
+  min-height: var(--main-height);
   background-color: var(--main-bg);
 }

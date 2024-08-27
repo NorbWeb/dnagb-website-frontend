@@ -1,18 +1,41 @@
 .month {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  height: 2.85rem;
   background-color: var(--primary);
+  font-family: "Heebo";
+  font-weight: 600;
+  font-size: 1.25rem;
 
   .month-button {
     border: none;
     background-color: transparent;
+    width: 3rem;
+    height: 2.85rem;
+    padding: 0.5rem;
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+      background-color: var(--primary-darken);
+      color: var(--text-inverse);
+    }
+
+    &.prev {
+      /* margin-right: auto; */
+    }
+
+    &.next {
+      /* margin-left: auto; */
+    }
   }
 
   .current-month-year {
     display: flex;
-    /* flex-direction: column; */
+    justify-content: space-evenly;
     align-items: center;
-    gap: 0.5rem;
+    height: 2.85rem;
+    width: 100%;
+    padding: 0.5rem 0;
   }
 }
 
