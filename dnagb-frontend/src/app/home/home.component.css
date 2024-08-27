@@ -1,16 +1,16 @@
-.bg-fill {
-  background-color: var(--header-bg);
+.banner_bg-fill {
+  background: linear-gradient(90deg, var(--header-bg) 30%, var(--main-bg) 100%);
 
-  .banner {
+  .banner_content {
     height: 20rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
-    padding: 0.75rem 1.5rem;
+    padding: var(--component-padding);
   }
 
-  .title {
+  .banner_title {
     margin: 0;
     font-size: 4rem;
     font-family: Fira Sans;
@@ -19,7 +19,23 @@
   }
 }
 
-.stack {
+.banner_stack {
   display: flex;
   gap: 1rem;
+}
+
+#short-info {
+  display: flex;
+  gap: 1rem;
+  padding: var(--component-padding);
+}
+
+app-calendar {
+  width: 100%;
+}
+
+.sample-box {
+  height: 20rem;
+  width: 100%;
+  background-color: orange;
 }

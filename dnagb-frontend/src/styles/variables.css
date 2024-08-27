@@ -3,6 +3,9 @@
   font-family: "Quattrocento Sans", "Open Sans", "Helvetica Neue", sans-serif;
   color: var(--text);
 
+  /* ~~~~~~~~~~ component padding ~~~~~~~~~~ */
+  --component-padding: 0.75rem 1.5rem;
+
   /* ~~~~~~~~~~ text ~~~~~~~~~~ */
   --text: var(--grey-900);
   --text-inverse: var(--grey-100);

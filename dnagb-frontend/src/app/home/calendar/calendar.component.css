@@ -1,0 +1,41 @@
+.month {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--primary);
+
+  .month-button {
+    border: none;
+    background-color: transparent;
+  }
+
+  .current-month-year {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.weekdays {
+  padding: 0 1rem;
+  background-color: #fff;
+
+  span {
+    display: inline-block;
+    text-align: center;
+    width: 13.6%;
+    padding: 0.5rem;
+  }
+}
+
+.days {
+  padding: 0 1rem;
+  background-color: #fff;
+
+  span {
+    display: inline-block;
+    text-align: center;
+    padding: 0.5rem;
+    width: 13.6%;
+  }
+}
