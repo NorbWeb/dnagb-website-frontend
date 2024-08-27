@@ -1,10 +1,10 @@
 <div class="month">
-  <button class="month-button prev">&#10094;</button>
+  <button class="month-button prev" (click)="prevMonth()">&#10094;</button>
   <div class="current-month-year">
     <span> September </span>
     <span> 2024 </span>
   </div>
-  <button class="month-button next">&#10095;</button>
+  <button class="month-button next" (click)="nextMonth()">&#10095;</button>
 </div>
 <div class="weekdays">
   <span>Mo</span>
@@ -16,7 +16,7 @@
   <span>So</span>
 </div>
 <div id="days" class="days">
-  @for(day of daysInCurrentMonth; track $index){
+  @for(day of displayedDays; track $index){
   <span>{{ day }}</span>
   }
 </div>
