@@ -27,6 +27,10 @@ export class CalendarComponent implements OnInit {
   currentDate = new Date();
   currentYear = this.currentDate.getFullYear();
   currentMonth = this.currentDate.getMonth();
+  startDate = {
+    month: this.currentDate.getMonth(),
+    year: this.currentDate.getFullYear(),
+  };
   displayedDays: any[] = [];
   monthCounter: number = 0;
 
@@ -60,6 +64,7 @@ export class CalendarComponent implements OnInit {
       let dateObject = new Date(
         `${this.currentYear}-${this.currentMonth}-${b}`
       );
+
       monthBefor.unshift({
         label: b,
         inMonth: false,
@@ -72,6 +77,8 @@ export class CalendarComponent implements OnInit {
       let dateObject = new Date(
         `${this.currentYear}-${this.currentMonth + 1}-${i}`
       );
+
+      // To find today and set boolean to true
       if (
         this.currentDate.getDate() === dateObject.getDate() &&
         this.currentDate.getMonth() === dateObject.getMonth() &&
@@ -83,14 +90,13 @@ export class CalendarComponent implements OnInit {
       }
     }
 
-    let countDays = (monthBefor.length + month.length) / 7; // How many days are displayed by now and divided to seven
-    let extraDays = Math.ceil(countDays); // Round up to max row in calendar
-    let diff = extraDays * 7 - countDays * 7; // Calculate extra days, that will be displayed after current month to fill gaps
+    let diff = 42 - (monthBefor.length + month.length); // There are always 42 days shown per calendar sheet to have even optic
 
     for (let a = 1; a <= diff; a++) {
       let dateObject = new Date(
         `${this.currentYear}-${this.currentMonth + 2}-${a}`
       );
+
       monthAfter.push({
         label: a,
         inMonth: false,
@@ -122,10 +128,15 @@ export class CalendarComponent implements OnInit {
     this.initCalendar();
   }
 
+  goToCurrentDate() {
+    this.currentDate = new Date();
+    this.currentYear = this.currentDate.getFullYear();
+    this.currentMonth = this.currentDate.getMonth();
+    this.initCalendar();
+  }
+
   ngOnInit(): void {
+    ++this.currentMonth;
     this.initCalendar();
   }
 }
-
-// TODO Add actual day in displayed days
-// TODO Add "skip to actual month" button

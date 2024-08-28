@@ -24,3 +24,8 @@
   <span class="day out-month">{{ element.label }}</span>
   } }
 </div>
+@if(startDate.year !== currentYear || startDate.month !== currentMonth) {
+<div class="calendar-extend">
+  <button class="back-to-today" (click)="goToCurrentDate()">heute</button>
+</div>
+}
