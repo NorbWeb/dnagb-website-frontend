@@ -61,4 +61,8 @@
     padding: 0.5rem;
     width: 13.6%;
   }
+
+  .out-month {
+    color: var(--grey-300);
+  }
 }

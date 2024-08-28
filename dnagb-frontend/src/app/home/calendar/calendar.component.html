@@ -1,8 +1,8 @@
 <div class="month">
   <button class="month-button prev" (click)="prevMonth()">&#10094;</button>
   <div class="current-month-year">
-    <span> September </span>
-    <span> 2024 </span>
+    <span> {{ month[currentMonth] }} </span>
+    <span> {{ currentYear }} </span>
   </div>
   <button class="month-button next" (click)="nextMonth()">&#10095;</button>
 </div>
@@ -16,7 +16,9 @@
   <span>So</span>
 </div>
 <div id="days" class="days">
-  @for(day of displayedDays; track $index){
-  <span>{{ day }}</span>
-  }
+  @for(element of displayedDays; track $index){ @if(element.inMonth){
+  <span class="in-month">{{ element.day }}</span>
+  } @else {
+  <span class="out-month">{{ element.day }}</span>
+  } }
 </div>
