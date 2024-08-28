@@ -6,7 +6,7 @@
   text-align: center;
   transition: all 0.15s ease-in-out;
   border: 0.125rem solid;
-  border-radius: 0.25rem;
+  border-radius: var(--component-border-radius);
 
   &.button-fill {
     background-color: var(--button-fill-bg);

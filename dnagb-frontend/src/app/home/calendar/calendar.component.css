@@ -55,7 +55,7 @@
   padding: 0 1rem;
   background-color: #fff;
 
-  span {
+  .day {
     display: inline-block;
     text-align: center;
     padding: 0.5rem;
@@ -64,5 +64,24 @@
 
   .out-month {
     color: var(--grey-300);
+  }
+
+  .today {
+    position: relative;
+    z-index: 100;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      background-color: var(--secondary-lighten);
+      border-radius: var(--component-border-radius);
+      width: 1.75rem;
+      height: 1.75rem;
+    }
   }
 }

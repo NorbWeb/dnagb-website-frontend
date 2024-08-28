@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css',
 })
@@ -23,9 +24,9 @@ export class CalendarComponent implements OnInit {
     'November',
     'Dezember',
   ];
-  date = new Date();
-  currentYear = this.date.getFullYear();
-  currentMonth = this.date.getMonth();
+  currentDate = new Date();
+  currentYear = this.currentDate.getFullYear();
+  currentMonth = this.currentDate.getMonth();
   displayedDays: any[] = [];
   monthCounter: number = 0;
 
@@ -56,11 +57,30 @@ export class CalendarComponent implements OnInit {
     }
 
     for (let b = lastDayMonthBefore; b >= dayBeforeCount; b--) {
-      monthBefor.unshift({ day: b, inMonth: false });
+      let dateObject = new Date(
+        `${this.currentYear}-${this.currentMonth}-${b}`
+      );
+      monthBefor.unshift({
+        label: b,
+        inMonth: false,
+        date: dateObject,
+        today: false,
+      });
     }
 
     for (let i = 1; i <= days; i++) {
-      month.push({ day: i, inMonth: true });
+      let dateObject = new Date(
+        `${this.currentYear}-${this.currentMonth + 1}-${i}`
+      );
+      if (
+        this.currentDate.getDate() === dateObject.getDate() &&
+        this.currentDate.getMonth() === dateObject.getMonth() &&
+        this.currentDate.getFullYear() === dateObject.getFullYear()
+      ) {
+        month.push({ label: i, inMonth: true, date: dateObject, today: true });
+      } else {
+        month.push({ label: i, inMonth: true, date: dateObject, today: false });
+      }
     }
 
     let countDays = (monthBefor.length + month.length) / 7; // How many days are displayed by now and divided to seven
@@ -68,7 +88,15 @@ export class CalendarComponent implements OnInit {
     let diff = extraDays * 7 - countDays * 7; // Calculate extra days, that will be displayed after current month to fill gaps
 
     for (let a = 1; a <= diff; a++) {
-      monthAfter.push({ day: a, inMonth: false });
+      let dateObject = new Date(
+        `${this.currentYear}-${this.currentMonth + 2}-${a}`
+      );
+      monthAfter.push({
+        label: a,
+        inMonth: false,
+        date: dateObject,
+        today: false,
+      });
     }
 
     this.displayedDays = [...monthBefor, ...month, ...monthAfter];
@@ -98,3 +126,6 @@ export class CalendarComponent implements OnInit {
     this.initCalendar();
   }
 }
+
+// TODO Add actual day in displayed days
+// TODO Add "skip to actual month" button
