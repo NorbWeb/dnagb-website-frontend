@@ -8,11 +8,17 @@ import { AssociationComponent } from './association/association.component';
 import { NaginataComponent } from './naginata/naginata.component';
 import { InformationComponent } from './information/information.component';
 import { DownloadComponent } from './download/download.component';
+import { DojosComponent } from './association/dojos/dojos.component';
 
 export const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: 'dnagb',
+    redirectTo: 'dnagb/verein',
     pathMatch: 'full',
   },
   {
@@ -26,9 +32,14 @@ export const routes: Routes = [
     title: 'Aktuelles - DNagB',
   },
   {
-    path: 'dnagb',
+    path: 'dnagb/verein',
     component: AssociationComponent,
     title: 'Der Verein - DNagB',
+  },
+  {
+    path: 'dnagb/dojo',
+    component: DojosComponent,
+    title: 'Dojos - DNagB',
   },
   {
     path: 'naginata',
@@ -38,12 +49,12 @@ export const routes: Routes = [
   {
     path: 'info',
     component: InformationComponent,
-    title: 'Infos - DNagB',
+    title: 'Infos für Aktive - DNagB',
   },
   {
     path: 'download',
     component: DownloadComponent,
-    title: 'Download - DNagB',
+    title: 'Downloads - DNagB',
   },
   {
     path: 'imprint',
