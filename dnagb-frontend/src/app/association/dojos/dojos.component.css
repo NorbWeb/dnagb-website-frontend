@@ -1,11 +1,17 @@
 .map-wrap {
-  position: relative;
   width: 100%;
   height: var(--main-height);
+  display: flex;
 }
 
 #map {
-  position: absolute;
   width: 100%;
   height: 100%;
+}
+
+.dojo-panel {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  padding: 1rem;
 }

@@ -1,0 +1,8 @@
+.divider {
+  &.vertical {
+    border-left: 0.1rem solid var(--grey-300);
+  }
+  &.horizontal {
+    border-top: 0.1rem solid var(--grey-300);
+  }
+}
