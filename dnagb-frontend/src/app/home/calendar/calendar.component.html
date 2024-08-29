@@ -1,31 +1,33 @@
-<div class="month">
-  <button class="month-button prev" (click)="prevMonth()">&#10094;</button>
-  <div class="current-month-year">
-    <span> {{ month[currentMonth] }} </span>
-    <span> {{ currentYear }} </span>
+<div class="calendar">
+  <div class="month">
+    <button class="month-button prev" (click)="prevMonth()">&#10094;</button>
+    <div class="current-month-year">
+      <span> {{ month[currentMonth] }} </span>
+      <span> {{ currentYear }} </span>
+    </div>
+    <button class="month-button next" (click)="nextMonth()">&#10095;</button>
   </div>
-  <button class="month-button next" (click)="nextMonth()">&#10095;</button>
+  <div class="weekdays">
+    <span>Mo</span>
+    <span>Di</span>
+    <span>Mi</span>
+    <span>Do</span>
+    <span>Fr</span>
+    <span>Sa</span>
+    <span>So</span>
+  </div>
+  <div id="days" class="days">
+    @for(element of displayedDays; track $index){ @if(element.inMonth){
+    <span class="day in-month" [ngClass]="{ today: element.today }">{{
+      element.label
+    }}</span>
+    } @else {
+    <span class="day out-month">{{ element.label }}</span>
+    } }
+  </div>
 </div>
-<div class="weekdays">
-  <span>Mo</span>
-  <span>Di</span>
-  <span>Mi</span>
-  <span>Do</span>
-  <span>Fr</span>
-  <span>Sa</span>
-  <span>So</span>
-</div>
-<div id="days" class="days">
-  @for(element of displayedDays; track $index){ @if(element.inMonth){
-  <span class="day in-month" [ngClass]="{ today: element.today }">{{
-    element.label
-  }}</span>
-  } @else {
-  <span class="day out-month">{{ element.label }}</span>
-  } }
-</div>
-@if(startDate.year !== currentYear || startDate.month !== currentMonth) {
 <div class="calendar-extend">
+  @if(startDate.year !== currentYear || startDate.month !== currentMonth) {
   <button class="back-to-today" (click)="goToCurrentDate()">heute</button>
+  }
 </div>
-}
