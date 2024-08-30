@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NaginataComponent } from './naginata.component';
+import { EventPlanComponent } from './event-plan.component';
 
-describe('NaginataComponent', () => {
-  let component: NaginataComponent;
-  let fixture: ComponentFixture<NaginataComponent>;
+describe('EventPlanComponent', () => {
+  let component: EventPlanComponent;
+  let fixture: ComponentFixture<EventPlanComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NaginataComponent]
+      imports: [EventPlanComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NaginataComponent);
+    fixture = TestBed.createComponent(EventPlanComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

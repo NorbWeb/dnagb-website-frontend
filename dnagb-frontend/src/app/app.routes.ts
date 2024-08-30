@@ -1,66 +1,96 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ImprintComponent } from './imprint/imprint.component';
-import { PrivacyComponent } from './privacy/privacy.component';
-import { ContactComponent } from './contact/contact.component';
-import { UpToDateComponent } from './up-to-date/up-to-date.component';
-import { AssociationComponent } from './association/association.component';
-import { NaginataComponent } from './naginata/naginata.component';
-import { InformationComponent } from './information/information.component';
-import { DownloadComponent } from './download/download.component';
-import { DojosComponent } from './association/dojos/dojos.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HomeComponent } from './components/home/home.component';
+import { ImprintComponent } from './components/imprint/imprint.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { UpToDateComponent } from './components/up-to-date/up-to-date.component';
+import { AssociationComponent } from './components/association/association.component';
+import { DownloadComponent } from './components/download/download.component';
+import { DojosComponent } from './components/dojos/dojos.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { MembershipComponent } from './components/membership/membership.component';
+import { EquipmentComponent } from './components/equipment/equipment.component';
+import { MartialArtComponent } from './components/martial-art/martial-art.component';
+import { HistoryComponent } from './components/history/history.component';
+import { ExamComponent } from './components/exam/exam.component';
+import { HandyStuffComponent } from './components/handy-stuff/handy-stuff.component';
+import { EventPlanComponent } from './components/event-plan/event-plan.component';
 
 export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    title: 'Startseite - DNagB',
+    title: 'Home – DNagB',
   },
   {
     path: 'up-to-date',
     component: UpToDateComponent,
-    title: 'Aktuelles - DNagB',
+    title: 'Aktuelles – DNagB',
   },
   {
-    path: 'dnagb/verein',
+    path: 'dnagb/vereinsstrukturen',
     component: AssociationComponent,
-    title: 'Der Verein - DNagB',
+    title: 'Vereinsstruktur – DNagB',
   },
   {
     path: 'dnagb/dojo',
     component: DojosComponent,
-    title: 'Dojos - DNagB',
+    title: 'Dojos – DNagB',
   },
   {
-    path: 'naginata',
-    component: NaginataComponent,
-    title: 'Naginata - DNagB',
+    path: 'dnagb/mitglied-werden',
+    component: MembershipComponent,
+    title: 'Mitglied werden – DNagB',
   },
   {
-    path: 'info',
-    component: InformationComponent,
-    title: 'Infos für Aktive - DNagB',
+    path: 'naginata/ausruestung',
+    component: EquipmentComponent,
+    title: 'Waffe & Rüstung – DNagB',
+  },
+  {
+    path: 'naginata/kampfsport',
+    component: MartialArtComponent,
+    title: 'Der Kampfsport – DNagB',
+  },
+  {
+    path: 'naginata/geschichte',
+    component: HistoryComponent,
+    title: 'Geschichte – DNagB',
+  },
+  {
+    path: 'info/pruefung',
+    component: ExamComponent,
+    title: 'Prüfung – DNagB',
+  },
+  {
+    path: 'info/nuetzliches',
+    component: HandyStuffComponent,
+    title: 'Nützliches – DNagB',
+  },
+  {
+    path: 'info/veranstaltung-planen',
+    component: EventPlanComponent,
+    title: 'Veranstaltung planen – DNagB',
   },
   {
     path: 'download',
     component: DownloadComponent,
-    title: 'Downloads - DNagB',
+    title: 'Downloads – DNagB',
   },
   {
     path: 'imprint',
     component: ImprintComponent,
-    title: 'Impressum - DNagB',
+    title: 'Impressum – DNagB',
   },
   {
     path: 'privacy',
     component: PrivacyComponent,
-    title: 'Datenschutz - DNagB',
+    title: 'Datenschutz – DNagB',
   },
   {
     path: 'contact',
     component: ContactComponent,
-    title: 'Kontakt - DNagB',
+    title: 'Kontakt – DNagB',
   },
   {
     path: '',
@@ -70,6 +100,16 @@ export const routes: Routes = [
   {
     path: 'dnagb',
     redirectTo: 'dnagb/verein',
+    pathMatch: 'full',
+  },
+  {
+    path: 'naginata',
+    redirectTo: 'naginata/ausruestung',
+    pathMatch: 'full',
+  },
+  {
+    path: 'info',
+    redirectTo: 'info/ausruestung',
     pathMatch: 'full',
   },
   { path: '**', component: PageNotFoundComponent },
