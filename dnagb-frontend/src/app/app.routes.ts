@@ -9,18 +9,9 @@ import { NaginataComponent } from './naginata/naginata.component';
 import { InformationComponent } from './information/information.component';
 import { DownloadComponent } from './download/download.component';
 import { DojosComponent } from './association/dojos/dojos.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-  {
-    path: 'dnagb',
-    redirectTo: 'dnagb/verein',
-    pathMatch: 'full',
-  },
   {
     path: 'home',
     component: HomeComponent,
@@ -71,4 +62,15 @@ export const routes: Routes = [
     component: ContactComponent,
     title: 'Kontakt - DNagB',
   },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: 'dnagb',
+    redirectTo: 'dnagb/verein',
+    pathMatch: 'full',
+  },
+  { path: '**', component: PageNotFoundComponent },
 ];

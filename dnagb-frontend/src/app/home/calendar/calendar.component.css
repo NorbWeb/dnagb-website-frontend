@@ -40,7 +40,7 @@
 
 .weekdays {
   padding: 0 1rem;
-  background-color: #fff;
+  background-color: var(--white);
 
   span {
     display: inline-block;
@@ -54,7 +54,7 @@
   padding: 0 1rem 1rem 1rem;
   border-radius: 0 0 var(--component-border-radius)
     var(--component-border-radius);
-  background-color: #fff;
+  background-color: var(--white);
 
   .day {
     display: inline-block;

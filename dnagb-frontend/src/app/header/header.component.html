@@ -1,6 +1,6 @@
 <header id="header">
   <nav>
-    <ul class="break-point-mantle">
+    <ul class="container">
       <li>
         <a
           class="nav-link-logo"
@@ -20,24 +20,32 @@
           >Aktuelles</a
         >
       </li>
-      <li>
-        <a
-          class="nav-link"
-          routerLink="/dnagb/verein"
+      <li class="dropdown">
+        <div
+          class="dropdown-button"
           routerLinkActive="active"
           ariaCurrentWhenActive="page"
-          >Der DNagB</a
         >
+          Der DNagB
+          <div class="dropdown-content">
+            <a
+              class="nav-link"
+              routerLink="/dnagb/verein"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              >Verein</a
+            >
+            <a
+              class="nav-link"
+              routerLink="/dnagb/dojo"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              >Dojos</a
+            >
+          </div>
+        </div>
       </li>
-      <li>
-        <a
-          class="nav-link"
-          routerLink="/dnagb/dojo"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          >Dojos</a
-        >
-      </li>
+
       <li>
         <a
           class="nav-link"

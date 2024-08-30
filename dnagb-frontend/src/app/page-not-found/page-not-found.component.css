@@ -1,0 +1,19 @@
+#page-not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  font-size: 1.25rem;
+  margin: 0.875rem 0;
+}
+
+.title {
+  font-size: 9rem;
+}
+
+.sub-title {
+  font-size: 1.75rem;
+}

@@ -1,8 +1,4 @@
 :root {
-  font-size: 16px;
-  font-family: "Quattrocento Sans", "Open Sans", "Helvetica Neue", sans-serif;
-  color: var(--text);
-
   /* ~~~~~~~~~~ component ~~~~~~~~~~ */
   --component-padding: 0.75rem 1.5rem;
   --component-border-radius: 0.25rem;

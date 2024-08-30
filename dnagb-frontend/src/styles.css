@@ -1,87 +1,9 @@
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* This file bundles all the CSS files that are loaded in the application. */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@import url("./styles/fonts.css");
 @import url("./styles/color.css");
 @import url("./styles/variables.css");
 @import url("./styles/ui_components.css");
-
-@font-face {
-  font-family: "Quattrocento Sans";
-  src: url("./assets/fonts/Quattrocento_Sans/QuattrocentoSans-Regular.ttf");
-  font-style: normal;
-}
-@font-face {
-  font-family: "Quattrocento Sans";
-  src: url("./assets/fonts/Quattrocento_Sans/QuattrocentoSans-Italic.ttf");
-  font-style: italic;
-}
-@font-face {
-  font-family: "Quattrocento Sans";
-  src: url("./assets/fonts/Quattrocento_Sans/QuattrocentoSans-Bold.ttf");
-  font-weight: bold;
-}
-@font-face {
-  font-family: "Quattrocento Sans";
-  src: url("./assets/fonts/Quattrocento_Sans/QuattrocentoSans-BoldItalic.ttf");
-  font-weight: bold;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Fira Sans";
-  src: url("./assets/fonts/Fira_Sans/FiraSans-Bold.ttf");
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Heebo";
-  src: url("./assets/fonts/Heebo/Heebo-VariableFont_wght.ttf");
-  font-style: normal;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  color: var(--text);
-  padding: 0%;
-  margin: 0%;
-}
-
-.break-point-mantle {
-  margin: auto;
-  width: 100%;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-@media screen and (min-width: 768px) {
-  .break-point-mantle {
-    width: 100%;
-  }
-}
-@media screen and (min-width: 992px) {
-  .break-point-mantle {
-    width: 100%;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .break-point-mantle {
-    width: 100%;
-  }
-}
-@media screen and (min-width: 1400px) {
-  .break-point-mantle {
-    width: 1400px;
-  }
-}
-@media screen and (min-width: 1600px) {
-  .break-point-mantle {
-    width: 1400px;
-  }
-}
+@import url("./styles/responsive.css");
+@import url("./styles/general-settings.css");
