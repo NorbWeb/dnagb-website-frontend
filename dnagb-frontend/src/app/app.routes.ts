@@ -3,7 +3,6 @@ import { HomeComponent } from './components/home/home.component';
 import { ImprintComponent } from './components/imprint/imprint.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { UpToDateComponent } from './components/up-to-date/up-to-date.component';
 import { AssociationComponent } from './components/association/association.component';
 import { DownloadComponent } from './components/download/download.component';
 import { DojosComponent } from './components/dojos/dojos.component';
@@ -15,6 +14,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { ExamComponent } from './components/exam/exam.component';
 import { HandyStuffComponent } from './components/handy-stuff/handy-stuff.component';
 import { EventPlanComponent } from './components/event-plan/event-plan.component';
+import { NewsComponent } from './components/news/news.component';
 
 export const routes: Routes = [
   {
@@ -24,7 +24,7 @@ export const routes: Routes = [
   },
   {
     path: 'up-to-date',
-    component: UpToDateComponent,
+    component: NewsComponent,
     title: 'Aktuelles – DNagB',
   },
   {
