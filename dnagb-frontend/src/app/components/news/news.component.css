@@ -31,17 +31,41 @@
     width: 100%;
     padding: 1rem 1rem 1rem 0;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
 
     .content-title {
       margin-bottom: 0.5rem;
     }
 
-    .content-left {
-    }
+    .content-wrapper {
+      display: flex;
+      justify-content: space-between;
+      height: 100%;
 
-    .content-right {
+      .content-left {
+        display: flex;
+        flex-direction: column;
+
+        .date,
+        .location {
+          margin-bottom: 0.5rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 1.125rem;
+        }
+      }
+
+      .content-right {
+        display: flex;
+        align-items: end;
+
+        .details {
+          background-color: var(--primary);
+          padding: 0.5rem 0.75rem;
+          border-radius: var(--component-border-radius);
+        }
+      }
     }
   }
 }
