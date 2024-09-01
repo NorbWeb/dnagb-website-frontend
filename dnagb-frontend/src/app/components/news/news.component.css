@@ -6,6 +6,8 @@
   margin-bottom: 1.5rem;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: var(--component-border-radius);
+  background-color: var(--white);
+  cursor: pointer;
 
   .news-card_image {
     --img-height: 7.5rem;
@@ -21,7 +23,7 @@
       border-radius: var(--component-border-radius);
 
       img {
-        object-fit: contain;
+        object-fit: cover;
         width: var(--img-width);
         height: var(--img-height);
       }
@@ -40,6 +42,7 @@
     .content-wrapper {
       display: flex;
       justify-content: space-between;
+      gap: 1rem;
       height: 100%;
 
       .content-left {
@@ -53,6 +56,21 @@
           align-items: center;
           gap: 0.5rem;
           font-size: 1.125rem;
+        }
+
+        .type {
+          /* width: fit-content; */
+          display: flex;
+          gap: 1rem;
+
+          .type-chip {
+            background-color: #fff;
+            border: 0.125rem solid #b21212;
+            border-radius: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            color: #b21212;
+            font-weight: 700;
+          }
         }
       }
 
