@@ -23,7 +23,7 @@ export const routes: Routes = [
     title: 'Home – DNagB',
   },
   {
-    path: 'up-to-date',
+    path: 'news',
     component: NewsComponent,
     title: 'Aktuelles – DNagB',
   },
