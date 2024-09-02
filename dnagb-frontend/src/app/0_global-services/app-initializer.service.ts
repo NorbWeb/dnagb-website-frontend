@@ -3,15 +3,69 @@ import { environment } from '../../environment/env';
 import { UtilsService } from './utils.service';
 import { StateService } from './state.service';
 
+interface NewsItem {
+  title: string;
+  type: ('Wettkampf' | 'Seminar' | 'Prüfung')[];
+  startDate: Date | string;
+  endDate?: Date | string;
+  location: string;
+  announcement: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AppInitializerService {
+  exampleData: NewsItem[] = [
+    {
+      title: 'Seminar in XY',
+      type: ['Wettkampf', 'Seminar'],
+      startDate: new Date(2024, 10, 1, 9),
+      endDate: new Date(2024, 10, 3, 18, 30),
+      location: 'Fantasiestadt, Sporthalle SC Fantasie',
+      announcement: '123-456-789',
+    },
+    {
+      title: 'Deutsche Meisterschaft',
+      type: ['Wettkampf', 'Prüfung'],
+      startDate: new Date(2024, 6, 15, 9),
+      location: 'Berlin, Sporthalle SC Meisterschaft',
+      announcement: '10-5654-4554',
+    },
+    {
+      title: 'Test 1',
+      type: ['Seminar', 'Prüfung', 'Wettkampf'],
+      startDate: new Date(2024, 11, 24, 9),
+      location: 'Teststadt 1',
+      announcement: '7543-7585648',
+    },
+    {
+      title: 'Test 2',
+      type: ['Seminar', 'Prüfung', 'Wettkampf'],
+      startDate: new Date(2024, 7, 10, 9),
+      location: 'Teststadt 2',
+      announcement: '7543-7585648',
+    },
+    {
+      title: 'Test 3',
+      type: ['Seminar', 'Prüfung', 'Wettkampf'],
+      startDate: new Date(2024, 11, 15, 9),
+      location: 'Teststadt 3',
+      announcement: '7543-7585648',
+    },
+    {
+      title: 'Osterereigniss',
+      type: ['Seminar'],
+      startDate: new Date(2024, 2, 1, 9),
+      location: 'Wumpa-Wumpa, Heilige Wolke 7',
+      announcement: '7543-7585648',
+    },
+  ];
   constructor(private state: StateService) {}
   utils = inject(UtilsService);
   init(): Promise<void> {
     return new Promise(async (resolve, reject) => {
-      const settings = await this.getAppSettings().catch(reject);
+      const settings = await this.getAppConf().catch(reject);
       console.log('🐦‍⬛: AppInitializerService -> init', settings);
       this.setColors(
         settings.data.primary,
@@ -19,8 +73,8 @@ export class AppInitializerService {
         settings.data.secondary,
         settings.data.secondary_text
       );
-      this.state.updateSettings({
-        ...this.state.getSettings(),
+      this.state.updateConf({
+        ...this.state.getConf(),
         appSettings: {
           title: {
             long_1: settings.data.title_long_1,
@@ -28,12 +82,15 @@ export class AppInitializerService {
             short: settings.data.title_short,
           },
         },
+        news: [...this.exampleData],
       });
+      console.log('🐦‍⬛: AppInitializerService -> init', this.state.getConf());
+
       resolve();
     });
   }
 
-  private async getAppSettings() {
+  private async getAppConf() {
     const res = await fetch(`${environment.cmsUrl}/items/settings`);
     return await res.json();
   }

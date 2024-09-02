@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class StateService {
-  private _settings: BehaviorSubject<any> = new BehaviorSubject<any>({
+  private _conf: BehaviorSubject<any> = new BehaviorSubject<any>({
     appSettings: {
       title: {
         long_1: '',
@@ -13,17 +13,17 @@ export class StateService {
         short: '',
       },
     },
+    news: [],
   });
-  public readonly massnahmenState: Observable<any> =
-    this._settings.asObservable();
+  public readonly massnahmenState: Observable<any> = this._conf.asObservable();
 
   constructor() {}
 
-  getSettings(): any {
-    return this._settings.getValue();
+  getConf(): any {
+    return this._conf.getValue();
   }
 
-  updateSettings(newState: any) {
-    this._settings.next(newState);
+  updateConf(newState: any) {
+    this._conf.next(newState);
   }
 }

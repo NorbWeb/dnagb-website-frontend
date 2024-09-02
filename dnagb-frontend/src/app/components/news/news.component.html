@@ -3,7 +3,7 @@
     <h2 class="section">Ausschreibungen</h2>
     <ul class="news">
       @for(item of news; track $index){
-      <li class="news-card">
+      <li class="news-card" (click)="openDetails(item.announcement)">
         <div class="news-card_image">
           <div class="image-wrapper">
             <img src="../../../assets/naginata-symbolbild-260x300.jpg" alt="" />

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { StateService } from '../../0_global-services/state.service';
 
 interface NewsItem {
   title: string;
@@ -17,6 +19,8 @@ interface NewsItem {
   styleUrl: './news.component.css',
 })
 export class NewsComponent implements OnInit {
+  constructor(private state: StateService, private router: Router) {}
+
   today: Date = new Date();
   news: NewsItem[] = [];
   expiredNews: NewsItem[] = [];
@@ -28,51 +32,6 @@ export class NewsComponent implements OnInit {
     // hour: '2-digit',
     // minute: '2-digit',
   };
-  exampleData: NewsItem[] = [
-    {
-      title: 'Seminar in XY',
-      type: ['Wettkampf', 'Seminar'],
-      startDate: new Date(2024, 10, 1, 9),
-      endDate: new Date(2024, 10, 3, 18, 30),
-      location: 'Fantasiestadt, Sporthalle SC Fantasie',
-      announcement: '123-456-789',
-    },
-    {
-      title: 'Deutsche Meisterschaft',
-      type: ['Wettkampf', 'Prüfung'],
-      startDate: new Date(2024, 6, 15, 9),
-      location: 'Berlin, Sporthalle SC Meisterschaft',
-      announcement: '10-5654-4554',
-    },
-    {
-      title: 'Test 1',
-      type: ['Seminar', 'Prüfung', 'Wettkampf'],
-      startDate: new Date(2024, 11, 24, 9),
-      location: 'Teststadt 1',
-      announcement: '7543-7585648',
-    },
-    {
-      title: 'Test 2',
-      type: ['Seminar', 'Prüfung', 'Wettkampf'],
-      startDate: new Date(2024, 7, 10, 9),
-      location: 'Teststadt 2',
-      announcement: '7543-7585648',
-    },
-    {
-      title: 'Test 3',
-      type: ['Seminar', 'Prüfung', 'Wettkampf'],
-      startDate: new Date(2024, 11, 15, 9),
-      location: 'Teststadt 3',
-      announcement: '7543-7585648',
-    },
-    {
-      title: 'Osterereigniss',
-      type: ['Seminar'],
-      startDate: new Date(2024, 2, 1, 9),
-      location: 'Wumpa-Wumpa, Heilige Wolke 7',
-      announcement: '7543-7585648',
-    },
-  ];
 
   convertDate(arr: NewsItem[]) {
     arr.sort((a: any, b: any) => {
@@ -80,7 +39,6 @@ export class NewsComponent implements OnInit {
     });
 
     for (const item of arr) {
-      // TODO Check if date in event is passed
       if (item.startDate < this.today) {
         this.expiredNews.push(item);
       } else {
@@ -89,7 +47,11 @@ export class NewsComponent implements OnInit {
     }
   }
 
+  openDetails(id: string) {
+    this.router.navigateByUrl(`/news-details/${id}`);
+  }
+
   ngOnInit(): void {
-    this.convertDate(this.exampleData);
+    this.convertDate(this.state.getConf().news);
   }
 }

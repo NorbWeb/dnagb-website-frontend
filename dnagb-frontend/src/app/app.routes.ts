@@ -15,6 +15,7 @@ import { ExamComponent } from './components/exam/exam.component';
 import { HandyStuffComponent } from './components/handy-stuff/handy-stuff.component';
 import { EventPlanComponent } from './components/event-plan/event-plan.component';
 import { NewsComponent } from './components/news/news.component';
+import { NewsDetailComponent } from './components/news-detail/news-detail.component';
 
 export const routes: Routes = [
   {
@@ -26,6 +27,11 @@ export const routes: Routes = [
     path: 'news',
     component: NewsComponent,
     title: 'Aktuelles – DNagB',
+  },
+  {
+    path: 'news-deatils/:id',
+    component: NewsDetailComponent,
+    title: 'Details – DNagB',
   },
   {
     path: 'dnagb/vereinsstrukturen',
