@@ -4,12 +4,8 @@
 }
 
 .page {
-  height: var(--main-height);
-}
-
-.page-content {
-  padding: 1rem 1.5rem;
-  background-color: var(--white);
+  min-height: var(--main-height);
+  padding: var(--page-padding);
 }
 
 @media screen and (min-width: 768px) {

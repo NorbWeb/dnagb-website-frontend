@@ -17,6 +17,7 @@ interface NewsItem {
   styleUrl: './news.component.css',
 })
 export class NewsComponent implements OnInit {
+  today: Date = new Date();
   news!: NewsItem[];
   exampleData: NewsItem[] = [
     {
@@ -32,12 +33,20 @@ export class NewsComponent implements OnInit {
       type: ['Wettkampf', 'Prüfung'],
       startDate: new Date(2024, 6, 15, 9),
       location: 'Berlin, Sporthalle SC Meisterschaft',
-      announcement: '123-456-789',
+      announcement: '10-5654-4554',
+    },
+    {
+      title: 'Osterereigniss',
+      type: ['Seminar'],
+      startDate: new Date(2024, 2, 1, 9),
+      location: 'Wumpa-Wumpa, Heilige Wolke 7',
+      announcement: '7543-7585648',
     },
   ];
 
   convertDate(arr: NewsItem[]) {
     console.log('🐦‍⬛: NewsComponent -> convertDate -> arr', arr);
+    let result = [];
     const options: any = {
       weekday: 'short',
       year: 'numeric',
@@ -60,9 +69,12 @@ export class NewsComponent implements OnInit {
           .toLocaleString('de-DE', options)
           .replace(',', '');
       }
+      // TODO Check if date in event is passed
+      // if(item.startDate < this.today){}
+      result.push(item);
     }
 
-    return arr;
+    return result;
   }
 
   ngOnInit(): void {

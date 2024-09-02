@@ -1,4 +1,8 @@
 :root {
+  /* ~~~~~~~~~~ page ~~~~~~~~~~ */
+  --page-padding-value: 1rem;
+  --page-padding: var(--page-padding-value) 0;
+
   /* ~~~~~~~~~~ component ~~~~~~~~~~ */
   --component-padding: 0.75rem 1.5rem;
   --component-border-radius: 0.25rem;
