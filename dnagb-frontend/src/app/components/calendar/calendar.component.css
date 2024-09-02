@@ -11,8 +11,7 @@
   font-family: "Heebo";
   font-weight: 600;
   font-size: 1.25rem;
-  border-radius: var(--component-border-radius) var(--component-border-radius) 0
-    0;
+  border-radius: var(--component-br) var(--component-br) 0 0;
 
   .month-button {
     border: none;
@@ -52,8 +51,7 @@
 
 .days {
   padding: 0 1rem 1rem 1rem;
-  border-radius: 0 0 var(--component-border-radius)
-    var(--component-border-radius);
+  border-radius: 0 0 var(--component-br) var(--component-br);
   background-color: var(--white);
 
   .day {

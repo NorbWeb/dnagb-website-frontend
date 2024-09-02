@@ -3,9 +3,10 @@
   --page-padding-value: 1rem;
   --page-padding: var(--page-padding-value) 0;
 
-  /* ~~~~~~~~~~ component ~~~~~~~~~~ */
-  --component-padding: 0.75rem 1.5rem;
-  --component-border-radius: 0.25rem;
+  /* ~~~~~~~~~~ section & component ~~~~~~~~~~ */
+  --section-padding: 1rem;
+  --section-bg: var(--white);
+  --component-br: 0.25rem;
 
   /* ~~~~~~~~~~ text ~~~~~~~~~~ */
   --text: var(--grey-900);

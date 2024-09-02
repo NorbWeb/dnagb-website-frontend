@@ -12,8 +12,8 @@ ul {
 }
 
 .lonely-header {
-  padding: var(--component-padding);
-  border-radius: var(--component-border-radius);
+  padding: var(--section-padding);
+  border-radius: var(--component-br);
   background-color: var(--white);
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
 }
@@ -41,7 +41,7 @@ ul {
   border: 1px solid rgba(0, 0, 0, 0.25);
   margin-bottom: 1.5rem;
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
-  border-radius: var(--component-border-radius);
+  border-radius: var(--component-br);
   background-color: var(--white);
   cursor: pointer;
   transition: all 0.25s ease-in-out;
@@ -57,7 +57,7 @@ ul {
       justify-content: center;
       align-items: center;
       background-color: var(--main-bg);
-      border-radius: var(--component-border-radius);
+      border-radius: var(--component-br);
 
       img {
         object-fit: cover;
@@ -118,7 +118,7 @@ ul {
         .details {
           background-color: var(--primary);
           padding: 0.5rem 0.75rem;
-          border-radius: var(--component-border-radius);
+          border-radius: var(--component-br);
         }
       }
     }

@@ -3,11 +3,6 @@
   width: 100%;
 }
 
-.page {
-  min-height: var(--main-height);
-  padding: var(--page-padding);
-}
-
 @media screen and (min-width: 768px) {
   .container {
     width: 100%;

@@ -6,7 +6,7 @@
   text-align: center;
   transition: all 0.15s ease-in-out;
   border: 0.125rem solid;
-  border-radius: var(--component-border-radius);
+  border-radius: var(--component-br);
 
   &.button-fill {
     background-color: var(--button-fill-bg);
@@ -17,6 +17,7 @@
       background-color: var(--button-fill-hover-bg);
       color: var(--button-fill-hover-text);
       border-color: var(--button-fill-hover-border);
+      box-shadow: 0 0 10px var(--button-fill-bg);
     }
 
     &:active {
@@ -39,6 +40,7 @@
       background-color: var(--button-outline-hover-bg);
       color: var(--button-outline-hover-text);
       border-color: var(--button-outline-hover-border);
+      box-shadow: 0 0 10px var(--button-outline-border);
     }
 
     &:active {

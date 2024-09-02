@@ -11,7 +11,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
-    padding: var(--component-padding);
+    padding: var(--section-padding);
   }
 
   .banner_title {
@@ -31,7 +31,7 @@
 #short-info {
   display: flex;
   gap: 1rem;
-  padding: var(--component-padding);
+  padding: var(--section-padding);
 }
 
 app-calendar {
