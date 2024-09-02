@@ -1,6 +1,6 @@
 <div class="container page">
-  <section id="tender">
-    <h2 class="lonely-header">Ausschreibungen</h2>
+  <section>
+    <h2 class="section">Ausschreibungen</h2>
     <ul class="news">
       @for(item of news; track $index){
       <li class="news-card">
@@ -16,9 +16,61 @@
               <div class="date">
                 <img src="../../../assets/icons/calendar_month.svg" alt="" />{{
                   item.startDate
+                    .toLocaleString("de-DE", options)
+                    .replace(",", "")
                 }}
 
-                @if(item.endDate){ - {{ item.endDate }}
+                @if(item.endDate){ -
+                {{
+                  item.endDate.toLocaleString("de-DE", options).replace(",", "")
+                }}
+                }
+              </div>
+              <div class="location">
+                <img src="../../../assets/icons/location.svg" alt="" />{{
+                  item.location
+                }}
+              </div>
+              <div class="type">
+                @for( type of item.type; track $index){
+                <span class="type-chip">{{ type }}</span>
+                }
+              </div>
+            </div>
+            <div class="content-right">
+              <div class="details">Details</div>
+            </div>
+          </div>
+        </div>
+      </li>
+      }
+    </ul>
+  </section>
+  <section>
+    <h2 class="section">Vergangene Ausschreibungen</h2>
+    <ul class="news">
+      @for(item of expiredNews; track $index){
+      <li class="news-card">
+        <div class="news-card_image">
+          <div class="image-wrapper">
+            <img src="../../../assets/naginata-symbolbild-260x300.jpg" alt="" />
+          </div>
+        </div>
+        <div class="news-card_content">
+          <h3 class="content-title">{{ item.title }}</h3>
+          <div class="content-wrapper">
+            <div class="content-left">
+              <div class="date">
+                <img src="../../../assets/icons/calendar_month.svg" alt="" />{{
+                  item.startDate
+                    .toLocaleString("de-DE", options)
+                    .replace(",", "")
+                }}
+
+                @if(item.endDate){ -
+                {{
+                  item.endDate.toLocaleString("de-DE", options).replace(",", "")
+                }}
                 }
               </div>
               <div class="location">

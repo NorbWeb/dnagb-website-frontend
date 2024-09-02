@@ -18,7 +18,16 @@ interface NewsItem {
 })
 export class NewsComponent implements OnInit {
   today: Date = new Date();
-  news!: NewsItem[];
+  news: NewsItem[] = [];
+  expiredNews: NewsItem[] = [];
+  options: any = {
+    weekday: 'short',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    // hour: '2-digit',
+    // minute: '2-digit',
+  };
   exampleData: NewsItem[] = [
     {
       title: 'Seminar in XY',
@@ -36,6 +45,27 @@ export class NewsComponent implements OnInit {
       announcement: '10-5654-4554',
     },
     {
+      title: 'Test 1',
+      type: ['Seminar', 'Prüfung', 'Wettkampf'],
+      startDate: new Date(2024, 11, 24, 9),
+      location: 'Teststadt 1',
+      announcement: '7543-7585648',
+    },
+    {
+      title: 'Test 2',
+      type: ['Seminar', 'Prüfung', 'Wettkampf'],
+      startDate: new Date(2024, 7, 10, 9),
+      location: 'Teststadt 2',
+      announcement: '7543-7585648',
+    },
+    {
+      title: 'Test 3',
+      type: ['Seminar', 'Prüfung', 'Wettkampf'],
+      startDate: new Date(2024, 11, 15, 9),
+      location: 'Teststadt 3',
+      announcement: '7543-7585648',
+    },
+    {
       title: 'Osterereigniss',
       type: ['Seminar'],
       startDate: new Date(2024, 2, 1, 9),
@@ -45,39 +75,21 @@ export class NewsComponent implements OnInit {
   ];
 
   convertDate(arr: NewsItem[]) {
-    console.log('🐦‍⬛: NewsComponent -> convertDate -> arr', arr);
-    let result = [];
-    const options: any = {
-      weekday: 'short',
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      // hour: '2-digit',
-      // minute: '2-digit',
-    };
-
     arr.sort((a: any, b: any) => {
       return a.startDate.getTime() - b.startDate.getTime();
     });
 
     for (const item of arr) {
-      item.startDate = item.startDate
-        .toLocaleString('de-DE', options)
-        .replace(',', '');
-      if (item.endDate) {
-        item.endDate = item.endDate
-          .toLocaleString('de-DE', options)
-          .replace(',', '');
-      }
       // TODO Check if date in event is passed
-      // if(item.startDate < this.today){}
-      result.push(item);
+      if (item.startDate < this.today) {
+        this.expiredNews.push(item);
+      } else {
+        this.news.push(item);
+      }
     }
-
-    return result;
   }
 
   ngOnInit(): void {
-    this.news = [...this.convertDate(this.exampleData)];
+    this.convertDate(this.exampleData);
   }
 }
