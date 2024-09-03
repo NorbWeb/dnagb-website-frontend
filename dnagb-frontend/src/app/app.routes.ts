@@ -29,7 +29,7 @@ export const routes: Routes = [
     title: 'Aktuelles – DNagB',
   },
   {
-    path: 'news-deatils/:id',
+    path: 'news-details/:id',
     component: NewsDetailComponent,
     title: 'Details – DNagB',
   },

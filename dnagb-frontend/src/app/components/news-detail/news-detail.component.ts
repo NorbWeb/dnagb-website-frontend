@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { StateService } from '../../0_global-services/state.service';
+import { NewsItem } from '../../1_types-and-interfaces/NewsItem';
 
 @Component({
   selector: 'app-news-detail',
@@ -11,13 +11,13 @@ import { StateService } from '../../0_global-services/state.service';
   styleUrl: './news-detail.component.css',
 })
 export class NewsDetailComponent implements OnInit {
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private state: StateService
-  ) {}
+  data!: NewsItem;
+
+  constructor(private route: ActivatedRoute, private state: StateService) {}
 
   ngOnInit(): void {
-    // TODO Display component with data
+    const { id } = this.route.snapshot.params;
+    this.data = this.state.getConf().news.find((f: { id: any }) => f.id == id);
+    console.log(this.data, id);
   }
 }

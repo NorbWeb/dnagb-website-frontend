@@ -1,15 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StateService } from '../../0_global-services/state.service';
-
-interface NewsItem {
-  title: string;
-  type: ('Wettkampf' | 'Seminar' | 'Prüfung')[];
-  startDate: Date | string;
-  endDate?: Date | string;
-  location: string;
-  announcement: string;
-}
+import { NewsItem } from '../../1_types-and-interfaces/NewsItem';
 
 @Component({
   selector: 'app-news',
@@ -47,7 +39,7 @@ export class NewsComponent implements OnInit {
     }
   }
 
-  openDetails(id: string) {
+  openDetails(id: number | string) {
     this.router.navigateByUrl(`/news-details/${id}`);
   }
 

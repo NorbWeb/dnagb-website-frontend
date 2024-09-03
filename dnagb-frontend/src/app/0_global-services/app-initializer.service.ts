@@ -2,15 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { environment } from '../../environment/env';
 import { UtilsService } from './utils.service';
 import { StateService } from './state.service';
-
-interface NewsItem {
-  title: string;
-  type: ('Wettkampf' | 'Seminar' | 'Prüfung')[];
-  startDate: Date | string;
-  endDate?: Date | string;
-  location: string;
-  announcement: string;
-}
+import { NewsItem } from '../1_types-and-interfaces/NewsItem';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +16,7 @@ export class AppInitializerService {
       endDate: new Date(2024, 10, 3, 18, 30),
       location: 'Fantasiestadt, Sporthalle SC Fantasie',
       announcement: '123-456-789',
+      id: 1,
     },
     {
       title: 'Deutsche Meisterschaft',
@@ -31,6 +24,7 @@ export class AppInitializerService {
       startDate: new Date(2024, 6, 15, 9),
       location: 'Berlin, Sporthalle SC Meisterschaft',
       announcement: '10-5654-4554',
+      id: 2,
     },
     {
       title: 'Test 1',
@@ -38,6 +32,7 @@ export class AppInitializerService {
       startDate: new Date(2024, 11, 24, 9),
       location: 'Teststadt 1',
       announcement: '7543-7585648',
+      id: 3,
     },
     {
       title: 'Test 2',
@@ -45,6 +40,7 @@ export class AppInitializerService {
       startDate: new Date(2024, 7, 10, 9),
       location: 'Teststadt 2',
       announcement: '7543-7585648',
+      id: 4,
     },
     {
       title: 'Test 3',
@@ -52,6 +48,7 @@ export class AppInitializerService {
       startDate: new Date(2024, 11, 15, 9),
       location: 'Teststadt 3',
       announcement: '7543-7585648',
+      id: 5,
     },
     {
       title: 'Osterereigniss',
@@ -59,6 +56,7 @@ export class AppInitializerService {
       startDate: new Date(2024, 2, 1, 9),
       location: 'Wumpa-Wumpa, Heilige Wolke 7',
       announcement: '7543-7585648',
+      id: 6,
     },
   ];
   constructor(private state: StateService) {}
