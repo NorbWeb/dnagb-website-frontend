@@ -9,3 +9,7 @@
   height: calc(var(--main-height) - 2 * var(--page-padding-value));
   padding: 0;
 }
+
+.dojo-info {
+  width: 50%;
+}

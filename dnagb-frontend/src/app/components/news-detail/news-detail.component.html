@@ -1,1 +1,78 @@
-<p>news-detail works!</p>
+<div class="container page">
+  <section id="event">
+    <div class="event_image">
+      <div class="image-wrapper">
+        <img src="../../../assets/naginata-symbolbild-260x300.jpg" alt="" />
+      </div>
+    </div>
+    <div class="event_content">
+      <div class="content-wrapper">
+        <div class="content-left">
+          <h2 class="content-title">
+            {{ data.title }}
+          </h2>
+          <div class="date">
+            <img src="../../../assets/icons/calendar_month.svg" alt="" />{{
+              data.startDate.toLocaleString("de-DE", options).replace(",", "")
+            }}
+
+            @if(data.endDate){ -
+            {{ data.endDate.toLocaleString("de-DE", options).replace(",", "") }}
+            }
+          </div>
+          <div class="location">
+            <img src="../../../assets/icons/location.svg" alt="" />{{
+              data.location
+            }}
+          </div>
+          <div class="type">
+            @for( type of data.type; track $index){
+            <span class="type-chip">{{ type }}</span>
+            }
+          </div>
+        </div>
+        <div class="content-right">
+          <button
+            class="nag_button button-fill back"
+            (click)="goBackToPrevPage()"
+          >
+            Zurück
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <h3 class="info-title">Informationen zur Veranstaltung</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+      eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+      voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+      clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+      amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+      nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+      diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+      Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+      sit amet.
+    </p>
+    <h3>Location</h3>
+    <div class="info_location">
+      <div class="location-image">
+        <img src="../../../assets/icons/map_96dp.svg" alt="" />
+      </div>
+      <div class="location_content">
+        <div class="content-left">
+          <h4 class="content-name">Name</h4>
+          <div class="content-address">
+            <img src="../../../assets/icons/location.svg" alt="" />{{
+              data.location
+            }}
+          </div>
+        </div>
+        <div class="content-right">
+          <button class="nag_button button-fill">Anfahrt</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
