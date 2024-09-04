@@ -47,18 +47,8 @@
   </section>
   <section class="section">
     <h3 class="info-title">Informationen zur Veranstaltung</h3>
-    <p>
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-      eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-      voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-      clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-      amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-      nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-      diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-      Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-      sit amet.
-    </p>
-    <h3>Location</h3>
+    <div [innerHTML]="data.description"></div>
+    <h3 class="location-title">Location</h3>
     <div class="info_location">
       <div class="location-image">
         <img src="../../../assets/icons/map_96dp.svg" alt="" />

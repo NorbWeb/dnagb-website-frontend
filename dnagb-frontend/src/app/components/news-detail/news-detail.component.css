@@ -94,6 +94,10 @@
   font-size: 1.5rem;
 }
 
+.location-title {
+  margin-top: 1rem;
+}
+
 .info_location {
   width: fit-content;
   min-width: 25rem;

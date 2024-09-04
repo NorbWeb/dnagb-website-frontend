@@ -34,11 +34,25 @@ export class AppInitializerService {
             short: settings.data.title_short,
           },
         },
-        news: [...events.data],
+
+        news: [...this.convertDate(events.data)],
       });
 
       resolve();
     });
+  }
+
+  convertDate(arr: NewsItem[]) {
+    let rawData: NewsItem[] = [...arr];
+    let result = [];
+    for (const element of rawData) {
+      element.date_start = new Date(element.date_start);
+      if (element.date_end) {
+        element.date_end = new Date(element.date_end);
+      }
+      result.push(element);
+    }
+    return result;
   }
 
   private async getAppConf() {
