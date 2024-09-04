@@ -1,7 +1,7 @@
 :root {
   /* ~~~~~~~~~~ page ~~~~~~~~~~ */
   --page-padding-value: 1rem;
-  --page-padding: var(--page-padding-value) 0;
+  --page-padding: var(--page-padding-value);
 
   /* ~~~~~~~~~~ section & component ~~~~~~~~~~ */
   --section-padding: 1rem;

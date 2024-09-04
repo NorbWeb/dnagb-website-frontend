@@ -1,5 +1,6 @@
 .page {
   padding-top: calc(var(--page-padding-number) * (-1));
+  padding-left: calc(var(--page-padding-number) * (-1));
 }
 
 .banner_bg-fill {

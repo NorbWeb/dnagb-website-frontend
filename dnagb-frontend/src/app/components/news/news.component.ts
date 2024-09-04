@@ -27,21 +27,10 @@ export class NewsComponent implements OnInit {
 
   convertDate(arr: NewsItem[]) {
     arr.sort((a: any, b: any) => {
-      // return a.startDate.getTime() - b.startDate.getTime();
-      console.log(
-        new Date(a.date_start).toLocaleString('de-DE', this.options),
-        new Date(b.date_start).toLocaleString('de-DE', this.options)
-      );
       return a.date_start - b.date_start;
     });
 
-    for (const item of arr) {
-      if (item.date_start < this.today) {
-        this.expiredNews.push(item);
-      } else {
-        this.news.push(item);
-      }
-    }
+    this.news = [...arr];
   }
 
   openDetails(id: number | string) {

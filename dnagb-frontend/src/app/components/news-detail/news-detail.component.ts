@@ -18,8 +18,8 @@ export class NewsDetailComponent implements OnInit {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
-    // hour: '2-digit',
-    // minute: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
   };
   constructor(
     private route: ActivatedRoute,
