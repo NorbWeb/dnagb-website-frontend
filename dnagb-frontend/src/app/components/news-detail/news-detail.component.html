@@ -13,17 +13,20 @@
           </h2>
           <div class="date">
             <img src="../../../assets/icons/calendar_month.svg" alt="" />{{
-              data.startDate.toLocaleString("de-DE", options).replace(",", "")
+              data.date_start.toLocaleString("de-DE", options).replace(",", "")
             }}
 
-            @if(data.endDate){ -
-            {{ data.endDate.toLocaleString("de-DE", options).replace(",", "") }}
+            @if(data.date_end){ -
+            {{
+              data.date_end.toLocaleString("de-DE", options).replace(",", "")
+            }}
             }
           </div>
           <div class="location">
             <img src="../../../assets/icons/location.svg" alt="" />{{
-              data.location
-            }}
+              data.location_name
+            }}, {{ data.street }} {{ data.number }}, {{ data.postal_code }}
+            {{ data.city }}
           </div>
           <div class="type">
             @for( type of data.type; track $index){
@@ -62,11 +65,13 @@
       </div>
       <div class="location_content">
         <div class="content-left">
-          <h4 class="content-name">Name</h4>
+          <h4 class="content-name">{{ data.location_name }}</h4>
           <div class="content-address">
             <img src="../../../assets/icons/location.svg" alt="" />{{
-              data.location
+              data.street
             }}
+            {{ data.number }}, {{ data.postal_code }}
+            {{ data.city }}
           </div>
         </div>
         <div class="content-right">

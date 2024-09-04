@@ -15,21 +15,23 @@
             <div class="content-left">
               <div class="date">
                 <img src="../../../assets/icons/calendar_month.svg" alt="" />{{
-                  item.startDate
+                  item.date_start
                     .toLocaleString("de-DE", options)
                     .replace(",", "")
                 }}
 
-                @if(item.endDate){ -
+                @if(item.date_end){ -
                 {{
-                  item.endDate.toLocaleString("de-DE", options).replace(",", "")
+                  item.date_end
+                    .toLocaleString("de-DE", options)
+                    .replace(",", "")
                 }}
                 }
               </div>
               <div class="location">
                 <img src="../../../assets/icons/location.svg" alt="" />{{
-                  item.location
-                }}
+                  item.location_name
+                }}, {{ item.city }}
               </div>
               <div class="type">
                 @for( type of item.type; track $index){
@@ -46,7 +48,7 @@
       }
     </ul>
   </section>
-  <section>
+  <!-- <section>
     <h2 class="section">Vergangene Ausschreibungen</h2>
     <ul class="news">
       @for(item of expiredNews; track $index){
@@ -92,5 +94,5 @@
       </li>
       }
     </ul>
-  </section>
+  </section> -->
 </div>

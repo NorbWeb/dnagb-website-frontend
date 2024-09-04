@@ -27,11 +27,12 @@ export class NewsComponent implements OnInit {
 
   convertDate(arr: NewsItem[]) {
     arr.sort((a: any, b: any) => {
-      return a.startDate.getTime() - b.startDate.getTime();
+      // return a.startDate.getTime() - b.startDate.getTime();
+      return a.date_start - b.date_start;
     });
 
     for (const item of arr) {
-      if (item.startDate < this.today) {
+      if (item.date_start < this.today) {
         this.expiredNews.push(item);
       } else {
         this.news.push(item);
