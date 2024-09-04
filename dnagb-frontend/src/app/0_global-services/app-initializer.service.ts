@@ -35,7 +35,7 @@ export class AppInitializerService {
           },
         },
 
-        news: [...this.convertDate(events.data)],
+        events: [...this.convertDate(events.data)],
       });
 
       resolve();

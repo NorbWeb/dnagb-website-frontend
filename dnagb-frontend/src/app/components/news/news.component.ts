@@ -38,6 +38,6 @@ export class NewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.convertDate(this.state.getConf().news);
+    this.convertDate(this.state.getConf().events);
   }
 }

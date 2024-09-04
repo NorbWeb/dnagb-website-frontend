@@ -18,9 +18,15 @@
   </div>
   <div id="days" class="days">
     @for(element of displayedDays; track $index){ @if(element.inMonth){
-    <span class="day in-month" [ngClass]="{ today: element.today }">{{
-      element.label
-    }}</span>
+    <span class="day in-month" [ngClass]="{ today: element.today }"
+      >{{ element.label }}
+      @if(element.event){
+
+      <div class="event">
+        <span>{{ element.event.title }}</span>
+      </div>
+      }
+    </span>
     } @else {
     <span class="day out-month">{{ element.label }}</span>
     } }

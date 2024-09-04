@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { StateService } from '../../0_global-services/state.service';
 
 @Component({
   selector: 'app-calendar',
@@ -34,10 +35,26 @@ export class CalendarComponent implements OnInit {
   displayedDays: any[] = [];
   monthCounter: number = 0;
 
-  constructor() {}
+  constructor(private state: StateService) {}
 
   getDaysInMonth(year: number, month: number) {
     return new Date(year, month, 0).getDate();
+  }
+
+  findEventDate(day: Date) {
+    let events = this.state.getConf().events;
+    for (const element of events) {
+      if (
+        day.getDate() === element.date_start.getDate() &&
+        day.getMonth() === element.date_start.getMonth() &&
+        day.getFullYear() === element.date_start.getFullYear()
+      ) {
+        // console.log('match: ', day.getDate(), element.date_start.getDate());
+        return element;
+      } else {
+        console.log('nope');
+      }
+    }
   }
 
   initCalendar() {
@@ -84,9 +101,21 @@ export class CalendarComponent implements OnInit {
         this.currentDate.getMonth() === dateObject.getMonth() &&
         this.currentDate.getFullYear() === dateObject.getFullYear()
       ) {
-        month.push({ label: i, inMonth: true, date: dateObject, today: true });
+        month.push({
+          label: i,
+          inMonth: true,
+          date: dateObject,
+          today: true,
+          event: this.findEventDate(dateObject),
+        });
       } else {
-        month.push({ label: i, inMonth: true, date: dateObject, today: false });
+        month.push({
+          label: i,
+          inMonth: true,
+          date: dateObject,
+          today: false,
+          event: this.findEventDate(dateObject),
+        });
       }
     }
 
@@ -106,6 +135,10 @@ export class CalendarComponent implements OnInit {
     }
 
     this.displayedDays = [...monthBefor, ...month, ...monthAfter];
+    console.log(
+      '🐦‍⬛: CalendarComponent -> initCalendar -> this.displayedDays',
+      this.displayedDays
+    );
   }
 
   nextMonth() {

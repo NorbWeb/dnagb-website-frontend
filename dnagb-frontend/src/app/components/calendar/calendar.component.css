@@ -90,6 +90,12 @@
       border: 0.25rem solid var(--secondary-lighten);
     }
   }
+
+  /* TODO Display event as calendar mark and make hover box for details  */
+  .event {
+    position: absolute;
+    z-index: 90;
+  }
 }
 
 .calendar-extend {

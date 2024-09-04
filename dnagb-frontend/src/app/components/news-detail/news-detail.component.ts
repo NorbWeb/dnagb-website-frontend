@@ -35,7 +35,7 @@ export class NewsDetailComponent implements OnInit {
     const { id } = this.route.snapshot.params;
     this.data = this.state
       .getConf()
-      .news.find((f: { id: any }) => Number(f.id) === Number(id));
+      .events.find((f: { id: any }) => Number(f.id) === Number(id));
     console.log(this.data, id);
   }
 }

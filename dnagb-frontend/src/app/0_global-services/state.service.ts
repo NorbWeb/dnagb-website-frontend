@@ -13,7 +13,7 @@ export class StateService {
         short: '',
       },
     },
-    news: [],
+    events: [],
   });
   public readonly massnahmenState: Observable<any> = this._conf.asObservable();
 

@@ -27,6 +27,5 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.title = this.state.getConf().appSettings.title;
-    console.log(this.state.getConf().appSettings.title);
   }
 }
