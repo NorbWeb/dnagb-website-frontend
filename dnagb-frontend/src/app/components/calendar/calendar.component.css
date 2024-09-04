@@ -25,6 +25,13 @@
       background-color: var(--primary-darken);
       color: var(--text-inverse);
     }
+
+    &.prev {
+      border-radius: var(--component-br) 0 0 0;
+    }
+    &.next {
+      border-radius: 0 var(--component-br) 0 0;
+    }
   }
 
   .current-month-year {
