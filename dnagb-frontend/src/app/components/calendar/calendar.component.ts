@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
+import { NoteBoxComponent } from '../note-box/note-box.component';
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NoteBoxComponent],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css',
 })
@@ -34,6 +35,7 @@ export class CalendarComponent implements OnInit {
   };
   displayedDays: any[] = [];
   monthCounter: number = 0;
+  openNote: boolean = false;
 
   constructor(private state: StateService) {}
 
@@ -49,12 +51,20 @@ export class CalendarComponent implements OnInit {
         day.getMonth() === element.date_start.getMonth() &&
         day.getFullYear() === element.date_start.getFullYear()
       ) {
-        // console.log('match: ', day.getDate(), element.date_start.getDate());
         return element;
       } else {
         console.log('nope');
       }
     }
+  }
+
+  openEventBox(e: Event) {
+    e.stopPropagation();
+    this.openNote = true;
+  }
+
+  closeEventBox() {
+    this.openNote = false;
   }
 
   initCalendar() {

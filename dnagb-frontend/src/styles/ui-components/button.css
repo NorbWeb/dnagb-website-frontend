@@ -1,4 +1,5 @@
 .nag_button {
+  user-select: none;
   padding: 0.5rem 1rem;
   font-family: "Quattrocento Sans";
   font-weight: bold;

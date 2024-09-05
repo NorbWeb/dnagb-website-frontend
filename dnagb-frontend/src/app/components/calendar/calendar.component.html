@@ -1,4 +1,4 @@
-<div class="calendar">
+<div class="calendar" (click)="closeEventBox()">
   <div class="month">
     <button class="month-button prev" (click)="prevMonth()">&#10094;</button>
     <div class="current-month-year">
@@ -18,16 +18,17 @@
   </div>
   <div id="days" class="days">
     @for(element of displayedDays; track $index){ @if(element.inMonth){
-    <span class="day in-month" [ngClass]="{ today: element.today }"
+    <span
+      class="day in-month"
+      [ngClass]="{ today: element.today, event: element.event }"
+      (click)="element.event ? openEventBox($event) : null"
       >{{ element.label }}
-      @if(element.event){
-
-      <div class="event">
-        <span>{{ element.event.title }}</span>
-      </div>
-      }
     </span>
-    } @else {
+    @if(element.event){
+    <div class="event-box" [ngClass]="{ open: openNote }">
+      <app-note-box [id]="element.event.id"></app-note-box>
+    </div>
+    } } @else {
     <span class="day out-month">{{ element.label }}</span>
     } }
   </div>
