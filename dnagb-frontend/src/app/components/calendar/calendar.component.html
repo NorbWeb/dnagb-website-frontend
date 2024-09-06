@@ -21,16 +21,15 @@
     <span
       class="day in-month"
       [ngClass]="{ today: element.today, event: element.event }"
-      (click)="element.event ? openEventBox($event) : null"
+      (click)="element.event ? openEventBox($event, element.event.id) : null"
       >{{ element.label }}
     </span>
-    @if(element.event){
-    <div class="event-box" [ngClass]="{ open: openNote }">
-      <app-note-box [id]="element.event.id"></app-note-box>
-    </div>
-    } } @else {
+    } @else {
     <span class="day out-month">{{ element.label }}</span>
     } }
+  </div>
+  <div class="event-box" [ngClass]="{ open: note === true }">
+    <app-note-box></app-note-box>
   </div>
 </div>
 <div class="calendar-extend">

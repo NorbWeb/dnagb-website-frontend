@@ -35,7 +35,7 @@ export class CalendarComponent implements OnInit {
   };
   displayedDays: any[] = [];
   monthCounter: number = 0;
-  openNote: boolean = false;
+  note: boolean = false;
 
   constructor(private state: StateService) {}
 
@@ -53,18 +53,26 @@ export class CalendarComponent implements OnInit {
       ) {
         return element;
       } else {
-        console.log('nope');
+        // console.log('nope');
       }
     }
   }
 
-  openEventBox(e: Event) {
+  openEventBox(e: Event, id: number) {
     e.stopPropagation();
-    this.openNote = true;
+    this.note = true;
+
+    let newState = this.state.getEventState();
+
+    newState.event = this.state
+      .getConf()
+      .events.find((f: { id: number }) => f.id === id);
+
+    this.state.updateEventState(newState);
   }
 
   closeEventBox() {
-    this.openNote = false;
+    this.note = false;
   }
 
   initCalendar() {
@@ -145,10 +153,10 @@ export class CalendarComponent implements OnInit {
     }
 
     this.displayedDays = [...monthBefor, ...month, ...monthAfter];
-    console.log(
-      '🐦‍⬛: CalendarComponent -> initCalendar -> this.displayedDays',
-      this.displayedDays
-    );
+    // console.log(
+    //   '🐦‍⬛: CalendarComponent -> initCalendar -> this.displayedDays',
+    //   this.displayedDays
+    // );
   }
 
   nextMonth() {
