@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
 import { NoteBoxComponent } from '../note-box/note-box.component';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-calendar',
@@ -10,7 +11,7 @@ import { NoteBoxComponent } from '../note-box/note-box.component';
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css',
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent implements OnInit, OnDestroy {
   weekday = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
   month = [
     'Januar',
@@ -36,6 +37,8 @@ export class CalendarComponent implements OnInit {
   displayedDays: any[] = [];
   monthCounter: number = 0;
   note: boolean = false;
+  currentOpen!: number | undefined;
+  unsubscribeAll = new Subject();
 
   constructor(private state: StateService) {}
 
@@ -60,7 +63,8 @@ export class CalendarComponent implements OnInit {
 
   openEventBox(e: Event, id: number) {
     e.stopPropagation();
-    this.note = true;
+    this.state.updateNoteBox(true);
+    this.currentOpen = id;
 
     let newState = this.state.getEventState();
 
@@ -72,7 +76,8 @@ export class CalendarComponent implements OnInit {
   }
 
   closeEventBox() {
-    this.note = false;
+    this.state.updateNoteBox(false);
+    this.currentOpen = undefined;
   }
 
   initCalendar() {
@@ -188,5 +193,14 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
     this.initCalendar();
+    this.state.noteBox.pipe(takeUntil(this.unsubscribeAll)).subscribe({
+      next: (res) => {
+        this.note = res;
+      },
+    });
+  }
+  ngOnDestroy(): void {
+    this.unsubscribeAll.next(undefined);
+    this.unsubscribeAll.complete();
   }
 }

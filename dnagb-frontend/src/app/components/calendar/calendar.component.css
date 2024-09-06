@@ -105,26 +105,8 @@
     border-radius: var(--component-br);
     background-color: var(--secondary);
 
-    /* &::before {
-      content: "";
-      transition: all 0.15s ease-in-out;
-      display: block;
-      position: absolute;
-      z-index: -1;
-      top: 50%;
-      left: 50%;
-      translate: -50% -50%;
-      border-radius: var(--component-br);
-      width: 1.75rem;
-      height: 1.5rem;
-      background-color: var(--secondary);
-    } */
-
-    &:hover {
-      /* &::before {
-        background-color: var(--secondary-darken);
-        filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
-      } */
+    &:hover,
+    &.active {
       background-color: var(--secondary-darken);
       filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
     }
@@ -134,7 +116,8 @@
   display: none;
   color: var(--text);
   position: absolute;
-  left: 0;
+  left: 50%;
+  translate: -50%;
   top: 0;
   z-index: 110;
 

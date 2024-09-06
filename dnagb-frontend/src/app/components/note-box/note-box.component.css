@@ -1,0 +1,26 @@
+.note-body {
+  margin: auto;
+
+  .type {
+    /* width: fit-content; */
+    display: flex;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+
+    .type-chip {
+      background-color: #fff;
+      border: 0.125rem solid #b21212;
+      border-radius: 0.5rem;
+      padding: 0.125rem 0.25rem;
+      color: #b21212;
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+  }
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: end;
+  margin-top: 1rem;
+}

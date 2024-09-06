@@ -1,3 +1,18 @@
-<div class="section">
-  <div>{{ data.title }}</div>
+<div class="section note-body">
+  <h4>{{ data.title }}</h4>
+  <div>{{ data.city }}</div>
+  <div class="type">
+    @for(type of data.type; track $index){
+
+    <div class="type-chip">{{ type }}</div>
+    }
+  </div>
+  <div class="button-wrapper">
+    <button
+      class="nag_button button-fill button-sm"
+      (click)="navigateToEvent()"
+    >
+      Details
+    </button>
+  </div>
 </div>

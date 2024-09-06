@@ -20,7 +20,11 @@
     @for(element of displayedDays; track $index){ @if(element.inMonth){
     <span
       class="day in-month"
-      [ngClass]="{ today: element.today, event: element.event }"
+      [ngClass]="{
+        today: element.today,
+        event: element.event,
+        active: element.event ? element.event.id === currentOpen : null
+      }"
       (click)="element.event ? openEventBox($event, element.event.id) : null"
       >{{ element.label }}
     </span>
@@ -28,9 +32,7 @@
     <span class="day out-month">{{ element.label }}</span>
     } }
   </div>
-  <div class="event-box" [ngClass]="{ open: note === true }">
-    <app-note-box></app-note-box>
-  </div>
+  <app-note-box class="event-box" [ngClass]="{ open: note }"></app-note-box>
 </div>
 <div class="calendar-extend">
   @if(startDate.year !== currentYear || startDate.month !== currentMonth) {

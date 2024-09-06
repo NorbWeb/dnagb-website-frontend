@@ -41,6 +41,11 @@ export class StateService {
   });
   public readonly eventState: Observable<any> = this._eventState.asObservable();
 
+  private _noteBox: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
+  public readonly noteBox: Observable<boolean> = this._noteBox.asObservable();
+
   constructor() {}
 
   getConf(): any {
@@ -82,5 +87,13 @@ export class StateService {
         postal_code: '',
       },
     });
+  }
+
+  getNoteBox(): boolean {
+    return this._noteBox.getValue();
+  }
+
+  updateNoteBox(newState: boolean) {
+    this._noteBox.next(newState);
   }
 }

@@ -9,6 +9,11 @@
   border: 0.125rem solid;
   border-radius: var(--component-br);
 
+  &.button-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75em;
+  }
+
   &.button-fill {
     background-color: var(--button-fill-bg);
     color: var(--button-fill-text);
