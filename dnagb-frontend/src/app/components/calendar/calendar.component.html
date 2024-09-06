@@ -32,10 +32,14 @@
     <span class="day out-month">{{ element.label }}</span>
     } }
   </div>
-  <app-note-box class="event-box" [ngClass]="{ open: note }"></app-note-box>
 </div>
 <div class="calendar-extend">
   @if(startDate.year !== currentYear || startDate.month !== currentMonth) {
   <button class="back-to-today" (click)="goToCurrentDate()">heute</button>
   }
 </div>
+<app-note-box
+  id="event-box"
+  class="event-box"
+  [ngClass]="{ open: note }"
+></app-note-box>

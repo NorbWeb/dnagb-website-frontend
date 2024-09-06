@@ -61,8 +61,20 @@ export class CalendarComponent implements OnInit, OnDestroy {
     }
   }
 
-  openEventBox(e: Event, id: number) {
+  openEventBox(e: any, id: number) {
     e.stopPropagation();
+    let box = document.getElementById('event-box');
+    console.log(box);
+    console.log(
+      '🐦‍⬛: CalendarComponent -> openEventBox -> ',
+      e.clientX,
+      e.clientY
+    );
+    if (box) {
+      box.style.top = e.clientX + 'px';
+      box.style.left = e.clientY + 'px';
+    }
+
     this.state.updateNoteBox(true);
     this.currentOpen = id;
 
