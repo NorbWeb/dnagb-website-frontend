@@ -64,15 +64,27 @@ export class CalendarComponent implements OnInit, OnDestroy {
   openEventBox(e: any, id: number) {
     e.stopPropagation();
     let box = document.getElementById('event-box');
-    console.log(box);
-    console.log(
-      '🐦‍⬛: CalendarComponent -> openEventBox -> ',
-      e.clientX,
-      e.clientY
-    );
-    if (box) {
-      box.style.top = e.clientX + 'px';
-      box.style.left = e.clientY + 'px';
+    let cal = document.getElementById('calendar')?.getBoundingClientRect();
+    if (cal && box) {
+      // let calCenter = {
+      //   x: cal.right - cal.width / 2,
+      //   y: cal.bottom - cal.height / 2,
+      // };
+      let x = e.target.getBoundingClientRect().x;
+      let y = e.target.getBoundingClientRect().y;
+      let width = e.target.getBoundingClientRect().width;
+      let height = e.target.getBoundingClientRect().height;
+
+      let boxWidth = box.getBoundingClientRect().width;
+      let boxHeight = box.getBoundingClientRect().height;
+
+      let targetX = x;
+      let targetY = y + height;
+
+      box.style.top = targetY + 'px';
+      box.style.left = targetX + 'px';
+
+      console.log(box, cal);
     }
 
     this.state.updateNoteBox(true);
