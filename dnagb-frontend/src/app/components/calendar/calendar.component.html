@@ -39,9 +39,9 @@
     <button class="back-to-today" (click)="goToCurrentDate()">heute</button>
     }
   </div>
+  <app-note-box
+    id="event-box"
+    class="event-box"
+    [ngClass]="{ open: note }"
+  ></app-note-box>
 </div>
-<app-note-box
-  id="event-box"
-  class="event-box"
-  [ngClass]="{ open: note }"
-></app-note-box>

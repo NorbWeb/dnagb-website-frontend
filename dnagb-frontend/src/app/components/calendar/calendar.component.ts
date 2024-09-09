@@ -64,32 +64,18 @@ export class CalendarComponent implements OnInit, OnDestroy {
   openEventBox(e: any, id: number) {
     e.stopPropagation();
     let box = document.getElementById('event-box');
-    let cal = document.getElementById('calendar')?.getBoundingClientRect();
-    if (cal && box) {
-      // let calCenter = {
-      //   x: cal.right - cal.width / 2,
-      //   y: cal.bottom - cal.height / 2,
-      // };
-      let x = e.target.getBoundingClientRect().x;
-      let y = e.target.getBoundingClientRect().y;
-      let width = e.target.getBoundingClientRect().width;
-      let height = e.target.getBoundingClientRect().height;
+    let element = e.target.getBoundingClientRect();
 
-      let boxWidth = box.getBoundingClientRect().width;
-      let boxHeight = box.getBoundingClientRect().height;
-
-      let targetX = x;
-      let targetY = y + height;
-
-      box.style.top = targetY + 'px';
-      box.style.left = targetX + 'px';
-
-      console.log(box, cal);
+    if (box) {
+      box.style.top = element.y + element.height + 8 + 'px';
+      box.style.left = element.x + element.width / 2 + 'px';
+      box.style.translate = '-50%';
+      console.log(box);
     }
 
-    this.state.updateNoteBox(true);
     this.currentOpen = id;
 
+    this.state.updateNoteBox({ ...this.state.getNoteBox(), open: true });
     let newState = this.state.getEventState();
 
     newState.event = this.state
@@ -100,7 +86,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
   }
 
   closeEventBox() {
-    this.state.updateNoteBox(false);
+    this.state.updateNoteBox({ ...this.state.getNoteBox(), open: false });
     this.currentOpen = undefined;
   }
 
@@ -219,7 +205,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
     this.initCalendar();
     this.state.noteBox.pipe(takeUntil(this.unsubscribeAll)).subscribe({
       next: (res) => {
-        this.note = res;
+        this.note = res.open;
       },
     });
   }

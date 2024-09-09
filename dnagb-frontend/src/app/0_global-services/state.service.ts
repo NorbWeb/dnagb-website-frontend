@@ -41,10 +41,10 @@ export class StateService {
   });
   public readonly eventState: Observable<any> = this._eventState.asObservable();
 
-  private _noteBox: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
-  );
-  public readonly noteBox: Observable<boolean> = this._noteBox.asObservable();
+  private _noteBox: BehaviorSubject<any> = new BehaviorSubject<any>({
+    open: false,
+  });
+  public readonly noteBox: Observable<any> = this._noteBox.asObservable();
 
   constructor() {}
 
@@ -89,11 +89,11 @@ export class StateService {
     });
   }
 
-  getNoteBox(): boolean {
+  getNoteBox(): any {
     return this._noteBox.getValue();
   }
 
-  updateNoteBox(newState: boolean) {
+  updateNoteBox(newState: any) {
     this._noteBox.next(newState);
   }
 }
