@@ -1,3 +1,53 @@
 <div class="container page">
-  <section class="section"></section>
+  <section class="section who-we-are" [innerHtml]="data.who_we_are"></section>
+  <section class="section board-speaker">
+    <div>
+      <h2 class="sub-title">Vorstand</h2>
+      <div class="board">
+        @for(item of data.board_speaker; track $index){ @if(item.role !==
+        'speaker'){
+        <div #card class="card" (click)="toggleCardFlip(card)">
+          <div class="front">
+            <div class="card-foto">
+              <div class="panel"></div>
+              <img
+                src="{{ url }}/assets/{{ item.image }}"
+                alt="Bild von {{ item.name }}"
+              />
+            </div>
+            <div class="card-name">{{ item.name }}</div>
+            <div class="card-position">{{ item.position }}</div>
+          </div>
+          <div class="back">
+            <div>Kontakt</div>
+          </div>
+        </div>
+        } }
+      </div>
+    </div>
+    <div>
+      <h2 class="sub-title">Referent*innen</h2>
+      <div class="speaker">
+        @for(item of data.board_speaker; track $index){ @if(item.role ===
+        'speaker'){
+        <div #card class="card" (click)="toggleCardFlip(card)">
+          <div class="front">
+            <div class="card-foto">
+              <div class="panel"></div>
+              <img
+                src="{{ url }}/assets/{{ item.image }}"
+                alt="Bild von {{ item.name }}"
+              />
+            </div>
+            <div class="card-name">{{ item.name }}</div>
+            <div class="card-position">{{ item.position }}</div>
+          </div>
+          <div class="back">
+            <div>Kontakt</div>
+          </div>
+        </div>
+        } }
+      </div>
+    </div>
+  </section>
 </div>

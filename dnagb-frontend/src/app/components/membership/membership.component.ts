@@ -13,7 +13,7 @@ export class MembershipComponent implements OnInit {
   constructor(private state: StateService) {}
 
   ngOnInit(): void {
-    if (this.state.getConf().membership.status === 'published')
-      this.data = this.state.getConf().membership;
+    if (this.state.getConf().association.membership.status === 'published')
+      this.data = this.state.getConf().association.membership;
   }
 }

@@ -15,10 +15,13 @@ export class AppInitializerService {
       const settings = await this.getAppConf().catch(reject);
       const events = await this.getEvents().catch(reject);
       const membership = await this.getMembership().catch(reject);
+      const boardSpaeker = await this.getBoardSpeaker().catch(reject);
+      const associationText = await this.getAssociationText().catch(reject);
       console.group('🐦‍⬛: AppInitializerService');
-      console.log('settings', settings.data);
-      console.log('events', events.data);
-      console.log('membership', membership.data);
+      // console.log('settings', settings.data);
+      // console.log('events', events.data);
+      console.log('board_speaker', boardSpaeker.data);
+      console.log('association_text', associationText.data);
       console.groupEnd();
       this.setColors(
         settings.data.primary,
@@ -36,7 +39,11 @@ export class AppInitializerService {
             short: settings.data.title_short,
           },
         },
-        membership: membership.data,
+        association: {
+          who_we_are: associationText.data,
+          board_speaker: boardSpaeker.data,
+          membership: membership.data,
+        },
 
         events: [...this.convertDate(events.data)],
       });
@@ -65,6 +72,16 @@ export class AppInitializerService {
 
   private async getMembership() {
     const res = await fetch(`${environment.cmsUrl}/items/membership`);
+    return await res.json();
+  }
+
+  private async getBoardSpeaker() {
+    const res = await fetch(`${environment.cmsUrl}/items/board_speaker`);
+    return await res.json();
+  }
+
+  private async getAssociationText() {
+    const res = await fetch(`${environment.cmsUrl}/items/association_text`);
     return await res.json();
   }
 
