@@ -14,9 +14,11 @@ export class AppInitializerService {
     return new Promise(async (resolve, reject) => {
       const settings = await this.getAppConf().catch(reject);
       const events = await this.getEvents().catch(reject);
+      const membership = await this.getMembership().catch(reject);
       console.group('🐦‍⬛: AppInitializerService');
       console.log('settings', settings.data);
       console.log('events', events.data);
+      console.log('membership', membership.data);
       console.groupEnd();
       this.setColors(
         settings.data.primary,
@@ -34,6 +36,7 @@ export class AppInitializerService {
             short: settings.data.title_short,
           },
         },
+        membership: membership.data,
 
         events: [...this.convertDate(events.data)],
       });
@@ -57,6 +60,11 @@ export class AppInitializerService {
 
   private async getAppConf() {
     const res = await fetch(`${environment.cmsUrl}/items/settings`);
+    return await res.json();
+  }
+
+  private async getMembership() {
+    const res = await fetch(`${environment.cmsUrl}/items/membership`);
     return await res.json();
   }
 
