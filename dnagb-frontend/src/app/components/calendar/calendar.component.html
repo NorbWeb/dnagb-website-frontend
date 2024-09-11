@@ -1,5 +1,5 @@
 <div id="calendar">
-  <div class="calendar" (click)="closeEventBox()">
+  <div class="calendar">
     <div class="month">
       <button class="month-button prev" (click)="prevMonth()">&#10094;</button>
       <div class="current-month-year">
@@ -39,9 +39,4 @@
     <button class="back-to-today" (click)="goToCurrentDate()">heute</button>
     }
   </div>
-  <app-note-box
-    id="event-box"
-    class="event-box"
-    [ngClass]="{ open: note }"
-  ></app-note-box>
 </div>

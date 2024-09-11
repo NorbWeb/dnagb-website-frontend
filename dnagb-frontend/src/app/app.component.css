@@ -3,3 +3,19 @@
   min-height: var(--main-height);
   background-color: var(--main-bg);
 }
+
+/* .event-box {
+  width: 20rem;
+  height: 20rem;
+  display: none;
+  color: var(--text);
+  position: absolute;
+  z-index: 1000;
+  left: 50%;
+  top: 50%;
+  background-color: #fff;
+
+  &.open {
+    display: block;
+  }
+} */

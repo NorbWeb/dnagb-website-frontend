@@ -36,9 +36,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
   };
   displayedDays: any[] = [];
   monthCounter: number = 0;
-  note: boolean = false;
   currentOpen!: number | undefined;
-  unsubscribeAll = new Subject();
 
   constructor(private state: StateService) {}
 
@@ -63,15 +61,14 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
   openEventBox(e: any, id: number) {
     e.stopPropagation();
-    let box = document.getElementById('event-box');
-    let element = e.target.getBoundingClientRect();
+    // let box = document.getElementById('event-box');
+    // let element = e.target.getBoundingClientRect();
 
-    if (box) {
-      box.style.top = element.y + element.height + 8 + 'px';
-      box.style.left = element.x + element.width / 2 + 'px';
-      box.style.translate = '-50%';
-      console.log(box);
-    }
+    // if (box) {
+    //   box.style.top = element.y + element.height + 8 + 'px';
+    //   box.style.left = element.x + element.width / 2 + 'px';
+    //   box.style.translate = '-50%';
+    // }
 
     this.currentOpen = id;
 
@@ -85,10 +82,10 @@ export class CalendarComponent implements OnInit, OnDestroy {
     this.state.updateEventState(newState);
   }
 
-  closeEventBox() {
-    this.state.updateNoteBox({ ...this.state.getNoteBox(), open: false });
-    this.currentOpen = undefined;
-  }
+  // closeEventBox() {
+  //   this.state.updateNoteBox({ ...this.state.getNoteBox(), open: false });
+  //   this.currentOpen = undefined;
+  // }
 
   initCalendar() {
     let days = this.getDaysInMonth(this.currentYear, this.currentMonth + 1); // Number of days in current month
@@ -168,10 +165,6 @@ export class CalendarComponent implements OnInit, OnDestroy {
     }
 
     this.displayedDays = [...monthBefor, ...month, ...monthAfter];
-    // console.log(
-    //   '🐦‍⬛: CalendarComponent -> initCalendar -> this.displayedDays',
-    //   this.displayedDays
-    // );
   }
 
   nextMonth() {
@@ -203,14 +196,6 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initCalendar();
-    this.state.noteBox.pipe(takeUntil(this.unsubscribeAll)).subscribe({
-      next: (res) => {
-        this.note = res.open;
-      },
-    });
   }
-  ngOnDestroy(): void {
-    this.unsubscribeAll.next(undefined);
-    this.unsubscribeAll.complete();
-  }
+  ngOnDestroy(): void {}
 }

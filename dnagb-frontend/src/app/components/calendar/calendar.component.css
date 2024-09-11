@@ -102,16 +102,6 @@
     border-radius: var(--component-br);
   }
 }
-.event-box {
-  display: none;
-  color: var(--text);
-  position: absolute;
-  z-index: 110;
-
-  &.open {
-    display: block;
-  }
-}
 
 .calendar-extend {
   display: flex;
