@@ -17,6 +17,7 @@ export class AppInitializerService {
       const membership = await this.getMembership().catch(reject);
       const boardSpaeker = await this.getBoardSpeaker().catch(reject);
       const associationText = await this.getAssociationText().catch(reject);
+      const dojos = await this.getDojos().catch(reject);
       console.group('🐦‍⬛: AppInitializerService');
       // console.log('settings', settings.data);
       // console.log('events', events.data);
@@ -43,10 +44,16 @@ export class AppInitializerService {
           who_we_are: associationText.data,
           board_speaker: boardSpaeker.data,
           membership: membership.data,
+          dojos: dojos.data,
         },
 
         events: [...this.convertDate(events.data)],
       });
+
+      console.log(
+        '🐦‍⬛: AppInitializerService -> constructor -> ',
+        this.state.getConf()
+      );
 
       resolve();
     });
@@ -87,6 +94,11 @@ export class AppInitializerService {
 
   private async getEvents() {
     const res = await fetch(`${environment.cmsUrl}/items/events`);
+    return await res.json();
+  }
+
+  private async getDojos() {
+    const res = await fetch(`${environment.cmsUrl}/items/dojos`);
     return await res.json();
   }
 
