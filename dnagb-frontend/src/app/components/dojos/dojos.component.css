@@ -12,4 +12,34 @@
 
 .dojo-info {
   width: 50%;
+
+  .stack {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+
+  .right {
+    width: 50%;
+  }
+
+  .city {
+    margin-bottom: 1rem;
+  }
+
+  .logo {
+    border-radius: var(--component-br);
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  }
+
+  .action {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+
+    .close {
+      margin-left: auto;
+    }
+  }
 }
