@@ -51,3 +51,22 @@ p {
     }
   }
 }
+
+.zoom-to-extent {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 29px;
+  padding: 0;
+  width: 29px;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border-radius: 4px;
+}
+
+.zoom-to-extent:hover {
+  background-color: #f2f2f2;
+}

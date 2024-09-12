@@ -1,8 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Map, Marker, NavigationControl } from 'maplibre-gl';
+import {
+  AttributionControl,
+  Map,
+  Marker,
+  NavigationControl,
+} from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
+import { ZoomToExtendControl } from './zoomToExtend';
 
 interface DojoInfo {
   name: string;
@@ -46,32 +52,38 @@ export class DojosComponent implements OnInit, OnDestroy {
       zoom: 5.3,
       maxZoom: 10,
       minZoom: 4.5,
+      attributionControl: false,
     });
 
-    this.map.addControl(new NavigationControl({}), 'top-left');
+    this.map.addControl(new NavigationControl({}), 'top-right');
+    this.map.addControl(
+      new AttributionControl({
+        compact: true,
+      })
+    );
+    this.map.addControl(new ZoomToExtendControl());
 
-    this.map.on('move', () => {
-      console.log(this.map?.getZoom());
-    });
+    // this.map.on('move', () => {
+    //   console.log(this.map?.getZoom());
+    // });
 
     // this.map.on('load', () => {
-    //   this.map?.addSource('background-source', {
+    //   this.map?.addSource('world-source', {
     //     type: 'raster',
     //     tiles: [
-    //       'https://sgx.geodatenzentrum.de/wms_topplus_open?bbox=939258.2035682462,7200979.560689885,1252344.271424327,7514065.628545966&service=WMS&version=1.1.0&request=GetMap&layers=web_light_grau&styles=&srs=EPSG:3857&width=256&height=256&format=image/png&transparent=true',
+    //       ' https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/Datenquellen_TopPlusOpen.html',
     //     ],
     //     tileSize: 256,
     //   });
     //   this.map?.addLayer({
-    //     id: 'background-layer',
+    //     id: 'world-layer',
     //     type: 'raster',
-    //     source: 'background-source',
+    //     source: 'world-source',
     //     paint: {},
     //   });
     // });
 
     const dojos = this.state.getConf().association.dojos;
-    console.log('🐦‍⬛: DojosComponent -> initMap -> dojos', dojos);
 
     for (const dojo of dojos) {
       const el = document.createElement('div');
@@ -105,15 +117,14 @@ export class DojosComponent implements OnInit, OnDestroy {
           this.dojoInfo.description = dojo.description;
           this.dojoInfo.logo = dojo.logo;
         }
-        console.log(
-          '🐦‍⬛: DojosComponent -> initMap -> this.dojoInfo',
-          this.dojoInfo
-        );
       });
       new Marker({ element: el })
         .setLngLat(dojo.coordinates.coordinates)
         .addTo(this.map);
     }
+  }
+  onClick(): any {
+    throw new Error('Method not implemented.');
   }
 
   ngOnInit(): void {
