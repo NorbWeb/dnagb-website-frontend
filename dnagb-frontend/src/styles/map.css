@@ -1,0 +1,43 @@
+.zoom-to-extent {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 29px;
+  padding: 0;
+  width: 29px;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border-radius: 4px;
+}
+
+.zoom-to-extent:hover {
+  background-color: #f2f2f2;
+}
+
+.dojo-marker {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 0.1rem solid var(--grey-500);
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  background-color: var(--white);
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+
+  &:hover {
+    filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.75));
+  }
+}
+
+.dojo-popup {
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  font-weight: 600;
+
+  .maplibregl-popup-content {
+    border-radius: var(--component-br);
+  }
+}

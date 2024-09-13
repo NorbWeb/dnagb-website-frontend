@@ -1,22 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   AttributionControl,
+  GeoJSONSource,
   Map,
   Marker,
   NavigationControl,
+  Popup,
 } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
 import { ZoomToExtendControl } from './zoomToExtend';
-
-interface DojoInfo {
-  name: string;
-  city: string;
-  link: string;
-  description: string;
-  logo: string;
-}
+import { DojoInfo, Source } from './dojoInterfaces';
+import { covertToGeoJson } from './covertToGeoJson';
 
 @Component({
   selector: 'app-dojos',
@@ -36,6 +32,12 @@ export class DojosComponent implements OnInit, OnDestroy {
     logo: '',
   };
   showInfo: boolean = false;
+  popup = new Popup({
+    closeButton: false,
+    closeOnClick: false,
+    offset: 23,
+    className: 'dojo-popup',
+  });
 
   constructor(private state: StateService) {}
 
@@ -63,6 +65,9 @@ export class DojosComponent implements OnInit, OnDestroy {
     );
     this.map.addControl(new ZoomToExtendControl());
 
+    this.map.dragRotate.disable();
+    this.map.touchZoomRotate.disableRotation();
+
     // this.map.on('move', () => {
     //   console.log(this.map?.getZoom());
     // });
@@ -83,48 +88,85 @@ export class DojosComponent implements OnInit, OnDestroy {
     //   });
     // });
 
-    const dojos = this.state.getConf().association.dojos;
+    this.map.on('load', async () => {
+      let dojos: any = covertToGeoJson(this.state.getConf().association.dojos);
 
-    for (const dojo of dojos) {
-      const el = document.createElement('div');
-      el.className = 'dojo-marker';
-
-      el.style.backgroundImage = `url(${this.url}/assets/${dojo.logo})`;
-      el.style.width = `40px`;
-      el.style.height = `40px`;
-      el.style.borderRadius = '50%';
-      el.style.border = '0.1rem solid var(--grey-500)';
-      el.style.filter = 'drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25))';
-      el.style.backgroundColor = 'var(--white)';
-      el.style.backgroundSize = 'cover';
-      el.style.backgroundPosition = 'center';
-      el.style.cursor = 'pointer';
-
-      el.addEventListener('click', () => {
-        this.showInfo = true;
-        this.dojoInfo = {
-          name: '',
-          city: '',
-          link: '',
-          description: '',
-          logo: '',
-        };
-
-        if (dojo.status === 'published') {
-          this.dojoInfo.name = dojo.name;
-          this.dojoInfo.city = dojo.city;
-          this.dojoInfo.link = dojo.link;
-          this.dojoInfo.description = dojo.description;
-          this.dojoInfo.logo = dojo.logo;
-        }
+      this.map?.addSource('dojo-source', {
+        type: 'geojson',
+        data: dojos,
       });
-      new Marker({ element: el })
-        .setLngLat(dojo.coordinates.coordinates)
-        .addTo(this.map);
-    }
-  }
-  onClick(): any {
-    throw new Error('Method not implemented.');
+
+      this.map?.addLayer({
+        id: 'dojos',
+        type: 'circle',
+        source: 'dojo-source',
+        paint: {
+          'circle-radius': 20,
+          'circle-opacity': 0,
+        },
+      });
+
+      for (const dojo of dojos.features) {
+        if (dojo.properties.status === 'published') {
+          const el = document.createElement('div');
+          el.className = 'dojo-marker';
+          el.style.backgroundImage = `url(${this.url}/assets/${dojo.properties.logo})`;
+          el.addEventListener('click', () => {
+            this.showInfo = true;
+            this.dojoInfo = {
+              name: '',
+              city: '',
+              link: '',
+              description: '',
+              logo: '',
+            };
+
+            this.dojoInfo.name = dojo.properties.name;
+            this.dojoInfo.city = dojo.properties.city;
+            this.dojoInfo.link = dojo.properties.link;
+            this.dojoInfo.description = dojo.properties.description;
+            this.dojoInfo.logo = dojo.properties.logo;
+          });
+
+          if (this.map) {
+            new Marker({ element: el })
+              .setLngLat(dojo.geometry.coordinates)
+              .addTo(this.map);
+          }
+        }
+      }
+    });
+
+    this.map.on('mouseenter', 'dojos', (e: any) => {
+      this.popup.remove();
+
+      if (!this.map) return;
+
+      const coordinates = e.features[0].geometry.coordinates.slice();
+      console.log(
+        '🐦‍⬛: DojosComponent -> initMap -> coordinates',
+        coordinates
+      );
+
+      // Ensure that if the map is zoomed out such that multiple
+      // copies of the feature are visible, the popup appears
+      // over the copy being pointed to.
+
+      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+      }
+
+      let html = `
+      <div>${e.features[0].properties.name}</div>
+      `;
+
+      this.popup.setLngLat(coordinates).setHTML(html).addTo(this.map);
+    });
+
+    this.map.on('mouseleave', 'dojos', () => {
+      if (!this.map) return;
+      this.popup.remove();
+    });
   }
 
   ngOnInit(): void {
