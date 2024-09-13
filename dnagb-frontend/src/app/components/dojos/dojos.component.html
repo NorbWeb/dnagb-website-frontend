@@ -3,9 +3,16 @@
 
   <section class="section dojo-info">
     @if(!showInfo){
-    <ul>
+    <h4 class="state-heading">Deutschland</h4>
+    <ul class="dojo-list">
       @for(dojo of allDojos; track $index){
-      <li>{{ dojo.name }}</li>
+      <li class="list-item" (click)="listItemClick(dojo)">
+        <img
+          class="mini-logo"
+          src="{{ url }}/assets/{{ dojo.logo }}"
+          alt="Logo des {{ dojo.name }}"
+        />{{ dojo.name }} | {{ dojo.city }}
+      </li>
       }
     </ul>
 
@@ -22,7 +29,7 @@
       <img
         class="right logo"
         src="{{ url }}/assets/{{ dojoInfo.logo }}"
-        alt=""
+        alt="Logo des {{ dojoInfo.name }}"
       />
     </div>
     <div [innerHtml]="dojoInfo.description"></div>

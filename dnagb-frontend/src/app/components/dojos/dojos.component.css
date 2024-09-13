@@ -43,3 +43,37 @@
     }
   }
 }
+
+.state-heading {
+  margin-bottom: 0.5rem;
+}
+
+.dojo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .list-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem;
+    border-radius: var(--component-br);
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--grey-100);
+    }
+
+    .mini-logo {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 0.1rem solid var(--grey-500);
+      background-color: var(--white);
+      background-size: cover;
+      background-position: center;
+    }
+  }
+}

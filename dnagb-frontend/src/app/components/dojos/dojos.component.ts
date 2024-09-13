@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   AttributionControl,
+  LngLatLike,
   Map,
   Marker,
   NavigationControl,
@@ -118,25 +119,7 @@ export class DojosComponent implements OnInit, OnDestroy {
           el.className = 'dojo-marker';
           el.style.backgroundImage = `url(${this.url}/assets/${dojo.properties.logo})`;
           el.addEventListener('click', () => {
-            this.showInfo = true;
-            // this.map?.easeTo({
-            //   center: dojo.geometry.coordinates,
-            //   zoom: 8.5,
-            //   duration: 750,
-            // });
-            this.dojoInfo = {
-              name: '',
-              city: '',
-              link: '',
-              description: '',
-              logo: '',
-            };
-
-            this.dojoInfo.name = dojo.properties.name;
-            this.dojoInfo.city = dojo.properties.city;
-            this.dojoInfo.link = dojo.properties.link;
-            this.dojoInfo.description = dojo.properties.description;
-            this.dojoInfo.logo = dojo.properties.logo;
+            this.setDojoInfo(dojo, 'geojson');
           });
 
           if (this.map) {
@@ -154,10 +137,6 @@ export class DojosComponent implements OnInit, OnDestroy {
       if (!this.map) return;
 
       const coordinates = e.features[0].geometry.coordinates.slice();
-      console.log(
-        '🐦‍⬛: DojosComponent -> initMap -> coordinates',
-        coordinates
-      );
 
       // Ensure that if the map is zoomed out such that multiple
       // copies of the feature are visible, the popup appears
@@ -178,6 +157,51 @@ export class DojosComponent implements OnInit, OnDestroy {
       if (!this.map) return;
       this.popup.remove();
     });
+  }
+
+  easeToPoint(centerArr: LngLatLike) {
+    this.map?.flyTo({
+      center: centerArr,
+      zoom: 8.5,
+      duration: 2000,
+    });
+  }
+
+  setDojoInfo(dojo: any, type: 'geojson' | 'object') {
+    this.showInfo = true;
+    // this.map?.easeTo({
+    //   center: dojo.geometry.coordinates,
+    //   zoom: 8.5,
+    //   duration: 750,
+    // });
+    this.dojoInfo = {
+      name: '',
+      city: '',
+      link: '',
+      description: '',
+      logo: '',
+    };
+
+    if (type === 'geojson') {
+      this.dojoInfo.name = dojo.properties.name;
+      this.dojoInfo.city = dojo.properties.city;
+      this.dojoInfo.link = dojo.properties.link;
+      this.dojoInfo.description = dojo.properties.description;
+      this.dojoInfo.logo = dojo.properties.logo;
+    }
+
+    if (type === 'object') {
+      this.dojoInfo.name = dojo.name;
+      this.dojoInfo.city = dojo.city;
+      this.dojoInfo.link = dojo.link;
+      this.dojoInfo.description = dojo.description;
+      this.dojoInfo.logo = dojo.logo;
+    }
+  }
+
+  listItemClick(dojo: any) {
+    this.easeToPoint(dojo.geometry.coordinates);
+    this.setDojoInfo(dojo, 'object');
   }
 
   ngOnInit(): void {

@@ -17,6 +17,12 @@ export class AssociationComponent implements OnInit {
   constructor(private state: StateService) {}
 
   toggleCardFlip(e: HTMLElement) {
+    // #### If only one card should flipable ####
+    // let cards = document.getElementsByClassName('card');
+    // for (const card of Array.from(cards)) {
+    //   card.classList.remove('flip');
+    // }
+
     e.classList.toggle('flip');
   }
 
