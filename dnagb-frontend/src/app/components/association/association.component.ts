@@ -26,6 +26,10 @@ export class AssociationComponent implements OnInit {
     e.classList.toggle('flip');
   }
 
+  stopPropagation(event: Event) {
+    event.stopPropagation();
+  }
+
   ngOnInit(): void {
     let boradSpeaker = this.state.getConf().association.board_speaker;
     let whoWeAre = this.state.getConf().association.who_we_are;

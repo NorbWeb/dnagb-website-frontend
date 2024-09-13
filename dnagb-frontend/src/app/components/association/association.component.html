@@ -19,7 +19,23 @@
             <div class="card-position">{{ item.position }}</div>
           </div>
           <div class="back">
-            <div>Kontakt</div>
+            <div class="contact">
+              <span class="contact-heading"
+                ><img
+                  src="../../../assets/icons/contact_mail.svg"
+                  alt=""
+                />Kontakt</span
+              >
+              @if(item.email){
+              <a
+                class="contact-link"
+                href="mailto:{{ item.email }}"
+                (click)="stopPropagation($event)"
+              >
+                {{ item.email }}</a
+              >
+              } @else { <i>Keine Angabe</i> }
+            </div>
           </div>
         </div>
         } }
@@ -43,7 +59,23 @@
             <div class="card-position">{{ item.position }}</div>
           </div>
           <div class="back">
-            <div>Kontakt</div>
+            <div class="contact">
+              <span class="contact-heading"
+                ><img
+                  src="../../../assets/icons/contact_mail.svg"
+                  alt=""
+                />Kontakt</span
+              >
+              @if(item.email){
+              <a
+                class="contact-link"
+                href="mailto:{{ item.email }}"
+                (click)="stopPropagation($event)"
+              >
+                {{ item.email }}</a
+              >
+              } @else { <i>Keine Angabe</i> }
+            </div>
           </div>
         </div>
         } }

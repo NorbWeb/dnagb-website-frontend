@@ -40,6 +40,28 @@
 
   .back {
     display: none;
+    height: 100%;
+
+    .contact {
+      .contact-heading {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+      }
+
+      .contact-link {
+        width: 100%;
+        padding: 0.5rem 0rem;
+        border-radius: var(--component-br);
+        cursor: default;
+
+        &:hover {
+          color: var(--primary-darken);
+        }
+      }
+    }
   }
 
   &.flip {
