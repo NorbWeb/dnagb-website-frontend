@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   AttributionControl,
-  GeoJSONSource,
   Map,
   Marker,
   NavigationControl,
@@ -11,7 +10,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
 import { ZoomToExtendControl } from './zoomToExtend';
-import { DojoInfo, Source } from './dojoInterfaces';
+import { DojoInfo } from './dojoInterfaces';
 import { covertToGeoJson } from './covertToGeoJson';
 
 @Component({
@@ -24,6 +23,7 @@ import { covertToGeoJson } from './covertToGeoJson';
 export class DojosComponent implements OnInit, OnDestroy {
   map: Map | undefined;
   url = environment.cmsUrl;
+  allDojos!: any;
   dojoInfo: DojoInfo = {
     name: '',
     city: '',
@@ -37,12 +37,18 @@ export class DojosComponent implements OnInit, OnDestroy {
     closeOnClick: false,
     offset: 23,
     className: 'dojo-popup',
+    maxWidth: '10rem',
   });
 
   constructor(private state: StateService) {}
 
   closeInfo() {
     this.showInfo = false;
+    // this.map?.easeTo({
+    //   center: [10.415, 51.356],
+    //   zoom: 5.3,
+    //   duration: 750,
+    // });
   }
 
   initMap() {
@@ -113,6 +119,11 @@ export class DojosComponent implements OnInit, OnDestroy {
           el.style.backgroundImage = `url(${this.url}/assets/${dojo.properties.logo})`;
           el.addEventListener('click', () => {
             this.showInfo = true;
+            // this.map?.easeTo({
+            //   center: dojo.geometry.coordinates,
+            //   zoom: 8.5,
+            //   duration: 750,
+            // });
             this.dojoInfo = {
               name: '',
               city: '',
@@ -171,6 +182,7 @@ export class DojosComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initMap();
+    this.allDojos = this.state.getConf().association.dojos;
   }
 
   ngOnDestroy() {

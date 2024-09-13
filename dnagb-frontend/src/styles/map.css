@@ -36,8 +36,14 @@
 .dojo-popup {
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
   font-weight: 600;
+  font-size: 1rem;
+  font-family: "Quattrocento Sans", "Open Sans", "Helvetica Neue", sans-serif;
 
   .maplibregl-popup-content {
     border-radius: var(--component-br);
   }
+}
+
+.maplibregl-ctrl-compass {
+  display: none !important;
 }

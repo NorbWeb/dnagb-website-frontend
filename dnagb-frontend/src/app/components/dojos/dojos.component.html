@@ -1,8 +1,15 @@
 <div class="container page map-wrap">
   <section id="map" class="section"></section>
-  @if(showInfo){
 
   <section class="section dojo-info">
+    @if(!showInfo){
+    <ul>
+      @for(dojo of allDojos; track $index){
+      <li>{{ dojo.name }}</li>
+      }
+    </ul>
+
+    } @else {
     <div class="stack">
       <div class="left">
         <h2>{{ dojoInfo.name }}</h2>
@@ -24,6 +31,6 @@
         Schließen
       </button>
     </div>
+    }
   </section>
-  }
 </div>
