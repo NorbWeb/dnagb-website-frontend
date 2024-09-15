@@ -1,83 +1,21 @@
 <div class="container page">
   <section class="section who-we-are" [innerHtml]="data.who_we_are"></section>
   <section class="section board-speaker">
-    <div>
+    <div class="group-wrapper">
       <h2 class="sub-title">Vorstand</h2>
       <div class="board">
-        @for(item of data.board_speaker; track $index){ @if(item.role !==
-        'speaker'){
-        <div #card class="card" (click)="toggleCardFlip(card)">
-          <div class="front">
-            <div class="card-foto">
-              <div class="panel"></div>
-              <img
-                src="{{ url }}/assets/{{ item.image }}"
-                alt="Bild von {{ item.name }}"
-              />
-            </div>
-            <div class="card-name">{{ item.name }}</div>
-            <div class="card-position">{{ item.position }}</div>
-          </div>
-          <div class="back">
-            <div class="contact">
-              <span class="contact-heading"
-                ><img
-                  src="../../../assets/icons/contact_mail.svg"
-                  alt=""
-                />Kontakt</span
-              >
-              @if(item.email){
-              <a
-                class="contact-link"
-                href="mailto:{{ item.email }}"
-                (click)="stopPropagation($event)"
-              >
-                {{ item.email }}</a
-              >
-              } @else { <i>Keine Angabe</i> }
-            </div>
-          </div>
-        </div>
-        } }
+        @for(member of data.board; track $index){
+        <app-staff-card [item]="member"></app-staff-card>
+        }
       </div>
     </div>
-    <div>
+    <div class="group-wrapper">
       <h2 class="sub-title">Referent*innen</h2>
       <div class="speaker">
-        @for(item of data.board_speaker; track $index){ @if(item.role ===
+        @for(member of data.board_speaker; track $index){ @if(member.role ===
         'speaker'){
-        <div #card class="card" (click)="toggleCardFlip(card)">
-          <div class="front">
-            <div class="card-foto">
-              <div class="panel"></div>
-              <img
-                src="{{ url }}/assets/{{ item.image }}"
-                alt="Bild von {{ item.name }}"
-              />
-            </div>
-            <div class="card-name">{{ item.name }}</div>
-            <div class="card-position">{{ item.position }}</div>
-          </div>
-          <div class="back">
-            <div class="contact">
-              <span class="contact-heading"
-                ><img
-                  src="../../../assets/icons/contact_mail.svg"
-                  alt=""
-                />Kontakt</span
-              >
-              @if(item.email){
-              <a
-                class="contact-link"
-                href="mailto:{{ item.email }}"
-                (click)="stopPropagation($event)"
-              >
-                {{ item.email }}</a
-              >
-              } @else { <i>Keine Angabe</i> }
-            </div>
-          </div>
-        </div>
+        <app-staff-card [item]="member"></app-staff-card>
+
         } }
       </div>
     </div>
