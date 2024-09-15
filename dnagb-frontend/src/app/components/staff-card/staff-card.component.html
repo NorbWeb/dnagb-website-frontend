@@ -8,14 +8,10 @@
       />
     </div>
     <div class="card-name">
-      <div>
-        {{ item.name }}
-      </div>
-      @if(item.rank){
-      <div>({{ item.rank }})</div>
-      }
+      {{ item.name }}
+      @if(item.rank){ ({{ item.rank }}) }
     </div>
-    <div class="card-position">{{ item.label }}</div>
+    <div class="card-position">{{ item.label || item.role }}</div>
   </div>
   <div class="back">
     <div class="contact">

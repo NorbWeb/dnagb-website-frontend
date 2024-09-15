@@ -4,17 +4,19 @@
     <div class="group-wrapper">
       <h2 class="sub-title">Vorstand</h2>
       <div class="board">
-        @for(member of data.board; track $index){
-        <app-staff-card [item]="member"></app-staff-card>
-        }
+        @for(member of data.board; track $index) { @if(member.status ===
+        'published'){
+
+        <app-staff-card class="member" [item]="member"></app-staff-card>
+        } }
       </div>
     </div>
     <div class="group-wrapper">
       <h2 class="sub-title">Referent*innen</h2>
       <div class="speaker">
-        @for(member of data.board_speaker; track $index){ @if(member.role ===
-        'speaker'){
-        <app-staff-card [item]="member"></app-staff-card>
+        @for(member of data.speaker; track $index){ @if(member.status ===
+        'published'){
+        <app-staff-card class="member" [item]="member"></app-staff-card>
 
         } }
       </div>
