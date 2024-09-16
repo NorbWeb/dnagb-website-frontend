@@ -3,6 +3,7 @@ import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
 import { CommonModule } from '@angular/common';
 import { StaffCardComponent } from '../staff-card/staff-card.component';
+import { Staff } from '../../1_types-and-interfaces/Staff';
 
 @Component({
   selector: 'app-association',
@@ -12,7 +13,7 @@ import { StaffCardComponent } from '../staff-card/staff-card.component';
   styleUrl: './association.component.css',
 })
 export class AssociationComponent implements OnInit {
-  data!: { board: any; speaker: any; who_we_are: string };
+  data!: { board: Staff[]; speaker: Staff[]; who_we_are: string };
   url = environment.cmsUrl;
 
   constructor(private state: StateService) {}
@@ -30,6 +31,7 @@ export class AssociationComponent implements OnInit {
         email: rawData.president_email,
         image: rawData.president_image,
         status: 'published',
+        open: false,
       },
       {
         name: rawData.vice_name,
@@ -38,6 +40,7 @@ export class AssociationComponent implements OnInit {
         email: rawData.vice_email,
         image: rawData.vice_image,
         status: 'published',
+        open: false,
       },
       {
         name: rawData.treasurer_name,
@@ -46,6 +49,7 @@ export class AssociationComponent implements OnInit {
         email: rawData.treasurer_email,
         image: rawData.treasurer_image,
         status: 'published',
+        open: false,
       },
     ];
 

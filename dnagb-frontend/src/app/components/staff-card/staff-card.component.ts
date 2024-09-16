@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { environment } from '../../../environment/env';
 import { CommonModule } from '@angular/common';
+import { Staff } from '../../1_types-and-interfaces/Staff';
 
 @Component({
   selector: 'app-staff-card',
@@ -10,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './staff-card.component.css',
 })
 export class StaffCardComponent implements OnInit {
-  @Input() item!: any;
+  @Input() item!: Staff;
   url = environment.cmsUrl;
 
   toggleCardFlip(e: HTMLElement) {
