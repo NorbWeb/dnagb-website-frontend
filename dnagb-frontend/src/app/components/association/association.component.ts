@@ -26,7 +26,7 @@ export class AssociationComponent implements OnInit {
       {
         name: rawData.president_name,
         rank: rawData.president_rank,
-        label: rawData.president_label,
+        role: rawData.president_role,
         email: rawData.president_email,
         image: rawData.president_image,
         status: 'published',
@@ -34,7 +34,7 @@ export class AssociationComponent implements OnInit {
       {
         name: rawData.vice_name,
         rank: rawData.vice_rank,
-        label: rawData.vice_label,
+        role: rawData.vice_role,
         email: rawData.vice_email,
         image: rawData.vice_image,
         status: 'published',
@@ -42,7 +42,7 @@ export class AssociationComponent implements OnInit {
       {
         name: rawData.treasurer_name,
         rank: rawData.treasurer_rank,
-        label: rawData.treasurer_label,
+        role: rawData.treasurer_role,
         email: rawData.treasurer_email,
         image: rawData.treasurer_image,
         status: 'published',
