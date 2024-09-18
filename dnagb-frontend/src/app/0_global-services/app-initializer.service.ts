@@ -19,6 +19,12 @@ export class AppInitializerService {
       const speaker = await this.getSpeaker().catch(reject);
       const associationText = await this.getAssociationText().catch(reject);
       const dojos = await this.getDojos().catch(reject);
+      const history = await this.getHistory().catch(reject);
+      const budo = await this.getBudo().catch(reject);
+      const imprint = await this.getImprint().catch(reject);
+      const privacy = await this.getPrivacy().catch(reject);
+      const contact = await this.getContact().catch(reject);
+
       // console.group('🐦‍⬛: AppInitializerService');
       // console.log('settings', settings.data);
       // console.log('events', events.data);
@@ -46,6 +52,14 @@ export class AppInitializerService {
           speaker: speaker.data,
           membership: membership.data,
           dojos: dojos.data,
+          budo: budo.data,
+          history: history.data,
+        },
+
+        legal: {
+          imprint: imprint.data,
+          privacy: privacy.data,
+          contact: contact.data,
         },
 
         events: [...this.convertDate(events.data)],
@@ -105,6 +119,31 @@ export class AppInitializerService {
 
   private async getDojos() {
     const res = await fetch(`${environment.cmsUrl}/items/dojos`);
+    return await res.json();
+  }
+
+  private async getHistory() {
+    const res = await fetch(`${environment.cmsUrl}/items/history`);
+    return await res.json();
+  }
+
+  private async getBudo() {
+    const res = await fetch(`${environment.cmsUrl}/items/budo`);
+    return await res.json();
+  }
+
+  private async getImprint() {
+    const res = await fetch(`${environment.cmsUrl}/items/imprint`);
+    return await res.json();
+  }
+
+  private async getPrivacy() {
+    const res = await fetch(`${environment.cmsUrl}/items/privacy`);
+    return await res.json();
+  }
+
+  private async getContact() {
+    const res = await fetch(`${environment.cmsUrl}/items/contact`);
     return await res.json();
   }
 
