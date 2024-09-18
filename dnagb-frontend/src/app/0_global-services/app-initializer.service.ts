@@ -21,6 +21,9 @@ export class AppInitializerService {
       const dojos = await this.getDojos().catch(reject);
       const history = await this.getHistory().catch(reject);
       const budo = await this.getBudo().catch(reject);
+      const examination = await this.getExamination().catch(reject);
+      const useful = await this.getUseful().catch(reject);
+      const planing = await this.getPlaning().catch(reject);
       const imprint = await this.getImprint().catch(reject);
       const privacy = await this.getPrivacy().catch(reject);
       const contact = await this.getContact().catch(reject);
@@ -55,7 +58,11 @@ export class AppInitializerService {
           budo: budo.data,
           history: history.data,
         },
-
+        info: {
+          examination: examination.data,
+          useful: useful.data,
+          planing: planing.data,
+        },
         legal: {
           imprint: imprint.data,
           privacy: privacy.data,
@@ -129,6 +136,21 @@ export class AppInitializerService {
 
   private async getBudo() {
     const res = await fetch(`${environment.cmsUrl}/items/budo`);
+    return await res.json();
+  }
+
+  private async getExamination() {
+    const res = await fetch(`${environment.cmsUrl}/items/examination`);
+    return await res.json();
+  }
+
+  private async getUseful() {
+    const res = await fetch(`${environment.cmsUrl}/items/useful`);
+    return await res.json();
+  }
+
+  private async getPlaning() {
+    const res = await fetch(`${environment.cmsUrl}/items/planing`);
     return await res.json();
   }
 
