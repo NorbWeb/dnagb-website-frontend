@@ -27,6 +27,9 @@ export class AppInitializerService {
       const imprint = await this.getImprint().catch(reject);
       const privacy = await this.getPrivacy().catch(reject);
       const contact = await this.getContact().catch(reject);
+      const downloads = await this.getDownloads().catch(reject);
+      const downloadsFiles = await this.getDownloadsFiles().catch(reject);
+      const files = await this.getFiles();
 
       // console.group('🐦‍⬛: AppInitializerService');
       // console.log('settings', settings.data);
@@ -70,6 +73,8 @@ export class AppInitializerService {
         },
 
         events: [...this.convertDate(events.data)],
+        downloads: this.arrangeDownloadFiles(downloads.data, downloadsFiles),
+        files: files,
       });
 
       console.log(
@@ -79,6 +84,15 @@ export class AppInitializerService {
 
       resolve();
     });
+  }
+
+  arrangeDownloadFiles(downloads: any, files: any) {
+    downloads.association = files.association;
+    downloads.members = files.members;
+    downloads.general = files.general;
+    downloads.examination = files.examination;
+
+    return downloads;
   }
 
   convertDate(arr: NewsItem[]) {
@@ -167,6 +181,36 @@ export class AppInitializerService {
   private async getContact() {
     const res = await fetch(`${environment.cmsUrl}/items/contact`);
     return await res.json();
+  }
+
+  private async getFiles() {
+    const res = await fetch(`${environment.cmsUrl}/files`);
+    return await res.json();
+  }
+
+  private async getDownloads() {
+    const res = await fetch(`${environment.cmsUrl}/items/downloads`);
+    return await res.json();
+  }
+
+  private async getDownloadsFiles() {
+    const res2 = await fetch(`${environment.cmsUrl}/items/downloads_files_2`);
+    const res3 = await fetch(`${environment.cmsUrl}/items/downloads_files_3`);
+    const res4 = await fetch(`${environment.cmsUrl}/items/downloads_files_4`);
+    const res5 = await fetch(`${environment.cmsUrl}/items/downloads_files_5`);
+
+    const res = {
+      general: await res2.json(),
+      examination: await res3.json(),
+      members: await res4.json(),
+      association: await res5.json(),
+    };
+    return {
+      general: res.general.data,
+      examination: res.examination.data,
+      members: res.members.data,
+      association: res.association.data,
+    };
   }
 
   private setColors(
