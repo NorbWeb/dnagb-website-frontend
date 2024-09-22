@@ -30,6 +30,7 @@ export class AppInitializerService {
       const downloads = await this.getDownloads().catch(reject);
       const downloadsFiles = await this.getDownloadsFiles().catch(reject);
       const files = await this.getFiles();
+      const folders = await this.getFolders();
 
       // console.group('🐦‍⬛: AppInitializerService');
       // console.log('settings', settings.data);
@@ -74,7 +75,7 @@ export class AppInitializerService {
 
         events: [...this.convertDate(events.data)],
         downloads: this.arrangeDownloadFiles(downloads.data, downloadsFiles),
-        files: files,
+        files: this.arrangeAllFiles(files.data, folders.data),
       });
 
       console.log(
@@ -93,6 +94,23 @@ export class AppInitializerService {
     downloads.examination = files.examination;
 
     return downloads;
+  }
+
+  arrangeAllFiles(files: any, folders: any) {
+    console.log(files, folders);
+    let result: any = {};
+    let counter = 1;
+    for (const folder of folders) {
+      let name = this.utils.toCamelCase(folder.name);
+      result[`folder_${counter}`] = {
+        id: folder.id,
+        name: folder.name,
+        files: files.filter((item: any) => item.folder === folder.id),
+      };
+      counter++;
+    }
+
+    return result;
   }
 
   convertDate(arr: NewsItem[]) {
@@ -185,6 +203,11 @@ export class AppInitializerService {
 
   private async getFiles() {
     const res = await fetch(`${environment.cmsUrl}/files`);
+    return await res.json();
+  }
+
+  private async getFolders() {
+    const res = await fetch(`${environment.cmsUrl}/folders`);
     return await res.json();
   }
 

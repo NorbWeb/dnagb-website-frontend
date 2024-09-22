@@ -9,7 +9,7 @@ import { StateService } from '../../0_global-services/state.service';
   styleUrl: './download.component.css',
 })
 export class DownloadComponent {
-  file!: any;
+  files!: any;
   headers: any = [
     { label: 'Allgemein', value: 'general' },
     { label: 'Mitglieder', value: 'members' },
@@ -20,10 +20,6 @@ export class DownloadComponent {
 
   ngOnInit(): void {
     if (this.state.getConf().downloads.status === 'published')
-      this.file = this.state.getConf().files;
-    console.log(
-      '🐦‍⬛: DownloadComponent -> constructor -> this.data',
-      this.file
-    );
+      this.files = this.state.getConf().files;
   }
 }
