@@ -1,14 +1,17 @@
 <div class="container page">
   <section id="downlaod" class="section">
-    @for(part of headers; track $index){
+    <!-- @for(part of headers; track $index){
     <div>
       <h2 id="download-{{ part.value }}">{{ part.label }}</h2>
-      @for(file of headers[part.value]; track $index){
-      <a href="http://localhost:8055/assets/{{ file.directus_files_id }}">
-        index
+      @for(item of files[part.value]; track $index){
+      <a
+        href="http://localhost:8055/assets/{{ item.directus_files_id }}"
+        target="_blank"
+      >
+        {{ item.file.filename_download }}
       </a>
       }
     </div>
-    }
+    } -->
   </section>
 </div>

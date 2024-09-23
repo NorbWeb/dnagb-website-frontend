@@ -32,11 +32,6 @@ export class AppInitializerService {
       const files = await this.getFiles();
       const folders = await this.getFolders();
 
-      // console.group('🐦‍⬛: AppInitializerService');
-      // console.log('settings', settings.data);
-      // console.log('events', events.data);
-      // console.log('association_text', associationText.data);
-      // console.groupEnd();
       this.setColors(
         settings.data.primary,
         settings.data.primary_text,
@@ -74,7 +69,11 @@ export class AppInitializerService {
         },
 
         events: [...this.convertDate(events.data)],
-        downloads: this.arrangeDownloadFiles(downloads.data, downloadsFiles),
+        downloads: this.arrangeDownloadFiles(
+          downloads.data,
+          downloadsFiles.data,
+          files.data
+        ),
         files: this.arrangeAllFiles(files.data, folders.data),
       });
 
@@ -87,21 +86,24 @@ export class AppInitializerService {
     });
   }
 
-  arrangeDownloadFiles(downloads: any, files: any) {
-    downloads.association = files.association;
-    downloads.members = files.members;
-    downloads.general = files.general;
-    downloads.examination = files.examination;
+  arrangeDownloadFiles(downloads: any, downloadFiles: any, files: any) {
+    downloads.files = [];
+
+    for (const element of downloadFiles) {
+      element.data = files.filter(
+        (item: { id: string }) => item.id === element.directus_files_id
+      )[0];
+
+      downloads.files.push(element);
+    }
 
     return downloads;
   }
 
   arrangeAllFiles(files: any, folders: any) {
-    console.log(files, folders);
     let result: any = {};
     let counter = 1;
     for (const folder of folders) {
-      let name = this.utils.toCamelCase(folder.name);
       result[`folder_${counter}`] = {
         id: folder.id,
         name: folder.name,
@@ -217,23 +219,8 @@ export class AppInitializerService {
   }
 
   private async getDownloadsFiles() {
-    const res2 = await fetch(`${environment.cmsUrl}/items/downloads_files_2`);
-    const res3 = await fetch(`${environment.cmsUrl}/items/downloads_files_3`);
-    const res4 = await fetch(`${environment.cmsUrl}/items/downloads_files_4`);
-    const res5 = await fetch(`${environment.cmsUrl}/items/downloads_files_5`);
-
-    const res = {
-      general: await res2.json(),
-      examination: await res3.json(),
-      members: await res4.json(),
-      association: await res5.json(),
-    };
-    return {
-      general: res.general.data,
-      examination: res.examination.data,
-      members: res.members.data,
-      association: res.association.data,
-    };
+    const res = await fetch(`${environment.cmsUrl}/items/downloads_files`);
+    return res.json();
   }
 
   private setColors(

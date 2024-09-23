@@ -10,16 +10,16 @@ import { StateService } from '../../0_global-services/state.service';
 })
 export class DownloadComponent {
   files!: any;
-  headers: any = [
-    { label: 'Allgemein', value: 'general' },
-    { label: 'Mitglieder', value: 'members' },
-    { label: 'Prüfung', value: 'examination' },
-    { label: 'Verein', value: 'association' },
-  ];
+  headers: string[] = [];
   constructor(private state: StateService) {}
 
   ngOnInit(): void {
     if (this.state.getConf().downloads.status === 'published')
-      this.files = this.state.getConf().files;
+      this.files = this.state.getConf().downloads.files;
+    for (const file of this.files) {
+      this.headers.push(file.data.tags);
+    }
+
+    console.log(this.headers);
   }
 }
