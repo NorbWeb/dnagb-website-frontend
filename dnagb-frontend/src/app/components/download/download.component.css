@@ -1,0 +1,46 @@
+#download {
+  background-color: unset;
+}
+
+.download {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin-top: 1rem;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  background-color: #fff;
+  border-radius: var(--component-br);
+
+  &:last-child {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.download-name {
+  text-decoration: none;
+  color: var(--primary-darken);
+  font-weight: 600;
+  font-size: 1.25rem;
+
+  &:hover {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+}
+
+.download-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.download-filesize {
+  margin-left: 2rem;
+  word-break: keep-all;
+}
+
+.download-button {
+  text-decoration: none;
+}
