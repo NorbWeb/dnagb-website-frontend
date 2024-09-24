@@ -3,35 +3,37 @@
     @for(part of headers; track $index){
     <div>
       <h2 id="download-{{ part }}" class="section">{{ part }}</h2>
-      @for(item of files; track $index){ @if(item.data.tags.includes(part)){
-      <div class="download">
-        <div class="download-left">
-          <div>
+      <div class="sub-section">
+        @for(item of files; track $index){ @if(item.data.tags.includes(part)){
+        <div class="download">
+          <div class="download-content">
+            <span class="download-name">
+              {{ item.data.title }}
+            </span>
+            @if(item.data.description){
+
+            <span class="download-description">
+              {{ item.data.description }}
+            </span>
+            }
+          </div>
+          <div class="download-action">
             <a
-              class="download-name"
+              class="nag_button button-fill button-sm download-button"
               href="{{ url }}/assets/{{ item.directus_files_id }}"
               target="_blank"
-            >
-              <span>
-                {{ item.data.title }}
-              </span>
+              >Anzeigen
             </a>
-            <span class="download-filesize"
-              >{{ (item.data.filesize / 1024 / 1024).toFixed(2) }} MB</span
+            <a
+              class="nag_button button-fill button-sm download-button"
+              href="{{ url }}/assets/{{ item.directus_files_id }}?download"
+              target="_blank"
+              >Download</a
             >
           </div>
-          <span class="download-description">
-            {{ item.data.description }}
-          </span>
         </div>
-        <a
-          class="nag_button button-fill download-button"
-          href="{{ url }}/assets/{{ item.directus_files_id }}?download"
-          target="_blank"
-          >Download</a
-        >
+        } }
       </div>
-      } }
     </div>
     }
   </section>

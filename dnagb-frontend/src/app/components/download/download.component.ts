@@ -34,10 +34,5 @@ export class DownloadComponent {
         this.headers.includes(item) ? null : this.headers.push(item)
       );
     }
-    this.headers.sort((a, b) => {
-      if (a.toLowerCase() > b.toLowerCase()) return 1;
-      if (a.toLowerCase() < b.toLowerCase()) return -1;
-      return 0;
-    });
   }
 }
