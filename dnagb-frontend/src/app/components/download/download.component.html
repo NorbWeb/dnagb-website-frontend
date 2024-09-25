@@ -1,9 +1,11 @@
 <div class="container page">
   <section id="download" class="section">
     @for(part of headers; track $index){
-    <div>
-      <h2 id="download-{{ part }}" class="section">{{ part }}</h2>
-      <div class="sub-section">
+    <div class="sub-section">
+      <h2 id="download-{{ part }}" class="section section-header">
+        {{ part }}
+      </h2>
+      <div class="sub-section-content">
         @for(item of files; track $index){ @if(item.data.tags.includes(part)){
         <div class="download">
           <div class="download-content">
