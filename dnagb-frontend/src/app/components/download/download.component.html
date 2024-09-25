@@ -10,12 +10,6 @@
             <span class="download-name">
               {{ item.data.title }}
             </span>
-            @if(item.data.description){
-
-            <span class="download-description">
-              {{ item.data.description }}
-            </span>
-            }
           </div>
           <div class="download-action">
             <a
@@ -30,6 +24,11 @@
               target="_blank"
               >Download</a
             >
+            @if(item.data.description){
+            <span class="download-description">
+              {{ item.data.description }}
+            </span>
+            }
           </div>
         </div>
         } }

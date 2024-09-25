@@ -30,9 +30,18 @@ export class DownloadComponent {
       return 0;
     });
     for (const file of this.files) {
-      file.data.tags.map((item: string) =>
-        this.headers.includes(item) ? null : this.headers.push(item)
-      );
+      if (file.data.tags.length) {
+        for (const entry of file.data.tags) {
+          if (!this.headers.includes(entry)) {
+            this.headers.push(entry);
+          }
+        }
+      } else {
+        file.data.tags.push('Allgemein');
+        if (!this.headers.includes('Allgemein')) {
+          this.headers.push('Allgemein');
+        }
+      }
     }
   }
 }
