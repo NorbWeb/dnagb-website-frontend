@@ -31,6 +31,18 @@ export class NewsDetailComponent implements OnInit {
     this.location.back();
   }
 
+  openGoogleMaps(data: NewsItem) {
+    let street = data.street;
+    let number = data.number;
+    let postalCode = data.postal_code;
+    let city = data.city;
+
+    window.open(
+      `https://www.google.de/maps/place/${street}+${number},+${postalCode}+${city}`,
+      '_blank'
+    );
+  }
+
   ngOnInit(): void {
     const { id } = this.route.snapshot.params;
     this.data = this.state
