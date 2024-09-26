@@ -11,7 +11,7 @@
 
   &.button-sm {
     padding: 0.25rem 0.5rem;
-    font-size: 0.75em;
+    font-size: 0.85em;
   }
 
   &.button-fill {
@@ -19,10 +19,22 @@
     color: var(--button-fill-text);
     border-color: var(--button-fill-border);
 
+    &.secondary {
+      background-color: var(--button-fill-secondary-bg);
+      color: var(--button-fill-secondary-text);
+      border-color: var(--button-fill-secondary-border);
+    }
+
     &:hover {
       background-color: var(--button-fill-hover-bg);
       color: var(--button-fill-hover-text);
       border-color: var(--button-fill-hover-border);
+
+      &.secondary {
+        background-color: var(--button-fill-secondary-hover-bg);
+        color: var(--button-fill-secondary-hover-text);
+        border-color: var(--button-fill-secondary-hover-border);
+      }
 
       &.glow {
         box-shadow: 0 0 10px var(--button-fill-bg);
@@ -33,6 +45,12 @@
       background-color: var(--button-fill-active-bg);
       color: var(--button-fill-active-text);
       border-color: var(--button-fill-active-border);
+
+      &.secondary {
+        background-color: var(--button-fill-secondary-active-bg);
+        color: var(--button-fill-secondary-active-text);
+        border-color: var(--button-fill-secondary-active-border);
+      }
     }
   }
 
@@ -45,10 +63,22 @@
       background-color: var(--grey-900);
     }
 
+    &.secondary {
+      background-color: var(--button-outline-secondary-bg);
+      color: var(--button-outline-secondary-text);
+      border-color: var(--button-outline-secondary-border);
+    }
+
     &:hover {
       background-color: var(--button-outline-hover-bg);
       color: var(--button-outline-hover-text);
       border-color: var(--button-outline-hover-border);
+
+      &.secondary {
+        background-color: var(--button-outline-secondary-hover-bg);
+        color: var(--button-outline-secondary-hover-text);
+        border-color: var(--button-outline-secondary-hover-border);
+      }
 
       &.glow {
         box-shadow: 0 0 10px var(--button-outline-border);
@@ -59,6 +89,12 @@
       background-color: var(--button-outline-active-bg);
       color: var(--button-outline-active-text);
       border-color: var(--button-outline-active-border);
+
+      &.secondary {
+        background-color: var(--button-outline-secondary-active-bg);
+        color: var(--button-outline-secondary-active-text);
+        border-color: var(--button-outline-secondary-active-border);
+      }
     }
   }
 }

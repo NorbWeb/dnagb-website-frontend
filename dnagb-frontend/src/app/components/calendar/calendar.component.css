@@ -82,6 +82,7 @@
     position: relative;
     z-index: 100;
     color: var(--text-inverse);
+    color: var(--secondary-text);
     cursor: pointer;
     border-radius: var(--component-br);
     background-color: var(--secondary);

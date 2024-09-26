@@ -28,10 +28,10 @@
 
       .type-chip {
         background-color: #fff;
-        border: 0.125rem solid #b21212;
-        border-radius: 0.5rem;
+        border: 0.125rem solid var(--secondary);
+        border-radius: var(--component-br);
         padding: 0.125rem 0.25rem;
-        color: #b21212;
+        color: var(--secondary);
         font-weight: 700;
         font-size: 0.75rem;
       }

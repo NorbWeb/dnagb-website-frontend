@@ -72,16 +72,15 @@ ul {
         }
 
         .type {
-          /* width: fit-content; */
           display: flex;
           gap: 1rem;
 
           .type-chip {
             background-color: #fff;
-            border: 0.125rem solid #b21212;
-            border-radius: 0.5rem;
+            border: 0.125rem solid var(--secondary);
+            border-radius: var(--component-br);
             padding: 0.25rem 0.5rem;
-            color: #b21212;
+            color: var(--secondary);
             font-weight: 700;
           }
         }

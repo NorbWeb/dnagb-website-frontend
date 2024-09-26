@@ -41,6 +41,16 @@
   --button-fill-active-text: var(--primary-text);
   --button-fill-active-border: var(--primary-darken);
 
+  --button-fill-secondary-bg: var(--secondary);
+  --button-fill-secondary-text: var(--secondary-text);
+  --button-fill-secondary-border: var(--secondary);
+  --button-fill-secondary-hover-bg: var(--secondary-lighten);
+  --button-fill-secondary-hover-text: var(--secondary-text);
+  --button-fill-secondary-hover-border: var(--secondary-lighten);
+  --button-fill-secondary-active-bg: var(--secondary-darken);
+  --button-fill-secondary-active-text: var(--secondary-text);
+  --button-fill-secondary-active-border: var(--secondary-darken);
+
   --button-outline-bg: transparent;
   --button-outline-text: var(--text);
   --button-outline-border: var(--primary);
@@ -50,4 +60,14 @@
   --button-outline-active-bg: var(--primary-darken);
   --button-outline-active-text: var(--primary-text);
   --button-outline-active-border: var(--primary-darken);
+
+  --button-outline-secondary-bg: transparent;
+  --button-outline-secondary-text: var(--text);
+  --button-outline-secondary-border: var(--secondary);
+  --button-outline-secondary-hover-bg: var(--secondary-lighten);
+  --button-outline-secondary-hover-text: var(--secondary-text);
+  --button-outline-secondary-hover-border: var(--secondary-lighten);
+  --button-outline-secondary-active-bg: var(--secondary-darken);
+  --button-outline-secondary-active-text: var(--secondary-text);
+  --button-outline-secondary-active-border: var(--secondary-darken);
 }
