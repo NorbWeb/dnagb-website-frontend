@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { environment } from '../../environment/env';
 import { UtilsService } from './utils.service';
 import { StateService } from './state.service';
-import { NewsItem } from '../1_types-and-interfaces/NewsItem';
+import { NewsItem, NewsItemType } from '../1_types-and-interfaces/NewsItem';
 
 @Injectable({
   providedIn: 'root',
@@ -68,7 +68,7 @@ export class AppInitializerService {
           contact: contact.data,
         },
 
-        events: [...this.convertDate(events.data)],
+        events: [...this.convertEventData(events.data)],
         downloads: this.arrangeDownloadFiles(
           downloads.data,
           downloadsFiles.data,
@@ -115,14 +115,25 @@ export class AppInitializerService {
     return result;
   }
 
-  convertDate(arr: NewsItem[]) {
+  convertEventData(arr: NewsItem[]) {
     let rawData: NewsItem[] = [...arr];
     let result = [];
+    let type: Record<string, NewsItemType> = {
+      contest: 'Wettkampf',
+      seminar: 'Seminar',
+      examination: 'Prüfung',
+    };
     for (const element of rawData) {
+      console.log('🐦‍⬛: convertEventData -> element', element);
       element.date_start = new Date(element.date_start);
       if (element.date_end) {
         element.date_end = new Date(element.date_end);
       }
+      let typeLabel: NewsItemType[] = [];
+      for (let item of element.type) {
+        typeLabel.push(type[item]);
+      }
+      element.type = typeLabel;
       result.push(element);
     }
     return result;
