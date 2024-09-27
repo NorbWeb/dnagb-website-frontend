@@ -32,6 +32,11 @@ p {
   margin: 0;
 }
 
+p,
+li {
+  line-height: 1.375rem;
+}
+
 .page {
   min-height: var(--main-height);
   padding: var(--page-padding);
