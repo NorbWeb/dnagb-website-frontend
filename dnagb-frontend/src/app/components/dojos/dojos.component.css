@@ -8,6 +8,8 @@
   width: 100%;
   height: calc(var(--main-height) - 2 * var(--page-padding-value));
   padding: 0;
+  position: sticky;
+  top: calc(var(--page-padding-value) + var(--header-height));
 }
 
 .dojo-info {

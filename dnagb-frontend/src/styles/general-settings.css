@@ -49,9 +49,17 @@ li {
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
   padding: var(--section-padding);
 
+  h2 {
+    column-span: all;
+  }
+
   p {
-    margin: 1rem 0;
     max-width: 70ch;
+    /* column-width: 50ch;
+    column-gap: 2rem;
+    column-rule: 0.1px solid var(--grey-200);
+    text-align: justify; */
+    margin: 1rem 0;
 
     &:last-child {
       margin-bottom: 0;

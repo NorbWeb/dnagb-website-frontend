@@ -4,7 +4,7 @@
   --page-padding: var(--page-padding-value);
 
   /* ~~~~~~~~~~ section & component ~~~~~~~~~~ */
-  --section-padding: 1rem;
+  --section-padding: 1rem 1.5rem;
   --section-bg: var(--white);
   --component-br: 0.25rem;
 
