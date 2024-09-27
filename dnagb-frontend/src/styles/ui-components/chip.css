@@ -1,0 +1,26 @@
+.chip {
+  background-color: #fff;
+  border: 0.125rem solid var(--secondary);
+  border-radius: var(--component-br);
+  border-radius: 1.5rem;
+  padding: 0.25rem 0.75rem;
+  color: var(--secondary);
+  font-weight: 700;
+  text-align: center;
+  overflow-wrap: break-word;
+  width: fit-content;
+
+  &.sm {
+    font-size: 0.875rem;
+  }
+
+  &.lg {
+    font-size: 1.25rem;
+  }
+
+  &.fill {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    color: var(--secondary-text);
+  }
+}

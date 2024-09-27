@@ -79,6 +79,7 @@
   }
 
   .event {
+    --offset: 0.25rem;
     position: relative;
     z-index: 100;
     color: var(--text-inverse);
@@ -86,7 +87,8 @@
     cursor: pointer;
     border-radius: var(--component-br);
     background-color: var(--secondary);
-    border: 0.25rem solid var(--secondary);
+    border: var(--offset) solid var(--secondary);
+    padding: calc(0.5rem - var(--offset));
 
     &:hover,
     &.active {
@@ -97,9 +99,11 @@
   }
 
   .today {
+    --offset: 0.25rem;
+    padding: calc(0.5rem - var(--offset));
     position: relative;
     z-index: 100;
-    border: 0.25rem solid rgb(0, 119, 255);
+    border: var(--offset) solid rgb(255, 55, 0);
     border-radius: var(--component-br);
   }
 }
