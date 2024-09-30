@@ -30,7 +30,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  transition: all 0.15s ease-in-out;
+  transition: var(--transition);
 
   &:not(:last-of-type) {
     border-bottom: 0.075rem solid var(--grey-200);

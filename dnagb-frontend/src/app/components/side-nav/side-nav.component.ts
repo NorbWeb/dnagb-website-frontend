@@ -25,7 +25,6 @@ export class SideNavComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.state.sideNav.pipe(takeUntil(this.unsubscribeAll)).subscribe({
       next: (res: any) => {
-        console.log('🐦‍⬛: SideNavComponent -> constructor -> res', res.open);
         this.open = res.open;
       },
     });

@@ -12,7 +12,7 @@ ul {
   border-radius: var(--component-br);
   background-color: var(--white);
   cursor: pointer;
-  transition: all 0.25s ease-in-out;
+  transition: var(--transition);
 
   &:last-of-type {
     margin-bottom: 2rem;
