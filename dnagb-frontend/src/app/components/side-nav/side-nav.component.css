@@ -69,4 +69,8 @@ ul {
   &:hover {
     background-color: var(--grey-100);
   }
+  &.active {
+    color: var(--nav-link-active);
+    background-color: var(--grey-100);
+  }
 }
