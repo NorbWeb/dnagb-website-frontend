@@ -15,11 +15,15 @@
   /* ~~~~~~~~~~ header ~~~~~~~~~~ */
   --header-bg: var(--grey-900);
   --header-height: 6rem;
+  --header-height-sm: 4rem;
 
   /* ~~~~~~~~~~ main ~~~~~~~~~~ */
   --main-bg: var(--grey-200);
   --main-text: var(--text);
-  --main-height: calc(100vh - (var(--header-height) + var(--footer-height)));
+  --main-height: calc(100vh - var(--header-height) - var(--footer-height));
+  --main-height-sm: calc(
+    100vh - var(--header-height-sm) - var(--footer-height)
+  );
 
   /* ~~~~~~~~~~ footer ~~~~~~~~~~ */
   --footer-bg: var(--grey-900);

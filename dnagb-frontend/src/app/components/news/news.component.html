@@ -6,7 +6,7 @@
       <li class="news-card" (click)="openDetails(item.id)">
         <div class="news-card_image">
           <div class="image-wrapper">
-            <img src="../../../assets/naginata-symbolbild-260x300.jpg" alt="" />
+            <img src="./assets/naginata-symbolbild-260x300.jpg" alt="" />
           </div>
         </div>
         <div class="news-card_content">
@@ -14,7 +14,7 @@
           <div class="content-wrapper">
             <div class="content-left">
               <div class="date">
-                <img src="../../../assets/icons/calendar_month.svg" alt="" />{{
+                <img src="./assets/icons/calendar_month.svg" alt="" />{{
                   item.date_start
                     .toLocaleString("de-DE", options)
                     .replace(",", "")
@@ -29,7 +29,7 @@
                 }
               </div>
               <div class="location">
-                <img src="../../../assets/icons/location.svg" alt="" />{{
+                <img src="./assets/icons/location.svg" alt="" />{{
                   item.location_name
                 }}, {{ item.city }}
               </div>

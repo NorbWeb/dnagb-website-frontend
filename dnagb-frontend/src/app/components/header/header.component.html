@@ -1,5 +1,23 @@
 <header id="header">
-  <nav>
+  <nav class="menu-nav">
+    <a
+      class="nav-link-logo"
+      routerLink="/home"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      (click)="closeSideNav()"
+    >
+      <img
+        src="{{ url }}/assets/{{ logo }}?width=100&height=40"
+        alt="Logo"
+        class="logo"
+      />
+    </a>
+    <button class="nag_button button-fill button-sm" (click)="toggleSideNav()">
+      <img src="./assets/icons/menu.svg" alt="" />
+    </button>
+  </nav>
+  <nav class="nav">
     <ul class="container">
       <li>
         <a
@@ -8,7 +26,11 @@
           routerLinkActive="active"
           ariaCurrentWhenActive="page"
         >
-          <img src="../assets/logo.png" alt="Logo" class="logo" />
+          <img
+            src="{{ url }}/assets/{{ logo }}?width=160&height=66"
+            alt="Logo"
+            class="logo"
+          />
         </a>
       </li>
       <li>

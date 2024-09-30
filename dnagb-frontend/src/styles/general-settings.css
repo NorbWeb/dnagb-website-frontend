@@ -38,7 +38,6 @@ li {
 }
 
 .page {
-  min-height: var(--main-height);
   padding: var(--page-padding);
 }
 
@@ -48,14 +47,13 @@ li {
   background-color: var(--section-bg);
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
   padding: var(--section-padding);
-
   h2 {
     column-span: all;
   }
 
   p {
     max-width: 70ch;
-    /* column-width: 50ch;
+    /* column-width: 40ch;
     column-gap: 2rem;
     column-rule: 0.1px solid var(--grey-200);
     text-align: justify; */

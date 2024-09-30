@@ -46,6 +46,11 @@ export class StateService {
   });
   public readonly noteBox: Observable<any> = this._noteBox.asObservable();
 
+  private _sideNav: BehaviorSubject<any> = new BehaviorSubject<any>({
+    open: false,
+  });
+  public readonly sideNav: Observable<any> = this._sideNav.asObservable();
+
   constructor() {}
 
   getConf(): any {
@@ -54,6 +59,14 @@ export class StateService {
 
   updateConf(newState: any) {
     this._conf.next(newState);
+  }
+
+  getSideNavState(): any {
+    return this._sideNav.getValue();
+  }
+
+  updateSideNavState(newState: any) {
+    this._sideNav.next(newState);
   }
 
   getEventState(): any {

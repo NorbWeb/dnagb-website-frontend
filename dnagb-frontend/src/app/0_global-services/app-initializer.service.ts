@@ -47,6 +47,7 @@ export class AppInitializerService {
             long_2: settings.data.title_long_2,
             short: settings.data.title_short,
           },
+          logo: settings.data.logo,
         },
         association: {
           who_we_are: associationText.data,
@@ -82,8 +83,16 @@ export class AppInitializerService {
         this.state.getConf()
       );
 
+      this.setFavIcon(settings.data.favicon);
       resolve();
     });
+  }
+
+  setFavIcon(id: string) {
+    let favIcon: HTMLLinkElement | null = document.querySelector('#favIcon');
+
+    if (!favIcon) return;
+    favIcon.href = `${environment.cmsUrl}/assets/${id}`;
   }
 
   arrangeDownloadFiles(downloads: any, downloadFiles: any, files: any) {

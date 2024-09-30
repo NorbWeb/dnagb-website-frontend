@@ -1,0 +1,97 @@
+<div id="side-nav" [ngClass]="{ open: open }" (click)="toggleSideNav()">
+  <nav>
+    <ul>
+      <h4 class="list-header">Aktuelles</h4>
+      <a
+        class="side-nav-link"
+        routerLink="/news"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        Events
+      </a>
+    </ul>
+    <ul>
+      <h4 class="list-header">Der DNagB</h4>
+      <a
+        class="side-nav-link"
+        routerLink="/dnagb/vereinsstrukturen"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Vereinsstruktur</a
+      >
+      <a
+        class="side-nav-link"
+        routerLink="/dnagb/dojo"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Dojos</a
+      >
+      <a
+        class="side-nav-link"
+        routerLink="/dnagb/mitglied-werden"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Mitglied werden</a
+      >
+    </ul>
+    <ul>
+      <h4 class="list-header">Naginata</h4>
+      <a
+        class="side-nav-link"
+        routerLink="/naginata/ausruestung"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Ausrüstung</a
+      >
+      <a
+        class="side-nav-link"
+        routerLink="/naginata/kampfsport"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Der Kampfsport</a
+      >
+      <a
+        class="side-nav-link"
+        routerLink="/naginata/geschichte"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Geschichte</a
+      >
+    </ul>
+    <ul>
+      <h4 class="list-header">Infos für Aktive</h4>
+      <a
+        class="side-nav-link"
+        routerLink="/info/pruefung"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Prüfung</a
+      >
+      <a
+        class="side-nav-link"
+        routerLink="/info/nuetzliches"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Nützliches</a
+      >
+      <a
+        class="side-nav-link"
+        routerLink="/info/veranstaltung-planen"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Eine Veranstaltung planen</a
+      >
+    </ul>
+    <ul>
+      <h4 class="list-header">Formulare & Dokumente</h4>
+      <a
+        class="side-nav-link"
+        routerLink="/download"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Downloadbereich</a
+      >
+    </ul>
+  </nav>
+</div>
