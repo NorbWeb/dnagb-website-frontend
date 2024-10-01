@@ -51,6 +51,12 @@ export class StateService {
   });
   public readonly sideNav: Observable<any> = this._sideNav.asObservable();
 
+  private _windowSize: BehaviorSubject<any> = new BehaviorSubject<any>({
+    screenWidth: undefined,
+    screenHeight: undefined,
+  });
+  public readonly windowSize: Observable<any> = this._windowSize.asObservable();
+
   constructor() {}
 
   getConf(): any {
@@ -67,6 +73,14 @@ export class StateService {
 
   updateSideNavState(newState: any) {
     this._sideNav.next(newState);
+  }
+
+  getWindowSize(): any {
+    return this._windowSize.getValue();
+  }
+
+  updateWindowSize(newState: any) {
+    this._windowSize.next(newState);
   }
 
   getEventState(): any {

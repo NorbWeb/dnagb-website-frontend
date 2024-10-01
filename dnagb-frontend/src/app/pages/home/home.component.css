@@ -37,7 +37,34 @@
 }
 
 .sample-box {
-  height: 20rem;
-  width: 100%;
-  background-color: orange;
+  height: 20.5rem;
+  /* width: 100%; */
+
+  background-color: var(--white);
+  border-radius: var(--component-br);
+
+  .title {
+    padding: 1rem 1rem 0.5rem 1rem;
+    font-size: 1.375rem;
+    font-weight: 600;
+  }
+
+  .body {
+    height: 65%;
+    padding: 0.5rem 1rem 1rem 1rem;
+    line-height: 1.5rem;
+
+    &.two {
+      background-image: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fakimonogatari.es%2Fwp-content%2Fuploads%2F2015%2F10%2Fnaginata.jpg&f=1&nofb=1&ipt=8db30fd6df92f66dc05ad19c20410d40f8e03be833a0ba9320c5555440280426&ipo=images");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+  }
+
+  .action {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+  }
 }

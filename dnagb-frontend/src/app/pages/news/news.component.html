@@ -1,5 +1,5 @@
 <div class="container page">
-  <section>
+  <section id="news">
     <h2 class="section section-header">Ausschreibungen</h2>
     <ul class="news">
       @for(item of news; track $index){
@@ -39,11 +39,17 @@
               </div>
               <div class="type">
                 @for( type of item.type; track $index){
-                <span class="chip">{{ type }}</span>
+                <span class="chip" [ngClass]="{ sm: mobile }">{{ type }}</span>
                 }
               </div>
             </div>
             <div class="content-right">
+              <img
+                class="image-sm"
+                src="./assets/naginata-symbolbild-260x300.jpg"
+                alt=""
+              />
+
               <div class="details">Details</div>
             </div>
           </div>
