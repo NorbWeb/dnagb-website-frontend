@@ -125,6 +125,7 @@ export class AppInitializerService {
   }
 
   convertEventData(arr: NewsItem[]) {
+    let today = new Date();
     let rawData: NewsItem[] = [...arr];
     let result = [];
     let type: Record<string, NewsItemType> = {
@@ -134,6 +135,9 @@ export class AppInitializerService {
     };
     for (const element of rawData) {
       element.date_start = new Date(element.date_start);
+      if (element.date_start < today) {
+        element.past = true;
+      }
       if (element.date_end) {
         element.date_end = new Date(element.date_end);
       }

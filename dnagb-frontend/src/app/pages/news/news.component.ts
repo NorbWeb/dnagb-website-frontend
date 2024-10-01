@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StateService } from '../../0_global-services/state.service';
 import { NewsItem } from '../../1_types-and-interfaces/NewsItem';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-news',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './news.component.html',
   styleUrl: './news.component.css',
 })

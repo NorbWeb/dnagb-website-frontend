@@ -1,4 +1,4 @@
-ul {
+dul {
   padding: 0;
 }
 
@@ -13,6 +13,7 @@ ul {
   background-color: var(--white);
   cursor: pointer;
   transition: var(--transition);
+  overflow: hidden;
 
   &:last-of-type {
     margin-bottom: 2rem;
@@ -20,6 +21,26 @@ ul {
 
   &:hover {
     filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.5));
+  }
+
+  &.past {
+    &::after {
+      content: "Abgelaufen";
+      width: 2rem;
+      height: 20rem;
+      rotate: -135deg;
+      position: absolute;
+      background-color: var(--secondary);
+      color: var(--secondary-text);
+      top: -5rem;
+      left: 6rem;
+      writing-mode: vertical-lr;
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   .news-card_image {

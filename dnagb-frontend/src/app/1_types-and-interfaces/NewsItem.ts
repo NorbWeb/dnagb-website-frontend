@@ -3,6 +3,7 @@ export interface NewsItem {
   type: NewsItemType[];
   date_start: Date | string;
   date_end: Date | string | null;
+  past: boolean;
   location_name: string;
   street: string;
   number: string;
