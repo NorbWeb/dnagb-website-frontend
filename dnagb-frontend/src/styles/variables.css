@@ -20,10 +20,8 @@
   /* ~~~~~~~~~~ main ~~~~~~~~~~ */
   --main-bg: var(--grey-200);
   --main-text: var(--text);
-  --main-height: calc(100vh - var(--header-height) - var(--footer-height));
-  --main-height-sm: calc(
-    100vh - var(--header-height-sm) - var(--footer-height)
-  );
+  --main-height: calc(100vh - var(--header-height));
+  --main-height-sm: calc(100vh - var(--header-height-sm));
 
   /* ~~~~~~~~~~ footer ~~~~~~~~~~ */
   --footer-bg: var(--grey-900);

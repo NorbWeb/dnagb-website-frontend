@@ -15,6 +15,10 @@
   width: 100%;
 }
 
+.content {
+  min-height: calc(var(--main-height-sm) - var(--footer-height));
+}
+
 @media screen and (min-width: 576px) {
   #side-nav nav {
     width: 25rem;
@@ -46,6 +50,10 @@
 
   .container {
     width: 100%;
+  }
+
+  .content {
+    min-height: calc(var(--main-height) - var(--footer-height));
   }
 }
 @media screen and (min-width: 1200px) {

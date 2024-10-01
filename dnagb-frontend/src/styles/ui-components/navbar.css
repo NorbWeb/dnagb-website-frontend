@@ -61,6 +61,7 @@
     &.active {
       color: var(--nav-link-active);
       background-color: var(--grey-100);
+      font-weight: 700;
     }
   }
 }

@@ -54,7 +54,7 @@
   transition: var(--transition);
 
   &:hover {
-    /* filter: drop-shadow(0 0px 4px var(--primary-lighten)); */
+    filter: drop-shadow(0 0px 4px var(--primary));
   }
 }
 

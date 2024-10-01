@@ -29,7 +29,5 @@ export class StaffCardComponent implements OnInit {
     event.stopPropagation();
   }
 
-  ngOnInit(): void {
-    console.log(this.item);
-  }
+  ngOnInit(): void {}
 }
