@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
 import { CommonModule } from '@angular/common';
-import { StaffCardComponent } from '../staff-card/staff-card.component';
 import { Staff } from '../../1_types-and-interfaces/Staff';
+import { StaffCardComponent } from '../../components/staff-card/staff-card.component';
 
 @Component({
   selector: 'app-association',

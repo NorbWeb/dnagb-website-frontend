@@ -23,9 +23,6 @@
   }
 
   .copyright {
-    padding: 0.75rem 1.5rem;
-    width: fit-content;
-    white-space: nowrap;
-    text-align: center;
+    font-size: 0.875rem;
   }
 }

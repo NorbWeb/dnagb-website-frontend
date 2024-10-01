@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
-import { CalendarComponent } from '../calendar/calendar.component';
+import { CalendarComponent } from '../../components/calendar/calendar.component';
 import { Router } from '@angular/router';
 
 interface Title {
@@ -21,8 +21,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private state: StateService, private router: Router) {}
 
-  navigateToMembership() {
-    this.router.navigateByUrl('/dnagb/mitglied-werden');
+  navigateTo(route: string) {
+    this.router.navigateByUrl(route);
   }
 
   ngOnInit(): void {
