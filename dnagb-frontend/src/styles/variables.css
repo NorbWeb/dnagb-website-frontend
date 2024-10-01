@@ -26,6 +26,7 @@
   /* ~~~~~~~~~~ footer ~~~~~~~~~~ */
   --footer-bg: var(--grey-900);
   --footer-height: 4rem;
+  --footer-text: var(--text-inverse);
 
   /* ~~~~~~~~~~ nav-link ~~~~~~~~~~ */
   --nav-link-text: var(--text-inverse);

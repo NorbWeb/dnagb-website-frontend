@@ -10,6 +10,15 @@
   width: 100%;
 }
 
+#footer {
+  nav {
+    display: none;
+  }
+  .copyright {
+    margin-left: auto;
+  }
+}
+
 .container {
   margin: auto;
   width: 100%;
@@ -46,6 +55,12 @@
 
   #side-nav {
     display: none !important;
+  }
+
+  #footer {
+    nav {
+      display: block;
+    }
   }
 
   .container {
