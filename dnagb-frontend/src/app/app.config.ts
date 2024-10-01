@@ -13,6 +13,6 @@ export const appConfig: ApplicationConfig = {
       deps: [AppInitializerService],
       multi: true,
     },
-    provideRouter(routes, withViewTransitions()),
+    provideRouter(routes, withViewTransitions({ skipInitialTransition: true })),
   ],
 };

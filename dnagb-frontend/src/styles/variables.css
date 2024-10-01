@@ -75,5 +75,9 @@
   --button-outline-secondary-active-border: var(--secondary-darken);
 
   /* ~~~~~~~~~~ effects ~~~~~~~~~~ */
-  --transition: all 0.15s ease-in-out;
+  --transition-duration: 250ms;
+  --transition-property: all;
+  --transition-timing-function: ease-in-out;
+  --transition: var(--transition-property) var(--transition-duration)
+    var(--transition-timing-function);
 }
