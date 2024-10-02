@@ -5,15 +5,36 @@
 }
 
 .banner_bg-fill {
-  background: linear-gradient(90deg, var(--header-bg) 30%, var(--main-bg) 100%);
+  position: relative;
+  background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.squarespace-cdn.com%2Fcontent%2Fv1%2F5b6744898f5130d3cc91545f%2F405848cf-83da-4d4c-befe-c1e84386c4f8%2FKogetsuKai_Naginata_3.jpg&f=1&nofb=1&ipt=de4a2648ae230797eb82359ce0feceb8ff541ccd3999cc7f1a7038c648792086&ipo=images");
+  background-position: right 50%;
+  /* background: url("https://www.travelarrangejapan.com/wp-content/uploads/2022/04/Naginata-Shubukan-2-scaled.jpg");
+  background-position: right 30%; */
+  background-size: cover;
+
+  .bg-overlay {
+    width: 100%;
+    height: 20rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.93) 30%,
+      transparent 100%
+    );
+    z-index: 1;
+  }
 
   .banner_content {
+    position: relative;
     height: 20rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
     padding: var(--section-padding);
+    z-index: 2;
   }
 
   .banner_title {
@@ -37,34 +58,31 @@
 }
 
 .sample-box {
-  height: 20.5rem;
-  /* width: 100%; */
+  height: 25rem;
+  overflow: hidden;
 
   background-color: var(--white);
   border-radius: var(--component-br);
 
-  .title {
-    padding: 1rem 1rem 0.5rem 1rem;
-    font-size: 1.375rem;
-    font-weight: 600;
-  }
+  .header {
+    height: 11.5rem;
 
-  .body {
-    height: 65%;
-    padding: 0.5rem 1rem 1rem 1rem;
-    line-height: 1.5rem;
-
-    &.two {
-      background-image: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fakimonogatari.es%2Fwp-content%2Fuploads%2F2015%2F10%2Fnaginata.jpg&f=1&nofb=1&ipt=8db30fd6df92f66dc05ad19c20410d40f8e03be833a0ba9320c5555440280426&ipo=images");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: 50% 50%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
+  .body {
+    height: 9rem;
+    padding: 1rem 1rem 0 1rem;
+    overflow: hidden;
+  }
+
   .action {
+    height: 4.5rem;
     display: flex;
-    justify-content: flex-end;
     padding: 1rem;
   }
 }
