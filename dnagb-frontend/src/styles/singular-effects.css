@@ -1,4 +1,45 @@
-.bg-gradient {
+.bg-simple {
+  background-image: linear-gradient(
+    100deg,
+    var(--primary-lighten) 0%,
+    var(--primary) 75%,
+    var(--primary-darken) 100%
+  );
+}
+
+.bg-angular {
+  background-image: linear-gradient(
+      134deg,
+      rgba(0, 0, 0, 0.04) 0%,
+      rgba(0, 0, 0, 0.04) 41%,
+      rgba(188, 188, 188, 0.04) 41%,
+      rgba(188, 188, 188, 0.04) 100%
+    ),
+    linear-gradient(
+      19deg,
+      rgba(41, 41, 41, 0.04) 0%,
+      rgba(41, 41, 41, 0.04) 46%,
+      rgba(233, 233, 233, 0.04) 46%,
+      rgba(233, 233, 233, 0.04) 100%
+    ),
+    linear-gradient(
+      65deg,
+      rgba(24, 24, 24, 0.04) 0%,
+      rgba(24, 24, 24, 0.04) 97%,
+      rgba(108, 108, 108, 0.04) 97%,
+      rgba(108, 108, 108, 0.04) 100%
+    ),
+    linear-gradient(
+      311deg,
+      rgba(58, 58, 58, 0.04) 0%,
+      rgba(58, 58, 58, 0.04) 79%,
+      rgba(220, 220, 220, 0.04) 79%,
+      rgba(220, 220, 220, 0.04) 100%
+    ),
+    linear-gradient(90deg, var(--primary-darken), var(--primary-lighten));
+}
+
+.bg-sport-stripes {
   background-image: linear-gradient(
     45deg,
     var(--primary-lighten) 0%,
