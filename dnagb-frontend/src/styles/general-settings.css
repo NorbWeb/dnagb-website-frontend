@@ -50,6 +50,7 @@ h5,
 h6 {
   margin: 0 0 1rem 0;
   font-family: Heebo;
+  overflow-wrap: break-word;
 }
 
 p {

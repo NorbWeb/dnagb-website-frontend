@@ -25,6 +25,17 @@
 #download {
   grid-template-columns: 1fr;
   grid-template-rows: auto;
+
+  .download {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+#association {
+  .board-speaker {
+    flex-direction: column;
+  }
 }
 
 #news {
@@ -104,6 +115,12 @@
       }
     }
   }
+
+  #download {
+    .download {
+      flex-direction: row;
+    }
+  }
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~ 768px ~~~~~~~~~~~~~~~~~~~~ */
@@ -161,6 +178,12 @@
 
   .content {
     min-height: calc(var(--main-height) - var(--footer-height));
+  }
+
+  #association {
+    .board-speaker {
+      flex-direction: row;
+    }
   }
 }
 
