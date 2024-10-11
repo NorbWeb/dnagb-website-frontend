@@ -1,0 +1,73 @@
+<div class="container page">
+  <section id="event">
+    <div class="event_image" [ngClass]="{ past: data.past }">
+      <div class="image-wrapper">
+        <img src="./assets/naginata-symbolbild-260x300.jpg" alt="" />
+      </div>
+    </div>
+    <div class="event_content">
+      <div class="content-wrapper">
+        <div class="content-left">
+          <h2 class="content-title">
+            {{ data.title }}
+          </h2>
+          <div class="date">
+            <img src="./assets/icons/calendar_month.svg" alt="" />{{
+              data.date_start.toLocaleString("de-DE", options).replace(",", "")
+            }}
+
+            @if(data.date_end){ -
+            {{
+              data.date_end.toLocaleString("de-DE", options).replace(",", "")
+            }}
+            }
+          </div>
+          <div class="location">
+            <img src="./assets/icons/location.svg" alt="" />{{
+              data.location_name
+            }}, {{ data.street }} {{ data.number }}, {{ data.postal_code }}
+            {{ data.city }}
+          </div>
+          <div class="type">
+            @for( type of data.type; track $index){
+            <span class="chip">{{ type }}</span>
+            }
+          </div>
+        </div>
+        <div class="content-right">
+          <button
+            class="nag_button button-fill back"
+            (click)="goBackToPrevPage()"
+          >
+            Zurück
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section custom">
+    <h3 class="info-title">Informationen zur Veranstaltung</h3>
+    <div [innerHTML]="data.description"></div>
+    <h3 class="location-title">Location</h3>
+    <div class="info_location">
+      <div class="location-image">
+        <img src="./assets/icons/map_96dp.svg" alt="" />
+      </div>
+      <div class="location_content">
+        <div class="content-left">
+          <h4 class="content-name">{{ data.location_name }}</h4>
+          <div class="content-address">
+            <img src="./assets/icons/location.svg" alt="" />{{ data.street }}
+            {{ data.number }}, {{ data.postal_code }}
+            {{ data.city }}
+          </div>
+        </div>
+        <div class="content-right">
+          <button class="nag_button button-fill" (click)="openGoogleMaps(data)">
+            Anfahrt
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,21 +1,22 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { ImprintComponent } from './pages/imprint/imprint.component';
-import { PrivacyComponent } from './pages/privacy/privacy.component';
-import { ContactComponent } from './pages/contact/contact.component';
+import { ImprintComponent } from './pages/legal/imprint/imprint.component';
+import { PrivacyComponent } from './pages/legal/privacy/privacy.component';
+import { ContactComponent } from './pages/legal/contact/contact.component';
 import { DownloadComponent } from './pages/download/download.component';
 import { DojosComponent } from './pages/dojos/dojos.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { MembershipComponent } from './pages/membership/membership.component';
-import { EquipmentComponent } from './pages/equipment/equipment.component';
-import { MartialArtComponent } from './pages/martial-art/martial-art.component';
-import { HistoryComponent } from './pages/history/history.component';
-import { ExamComponent } from './pages/exam/exam.component';
-import { HandyStuffComponent } from './pages/handy-stuff/handy-stuff.component';
-import { EventPlanComponent } from './pages/event-plan/event-plan.component';
-import { NewsComponent } from './pages/news/news.component';
-import { NewsDetailComponent } from './pages/news-detail/news-detail.component';
-import { AssociationComponent } from './pages/association/association.component';
+import { MembershipComponent } from './pages/dnagb/membership/membership.component';
+import { EquipmentComponent } from './pages/naginata/equipment/equipment.component';
+import { MartialArtComponent } from './pages/naginata/martial-art/martial-art.component';
+import { HistoryComponent } from './pages/naginata/history/history.component';
+import { ExamComponent } from './pages/infos/exam/exam.component';
+import { HandyStuffComponent } from './pages/infos/handy-stuff/handy-stuff.component';
+import { EventPlanComponent } from './pages/infos/event-plan/event-plan.component';
+import { EventComponent } from './pages/news/event/event.component';
+import { EventDetailComponent } from './pages/news/event-detail/event-detail.component';
+import { AssociationComponent } from './pages/dnagb/association/association.component';
+import { WhatIsComponent } from './pages/naginata/what-is/what-is.component';
 
 export const routes: Routes = [
   {
@@ -25,12 +26,12 @@ export const routes: Routes = [
   },
   {
     path: 'news',
-    component: NewsComponent,
+    component: EventComponent,
     title: 'Aktuelles – DNagB',
   },
   {
     path: 'news-details/:id',
-    component: NewsDetailComponent,
+    component: EventDetailComponent,
     title: 'Details – DNagB',
   },
   {
@@ -39,14 +40,19 @@ export const routes: Routes = [
     title: 'Vereinsstruktur – DNagB',
   },
   {
-    path: 'dnagb/dojo',
+    path: 'naginata-gruppen',
     component: DojosComponent,
-    title: 'Dojos – DNagB',
+    title: 'Naginata-Gruppen – DNagB',
   },
   {
     path: 'dnagb/mitglied-werden',
     component: MembershipComponent,
     title: 'Mitglied werden – DNagB',
+  },
+  {
+    path: 'naginata/was-ist-naginata',
+    component: WhatIsComponent,
+    title: 'Was ist Naginata – DNagB',
   },
   {
     path: 'naginata/ausruestung',

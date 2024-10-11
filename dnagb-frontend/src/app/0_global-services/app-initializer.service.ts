@@ -12,23 +12,22 @@ export class AppInitializerService {
   utils = inject(UtilsService);
   init(): Promise<void> {
     return new Promise(async (resolve, reject) => {
-      const settings = await this.getAppConf().catch(reject);
-      const events = await this.getEvents().catch(reject);
-      const membership = await this.getMembership().catch(reject);
-      const board = await this.getBoard().catch(reject);
-      const speaker = await this.getSpeaker().catch(reject);
       const associationText = await this.getAssociationText().catch(reject);
-      const dojos = await this.getDojos().catch(reject);
-      const history = await this.getHistory().catch(reject);
-      const budo = await this.getBudo().catch(reject);
+      const events = await this.getEvents().catch(reject);
       const examination = await this.getExamination().catch(reject);
-      const useful = await this.getUseful().catch(reject);
-      const planing = await this.getPlaning().catch(reject);
       const imprint = await this.getImprint().catch(reject);
+      const board = await this.getBoard().catch(reject);
       const privacy = await this.getPrivacy().catch(reject);
+      const useful = await this.getUseful().catch(reject);
       const contact = await this.getContact().catch(reject);
+      const dojos = await this.getDojos().catch(reject);
+      const planing = await this.getPlaning().catch(reject);
+      const speaker = await this.getSpeaker().catch(reject);
+      const membership = await this.getMembership().catch(reject);
+      const naginata = await this.getNaginata().catch(reject);
       const downloads = await this.getDownloads().catch(reject);
       const downloadsFiles = await this.getDownloadsFiles().catch(reject);
+      const settings = await this.getAppConf().catch(reject);
       const files = await this.getFiles();
       const folders = await this.getFolders();
 
@@ -54,10 +53,12 @@ export class AppInitializerService {
           board: board.data,
           speaker: speaker.data,
           membership: membership.data,
-          dojos: dojos.data,
-          budo: budo.data,
-          history: history.data,
         },
+        dojos: {
+          dojos: dojos.data,
+        },
+        naginata: naginata.data,
+
         info: {
           examination: examination.data,
           useful: useful.data,
@@ -186,13 +187,8 @@ export class AppInitializerService {
     return await res.json();
   }
 
-  private async getHistory() {
-    const res = await fetch(`${environment.cmsUrl}/items/history`);
-    return await res.json();
-  }
-
-  private async getBudo() {
-    const res = await fetch(`${environment.cmsUrl}/items/budo`);
+  private async getNaginata() {
+    const res = await fetch(`${environment.cmsUrl}/items/naginata`);
     return await res.json();
   }
 

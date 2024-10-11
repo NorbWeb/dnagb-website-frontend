@@ -1,0 +1,26 @@
+.bogu-image {
+  height: 25rem;
+  width: 12.5rem;
+  position: relative;
+}
+
+.bogu {
+  background-image: url("../../../../assets/ausruestung-bogu.jpg");
+  height: 25rem;
+  width: 12.5rem;
+  position: relative;
+}
+
+.man {
+  position: absolute;
+  left: 34px;
+  top: 5px;
+  fill: none;
+  stroke: none;
+
+  &:hover {
+    stroke: rgba(0, 0, 0, 1);
+    stroke-width: 0.125rem;
+    stroke-linejoin: round;
+  }
+}
