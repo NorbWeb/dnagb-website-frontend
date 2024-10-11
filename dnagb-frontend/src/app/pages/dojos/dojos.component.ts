@@ -96,7 +96,7 @@ export class DojosComponent implements OnInit, OnDestroy {
     // });
 
     this.map.on('load', async () => {
-      let dojos: any = covertToGeoJson(this.state.getConf().association.dojos);
+      let dojos: any = covertToGeoJson(this.state.getConf().dojos);
 
       this.map?.addSource('dojo-source', {
         type: 'geojson',
@@ -206,7 +206,7 @@ export class DojosComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initMap();
-    this.allDojos = this.state.getConf().association.dojos;
+    this.allDojos = this.state.getConf().dojos;
   }
 
   ngOnDestroy() {

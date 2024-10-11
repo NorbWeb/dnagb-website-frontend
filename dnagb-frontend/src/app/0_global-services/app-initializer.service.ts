@@ -54,9 +54,7 @@ export class AppInitializerService {
           speaker: speaker.data,
           membership: membership.data,
         },
-        dojos: {
-          dojos: dojos.data,
-        },
+        dojos: dojos.data,
         naginata: naginata.data,
 
         info: {
