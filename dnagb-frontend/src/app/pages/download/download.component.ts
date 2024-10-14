@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
+import { SafePipe } from '../../2_pipes/safe';
 
 @Component({
   selector: 'app-download',
   standalone: true,
-  imports: [],
+  imports: [SafePipe],
   templateUrl: './download.component.html',
   styleUrl: './download.component.css',
 })
@@ -13,6 +14,7 @@ export class DownloadComponent {
   files!: any;
   headers: string[] = [];
   url = environment.cmsUrl;
+  activeData!: string;
 
   constructor(private state: StateService) {}
 
@@ -21,9 +23,16 @@ export class DownloadComponent {
     window.location.assign(url);
   }
 
+  setActiveData(first: string, last: string) {
+    let target = document.getElementById('pdfViewer');
+    // target?.setAttribute('data', `${first}/assets/${last}`);
+    this.activeData = `${first}/assets/${last}`;
+  }
+
   ngOnInit(): void {
     if (this.state.getConf().downloads.status === 'published')
       this.files = this.state.getConf().downloads.files;
+
     this.files.sort((a: any, b: any) => {
       if (a.data.title.toLowerCase() > b.data.title.toLowerCase()) return 1;
       if (a.data.title.toLowerCase() < b.data.title.toLowerCase()) return -1;

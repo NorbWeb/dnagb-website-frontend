@@ -21,12 +21,14 @@
             }
           </div>
           <div class="download-action">
-            <a
+            <button
               class="nag_button button-outline secondary button-sm download-button"
-              href="{{ url }}/assets/{{ item.directus_files_id }}"
               target="_blank"
-              >Anzeigen
-            </a>
+              (click)="setActiveData(url, item.directus_files_id)"
+            >
+              Anzeigen
+            </button>
+            <!-- href="{{ url }}/assets/{{ item.directus_files_id }}" -->
             <a
               class="nag_button button-outline button-sm download-button"
               href="{{ url }}/assets/{{ item.directus_files_id }}?download"
@@ -38,6 +40,15 @@
         } }
       </div>
     </div>
+    } @if(activeData){
+
+    <object
+      id="pdfViewer"
+      type="application/pdf"
+      [data]="activeData | safe"
+      width="500px"
+      height="500px"
+    ></object>
     }
   </section>
 </div>
