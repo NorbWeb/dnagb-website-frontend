@@ -75,10 +75,10 @@ li {
   padding: var(--section-padding);
 
   &:not(.custom) {
-    column-width: 40ch;
+    /* column-width: 40ch;
     column-gap: 2rem;
     column-rule: 0.1px solid var(--grey-200);
-    text-align: justify;
+    text-align: justify; */
   }
   h2 {
     column-span: all;
