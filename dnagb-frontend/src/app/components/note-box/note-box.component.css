@@ -20,6 +20,9 @@
     color: var(--text);
     z-index: 1000;
     margin: auto;
+    background-color: var(--section-bg);
+    padding: var(--section-padding);
+    border-radius: var(--component-br);
 
     .type {
       display: flex;
