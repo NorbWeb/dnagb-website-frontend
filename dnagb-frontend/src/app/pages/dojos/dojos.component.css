@@ -29,6 +29,12 @@
     height: 12.5rem;
   }
 
+  .dojo-name {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
   .right {
     width: 50%;
   }

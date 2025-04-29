@@ -13,6 +13,10 @@ export class AppInitializerService {
   init(): Promise<void> {
     return new Promise(async (resolve, reject) => {
       const associationText = await this.getAssociationText().catch(reject);
+      console.log(
+        `🐦‍⬛: AppInitializerService -> constructor -> associationText`,
+        associationText
+      );
       const events = await this.getEvents().catch(reject);
       const examination = await this.getExamination().catch(reject);
       const imprint = await this.getImprint().catch(reject);
