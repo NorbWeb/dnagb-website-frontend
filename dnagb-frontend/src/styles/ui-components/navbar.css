@@ -65,13 +65,11 @@
   }
 }
 
-.dropdown:hover {
-  .dropdown-content {
-    display: block;
-    opacity: 1;
+.dropdown-content.open {
+  display: block;
+  opacity: 1;
 
-    @starting-style {
-      opacity: 0;
-    }
+  @starting-style {
+    opacity: 0;
   }
 }

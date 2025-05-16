@@ -36,133 +36,44 @@
           />
         </a>
       </li>
+      @for(item of navData; track $index){ @if(item.routerLink){
       <li>
         <a
           class="nav-link"
-          routerLink="/news"
+          routerLink="{{ item.routerLink }}"
           routerLinkActive="active"
           ariaCurrentWhenActive="page"
-          >Aktuelles</a
+          (click)="closeDropdown($event)"
         >
+          {{ item.label }}
+        </a>
       </li>
-
+      } @if(item.dropdown){
       <li class="dropdown">
         <div
           class="dropdown-button"
           routerLinkActive="active"
           ariaCurrentWhenActive="page"
+          (click)="openDropdown(dropdown, $event)"
         >
-          Der DNagB
-          <div class="dropdown-content">
+          {{ item.label }}
+          <div #dropdown class="dropdown-content">
+            @for(subItem of item.dropdown; track $index){
+            @if(subItem.routerLink){
             <a
               class="nav-link"
-              routerLink="/dnagb/vereinsstrukturen"
+              routerLink="{{ subItem.routerLink }}"
               routerLinkActive="active"
               ariaCurrentWhenActive="page"
-              >Vereinsstruktur</a
+              (click)="closeDropdown($event)"
             >
-
-            <a
-              class="nav-link"
-              routerLink="/dnagb/mitglied-werden"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              >Mitglied werden</a
-            >
+              {{ subItem.label }}
+            </a>
+            } }
           </div>
         </div>
       </li>
-      <li>
-        <a
-          class="nav-link"
-          routerLink="/naginata-gruppen"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          >Naginata-Gruppen</a
-        >
-      </li>
-      <li class="dropdown">
-        <div
-          class="dropdown-button"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-        >
-          Naginata
-          <div class="dropdown-content">
-            <a
-              class="nav-link"
-              routerLink="/naginata/was-ist-naginata"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              >Was ist Naginata?</a
-            >
-            <a
-              class="nav-link"
-              routerLink="/naginata/ausruestung"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              >Ausrüstung</a
-            >
-            <a
-              class="nav-link"
-              routerLink="/naginata/kampfsport"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              >Der Kampfsport</a
-            >
-            <a
-              class="nav-link"
-              routerLink="/naginata/geschichte"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              >Geschichte</a
-            >
-          </div>
-        </div>
-      </li>
-      <li class="dropdown">
-        <div
-          class="dropdown-button"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-        >
-          Infos<br />
-          für Aktive
-          <div class="dropdown-content">
-            <a
-              class="nav-link"
-              routerLink="/info/pruefung"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              >Prüfung</a
-            >
-            <a
-              class="nav-link"
-              routerLink="/info/nuetzliches"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              >Nützliches</a
-            >
-            <a
-              class="nav-link"
-              routerLink="/info/veranstaltung-planen"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              >Eine Veranstaltung planen</a
-            >
-          </div>
-        </div>
-      </li>
-      <li>
-        <a
-          class="nav-link"
-          routerLink="/download"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          >Formulare<br />
-          & Dokumente</a
-        >
-      </li>
+      } }
     </ul>
   </nav>
 </header>
