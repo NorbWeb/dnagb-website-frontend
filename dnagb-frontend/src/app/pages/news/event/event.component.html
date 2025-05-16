@@ -2,14 +2,20 @@
   <section id="news" class="section">
     <h2>Events</h2>
     <div class="news">
-      @for(item of news; track $index){
-      <div
-        class="news-card"
-        [ngClass]="{ past: item.past }"
-        (click)="openDetails(item.id)"
-      >
+      @for(item of news; track $index){ @if(item.status === "published") {
+
+      <div class="news-card" (click)="openDetails(item.id)">
+        <!-- [ngClass]="{ past: item.past }" -->
         <div class="card-image">
+          @if(item.image){
+          <img
+            src="{{ url }}/assets/{{ item.image }}?quality=25"
+            alt="Bild von {{ item.title }}"
+          />
+          } @else {
+
           <img src="./assets/naginata-symbolbild-260x300.jpg" alt="" />
+          }
         </div>
         <div class="card-content">
           <div class="title">{{ item.title }}</div>
@@ -28,15 +34,13 @@
             <div class="chip xs">{{ type }}</div>
             }
           </div>
-          <div class="announcement">
-            {{
-              item.announcement ??
-                "Platzhaltertext für eine kleine Beschreibung des Events."
-            }}
-          </div>
+          <p class="announcement">
+            {{ item.announcement }}
+          </p>
+          <div class="details">mehr</div>
         </div>
       </div>
-      }
+      } }
     </div>
   </section>
 </div>

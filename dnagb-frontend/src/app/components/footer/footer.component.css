@@ -24,4 +24,16 @@
   .copyright {
     font-size: 0.875rem;
   }
+
+  .no-mobile {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #footer {
+    .no-mobile {
+      display: none;
+    }
+  }
 }

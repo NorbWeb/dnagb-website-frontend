@@ -4,6 +4,7 @@ import { StateService } from '../../../0_global-services/state.service';
 import { NewsItem } from '../../../1_types-and-interfaces/NewsItem';
 import { CommonModule } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
+import { environment } from '../../../../environment/env';
 
 @Component({
   selector: 'app-event',
@@ -13,6 +14,7 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrl: './event.component.css',
 })
 export class EventComponent implements OnInit, OnDestroy {
+  url = environment.cmsUrl;
   unsubscribeAll = new Subject();
   mobile: boolean = false;
   today: Date = new Date();

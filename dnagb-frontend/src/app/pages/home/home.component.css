@@ -55,6 +55,7 @@
   display: grid;
   gap: 1rem;
   padding: var(--section-padding);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .sample-box {
@@ -84,5 +85,18 @@
     height: 4.5rem;
     display: flex;
     padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #short-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #short-info {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
   }
 }

@@ -13,6 +13,7 @@ export interface NewsItem {
   id: number;
   description: string;
   status: string;
+  image: string;
 }
 
 export type NewsItemType = 'Wettkampf' | 'Seminar' | 'Prüfung';

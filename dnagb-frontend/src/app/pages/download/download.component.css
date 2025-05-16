@@ -2,6 +2,7 @@
   background-color: unset;
   display: grid;
   gap: 1rem;
+  grid-template-columns: 1fr 1fr;
 }
 
 .sub-section {
@@ -67,4 +68,24 @@
 
 .download-button {
   text-decoration: none;
+}
+
+@media screen and (max-width: 992px) {
+  #download {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
+    .download {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #download {
+    .download {
+      flex-direction: column;
+    }
+  }
 }
