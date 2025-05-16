@@ -1,4 +1,4 @@
-import { Component, OnInit, viewChildren } from '@angular/core';
+import { Component, OnDestroy, OnInit, viewChildren } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
@@ -11,7 +11,7 @@ import { navData } from './nav.data';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   url = environment.cmsUrl;
   logo!: string;
   navData = navData;
@@ -29,19 +29,45 @@ export class HeaderComponent implements OnInit {
     this.state.updateSideNavState({ ...state, open: !state });
   }
 
-  closeDropdown(e: any) {
+  closeDropdown(ref: any, e: any) {
     e.stopPropagation();
     for (const element of this.subNavElements()) {
-      element.nativeElement.classList.remove('open');
+      if (element.nativeElement !== ref) {
+        element.nativeElement.classList.remove('open');
+      }
     }
   }
 
   openDropdown(ref: any, e: any) {
-    this.closeDropdown(e);
-    ref.classList.add('open');
+    this.closeDropdown(ref, e);
+    if (ref.classList.contains('open')) {
+      ref.classList.remove('open');
+    } else {
+      ref.classList.add('open');
+    }
+  }
+
+  windowClicked(remove: boolean = false) {
+    document.addEventListener('click', (e) => {
+      e.stopPropagation();
+      for (const element of this.subNavElements()) {
+        if (element !== e.target) {
+          element.nativeElement.classList.remove('open');
+        }
+      }
+    });
+
+    if (remove) {
+      window.removeEventListener('click', (e) => {});
+    }
   }
 
   ngOnInit(): void {
     this.logo = this.state.getConf().appSettings.logo;
+    this.windowClicked();
+  }
+
+  ngOnDestroy(): void {
+    this.windowClicked(true);
   }
 }

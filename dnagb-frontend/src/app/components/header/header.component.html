@@ -43,7 +43,7 @@
           routerLink="{{ item.routerLink }}"
           routerLinkActive="active"
           ariaCurrentWhenActive="page"
-          (click)="closeDropdown($event)"
+          (click)="closeDropdown(undefined, $event)"
         >
           {{ item.label }}
         </a>
@@ -65,7 +65,7 @@
               routerLink="{{ subItem.routerLink }}"
               routerLinkActive="active"
               ariaCurrentWhenActive="page"
-              (click)="closeDropdown($event)"
+              (click)="closeDropdown(undefined, $event)"
             >
               {{ subItem.label }}
             </a>
