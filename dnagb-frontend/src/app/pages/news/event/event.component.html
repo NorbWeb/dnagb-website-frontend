@@ -1,61 +1,42 @@
 <div class="container page">
-  <section id="news">
-    <h2 class="section section-header">Ausschreibungen</h2>
-    <ul class="news">
+  <section id="news" class="section">
+    <h2>Events</h2>
+    <div class="news">
       @for(item of news; track $index){
-      <li
+      <div
         class="news-card"
-        (click)="openDetails(item.id)"
         [ngClass]="{ past: item.past }"
+        (click)="openDetails(item.id)"
       >
-        <div class="news-card_image">
-          <div class="image-wrapper">
-            <img src="./assets/naginata-symbolbild-260x300.jpg" alt="" />
+        <div class="card-image">
+          <img src="./assets/naginata-symbolbild-260x300.jpg" alt="" />
+        </div>
+        <div class="card-content">
+          <div class="title">{{ item.title }}</div>
+          <div class="date">
+            {{
+              item.date_start.toLocaleString("de-DE", options).replace(",", "")
+            }}
+            @if(item.date_end){ -
+            {{
+              item.date_end.toLocaleString("de-DE", options).replace(",", "")
+            }}
+            }
+          </div>
+          <div class="type">
+            @for( type of item.type; track $index){
+            <div class="chip xs">{{ type }}</div>
+            }
+          </div>
+          <div class="announcement">
+            {{
+              item.announcement ??
+                "Platzhaltertext für eine kleine Beschreibung des Events."
+            }}
           </div>
         </div>
-        <div class="news-card_content">
-          <h3 class="content-title">{{ item.title }}</h3>
-          <div class="content-wrapper">
-            <div class="content-left">
-              <div class="date">
-                <img src="./assets/icons/calendar_month.svg" alt="" />{{
-                  item.date_start
-                    .toLocaleString("de-DE", options)
-                    .replace(",", "")
-                }}
-
-                @if(item.date_end){ -
-                {{
-                  item.date_end
-                    .toLocaleString("de-DE", options)
-                    .replace(",", "")
-                }}
-                }
-              </div>
-              <div class="location">
-                <img src="./assets/icons/location.svg" alt="" />{{
-                  item.location_name
-                }}, {{ item.city }}
-              </div>
-              <div class="type">
-                @for( type of item.type; track $index){
-                <span class="chip" [ngClass]="{ sm: mobile }">{{ type }}</span>
-                }
-              </div>
-            </div>
-            <div class="content-right">
-              <img
-                class="image-sm"
-                src="./assets/naginata-symbolbild-260x300.jpg"
-                alt=""
-              />
-
-              <div class="details">Details</div>
-            </div>
-          </div>
-        </div>
-      </li>
+      </div>
       }
-    </ul>
+    </div>
   </section>
 </div>

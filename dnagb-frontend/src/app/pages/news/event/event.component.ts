@@ -17,7 +17,6 @@ export class EventComponent implements OnInit, OnDestroy {
   mobile: boolean = false;
   today: Date = new Date();
   news: NewsItem[] = [];
-  expiredNews: NewsItem[] = [];
   options: any = {
     weekday: 'short',
     year: 'numeric',
@@ -35,6 +34,7 @@ export class EventComponent implements OnInit, OnDestroy {
     });
 
     this.news = [...arr];
+    console.log(`🐦‍⬛: EventComponent -> convertDate -> this.news`, this.news);
   }
 
   openDetails(id: number | string) {

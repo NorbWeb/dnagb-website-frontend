@@ -8,6 +8,14 @@
   text-align: center;
   overflow-wrap: break-word;
   width: fit-content;
+  display: inline-block;
+
+  &.xs {
+    font-size: 0.725rem;
+    padding: 0.125rem 0.5rem;
+    line-height: 0.75rem;
+    font-weight: 500;
+  }
 
   &.sm {
     font-size: 0.875rem;
