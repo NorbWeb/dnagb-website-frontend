@@ -14,6 +14,7 @@
 
   nav {
     height: 100%;
+    width: 25rem;
     background-color: var(--white);
     filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
     translate: -25rem;
@@ -95,5 +96,11 @@ ul {
     color: var(--nav-link-active);
     background-color: var(--grey-100);
     font-weight: 700;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #side-nav nav {
+    width: 100%;
   }
 }

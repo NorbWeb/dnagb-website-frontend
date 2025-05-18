@@ -3,16 +3,6 @@
   min-height: var(--main-height-sm);
 }
 
-#side-nav nav {
-  width: 100%;
-}
-
-#association {
-  .board-speaker {
-    flex-direction: column;
-  }
-}
-
 .container {
   margin: auto;
   width: 100%;
@@ -24,10 +14,6 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~ 576px ~~~~~~~~~~~~~~~~~~~~ */
 @media screen and (min-width: 576px) {
-  #side-nav nav {
-    width: 25rem;
-  }
-
   .container {
     width: 100%;
   }
@@ -45,22 +31,12 @@
     min-height: var(--main-height);
   }
 
-  #side-nav {
-    display: none !important;
-  }
-
   .container {
     width: 100%;
   }
 
   .content {
     min-height: calc(var(--main-height) - var(--footer-height));
-  }
-
-  #association {
-    .board-speaker {
-      flex-direction: row;
-    }
   }
 }
 

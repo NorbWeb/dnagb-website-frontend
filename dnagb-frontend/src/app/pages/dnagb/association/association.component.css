@@ -4,6 +4,7 @@
 
 .board-speaker {
   display: flex;
+  flex-direction: row;
   gap: 1rem;
 }
 
@@ -23,4 +24,10 @@
   flex-wrap: wrap;
   align-items: stretch;
   justify-content: center;
+}
+
+@media screen and (max-width: 576px) {
+  .board-speaker {
+    flex-direction: column;
+  }
 }
