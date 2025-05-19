@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { StateService } from '../../../0_global-services/state.service';
 import { NewsItem } from '../../../1_types-and-interfaces/NewsItem';
 import { CommonModule, Location } from '@angular/common';
+import { environment } from '../../../../environment/env';
 
 @Component({
   selector: 'app-event-detail',
@@ -13,6 +14,8 @@ import { CommonModule, Location } from '@angular/common';
 })
 export class EventDetailComponent implements OnInit {
   data!: NewsItem;
+  url = environment.cmsUrl;
+  mapsLink!: string;
   options: any = {
     weekday: 'short',
     year: 'numeric',
@@ -31,23 +34,16 @@ export class EventDetailComponent implements OnInit {
     this.location.back();
   }
 
-  openGoogleMaps(data: NewsItem) {
-    let street = data.street;
-    let number = data.number;
-    let postalCode = data.postal_code;
-    let city = data.city;
-
-    window.open(
-      `https://www.google.de/maps/place/${street}+${number},+${postalCode}+${city}`,
-      '_blank'
-    );
-  }
-
   ngOnInit(): void {
     const { id } = this.route.snapshot.params;
     this.data = this.state
       .getConf()
       .events.find((f: { id: any }) => Number(f.id) === Number(id));
     console.log(this.data, id);
+    let street = this.data.street;
+    let number = this.data.number;
+    let postalCode = this.data.postal_code;
+    let city = this.data.city;
+    this.mapsLink = `https://www.google.de/maps/place/${street}+${number},+${postalCode}+${city}`;
   }
 }

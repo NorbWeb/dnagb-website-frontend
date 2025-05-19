@@ -1,167 +1,57 @@
 #event {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
-  border-radius: var(--component-br);
-  background-color: var(--white);
-  transition: var(--transition);
-  overflow: hidden;
-
-  .event_image {
-    width: 75%;
-    height: 20.75rem;
-    padding: 1rem;
-    position: relative;
-
-    &.past {
-      &::before {
-        content: "";
-        width: calc(100% - 2rem);
-        top: 1rem;
-        height: calc(100% - 2rem);
-        position: absolute;
-        background: linear-gradient(45deg, var(--secondary), var(--white));
-        opacity: 0.75;
-        z-index: 90;
-      }
-
-      &::after {
-        content: "Abgelaufen";
-        width: calc(100% - 2rem);
-        height: 3rem;
-        top: 50%;
-        translate: 0 -50%;
-        position: absolute;
-        background-color: var(--secondary);
-        color: var(--secondary-text);
-        font-size: 2rem;
-        font-weight: 700;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 100;
-      }
-    }
-
-    .image-wrapper {
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: var(--component-br);
-
-      img {
-        object-fit: cover;
-        width: 100%;
-        height: 18.75rem;
-        border-radius: var(--component-br);
-        z-index: 2;
-      }
-    }
-  }
-  .event_content {
-    width: 100%;
-    padding: 1rem 1rem 1rem 0;
-    display: flex;
-    flex-direction: column;
-
-    .content-title {
-      margin-bottom: 1.75rem;
-      font-size: 2.75rem;
-    }
-
-    .content-wrapper {
-      display: flex;
-      gap: 1rem;
-      height: 100%;
-
-      .content-left {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        flex: 1;
-
-        .date,
-        .location {
-          margin-bottom: 1rem;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          font-size: 1.125rem;
-        }
-
-        .type {
-          margin-top: auto;
-          display: flex;
-          gap: 1rem;
-        }
-      }
-
-      .content-right {
-        display: flex;
-        align-items: start;
-      }
-    }
-  }
-}
-
-.info-title {
-  font-size: 1.5rem;
-}
-
-.location-title {
-  margin-top: 1rem;
-}
-
-.info_location {
-  width: fit-content;
-  min-width: 25rem;
-  display: flex;
-  border-radius: var(--component-br);
-  border: 2px solid var(--primary-lighten);
-
-  .location-image {
-    margin: 1rem;
-    img {
-      width: 6rem;
-      height: 6rem;
-      object-fit: contain;
-      background-color: rgba(0, 0, 0, 0.125);
-
-      border-radius: var(--component-br);
-    }
-  }
-
-  .location_content {
-    width: 100%;
-    padding: 1rem 1rem 1rem 0;
+  .event-header {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    align-items: baseline;
+  }
 
-    .content-left {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+  .date {
+    font-size: 0.875rem;
+    color: var(--grey-800);
+    margin-bottom: 1rem;
+  }
 
-      .content-name {
-        font-size: 1.125rem;
-      }
+  .announcement {
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
 
-      .content-address {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
+  .description {
+    margin-bottom: 3rem;
+  }
+
+  .event_image {
+    width: 100%;
+    max-height: 30rem;
+    position: relative;
+    margin-bottom: 1rem;
+
+    &.marginBottom {
+      margin-bottom: 3rem;
     }
 
-    .content-right {
-      display: flex;
-      align-items: end;
+    img {
+      object-fit: cover;
+      width: 100%;
+      max-height: 28rem;
+      border-radius: var(--component-br);
+      z-index: 2;
     }
+  }
+
+  .type {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .infocontainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bold {
+    font-weight: 600;
   }
 }

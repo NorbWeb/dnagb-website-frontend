@@ -1,73 +1,56 @@
 <div class="container page">
-  <section id="event">
-    <div class="event_image" [ngClass]="{ past: data.past }">
-      <div class="image-wrapper">
-        <img src="./assets/naginata-symbolbild-260x300.jpg" alt="" />
-      </div>
+  <section id="event" class="section">
+    <div class="event-header">
+      <h3>
+        {{ data.title }}
+      </h3>
+      <button class="nag_button button-fill back" (click)="goBackToPrevPage()">
+        Zurück
+      </button>
     </div>
-    <div class="event_content">
-      <div class="content-wrapper">
-        <div class="content-left">
-          <h2 class="content-title">
-            {{ data.title }}
-          </h2>
-          <div class="date">
-            <img src="./assets/icons/calendar_month.svg" alt="" />{{
-              data.date_start.toLocaleString("de-DE", options).replace(",", "")
-            }}
+    <p class="date">
+      {{ data.date_start.toLocaleString("de-DE", options).replace(",", "") }}
 
-            @if(data.date_end){ -
-            {{
-              data.date_end.toLocaleString("de-DE", options).replace(",", "")
-            }}
-            }
-          </div>
-          <div class="location">
-            <img src="./assets/icons/location.svg" alt="" />{{
-              data.location_name
-            }}, {{ data.street }} {{ data.number }}, {{ data.postal_code }}
-            {{ data.city }}
-          </div>
-          <div class="type">
-            @for( type of data.type; track $index){
-            <span class="chip">{{ type }}</span>
-            }
-          </div>
-        </div>
-        <div class="content-right">
-          <button
-            class="nag_button button-fill back"
-            (click)="goBackToPrevPage()"
-          >
-            Zurück
-          </button>
-        </div>
-      </div>
+      @if(data.date_end){ -
+      {{ data.date_end.toLocaleString("de-DE", options).replace(",", "") }}
+      }
+    </p>
+    <div
+      class="event_image"
+      [ngClass]="{
+        marginBottom: !data.type.length
+      }"
+    >
+      @if(data.image){
+      <img
+        src="{{ url }}/assets/{{ data.image }}?quality=25"
+        alt="Bild von {{ data.title }}"
+      />
+      } @else {
+      <img src="./assets/naginata-symbolbild-260x300.jpg" alt="" />
+      }
     </div>
-  </section>
-  <section class="section custom">
-    <h3 class="info-title">Informationen zur Veranstaltung</h3>
-    <div [innerHTML]="data.description"></div>
-    <h3 class="location-title">Location</h3>
-    <div class="info_location">
-      <div class="location-image">
-        <img src="./assets/icons/map_96dp.svg" alt="" />
+    @if(data.type.length > 0){
+    <div class="type">
+      @for( type of data.type; track $index){
+      <span class="chip sm">{{ type }}</span>
+      }
+    </div>
+    }
+    <p class="announcement">{{ data.announcement }}</p>
+    <p class="description" [innerHTML]="data.description"></p>
+
+    <div class="infocontainer">
+      <h4>Auf einen Blick</h4>
+      <div class="bold">Location</div>
+      <div>
+        {{ data.location_name }}
       </div>
-      <div class="location_content">
-        <div class="content-left">
-          <h4 class="content-name">{{ data.location_name }}</h4>
-          <div class="content-address">
-            <img src="./assets/icons/location.svg" alt="" />{{ data.street }}
-            {{ data.number }}, {{ data.postal_code }}
-            {{ data.city }}
-          </div>
-        </div>
-        <div class="content-right">
-          <button class="nag_button button-fill" (click)="openGoogleMaps(data)">
-            Anfahrt
-          </button>
-        </div>
-      </div>
+      <div class="bold">Adresse</div>
+      <div>{{ data.street }} {{ data.number }}</div>
+      <div>{{ data.postal_code }} {{ data.city }}</div>
+
+      <a [href]="mapsLink" target="_blank">Google Maps</a>
     </div>
   </section>
 </div>
