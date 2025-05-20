@@ -6,11 +6,10 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-note-box',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './note-box.component.html',
-  styleUrl: './note-box.component.css',
+    selector: 'app-note-box',
+    imports: [CommonModule],
+    templateUrl: './note-box.component.html',
+    styleUrl: './note-box.component.css'
 })
 export class NoteBoxComponent implements OnInit, OnDestroy {
   unsubscribeAll = new Subject();

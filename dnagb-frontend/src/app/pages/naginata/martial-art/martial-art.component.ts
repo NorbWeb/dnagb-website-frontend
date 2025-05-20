@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { StateService } from '../../../0_global-services/state.service';
 
 @Component({
-  selector: 'app-martial-art',
-  standalone: true,
-  imports: [],
-  templateUrl: './martial-art.component.html',
-  styleUrl: './martial-art.component.css',
+    selector: 'app-martial-art',
+    imports: [],
+    templateUrl: './martial-art.component.html',
+    styleUrl: './martial-art.component.css'
 })
 export class MartialArtComponent {
   data!: any;

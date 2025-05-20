@@ -4,11 +4,10 @@ import { CommonModule } from '@angular/common';
 import { Staff } from '../../1_types-and-interfaces/Staff';
 
 @Component({
-  selector: 'app-staff-card',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './staff-card.component.html',
-  styleUrl: './staff-card.component.css',
+    selector: 'app-staff-card',
+    imports: [CommonModule],
+    templateUrl: './staff-card.component.html',
+    styleUrl: './staff-card.component.css'
 })
 export class StaffCardComponent implements OnInit {
   @Input() item!: Staff;

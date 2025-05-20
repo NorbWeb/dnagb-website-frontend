@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { StateService } from '../../../0_global-services/state.service';
 
 @Component({
-  selector: 'app-handy-stuff',
-  standalone: true,
-  imports: [],
-  templateUrl: './handy-stuff.component.html',
-  styleUrl: './handy-stuff.component.css',
+    selector: 'app-handy-stuff',
+    imports: [],
+    templateUrl: './handy-stuff.component.html',
+    styleUrl: './handy-stuff.component.css'
 })
 export class HandyStuffComponent {
   data!: any;

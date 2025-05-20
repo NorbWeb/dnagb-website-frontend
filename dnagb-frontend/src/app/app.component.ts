@@ -7,17 +7,16 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { StateService } from './0_global-services/state.service';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    HeaderComponent,
-    FooterComponent,
-    NoteBoxComponent,
-    SideNavComponent,
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+    selector: 'app-root',
+    imports: [
+        RouterOutlet,
+        HeaderComponent,
+        FooterComponent,
+        NoteBoxComponent,
+        SideNavComponent,
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
   constructor(private state: StateService) {}

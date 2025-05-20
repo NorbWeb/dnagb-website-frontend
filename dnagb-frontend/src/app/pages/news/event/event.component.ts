@@ -7,11 +7,10 @@ import { Subject, takeUntil } from 'rxjs';
 import { environment } from '../../../../environment/env';
 
 @Component({
-  selector: 'app-event',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './event.component.html',
-  styleUrl: './event.component.css',
+    selector: 'app-event',
+    imports: [CommonModule],
+    templateUrl: './event.component.html',
+    styleUrl: './event.component.css'
 })
 export class EventComponent implements OnInit, OnDestroy {
   url = environment.cmsUrl;

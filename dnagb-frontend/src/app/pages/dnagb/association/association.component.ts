@@ -6,11 +6,10 @@ import { Staff } from '../../../1_types-and-interfaces/Staff';
 import { StaffCardComponent } from '../../../components/staff-card/staff-card.component';
 
 @Component({
-  selector: 'app-association',
-  standalone: true,
-  imports: [CommonModule, StaffCardComponent],
-  templateUrl: './association.component.html',
-  styleUrl: './association.component.css',
+    selector: 'app-association',
+    imports: [CommonModule, StaffCardComponent],
+    templateUrl: './association.component.html',
+    styleUrl: './association.component.css'
 })
 export class AssociationComponent implements OnInit {
   data!: { board: Staff[]; speaker: Staff[]; who_we_are: string };

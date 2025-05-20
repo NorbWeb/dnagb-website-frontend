@@ -15,11 +15,10 @@ import { DojoInfo } from './dojoInterfaces';
 import { covertToGeoJson } from './covertToGeoJson';
 
 @Component({
-  selector: 'app-dojos',
-  standalone: true,
-  imports: [],
-  templateUrl: './dojos.component.html',
-  styleUrl: './dojos.component.css',
+    selector: 'app-dojos',
+    imports: [],
+    templateUrl: './dojos.component.html',
+    styleUrl: './dojos.component.css'
 })
 export class DojosComponent implements OnInit, OnDestroy {
   map: Map | undefined;

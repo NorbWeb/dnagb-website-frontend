@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { StateService } from '../../../0_global-services/state.service';
 
 @Component({
-  selector: 'app-membership',
-  standalone: true,
-  imports: [],
-  templateUrl: './membership.component.html',
-  styleUrl: './membership.component.css',
+    selector: 'app-membership',
+    imports: [],
+    templateUrl: './membership.component.html',
+    styleUrl: './membership.component.css'
 })
 export class MembershipComponent implements OnInit {
   data!: any;

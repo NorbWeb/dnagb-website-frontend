@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { StateService } from '../../../0_global-services/state.service';
 
 @Component({
-  selector: 'app-exam',
-  standalone: true,
-  imports: [],
-  templateUrl: './exam.component.html',
-  styleUrl: './exam.component.css',
+    selector: 'app-exam',
+    imports: [],
+    templateUrl: './exam.component.html',
+    styleUrl: './exam.component.css'
 })
 export class ExamComponent {
   data!: any;

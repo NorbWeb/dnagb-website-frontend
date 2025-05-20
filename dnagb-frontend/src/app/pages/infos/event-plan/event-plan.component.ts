@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { StateService } from '../../../0_global-services/state.service';
 
 @Component({
-  selector: 'app-event-plan',
-  standalone: true,
-  imports: [],
-  templateUrl: './event-plan.component.html',
-  styleUrl: './event-plan.component.css',
+    selector: 'app-event-plan',
+    imports: [],
+    templateUrl: './event-plan.component.html',
+    styleUrl: './event-plan.component.css'
 })
 export class EventPlanComponent {
   data!: any;

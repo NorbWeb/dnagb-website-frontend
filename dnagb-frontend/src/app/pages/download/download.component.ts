@@ -4,11 +4,10 @@ import { environment } from '../../../environment/env';
 import { SafePipe } from '../../2_pipes/safe';
 
 @Component({
-  selector: 'app-download',
-  standalone: true,
-  imports: [SafePipe],
-  templateUrl: './download.component.html',
-  styleUrl: './download.component.css',
+    selector: 'app-download',
+    imports: [SafePipe],
+    templateUrl: './download.component.html',
+    styleUrl: './download.component.css'
 })
 export class DownloadComponent {
   files!: any;

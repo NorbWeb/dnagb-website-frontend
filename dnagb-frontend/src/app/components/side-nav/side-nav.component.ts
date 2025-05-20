@@ -5,11 +5,10 @@ import { Subject, takeUntil } from 'rxjs';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  selector: 'app-side-nav',
-  standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive],
-  templateUrl: './side-nav.component.html',
-  styleUrl: './side-nav.component.css',
+    selector: 'app-side-nav',
+    imports: [CommonModule, RouterLink, RouterLinkActive],
+    templateUrl: './side-nav.component.html',
+    styleUrl: './side-nav.component.css'
 })
 export class SideNavComponent implements OnInit, OnDestroy {
   unsubscribeAll = new Subject();

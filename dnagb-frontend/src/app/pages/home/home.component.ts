@@ -10,11 +10,10 @@ interface Title {
 }
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CalendarComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+    selector: 'app-home',
+    imports: [CalendarComponent],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   title!: Title;
