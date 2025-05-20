@@ -56,7 +56,8 @@ export class DojosComponent implements OnInit, OnDestroy {
     this.map = new Map({
       container: 'map',
       style:
-        'https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/styles/bm_web_col.json',
+        'https://sgx.geodatenzentrum.de/gdz_basemapworld_vektor/styles/bm_web_wld_col.json',
+
       center: [10.415, 51.356],
       zoom: 5.3,
       maxZoom: 10,
