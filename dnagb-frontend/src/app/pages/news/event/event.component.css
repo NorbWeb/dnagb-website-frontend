@@ -64,6 +64,11 @@
       width: fit-content;
       margin-top: auto;
       margin-left: auto;
+      color: blue;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 

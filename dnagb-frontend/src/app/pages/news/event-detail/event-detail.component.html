@@ -11,7 +11,7 @@
     <p class="date">
       {{ data.date_start.toLocaleString("de-DE", options).replace(",", "") }}
 
-      @if(data.date_end){ -
+      @if(data.date_end){ –
       {{ data.date_end.toLocaleString("de-DE", options).replace(",", "") }}
       }
     </p>
@@ -42,6 +42,14 @@
 
     <div class="infocontainer">
       <h4>Auf einen Blick</h4>
+      <div class="bold">Datum</div>
+      <div>
+        {{ data.date_start.toLocaleString("de-DE", options).replace(",", "") }}
+
+        @if(data.date_end){ –
+        {{ data.date_end.toLocaleString("de-DE", options).replace(",", "") }}
+        }
+      </div>
       <div class="bold">Location</div>
       <div>
         {{ data.location_name }}

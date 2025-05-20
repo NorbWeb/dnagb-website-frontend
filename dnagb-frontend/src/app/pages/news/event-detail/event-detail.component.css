@@ -53,5 +53,9 @@
 
   .bold {
     font-weight: 600;
+
+    &:not(:first-of-type) {
+      margin-top: 1rem;
+    }
   }
 }
