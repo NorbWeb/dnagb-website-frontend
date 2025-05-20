@@ -29,15 +29,17 @@
             }}
             }
           </div>
+          @if(item.type.length){
           <div class="type">
             @for( type of item.type; track $index){
             <div class="chip xs">{{ type }}</div>
             }
           </div>
+          }
           <p class="announcement">
             {{ item.announcement }}
           </p>
-          <div class="details">mehr</div>
+          <div class="details">zum Event</div>
         </div>
       </div>
       } }

@@ -11,7 +11,7 @@
   overflow: hidden;
   border-radius: var(--component-br);
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
-  transition: filter 0.3s ease-in-out;
+  transition: filter 250ms ease-in-out;
   cursor: pointer;
   height: 100%;
   display: flex;
@@ -41,6 +41,7 @@
     .title {
       font-weight: 700;
       margin-bottom: 0.5rem;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
     .date {
@@ -63,11 +64,23 @@
     .details {
       width: fit-content;
       margin-top: auto;
-      margin-left: auto;
-      color: blue;
+      margin-right: auto;
+      color: var(--secondary);
+      font-weight: 700;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      transition: all 250ms ease;
+      position: relative;
 
-      &:hover {
-        text-decoration: underline;
+      &::after {
+        transition: all 250ms ease;
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -0.125rem;
+        width: 0;
+        height: 0.125rem;
+        background-color: var(--secondary);
       }
     }
   }
@@ -89,6 +102,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+  }
+
+  &:hover {
+    .card-content {
+      .details {
+        &::after {
+          width: 100%;
+        }
+      }
     }
   }
 }
