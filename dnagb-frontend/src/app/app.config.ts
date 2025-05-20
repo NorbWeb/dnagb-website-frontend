@@ -1,4 +1,8 @@
-import { ApplicationConfig, inject, provideAppInitializer } from '@angular/core';
+import {
+  ApplicationConfig,
+  inject,
+  provideAppInitializer,
+} from '@angular/core';
 import {
   provideRouter,
   withInMemoryScrolling,
@@ -11,18 +15,20 @@ import { AppInitializerService } from './0_global-services/app-initializer.servi
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAppInitializer(() => {
-        const initializerFn = ((initService: AppInitializerService) => () =>
-        initService.init())(inject(AppInitializerService));
-        return initializerFn();
-      }),
+      const initializerFn = (
+        (initService: AppInitializerService) => () =>
+          initService.init()
+      )(inject(AppInitializerService));
+      return initializerFn();
+    }),
     provideRouter(
       routes,
       withViewTransitions({
         skipInitialTransition: true,
-      }),
-      withInMemoryScrolling({
-        scrollPositionRestoration: 'top',
       })
+      // withInMemoryScrolling({
+      //   scrollPositionRestoration: 'top',
+      // })
     ),
   ],
 };
