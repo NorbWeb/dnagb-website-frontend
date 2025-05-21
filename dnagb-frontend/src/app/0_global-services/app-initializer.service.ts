@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { environment } from '../../environment/env';
 import { UtilsService } from './utils.service';
 import { StateService } from './state.service';
-import { NewsItem, NewsItemType } from '../1_types-and-interfaces/NewsItem';
+import { EventItem, EventType } from '../1_types-and-interfaces/NewsItem';
 
 @Injectable({
   providedIn: 'root',
@@ -135,11 +135,11 @@ export class AppInitializerService {
     return result;
   }
 
-  convertEventData(arr: NewsItem[]) {
+  convertEventData(arr: EventItem[]) {
     let today = new Date();
-    let rawData: NewsItem[] = [...arr];
+    let rawData: EventItem[] = [...arr];
     let result = [];
-    let type: Record<string, NewsItemType> = {
+    let type: Record<string, EventType> = {
       contest: 'Wettkampf',
       seminar: 'Seminar',
       examination: 'Prüfung',
@@ -152,7 +152,7 @@ export class AppInitializerService {
       if (element.date_end) {
         element.date_end = new Date(element.date_end);
       }
-      let typeLabel: NewsItemType[] = [];
+      let typeLabel: EventType[] = [];
       for (let item of element.type) {
         typeLabel.push(type[item]);
       }

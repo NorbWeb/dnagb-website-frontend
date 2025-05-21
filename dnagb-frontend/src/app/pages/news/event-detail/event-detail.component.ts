@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StateService } from '../../../0_global-services/state.service';
-import { NewsItem } from '../../../1_types-and-interfaces/NewsItem';
+import { EventItem } from '../../../1_types-and-interfaces/NewsItem';
 import { CommonModule, Location } from '@angular/common';
 import { environment } from '../../../../environment/env';
 import { SafeHtmlPipe } from '../../../2_pipes/safeHtml';
@@ -14,7 +14,7 @@ import { SafeHtmlPipe } from '../../../2_pipes/safeHtml';
   encapsulation: ViewEncapsulation.None,
 })
 export class EventDetailComponent implements OnInit {
-  event!: NewsItem;
+  event!: EventItem;
   news!: any;
   type!: 'event' | 'news';
   url = environment.cmsUrl;

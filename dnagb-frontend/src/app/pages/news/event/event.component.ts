@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StateService } from '../../../0_global-services/state.service';
-import { NewsItem } from '../../../1_types-and-interfaces/NewsItem';
+import { EventItem, NewsItem } from '../../../1_types-and-interfaces/NewsItem';
 import { CommonModule } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 import { environment } from '../../../../environment/env';
@@ -17,8 +17,8 @@ export class EventComponent implements OnInit, OnDestroy {
   unsubscribeAll = new Subject();
   mobile: boolean = false;
   today: Date = new Date();
-  events: NewsItem[] = [];
-  news: any = [];
+  events: EventItem[] = [];
+  news: NewsItem[] = [];
   options: any = {
     weekday: 'short',
     year: 'numeric',
@@ -30,16 +30,16 @@ export class EventComponent implements OnInit, OnDestroy {
 
   constructor(private state: StateService, private router: Router) {}
 
-  convertDate(arr: NewsItem[]) {
+  convertDate(arr: EventItem[]) {
     arr.sort((a: any, b: any) => {
       return a.date_start - b.date_start;
     });
 
     this.events = [...arr];
-    console.log(
-      `🐦‍⬛: EventComponent -> convertDate -> this.events`,
-      this.events
-    );
+    // console.log(
+    //   `🐦‍⬛: EventComponent -> convertDate -> this.events`,
+    //   this.events
+    // );
   }
 
   openDetails(type: 'event' | 'news', id: number | string) {
@@ -54,7 +54,7 @@ export class EventComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.convertDate(this.state.getConf().events);
     this.news = this.state.getConf().news;
-    console.log(`🐦‍⬛: EventComponent -> constructor -> this.news`, this.news);
+    // console.log(`🐦‍⬛: EventComponent -> constructor -> this.news`, this.news);
     this.state.windowSize.pipe(takeUntil(this.unsubscribeAll)).subscribe({
       next: (res: any) => {
         if (res.screenWidth <= 768) {

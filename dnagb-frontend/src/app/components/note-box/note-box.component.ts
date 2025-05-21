@@ -1,19 +1,19 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
-import { NewsItem } from '../../1_types-and-interfaces/NewsItem';
+import { EventItem } from '../../1_types-and-interfaces/NewsItem';
 import { Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-    selector: 'app-note-box',
-    imports: [CommonModule],
-    templateUrl: './note-box.component.html',
-    styleUrl: './note-box.component.css'
+  selector: 'app-note-box',
+  imports: [CommonModule],
+  templateUrl: './note-box.component.html',
+  styleUrl: './note-box.component.css',
 })
 export class NoteBoxComponent implements OnInit, OnDestroy {
   unsubscribeAll = new Subject();
-  data!: NewsItem;
+  data!: EventItem;
   open: boolean = false;
 
   constructor(private state: StateService, private router: Router) {}

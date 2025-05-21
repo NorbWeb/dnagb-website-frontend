@@ -1,6 +1,6 @@
-export interface NewsItem {
+export interface EventItem {
   title: string;
-  type: NewsItemType[];
+  type: EventType[];
   date_start: Date | string;
   date_end: Date | string | null;
   past: boolean;
@@ -16,4 +16,14 @@ export interface NewsItem {
   image: string;
 }
 
-export type NewsItemType = 'Wettkampf' | 'Seminar' | 'Prüfung';
+export type EventType = 'Wettkampf' | 'Seminar' | 'Prüfung';
+
+export interface NewsItem {
+  announcement: string;
+  article: string;
+  id: number;
+  image: string;
+  date_start: Date | string;
+  title: string;
+  status: string;
+}
