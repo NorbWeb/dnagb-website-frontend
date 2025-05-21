@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StateService } from '../../../0_global-services/state.service';
 import { EventItem, NewsItem } from '../../../1_types-and-interfaces/NewsItem';
@@ -28,19 +28,8 @@ export class EventComponent implements OnInit, OnDestroy {
     // minute: '2-digit',
   };
 
-  constructor(private state: StateService, private router: Router) {}
-
-  convertDate(arr: EventItem[]) {
-    arr.sort((a: any, b: any) => {
-      return a.date_start - b.date_start;
-    });
-
-    this.events = [...arr];
-    // console.log(
-    //   `🐦‍⬛: EventComponent -> convertDate -> this.events`,
-    //   this.events
-    // );
-  }
+  private state = inject(StateService);
+  private router = inject(Router);
 
   openDetails(type: 'event' | 'news', id: number | string) {
     if (type === 'event') {
@@ -52,7 +41,7 @@ export class EventComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.convertDate(this.state.getConf().events);
+    this.events = this.state.getConf().events;
     this.news = this.state.getConf().news;
     // console.log(`🐦‍⬛: EventComponent -> constructor -> this.news`, this.news);
     this.state.windowSize.pipe(takeUntil(this.unsubscribeAll)).subscribe({

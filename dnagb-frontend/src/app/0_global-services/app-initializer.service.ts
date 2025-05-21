@@ -163,6 +163,10 @@ export class AppInitializerService {
       element.type = typeLabel;
       result.push(element);
     }
+
+    result.sort((a: any, b: any) => {
+      return b.date_start - a.date_start;
+    });
     return result;
   }
 
@@ -173,6 +177,9 @@ export class AppInitializerService {
       element.date_start = new Date(element.date_start);
       result.push(element);
     }
+    result.sort((a: any, b: any) => {
+      return b.date_start - a.date_start;
+    });
     return result;
   }
 

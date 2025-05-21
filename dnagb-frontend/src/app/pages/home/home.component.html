@@ -21,47 +21,38 @@
   </section>
   <section id="short-info" class="container">
     <app-calendar></app-calendar>
-    <!-- TODO: connect real news or events to start page -->
-    <div class="sample-box">
-      <div class="header">
+    @for(item of frontpageNews; track $index){
+    <div class="flagship-news-card" (click)="openDetails('news', item.id)">
+      <div class="card-image">
+        @if(item.image){
         <img
-          src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fkatanaswords.info%2Fwp-content%2Fuploads%2FNaginatajutsu-13.jpg&f=1&nofb=1&ipt=26ad395eb34d53b5bf976f2c25614dc4da86122835fd815aa8e0140b28ad5388&ipo=images"
-          alt=""
+          src="{{ url }}/assets/{{ item.image }}?quality=25"
+          alt="Bild von {{ item.title }}"
         />
+        } @else {
+
+        <img src="./assets/naginata-symbolbild-260x300.jpg" alt="" />
+        }
       </div>
-      <div class="body">
-        <h3>Training im Hocken effektiver</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-          ipsum dolor sit amet.
+      <div class="card-content">
+        <div class="title">{{ item.title }}</div>
+        <div class="date">
+          {{
+            item.date_start
+              .toLocaleString("de-DE", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit"
+              })
+              .replace(",", "")
+          }}
+        </div>
+        <p class="announcement">
+          {{ item.announcement }}
         </p>
-      </div>
-      <div class="action">
-        <button class="nag_button button-outline">Info</button>
+        <div class="details">zum Artikel</div>
       </div>
     </div>
-    <div class="sample-box">
-      <div class="header">
-        <img
-          src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fakimonogatari.es%2Fwp-content%2Fuploads%2F2015%2F10%2Fnaginata.jpg&f=1&nofb=1&ipt=8db30fd6df92f66dc05ad19c20410d40f8e03be833a0ba9320c5555440280426&ipo=images"
-          alt=""
-        />
-      </div>
-      <div class="body">
-        <h3>Naginata ist sexy!</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum.
-        </p>
-      </div>
-      <div class="action">
-        <button class="nag_button button-outline">Info</button>
-      </div>
-    </div>
+    }
   </section>
 </div>
