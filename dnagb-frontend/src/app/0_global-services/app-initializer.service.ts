@@ -17,6 +17,7 @@ export class AppInitializerService {
         `🐦‍⬛: AppInitializerService -> constructor -> associationText`,
         associationText
       );
+      const news = await this.getNews().catch(reject);
       const events = await this.getEvents().catch(reject);
       const examination = await this.getExamination().catch(reject);
       const imprint = await this.getImprint().catch(reject);
@@ -52,12 +53,14 @@ export class AppInitializerService {
           },
           logo: settings.data.logo,
         },
+
         association: {
           who_we_are: associationText.data,
           board: board.data,
           speaker: speaker.data,
           membership: membership.data,
         },
+
         dojos: dojos.data,
         naginata: naginata.data,
 
@@ -66,6 +69,7 @@ export class AppInitializerService {
           useful: useful.data,
           planing: planing.data,
         },
+
         legal: {
           imprint: imprint.data,
           privacy: privacy.data,
@@ -73,11 +77,15 @@ export class AppInitializerService {
         },
 
         events: [...this.convertEventData(events.data)],
+
+        news: news.data, // TODO: convertNewsData
+
         downloads: this.arrangeDownloadFiles(
           downloads.data,
           downloadsFiles.data,
           files.data
         ),
+
         files: this.arrangeAllFiles(files.data, folders.data),
       });
 
@@ -181,6 +189,11 @@ export class AppInitializerService {
 
   private async getEvents() {
     const res = await fetch(`${environment.cmsUrl}/items/events`);
+    return await res.json();
+  }
+
+  private async getNews() {
+    const res = await fetch(`${environment.cmsUrl}/items/news`);
     return await res.json();
   }
 

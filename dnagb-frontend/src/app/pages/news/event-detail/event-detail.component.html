@@ -1,64 +1,78 @@
 <div class="container page">
-  <section id="event" class="section">
-    <div class="event-header">
-      <h3>
-        {{ data.title }}
-      </h3>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~ news ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  @if(news){
+  <section id="news-detail" class="section">
+    <!-- TODO: edit actions panel and set button to right -->
+    <div class="actions">
+      <!-- TODO: let button float on small screen -->
       <button class="nag_button button-fill back" (click)="goBackToPrevPage()">
         Zurück
       </button>
     </div>
-    <p class="date">
-      {{ data.date_start.toLocaleString("de-DE", options).replace(",", "") }}
+    <h2 class="news-title">
+      {{ news.title }}
+    </h2>
+    <div class="news-info-header">
+      <!-- TODO: add author -->
+      <p class="date">
+        {{ news.date_start.toLocaleString("de-DE", options).replace(",", "") }}
+      </p>
+    </div>
+    <div class="news-content" [innerHTML]="news.article | safeHtml"></div>
+  </section>
+  }
 
-      @if(data.date_end){ –
-      {{ data.date_end.toLocaleString("de-DE", options).replace(",", "") }}
-      }
-    </p>
-    <div
-      class="event_image"
-      [ngClass]="{
-        marginBottom: !data.type.length
-      }"
-    >
-      @if(data.image){
-      <img
-        src="{{ url }}/assets/{{ data.image }}?quality=25"
-        alt="Bild von {{ data.title }}"
-      />
-      } @else {
-      <img src="./assets/naginata-symbolbild-260x300.jpg" alt="" />
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~ event ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  @if(event){
+  <section id="event-detail" class="section">
+    <div class="actions">
+      <button class="nag_button button-fill back" (click)="goBackToPrevPage()">
+        Zurück
+      </button>
+    </div>
+    <h2 class="event-title">
+      {{ event.title }}
+    </h2>
+    <div class="event-info-header">
+      <p class="date">
+        {{ event.date_start.toLocaleString("de-DE", options).replace(",", "") }}
+        @if(event.date_end){ –
+        {{ event.date_end.toLocaleString("de-DE", options).replace(",", "") }}
+        }
+      </p>
+
+      @if(event.type.length > 0){
+      <div class="type">
+        @for( type of event.type; track $index){
+        <span class="chip sm">{{ type }}</span>
+        }
+      </div>
       }
     </div>
-    @if(data.type.length > 0){
-    <div class="type">
-      @for( type of data.type; track $index){
-      <span class="chip sm">{{ type }}</span>
-      }
-    </div>
-    }
-    <p class="announcement">{{ data.announcement }}</p>
-    <p class="description" [innerHTML]="data.description"></p>
+    <p class="description" [innerHTML]="event.description | safeHtml"></p>
 
     <div class="infocontainer">
       <h4>Auf einen Blick</h4>
       <div class="bold">Datum</div>
       <div>
-        {{ data.date_start.toLocaleString("de-DE", options).replace(",", "") }}
+        {{ event.date_start.toLocaleString("de-DE", options).replace(",", "") }}
 
-        @if(data.date_end){ –
-        {{ data.date_end.toLocaleString("de-DE", options).replace(",", "") }}
+        @if(event.date_end){ –
+        {{ event.date_end.toLocaleString("de-DE", options).replace(",", "") }}
         }
       </div>
       <div class="bold">Location</div>
       <div>
-        {{ data.location_name }}
+        {{ event.location_name }}
       </div>
       <div class="bold">Adresse</div>
-      <div>{{ data.street }} {{ data.number }}</div>
-      <div>{{ data.postal_code }} {{ data.city }}</div>
+      <div>{{ event.street }} {{ event.number }}</div>
+      <div>{{ event.postal_code }} {{ event.city }}</div>
 
       <a [href]="mapsLink" target="_blank">Google Maps</a>
     </div>
   </section>
+  }
 </div>

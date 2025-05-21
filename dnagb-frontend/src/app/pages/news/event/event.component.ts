@@ -7,17 +7,18 @@ import { Subject, takeUntil } from 'rxjs';
 import { environment } from '../../../../environment/env';
 
 @Component({
-    selector: 'app-event',
-    imports: [CommonModule],
-    templateUrl: './event.component.html',
-    styleUrl: './event.component.css'
+  selector: 'app-event',
+  imports: [CommonModule],
+  templateUrl: './event.component.html',
+  styleUrl: './event.component.css',
 })
 export class EventComponent implements OnInit, OnDestroy {
   url = environment.cmsUrl;
   unsubscribeAll = new Subject();
   mobile: boolean = false;
   today: Date = new Date();
-  news: NewsItem[] = [];
+  events: NewsItem[] = [];
+  news: any = [];
   options: any = {
     weekday: 'short',
     year: 'numeric',
@@ -34,16 +35,26 @@ export class EventComponent implements OnInit, OnDestroy {
       return a.date_start - b.date_start;
     });
 
-    this.news = [...arr];
-    console.log(`🐦‍⬛: EventComponent -> convertDate -> this.news`, this.news);
+    this.events = [...arr];
+    console.log(
+      `🐦‍⬛: EventComponent -> convertDate -> this.events`,
+      this.events
+    );
   }
 
-  openDetails(id: number | string) {
-    this.router.navigateByUrl(`/news-details/${id}`);
+  openDetails(type: 'event' | 'news', id: number | string) {
+    if (type === 'event') {
+      this.router.navigateByUrl(`/event-details/${id}`);
+    }
+    if (type === 'news') {
+      this.router.navigateByUrl(`/news-details/${id}`);
+    }
   }
 
   ngOnInit(): void {
     this.convertDate(this.state.getConf().events);
+    this.news = this.state.getConf().news;
+    console.log(`🐦‍⬛: EventComponent -> constructor -> this.news`, this.news);
     this.state.windowSize.pipe(takeUntil(this.unsubscribeAll)).subscribe({
       next: (res: any) => {
         if (res.screenWidth <= 768) {

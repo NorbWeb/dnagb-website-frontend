@@ -35,6 +35,11 @@ export const routes: Routes = [
     title: 'Details – DNagB',
   },
   {
+    path: 'event-details/:id',
+    component: EventDetailComponent,
+    title: 'Details – DNagB',
+  },
+  {
     path: 'dnagb/vereinsstrukturen',
     component: AssociationComponent,
     title: 'Vereinsstruktur – DNagB',

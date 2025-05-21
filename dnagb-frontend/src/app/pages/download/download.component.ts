@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
-import { SafePipe } from '../../2_pipes/safe';
+import { SafeUrlPipe } from '../../2_pipes/safeUrl';
 
 @Component({
-    selector: 'app-download',
-    imports: [SafePipe],
-    templateUrl: './download.component.html',
-    styleUrl: './download.component.css'
+  selector: 'app-download',
+  imports: [SafeUrlPipe],
+  templateUrl: './download.component.html',
+  styleUrl: './download.component.css',
 })
 export class DownloadComponent {
   files!: any;

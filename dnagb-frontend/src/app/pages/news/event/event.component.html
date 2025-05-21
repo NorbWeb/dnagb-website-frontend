@@ -1,10 +1,48 @@
 <div class="container page">
   <section id="news" class="section">
-    <h2>Events</h2>
+    <h2>News</h2>
     <div class="news">
       @for(item of news; track $index){ @if(item.status === "published") {
 
-      <div class="news-card" (click)="openDetails(item.id)">
+      <div class="news-card" (click)="openDetails('news', item.id)">
+        <div class="card-image">
+          @if(item.image){
+          <img
+            src="{{ url }}/assets/{{ item.image }}?quality=25"
+            alt="Bild von {{ item.title }}"
+          />
+          } @else {
+
+          <img src="./assets/naginata-symbolbild-260x300.jpg" alt="" />
+          }
+        </div>
+        <div class="card-content">
+          <div class="title">{{ item.title }}</div>
+          <div class="date">
+            {{
+              item.date_start.toLocaleString("de-DE", options).replace(",", "")
+            }}
+            @if(item.date_end){ -
+            {{
+              item.date_end.toLocaleString("de-DE", options).replace(",", "")
+            }}
+            }
+          </div>
+          <p class="announcement">
+            {{ item.announcement }}
+          </p>
+          <div class="details">zum Artikel</div>
+        </div>
+      </div>
+      } }
+    </div>
+  </section>
+  <section id="events" class="section">
+    <h2>Events</h2>
+    <div class="news">
+      @for(item of events; track $index){ @if(item.status === "published") {
+
+      <div class="news-card" (click)="openDetails('event', item.id)">
         <!-- [ngClass]="{ past: item.past }" -->
         <div class="card-image">
           @if(item.image){

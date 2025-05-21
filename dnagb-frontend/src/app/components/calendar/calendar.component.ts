@@ -5,10 +5,10 @@ import { NoteBoxComponent } from '../note-box/note-box.component';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-    selector: 'app-calendar',
-    imports: [CommonModule, NoteBoxComponent],
-    templateUrl: './calendar.component.html',
-    styleUrl: './calendar.component.css'
+  selector: 'app-calendar',
+  imports: [CommonModule],
+  templateUrl: './calendar.component.html',
+  styleUrl: './calendar.component.css',
 })
 export class CalendarComponent implements OnInit, OnDestroy {
   weekday = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
