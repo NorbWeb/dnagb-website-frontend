@@ -3,11 +3,7 @@ import {
   inject,
   provideAppInitializer,
 } from '@angular/core';
-import {
-  provideRouter,
-  withInMemoryScrolling,
-  withViewTransitions,
-} from '@angular/router';
+import { provideRouter, withViewTransitions } from '@angular/router';
 
 import { routes } from './app.routes';
 import { AppInitializerService } from './0_global-services/app-initializer.service';
@@ -26,9 +22,6 @@ export const appConfig: ApplicationConfig = {
       withViewTransitions({
         skipInitialTransition: true,
       })
-      // withInMemoryScrolling({
-      //   scrollPositionRestoration: 'top',
-      // })
     ),
   ],
 };
