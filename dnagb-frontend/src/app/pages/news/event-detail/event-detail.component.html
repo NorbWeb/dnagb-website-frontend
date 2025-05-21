@@ -16,7 +16,15 @@
     <div class="news-info-header">
       <!-- TODO: add author -->
       <p class="date">
-        {{ news.date_start.toLocaleString("de-DE", options).replace(",", "") }}
+        {{
+          news.date_start
+            .toLocaleString("de-DE", {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit"
+            })
+            .replace(",", "")
+        }}
       </p>
     </div>
     <div class="news-content" [innerHTML]="news.article | safeHtml"></div>

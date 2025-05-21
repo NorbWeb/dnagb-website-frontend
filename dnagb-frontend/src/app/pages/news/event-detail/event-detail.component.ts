@@ -34,7 +34,6 @@ export class EventDetailComponent implements OnInit {
   ) {}
 
   goBackToPrevPage(): void {
-    // this.location.back();
     window.history.back();
   }
 

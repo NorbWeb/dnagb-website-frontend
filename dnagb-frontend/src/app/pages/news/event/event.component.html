@@ -20,7 +20,13 @@
           <div class="title">{{ item.title }}</div>
           <div class="date">
             {{
-              item.date_start.toLocaleString("de-DE", options).replace(",", "")
+              item.date_start
+                .toLocaleString("de-DE", {
+                  year: "numeric",
+                  month: "2-digit",
+                  day: "2-digit"
+                })
+                .replace(",", "")
             }}
           </div>
           <p class="announcement">
@@ -38,7 +44,6 @@
       @for(item of events; track $index){ @if(item.status === "published") {
 
       <div class="news-card" (click)="openDetails('event', item.id)">
-        <!-- [ngClass]="{ past: item.past }" -->
         <div class="card-image">
           @if(item.image){
           <img
