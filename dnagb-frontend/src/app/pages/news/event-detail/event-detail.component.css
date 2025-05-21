@@ -55,8 +55,9 @@
 
   .news-content {
     h3,
-    h4 {
-      margin-bottom: 2rem;
+    h4,
+    p {
+      margin: 2rem 0;
     }
 
     img {

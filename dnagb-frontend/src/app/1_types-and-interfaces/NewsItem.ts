@@ -26,4 +26,5 @@ export interface NewsItem {
   date_start: Date | string;
   title: string;
   status: string;
+  author: string;
 }

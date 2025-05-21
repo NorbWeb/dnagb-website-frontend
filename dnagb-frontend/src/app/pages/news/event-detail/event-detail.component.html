@@ -14,18 +14,23 @@
       {{ news.title }}
     </h2>
     <div class="news-info-header">
-      <!-- TODO: add author -->
-      <p class="date">
-        {{
-          news.date_start
-            .toLocaleString("de-DE", {
-              year: "numeric",
-              month: "2-digit",
-              day: "2-digit"
-            })
-            .replace(",", "")
-        }}
-      </p>
+      <div class="date">
+        <span>
+          {{
+            news.date_start
+              .toLocaleString("de-DE", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit"
+              })
+              .replace(",", "")
+          }}
+        </span>
+        <span>
+          @if(news.author){, {{ news.author }}
+          }
+        </span>
+      </div>
     </div>
     <div class="news-content" [innerHTML]="news.article | safeHtml"></div>
   </section>
@@ -44,12 +49,12 @@
       {{ event.title }}
     </h2>
     <div class="event-info-header">
-      <p class="date">
+      <div class="date">
         {{ event.date_start.toLocaleString("de-DE", options).replace(",", "") }}
         @if(event.date_end){ –
         {{ event.date_end.toLocaleString("de-DE", options).replace(",", "") }}
         }
-      </p>
+      </div>
 
       @if(event.type.length > 0){
       <div class="type">
@@ -59,6 +64,7 @@
       </div>
       }
     </div>
+
     <p class="description" [innerHTML]="event.description | safeHtml"></p>
 
     <div class="infocontainer">
