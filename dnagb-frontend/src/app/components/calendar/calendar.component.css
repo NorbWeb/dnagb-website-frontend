@@ -90,8 +90,7 @@
     border: var(--offset) solid var(--secondary);
     padding: calc(0.5rem - var(--offset));
 
-    &:hover,
-    &.active {
+    &:hover {
       background-color: var(--secondary-darken);
       border: 0.25rem solid var(--secondary-darken);
       filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
@@ -105,6 +104,23 @@
     z-index: 100;
     border: var(--offset) solid rgb(255, 55, 0);
     border-radius: var(--component-br);
+
+    &:hover {
+      border: var(--offset) solid rgb(255, 55, 0);
+    }
+  }
+
+  .selected-event {
+    --offset: 0.25rem;
+    padding: calc(0.5rem - var(--offset));
+    position: relative;
+    z-index: 100;
+    border: var(--offset) solid var(--primary);
+    border-radius: var(--component-br);
+
+    &:hover {
+      border: var(--offset) solid var(--primary);
+    }
   }
 }
 
@@ -113,7 +129,12 @@
   justify-content: flex-end;
   height: 2.25rem;
 
-  .back-to-today {
+  .switch-event-buttons {
+    margin-left: 2rem;
+    margin-right: auto;
+  }
+
+  .calendar-note {
     user-select: none;
     cursor: pointer;
     rotate: 10deg;

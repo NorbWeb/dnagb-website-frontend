@@ -37,15 +37,7 @@
       <div class="card-content">
         <div class="title">{{ item.title }}</div>
         <div class="date">
-          {{
-            item.date_start
-              .toLocaleString("de-DE", {
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit"
-              })
-              .replace(",", "")
-          }}
+          {{ item.date_start | date : "dd.MM.yyyy" }}
         </div>
         <p class="announcement">
           {{ item.announcement }}

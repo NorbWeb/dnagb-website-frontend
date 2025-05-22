@@ -3,6 +3,7 @@ import { StateService } from '../../0_global-services/state.service';
 import { CalendarComponent } from '../../components/calendar/calendar.component';
 import { Router } from '@angular/router';
 import { environment } from '../../../environment/env';
+import { DatePipe } from '@angular/common';
 
 interface Title {
   short: string;
@@ -12,7 +13,7 @@ interface Title {
 
 @Component({
   selector: 'app-home',
-  imports: [CalendarComponent],
+  imports: [CalendarComponent, DatePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

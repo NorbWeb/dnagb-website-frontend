@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { EventItem } from '../1_types-and-interfaces/NewsItem';
 
 @Injectable({
   providedIn: 'root',
@@ -17,29 +18,9 @@ export class StateService {
   });
   public readonly confState: Observable<any> = this._conf.asObservable();
 
-  private _eventState: BehaviorSubject<any> = new BehaviorSubject<any>({
-    event: {
-      id: null,
-      status: '',
-      sort: null,
-      user_created: '',
-      date_created: '',
-      user_updated: '',
-      date_updated: '',
-      description: '',
-      date_start: '',
-      date_end: null,
-      location_name: '',
-      title: '',
-      announcement: null,
-      type: [],
-      city: '',
-      street: '',
-      number: '',
-      postal_code: '',
-    },
-  });
-  public readonly eventState: Observable<any> = this._eventState.asObservable();
+  private _eventState = new BehaviorSubject<EventItem | undefined>(undefined);
+  public readonly eventState: Observable<EventItem | undefined> =
+    this._eventState.asObservable();
 
   private _noteBox: BehaviorSubject<any> = new BehaviorSubject<any>({
     open: false,
@@ -83,38 +64,33 @@ export class StateService {
     this._windowSize.next(newState);
   }
 
-  getEventState(): any {
+  getEventState(): EventItem | undefined {
     return this._eventState.getValue();
   }
 
-  updateEventState(newState: any) {
+  updateEventState(newState: EventItem | undefined) {
     this._eventState.next(newState);
   }
 
-  resetEventState(): any {
-    this._eventState.next({
-      event: {
-        id: null,
-        status: '',
-        sort: null,
-        user_created: '',
-        date_created: '',
-        user_updated: '',
-        date_updated: '',
-        description: '',
-        date_start: '',
-        date_end: null,
-        location_name: '',
-        title: '',
-        announcement: null,
-        type: [],
-        city: '',
-        street: '',
-        number: '',
-        postal_code: '',
-      },
-    });
-  }
+  // resetEventState(): void {
+  //   this._eventState.next({
+  //     id: 0,
+  //     status: '',
+  //     image: '',
+  //     past: false,
+  //     description: '',
+  //     date_start: new Date(),
+  //     date_end: null,
+  //     location_name: '',
+  //     title: '',
+  //     announcement: '',
+  //     type: [],
+  //     city: '',
+  //     street: '',
+  //     number: '',
+  //     postal_code: '',
+  //   });
+  // }
 
   getNoteBox(): any {
     return this._noteBox.getValue();

@@ -1,6 +1,7 @@
 import {
   ApplicationConfig,
   inject,
+  LOCALE_ID,
   provideAppInitializer,
 } from '@angular/core';
 import { provideRouter, withViewTransitions } from '@angular/router';
@@ -23,5 +24,6 @@ export const appConfig: ApplicationConfig = {
         skipInitialTransition: true,
       })
     ),
+    { provide: LOCALE_ID, useValue: 'de-DE' },
   ],
 };

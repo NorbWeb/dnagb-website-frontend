@@ -24,9 +24,13 @@
         [ngClass]="{
           today: element.today,
           event: element.event,
-          active: element.event ? element.event.id === currentOpen : null
+          'selected-event':
+            element.event?.date_start?.getDate() === selectedDate.getDate() &&
+            element.event?.date_start?.getMonth() === selectedDate.getMonth() &&
+            element.event?.date_start?.getFullYear() ===
+              selectedDate.getFullYear()
         }"
-        (click)="element.event ? openEventBox($event, element.event.id) : null"
+        (click)="element.event ? openEventBox($event, element.event.id) : ''"
         >{{ element.label }}
       </span>
       } @else {
@@ -35,8 +39,13 @@
     </div>
   </div>
   <div class="calendar-extend">
+    <div class="switch-event-buttons">
+      <button class="calendar-note" (click)="goToPrevEvent()">Event -</button>
+      <button class="calendar-note" (click)="goToNextEvent()">Event +</button>
+    </div>
+
     @if(startDate.year !== currentYear || startDate.month !== currentMonth) {
-    <button class="back-to-today" (click)="goToCurrentDate()">heute</button>
+    <button class="calendar-note" (click)="goToToday()">heute</button>
     }
   </div>
 </div>

@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
-import { NoteBoxComponent } from '../note-box/note-box.component';
-import { Subject, takeUntil } from 'rxjs';
+import { CalendarMonth } from '../../1_types-and-interfaces/calendarMonth';
+import { EventItem } from '../../1_types-and-interfaces/NewsItem';
 
 @Component({
   selector: 'app-calendar',
@@ -11,6 +11,8 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrl: './calendar.component.css',
 })
 export class CalendarComponent implements OnInit, OnDestroy {
+  state = inject(StateService);
+  events: EventItem[] = [];
   weekday = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
   month = [
     'Januar',
@@ -26,65 +28,45 @@ export class CalendarComponent implements OnInit, OnDestroy {
     'November',
     'Dezember',
   ];
-  currentDate = new Date();
-  currentYear = this.currentDate.getFullYear();
-  currentMonth = this.currentDate.getMonth();
+
+  today: Date = new Date();
+  selectedDate: Date = new Date();
+  currentDate: Date = new Date();
+  currentYear: number = this.currentDate.getFullYear();
+  currentMonth: number = this.currentDate.getMonth();
   startDate = {
     month: this.currentDate.getMonth(),
     year: this.currentDate.getFullYear(),
   };
-  displayedDays: any[] = [];
+  displayedDays: CalendarMonth[] = [];
   monthCounter: number = 0;
-  currentOpen!: number | undefined;
-
-  constructor(private state: StateService) {}
 
   getDaysInMonth(year: number, month: number) {
     return new Date(year, month, 0).getDate();
   }
 
-  findEventDate(day: Date) {
-    let events = this.state.getConf().events;
-    for (const element of events) {
+  findEventDate(date: Date) {
+    let result = undefined;
+    for (const element of this.events) {
       if (
-        day.getDate() === element.date_start.getDate() &&
-        day.getMonth() === element.date_start.getMonth() &&
-        day.getFullYear() === element.date_start.getFullYear()
+        date.getDate() === element.date_start?.getDate() &&
+        date.getMonth() === element.date_start.getMonth() &&
+        date.getFullYear() === element.date_start.getFullYear()
       ) {
-        return element;
-      } else {
-        // console.log('nope');
+        result = element;
       }
     }
+    return result;
   }
 
   openEventBox(e: any, id: number) {
     e.stopPropagation();
-    // let box = document.getElementById('event-box');
-    // let element = e.target.getBoundingClientRect();
-
-    // if (box) {
-    //   box.style.top = element.y + element.height + 8 + 'px';
-    //   box.style.left = element.x + element.width / 2 + 'px';
-    //   box.style.translate = '-50%';
-    // }
-
-    this.currentOpen = id;
-
     this.state.updateNoteBox({ ...this.state.getNoteBox(), open: true });
-    let newState = this.state.getEventState();
-
-    newState.event = this.state
+    let newState = this.state
       .getConf()
       .events.find((f: { id: number }) => f.id === id);
-
     this.state.updateEventState(newState);
   }
-
-  // closeEventBox() {
-  //   this.state.updateNoteBox({ ...this.state.getNoteBox(), open: false });
-  //   this.currentOpen = undefined;
-  // }
 
   initCalendar() {
     let days = this.getDaysInMonth(this.currentYear, this.currentMonth + 1); // Number of days in current month
@@ -96,9 +78,9 @@ export class CalendarComponent implements OnInit, OnDestroy {
       this.currentYear,
       this.currentMonth
     ); // Last day of month before current month
-    let monthBefor = []; // Holds all days for weekday gap before current month
-    let month = []; // Holds all days of current month
-    let monthAfter = []; // Holds all days for weekday gap after current month
+    let monthBefor: CalendarMonth[] = []; // Holds all days for weekday gap before current month
+    let month: CalendarMonth[] = []; // Holds all days of current month
+    let monthAfter: CalendarMonth[] = []; // Holds all days for weekday gap after current month
 
     let dayBeforeCount = lastDayMonthBefore - firstDay + 2; // Helps calculate how many days you need before actual month
 
@@ -126,10 +108,11 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
       // To find today and set boolean to true
       if (
-        this.currentDate.getDate() === dateObject.getDate() &&
-        this.currentDate.getMonth() === dateObject.getMonth() &&
-        this.currentDate.getFullYear() === dateObject.getFullYear()
+        this.today.getDate() === dateObject.getDate() &&
+        this.today.getMonth() === dateObject.getMonth() &&
+        this.today.getFullYear() === dateObject.getFullYear()
       ) {
+        this.selectedDate = structuredClone(dateObject);
         month.push({
           label: i,
           inMonth: true,
@@ -170,30 +153,104 @@ export class CalendarComponent implements OnInit, OnDestroy {
     if (this.currentMonth === 11) {
       this.currentMonth = 0;
       ++this.currentYear;
+      this.currentDate.setFullYear(this.currentYear);
     } else {
       ++this.currentMonth;
     }
+    this.currentDate.setMonth(this.currentMonth);
+
+    this.selectedDate = structuredClone(this.currentDate);
     this.initCalendar();
+    console.log(
+      `🐦‍⬛: prev -> `,
+      this.selectedDate.getDay(),
+      this.currentDate.getDay()
+    );
   }
 
   prevMonth() {
     if (this.currentMonth === 0) {
       this.currentMonth = 11;
       --this.currentYear;
+      this.currentDate.setFullYear(this.currentYear);
     } else {
       --this.currentMonth;
     }
+    this.currentDate.setMonth(this.currentMonth);
+
+    this.selectedDate = structuredClone(this.currentDate);
     this.initCalendar();
+
+    console.log(
+      `🐦‍⬛: prev -> `,
+      this.selectedDate.getDay(),
+      this.currentDate.getDay()
+    );
   }
 
-  goToCurrentDate() {
+  goToToday() {
     this.currentDate = new Date();
     this.currentYear = this.currentDate.getFullYear();
     this.currentMonth = this.currentDate.getMonth();
+    this.selectedDate = this.currentDate;
     this.initCalendar();
   }
 
+  goToPrevEvent() {
+    let prevEvent = undefined;
+    for (let i = 0; i < this.events.length; i++) {
+      if (this.events[i].date_start < this.selectedDate) {
+        prevEvent = this.events[i];
+        this.currentDate =
+          typeof prevEvent.date_start === 'string'
+            ? new Date(prevEvent.date_start)
+            : structuredClone(prevEvent.date_start);
+        this.currentMonth = this.currentDate.getMonth();
+        this.currentYear = this.currentDate.getFullYear();
+        this.selectedDate = structuredClone(this.currentDate);
+        this.initCalendar();
+
+        console.log(
+          `🐦‍⬛: prev -> `,
+          this.selectedDate.getDay(),
+          this.currentDate.getDay()
+        );
+        break;
+      }
+    }
+    if (!prevEvent) {
+      return;
+    }
+  }
+
+  goToNextEvent() {
+    let nextEvent = undefined;
+    for (let i = this.events.length - 1; i >= 0; i--) {
+      if (this.events[i].date_start > this.selectedDate) {
+        nextEvent = this.events[i];
+        this.currentDate =
+          typeof nextEvent.date_start === 'string'
+            ? new Date(nextEvent.date_start)
+            : structuredClone(nextEvent.date_start);
+        this.currentMonth = this.currentDate.getMonth();
+        this.currentYear = this.currentDate.getFullYear();
+        this.selectedDate = structuredClone(this.currentDate);
+        this.initCalendar();
+        console.log(
+          `🐦‍⬛: prev -> `,
+          this.selectedDate.getDay(),
+          this.currentDate.getDay()
+        );
+        break;
+      }
+    }
+    if (!nextEvent) {
+      return;
+    }
+  }
+
   ngOnInit(): void {
+    this.events = this.state.getConf().events;
     this.initCalendar();
   }
   ngOnDestroy(): void {}

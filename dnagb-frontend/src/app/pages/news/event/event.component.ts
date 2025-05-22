@@ -2,13 +2,13 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StateService } from '../../../0_global-services/state.service';
 import { EventItem, NewsItem } from '../../../1_types-and-interfaces/NewsItem';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 import { environment } from '../../../../environment/env';
 
 @Component({
   selector: 'app-event',
-  imports: [CommonModule],
+  imports: [CommonModule, DatePipe],
   templateUrl: './event.component.html',
   styleUrl: './event.component.css',
 })
@@ -19,14 +19,14 @@ export class EventComponent implements OnInit, OnDestroy {
   today: Date = new Date();
   events: EventItem[] = [];
   news: NewsItem[] = [];
-  options: any = {
-    weekday: 'short',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    // hour: '2-digit',
-    // minute: '2-digit',
-  };
+  // options: any = {
+  //   weekday: 'short',
+  //   year: 'numeric',
+  //   month: '2-digit',
+  //   day: '2-digit',
+  //   // hour: '2-digit',
+  //   // minute: '2-digit',
+  // };
 
   private state = inject(StateService);
   private router = inject(Router);

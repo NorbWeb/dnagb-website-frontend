@@ -7,6 +7,9 @@ import {
   EventType,
   NewsItem,
 } from '../1_types-and-interfaces/NewsItem';
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+import localeDeExtra from '@angular/common/locales/extra/de';
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +42,8 @@ export class AppInitializerService {
       const settings = await this.getAppConf().catch(reject);
       const files = await this.getFiles();
       const folders = await this.getFolders();
+
+      registerLocaleData(localeDe, 'de-DE', localeDeExtra);
 
       this.setColors(
         settings.data.primary,

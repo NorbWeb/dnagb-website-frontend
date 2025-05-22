@@ -1,10 +1,10 @@
 <div class="note" [ngClass]="{ open: open }" (click)="closeEventBox()">
   <div class="note-card" (click)="navigateToEvent()">
     <div class="card-image">
-      @if(data.image){
+      @if(data?.image){
       <img
-        src="{{ url }}/assets/{{ data.image }}?quality=25"
-        alt="Bild von {{ data.title }}"
+        src="{{ url }}/assets/{{ data?.image }}?quality=25"
+        alt="Bild von {{ data?.title }}"
       />
       } @else {
 
@@ -12,20 +12,12 @@
       }
     </div>
     <div class="card-content">
-      <div class="title">{{ data.title }}</div>
+      <div class="title">{{ data?.title }}</div>
       <div class="date">
-        {{
-          data.date_start
-            .toLocaleString("de-DE", {
-              year: "numeric",
-              month: "2-digit",
-              day: "2-digit"
-            })
-            .replace(",", "")
-        }}
+        {{ data?.date_start | date : "dd.MM.yyyy" }}
       </div>
       <p class="announcement">
-        {{ data.announcement }}
+        {{ data?.announcement }}
       </p>
       <div class="details">zum Event</div>
     </div>
