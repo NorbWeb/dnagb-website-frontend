@@ -74,3 +74,19 @@
     }
   }
 }
+
+@media screen and (max-width: 992px) {
+  #event-detail,
+  #news-detail {
+    .action-panel {
+      display: none;
+    }
+  }
+
+  .mobile-container {
+    display: flex;
+    justify-content: end;
+    position: sticky;
+    bottom: 2rem;
+  }
+}

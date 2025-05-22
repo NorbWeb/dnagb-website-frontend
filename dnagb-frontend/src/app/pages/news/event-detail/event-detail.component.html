@@ -4,7 +4,6 @@
   @if(news){
   <section id="news-detail" class="section">
     <div class="action-panel">
-      <!-- TODO: let button float on small screen -->
       <!-- TODO: add icons, here back arrow -->
       <button class="nag_button button-fill back" (click)="goBackToPrevPage()">
         Zurück
@@ -33,6 +32,14 @@
       </div>
     </div>
     <div class="news-content" [innerHTML]="news.article | safeHtml"></div>
+    <div class="mobile mobile-container">
+      <button
+        class="nag_button button-fill back mobile"
+        (click)="goBackToPrevPage()"
+      >
+        Zurück
+      </button>
+    </div>
   </section>
   }
 
@@ -86,6 +93,14 @@
       <div>{{ event.postal_code }} {{ event.city }}</div>
 
       <a [href]="mapsLink" target="_blank">Google Maps</a>
+    </div>
+    <div class="mobile mobile-container">
+      <button
+        class="nag_button button-fill back mobile"
+        (click)="goBackToPrevPage()"
+      >
+        Zurück
+      </button>
     </div>
   </section>
   }
