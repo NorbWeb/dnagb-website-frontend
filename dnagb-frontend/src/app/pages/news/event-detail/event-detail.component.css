@@ -1,11 +1,5 @@
 #event-detail,
 #news-detail {
-  .event-title {
-    &:after {
-      margin-bottom: 0;
-    }
-  }
-
   .action-panel {
     display: flex;
     justify-content: end;
@@ -55,8 +49,7 @@
 
   .news-content {
     h3,
-    h4,
-    p {
+    h4 {
       margin: 2rem 0;
     }
 

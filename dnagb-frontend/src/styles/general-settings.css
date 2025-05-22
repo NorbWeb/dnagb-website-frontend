@@ -49,6 +49,8 @@ h4,
 h5,
 h6 {
   margin: 0 0 1rem 0;
+  margin: 2rem 0;
+
   font-family: Helvetica, sans-serif;
   overflow-wrap: break-word;
   break-after: avoid-column;
@@ -56,17 +58,12 @@ h6 {
 
 h2 {
   font-size: 3rem;
-  margin: 2rem 0 1rem;
 }
 h3 {
   font-size: 2rem;
 }
 h4 {
   font-size: 1.5rem;
-}
-
-p {
-  margin: 0;
 }
 
 p,
@@ -83,23 +80,8 @@ li {
   max-width: 905px;
 
   p {
-    margin-bottom: 2rem;
     line-height: 1.75rem;
-
-    &:first-child {
-      margin-top: 0;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
   }
-}
-
-.section-header {
-  --offset: 0.375rem;
-  padding-bottom: calc(0.75rem - var(--offset));
-  padding-top: 0.75rem;
 }
 
 h2 {
@@ -112,6 +94,5 @@ h2 {
     height: var(--offset);
     background-color: var(--primary-lighten);
     margin-top: calc(0.75rem - var(--offset));
-    margin-bottom: 1.75rem;
   }
 }

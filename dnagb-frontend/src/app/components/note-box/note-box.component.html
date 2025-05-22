@@ -1,20 +1,33 @@
 <div class="note" [ngClass]="{ open: open }" (click)="closeEventBox()">
-  <div class="section note-body">
-    <h4>{{ data.title }}</h4>
-    <div>{{ data.city }}</div>
-    <div class="type">
-      @for(type of data.type; track $index){
+  <div class="note-card" (click)="navigateToEvent()">
+    <div class="card-image">
+      @if(data.image){
+      <img
+        src="{{ url }}/assets/{{ data.image }}?quality=25"
+        alt="Bild von {{ data.title }}"
+      />
+      } @else {
 
-      <div class="chip sm">{{ type }}</div>
+      <img src="./assets/naginata-symbolbild-260x300.jpg" alt="" />
       }
     </div>
-    <div class="button-wrapper">
-      <button
-        class="nag_button button-fill button-sm"
-        (click)="navigateToEvent()"
-      >
-        Details
-      </button>
+    <div class="card-content">
+      <div class="title">{{ data.title }}</div>
+      <div class="date">
+        {{
+          data.date_start
+            .toLocaleString("de-DE", {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit"
+            })
+            .replace(",", "")
+        }}
+      </div>
+      <p class="announcement">
+        {{ data.announcement }}
+      </p>
+      <div class="details">zum Artikel</div>
     </div>
   </div>
 </div>
