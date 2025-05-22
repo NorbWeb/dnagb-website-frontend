@@ -109,19 +109,6 @@
       border: var(--offset) solid rgb(255, 55, 0);
     }
   }
-
-  .selected-event {
-    --offset: 0.25rem;
-    padding: calc(0.5rem - var(--offset));
-    position: relative;
-    z-index: 100;
-    border: var(--offset) solid var(--primary);
-    border-radius: var(--component-br);
-
-    &:hover {
-      border: var(--offset) solid var(--primary);
-    }
-  }
 }
 
 .calendar-extend {

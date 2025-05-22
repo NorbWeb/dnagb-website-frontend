@@ -23,12 +23,7 @@
         class="day in-month"
         [ngClass]="{
           today: element.today,
-          event: element.event,
-          'selected-event':
-            element.event?.date_start?.getDate() === selectedDate.getDate() &&
-            element.event?.date_start?.getMonth() === selectedDate.getMonth() &&
-            element.event?.date_start?.getFullYear() ===
-              selectedDate.getFullYear()
+          event: element.event,         
         }"
         (click)="element.event ? openEventBox($event, element.event.id) : ''"
         >{{ element.label }}

@@ -45,7 +45,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
     return new Date(year, month, 0).getDate();
   }
 
-  findEventDate(date: Date) {
+  findEventDateExactMatch(date: Date) {
     let result = undefined;
     for (const element of this.events) {
       if (
@@ -118,7 +118,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
           inMonth: true,
           date: dateObject,
           today: true,
-          event: this.findEventDate(dateObject),
+          event: this.findEventDateExactMatch(dateObject),
         });
       } else {
         month.push({
@@ -126,7 +126,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
           inMonth: true,
           date: dateObject,
           today: false,
-          event: this.findEventDate(dateObject),
+          event: this.findEventDateExactMatch(dateObject),
         });
       }
     }
@@ -161,11 +161,6 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
     this.selectedDate = structuredClone(this.currentDate);
     this.initCalendar();
-    console.log(
-      `🐦‍⬛: prev -> `,
-      this.selectedDate.getDay(),
-      this.currentDate.getDay()
-    );
   }
 
   prevMonth() {
@@ -180,12 +175,6 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
     this.selectedDate = structuredClone(this.currentDate);
     this.initCalendar();
-
-    console.log(
-      `🐦‍⬛: prev -> `,
-      this.selectedDate.getDay(),
-      this.currentDate.getDay()
-    );
   }
 
   goToToday() {
@@ -198,9 +187,22 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
   goToPrevEvent() {
     let prevEvent = undefined;
+    let eventsCopy: EventItem[] = [];
+    // Skip events in same months, to switch to prev month
     for (let i = 0; i < this.events.length; i++) {
-      if (this.events[i].date_start < this.selectedDate) {
-        prevEvent = this.events[i];
+      const exists = eventsCopy.some(
+        (e) =>
+          e.date_start.getMonth() === this.events[i].date_start.getMonth() &&
+          e.date_start.getFullYear() === this.events[i].date_start.getFullYear()
+      );
+      if (!exists) {
+        eventsCopy.push(this.events[i]);
+      }
+    }
+
+    for (let i = 0; i < eventsCopy.length; i++) {
+      if (eventsCopy[i].date_start < this.selectedDate) {
+        prevEvent = eventsCopy[i];
         this.currentDate =
           typeof prevEvent.date_start === 'string'
             ? new Date(prevEvent.date_start)
@@ -210,11 +212,6 @@ export class CalendarComponent implements OnInit, OnDestroy {
         this.selectedDate = structuredClone(this.currentDate);
         this.initCalendar();
 
-        console.log(
-          `🐦‍⬛: prev -> `,
-          this.selectedDate.getDay(),
-          this.currentDate.getDay()
-        );
         break;
       }
     }
@@ -225,9 +222,22 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
   goToNextEvent() {
     let nextEvent = undefined;
-    for (let i = this.events.length - 1; i >= 0; i--) {
-      if (this.events[i].date_start > this.selectedDate) {
-        nextEvent = this.events[i];
+    let eventsCopy: EventItem[] = [];
+    // Skip events in same months, to switch to next month
+    for (let i = 0; i < this.events.length; i++) {
+      const exists = eventsCopy.some(
+        (e) =>
+          e.date_start.getMonth() === this.events[i].date_start.getMonth() &&
+          e.date_start.getFullYear() === this.events[i].date_start.getFullYear()
+      );
+      if (!exists) {
+        eventsCopy.push(this.events[i]);
+      }
+    }
+
+    for (let i = eventsCopy.length - 1; i >= 0; i--) {
+      if (eventsCopy[i].date_start > this.selectedDate) {
+        nextEvent = eventsCopy[i];
         this.currentDate =
           typeof nextEvent.date_start === 'string'
             ? new Date(nextEvent.date_start)
@@ -236,11 +246,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
         this.currentYear = this.currentDate.getFullYear();
         this.selectedDate = structuredClone(this.currentDate);
         this.initCalendar();
-        console.log(
-          `🐦‍⬛: prev -> `,
-          this.selectedDate.getDay(),
-          this.currentDate.getDay()
-        );
+
         break;
       }
     }
