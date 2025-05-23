@@ -23,14 +23,6 @@
 
   .copyright {
     font-size: 0.875rem;
-    a {
-      color: var(--primary);
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
   }
 
   .no-mobile {

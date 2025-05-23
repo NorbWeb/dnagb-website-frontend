@@ -21,7 +21,6 @@ export class CustomHtmlComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.pipe(takeUntil(this.unsubscribeAll)).subscribe({
       next: (res) => {
-        console.log(`🐦‍⬛: CustomHtmlComponent -> res`, res);
         if (res['status'] === 'published') {
           this.data = res['html'];
         }

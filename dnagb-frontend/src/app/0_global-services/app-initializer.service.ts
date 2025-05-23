@@ -27,22 +27,22 @@ export class AppInitializerService {
       );
       const news = await this.getNews().catch(reject);
       const events = await this.getEvents().catch(reject);
-      await this.getExamination().catch(reject);
       const imprint = await this.getImprint().catch(reject);
-      const board = await this.getBoard().catch(reject);
-      const privacy = await this.getPrivacy().catch(reject);
-      await this.getUseful().catch(reject);
-      const contact = await this.getContact().catch(reject);
       const dojos = await this.getDojos().catch(reject);
-      await this.getPlaning().catch(reject);
       const speaker = await this.getSpeaker().catch(reject);
-      await this.getMembership().catch(reject);
-      await this.getNaginata().catch(reject);
+      const board = await this.getBoard().catch(reject);
       const downloads = await this.getDownloads().catch(reject);
       const downloadsFiles = await this.getDownloadsFiles().catch(reject);
       const settings = await this.getAppConf().catch(reject);
       const files = await this.getFiles();
       const folders = await this.getFolders();
+      await this.getExamination().catch(reject);
+      await this.getPrivacy().catch(reject);
+      await this.getUseful().catch(reject);
+      await this.getContact().catch(reject);
+      await this.getPlaning().catch(reject);
+      await this.getMembership().catch(reject);
+      await this.getNaginata().catch(reject);
 
       registerLocaleData(localeDe, 'de-DE', localeDeExtra);
 
@@ -72,11 +72,7 @@ export class AppInitializerService {
 
         dojos: dojos.data,
 
-        legal: {
-          imprint: imprint.data,
-          // privacy: privacy.data,
-          // contact: contact.data,
-        },
+        imprint: imprint.data,
 
         events: [...this.convertEventData(events.data)],
 
