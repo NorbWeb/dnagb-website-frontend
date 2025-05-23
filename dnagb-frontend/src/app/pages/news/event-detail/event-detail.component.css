@@ -48,11 +48,6 @@
   }
 
   .news-content {
-    h3,
-    h4 {
-      margin: 2rem 0;
-    }
-
     img {
       max-width: 100%;
       border-radius: var(--component-br);

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { StateService } from '../../../0_global-services/state.service';
+import { StateService } from '../../0_global-services/state.service';
 
 @Component({
-    selector: 'app-imprint',
-    imports: [],
-    templateUrl: './imprint.component.html',
-    styleUrl: './imprint.component.css'
+  selector: 'app-imprint',
+  imports: [],
+  templateUrl: './imprint.component.html',
+  styleUrl: './imprint.component.css',
 })
 export class ImprintComponent {
   data!: any;

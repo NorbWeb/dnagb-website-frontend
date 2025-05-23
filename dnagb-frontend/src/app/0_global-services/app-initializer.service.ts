@@ -27,17 +27,17 @@ export class AppInitializerService {
       );
       const news = await this.getNews().catch(reject);
       const events = await this.getEvents().catch(reject);
-      const examination = await this.getExamination().catch(reject);
+      await this.getExamination().catch(reject);
       const imprint = await this.getImprint().catch(reject);
       const board = await this.getBoard().catch(reject);
       const privacy = await this.getPrivacy().catch(reject);
-      const useful = await this.getUseful().catch(reject);
+      await this.getUseful().catch(reject);
       const contact = await this.getContact().catch(reject);
       const dojos = await this.getDojos().catch(reject);
-      const planing = await this.getPlaning().catch(reject);
+      await this.getPlaning().catch(reject);
       const speaker = await this.getSpeaker().catch(reject);
-      const membership = await this.getMembership().catch(reject);
-      const naginata = await this.getNaginata().catch(reject);
+      await this.getMembership().catch(reject);
+      await this.getNaginata().catch(reject);
       const downloads = await this.getDownloads().catch(reject);
       const downloadsFiles = await this.getDownloadsFiles().catch(reject);
       const settings = await this.getAppConf().catch(reject);
@@ -68,22 +68,14 @@ export class AppInitializerService {
           who_we_are: associationText.data,
           board: board.data,
           speaker: speaker.data,
-          membership: membership.data,
         },
 
         dojos: dojos.data,
-        naginata: naginata.data,
-
-        info: {
-          examination: examination.data,
-          useful: useful.data,
-          planing: planing.data,
-        },
 
         legal: {
           imprint: imprint.data,
-          privacy: privacy.data,
-          contact: contact.data,
+          // privacy: privacy.data,
+          // contact: contact.data,
         },
 
         events: [...this.convertEventData(events.data)],
@@ -196,7 +188,18 @@ export class AppInitializerService {
 
   private async getMembership() {
     const res = await fetch(`${environment.cmsUrl}/items/membership`);
-    return await res.json();
+    const json = await res.json();
+
+    let route = routes.find((r) => {
+      return r.path === 'dnagb/mitglied-werden';
+    });
+
+    if (route) {
+      route.data = {
+        html: json.data['membership_text'],
+        status: json.data.status,
+      };
+    }
   }
 
   private async getBoard() {
@@ -232,30 +235,98 @@ export class AppInitializerService {
   private async getNaginata() {
     const res = await fetch(`${environment.cmsUrl}/items/naginata`);
     const json = await res.json();
+
+    let whatIsNaginataRoute = routes.find((r) => {
+      return r.path === 'naginata/was-ist-naginata';
+    });
+
+    let equipmentRoute = routes.find((r) => {
+      return r.path === 'naginata/equipment';
+    });
+
     let historyRoute = routes.find((r) => {
       return r.path === 'naginata/geschichte';
     });
 
-    if (historyRoute) {
-      historyRoute.data = { html: json.data.history };
+    let martialArtRoute = routes.find((r) => {
+      return r.path === 'naginata/kampfsport';
+    });
+
+    if (equipmentRoute) {
+      equipmentRoute.data = {
+        html: json.data['equipment'],
+        status: json.data.status,
+      };
     }
 
-    return json;
+    if (whatIsNaginataRoute) {
+      whatIsNaginataRoute.data = {
+        html: json.data['what_is'],
+        status: json.data.status,
+      };
+    }
+
+    if (historyRoute) {
+      historyRoute.data = {
+        html: json.data['history'],
+        status: json.data.status,
+      };
+    }
+
+    if (martialArtRoute) {
+      martialArtRoute.data = {
+        html: json.data['martial_art'],
+        status: json.data.status,
+      };
+    }
   }
 
   private async getExamination() {
     const res = await fetch(`${environment.cmsUrl}/items/examination`);
-    return await res.json();
+    const json = await res.json();
+
+    let route = routes.find((r) => {
+      return r.path === 'info/pruefung';
+    });
+
+    if (route) {
+      route.data = {
+        html: json.data['examination_text'],
+        status: json.data.status,
+      };
+    }
   }
 
   private async getUseful() {
     const res = await fetch(`${environment.cmsUrl}/items/useful`);
-    return await res.json();
+    const json = await res.json();
+
+    let route = routes.find((r) => {
+      return r.path === 'info/nuetzliches';
+    });
+
+    if (route) {
+      route.data = {
+        html: json.data['useful_text'],
+        status: json.data.status,
+      };
+    }
   }
 
   private async getPlaning() {
     const res = await fetch(`${environment.cmsUrl}/items/planing`);
-    return await res.json();
+    const json = await res.json();
+
+    let route = routes.find((r) => {
+      return r.path === 'info/veranstaltung-planen';
+    });
+
+    if (route) {
+      route.data = {
+        html: json.data['planing_text'],
+        status: json.data.status,
+      };
+    }
   }
 
   private async getImprint() {
@@ -265,12 +336,34 @@ export class AppInitializerService {
 
   private async getPrivacy() {
     const res = await fetch(`${environment.cmsUrl}/items/privacy`);
-    return await res.json();
+    const json = await res.json();
+
+    let route = routes.find((r) => {
+      return r.path === 'datenschutz';
+    });
+
+    if (route) {
+      route.data = {
+        html: json.data['privacy_text'],
+        status: json.data.status,
+      };
+    }
   }
 
   private async getContact() {
     const res = await fetch(`${environment.cmsUrl}/items/contact`);
-    return await res.json();
+    const json = await res.json();
+
+    let route = routes.find((r) => {
+      return r.path === 'kontakt';
+    });
+
+    if (route) {
+      route.data = {
+        html: json.data['contact_text'],
+        status: json.data.status,
+      };
+    }
   }
 
   private async getFiles() {

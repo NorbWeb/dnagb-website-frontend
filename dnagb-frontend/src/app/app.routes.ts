@@ -1,72 +1,81 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { ImprintComponent } from './pages/legal/imprint/imprint.component';
-import { PrivacyComponent } from './pages/legal/privacy/privacy.component';
-import { ContactComponent } from './pages/legal/contact/contact.component';
-import { DownloadComponent } from './pages/download/download.component';
-import { DojosComponent } from './pages/dojos/dojos.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { MembershipComponent } from './pages/dnagb/membership/membership.component';
-import { EquipmentComponent } from './pages/naginata/equipment/equipment.component';
-import { MartialArtComponent } from './pages/naginata/martial-art/martial-art.component';
-import { HistoryComponent } from './pages/naginata/history/history.component';
-import { ExamComponent } from './pages/infos/exam/exam.component';
-import { HandyStuffComponent } from './pages/infos/handy-stuff/handy-stuff.component';
-import { EventPlanComponent } from './pages/infos/event-plan/event-plan.component';
-import { EventComponent } from './pages/news/event/event.component';
-import { EventDetailComponent } from './pages/news/event-detail/event-detail.component';
-import { AssociationComponent } from './pages/dnagb/association/association.component';
-import { WhatIsComponent } from './pages/naginata/what-is/what-is.component';
 
 export let routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent,
+    loadComponent: () =>
+      import('./pages/home/home.component').then((m) => m.HomeComponent),
     title: 'Home – DNagB',
   },
   {
     path: 'news',
-    component: EventComponent,
+    loadComponent: () =>
+      import('./pages/news/event/event.component').then(
+        (m) => m.EventComponent
+      ),
     title: 'Aktuelles – DNagB',
   },
   {
     path: 'news-details/:id',
-    component: EventDetailComponent,
+    loadComponent: () =>
+      import('./pages/news/event-detail/event-detail.component').then(
+        (m) => m.EventDetailComponent
+      ),
     title: 'Details – DNagB',
   },
   {
     path: 'event-details/:id',
-    component: EventDetailComponent,
+    loadComponent: () =>
+      import('./pages/news/event-detail/event-detail.component').then(
+        (m) => m.EventDetailComponent
+      ),
     title: 'Details – DNagB',
   },
   {
     path: 'dnagb/vereinsstrukturen',
-    component: AssociationComponent,
+    loadComponent: () =>
+      import('./pages/association/association.component').then(
+        (m) => m.AssociationComponent
+      ),
     title: 'Vereinsstruktur – DNagB',
   },
   {
     path: 'naginata-gruppen',
-    component: DojosComponent,
+    loadComponent: () =>
+      import('./pages/dojos/dojos.component').then((m) => m.DojosComponent),
     title: 'Naginata-Gruppen – DNagB',
   },
   {
     path: 'dnagb/mitglied-werden',
-    component: MembershipComponent,
+    loadComponent: () =>
+      import('./components/custom-html/custom-html.component').then(
+        (m) => m.CustomHtmlComponent
+      ),
     title: 'Mitglied werden – DNagB',
   },
   {
     path: 'naginata/was-ist-naginata',
-    component: WhatIsComponent,
+    loadComponent: () =>
+      import('./components/custom-html/custom-html.component').then(
+        (m) => m.CustomHtmlComponent
+      ),
     title: 'Was ist Naginata – DNagB',
   },
   {
     path: 'naginata/ausruestung',
-    component: EquipmentComponent,
+    loadComponent: () =>
+      import('./components/custom-html/custom-html.component').then(
+        (m) => m.CustomHtmlComponent
+      ),
     title: 'Waffe & Rüstung – DNagB',
   },
   {
     path: 'naginata/kampfsport',
-    component: MartialArtComponent,
+    loadComponent: () =>
+      import('./components/custom-html/custom-html.component').then(
+        (m) => m.CustomHtmlComponent
+      ),
     title: 'Der Kampfsport – DNagB',
   },
   {
@@ -76,41 +85,61 @@ export let routes: Routes = [
         (m) => m.CustomHtmlComponent
       ),
     title: 'Geschichte – DNagB',
-    // data: ['naginata', 'history'],
   },
   {
     path: 'info/pruefung',
-    component: ExamComponent,
+    loadComponent: () =>
+      import('./components/custom-html/custom-html.component').then(
+        (m) => m.CustomHtmlComponent
+      ),
     title: 'Prüfung – DNagB',
   },
   {
     path: 'info/nuetzliches',
-    component: HandyStuffComponent,
+    loadComponent: () =>
+      import('./components/custom-html/custom-html.component').then(
+        (m) => m.CustomHtmlComponent
+      ),
     title: 'Nützliches – DNagB',
   },
   {
     path: 'info/veranstaltung-planen',
-    component: EventPlanComponent,
+    loadComponent: () =>
+      import('./components/custom-html/custom-html.component').then(
+        (m) => m.CustomHtmlComponent
+      ),
     title: 'Veranstaltung planen – DNagB',
   },
   {
     path: 'download',
-    component: DownloadComponent,
+    loadComponent: () =>
+      import('./pages/download/download.component').then(
+        (m) => m.DownloadComponent
+      ),
     title: 'Downloads – DNagB',
   },
   {
-    path: 'imprint',
-    component: ImprintComponent,
+    path: 'impressum',
+    loadComponent: () =>
+      import('./pages/imprint/imprint.component').then(
+        (m) => m.ImprintComponent
+      ),
     title: 'Impressum – DNagB',
   },
   {
-    path: 'privacy',
-    component: PrivacyComponent,
+    path: 'datenschutz',
+    loadComponent: () =>
+      import('./components/custom-html/custom-html.component').then(
+        (m) => m.CustomHtmlComponent
+      ),
     title: 'Datenschutz – DNagB',
   },
   {
-    path: 'contact',
-    component: ContactComponent,
+    path: 'kontakt',
+    loadComponent: () =>
+      import('./components/custom-html/custom-html.component').then(
+        (m) => m.CustomHtmlComponent
+      ),
     title: 'Kontakt – DNagB',
   },
   {
@@ -125,13 +154,19 @@ export let routes: Routes = [
   },
   {
     path: 'naginata',
-    redirectTo: 'naginata/ausruestung',
+    redirectTo: 'naginata/kampfsport',
     pathMatch: 'full',
   },
   {
     path: 'info',
-    redirectTo: 'info/ausruestung',
+    redirectTo: 'info/nuetzliches',
     pathMatch: 'full',
   },
-  { path: '**', component: PageNotFoundComponent },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./pages/page-not-found/page-not-found.component').then(
+        (m) => m.PageNotFoundComponent
+      ),
+  },
 ];

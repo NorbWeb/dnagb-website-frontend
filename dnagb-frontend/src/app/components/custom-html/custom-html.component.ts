@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { SafeHtmlPipe } from '../../2_pipes/safeHtml';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
@@ -9,6 +9,7 @@ import { StateService } from '../../0_global-services/state.service';
   imports: [SafeHtmlPipe],
   templateUrl: './custom-html.component.html',
   styleUrl: './custom-html.component.css',
+  encapsulation: ViewEncapsulation.None,
 })
 export class CustomHtmlComponent implements OnInit {
   route = inject(ActivatedRoute);
@@ -20,8 +21,10 @@ export class CustomHtmlComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.pipe(takeUntil(this.unsubscribeAll)).subscribe({
       next: (res) => {
-        this.data = res['html'];
-        console.log(`🐦‍⬛: CustomHtmlComponent -> this.data`, res, this.data);
+        console.log(`🐦‍⬛: CustomHtmlComponent -> res`, res);
+        if (res['status'] === 'published') {
+          this.data = res['html'];
+        }
 
         if (!res) {
           return;

@@ -1,3 +1,13 @@
 <div class="container page">
-  <section class="section" [innerHtml]="data | safeHtml"></section>
+  @if(data){
+
+  <section
+    class="section custom-html-content"
+    [innerHtml]="data | safeHtml"
+  ></section>
+  } @else {
+  <section class="section custom-html-content">
+    <h4>Nichts zu sehen hier</h4>
+  </section>
+  }
 </div>
