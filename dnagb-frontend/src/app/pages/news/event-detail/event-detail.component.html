@@ -15,15 +15,7 @@
     <div class="news-info-header">
       <div class="date">
         <span>
-          {{
-            news.date_start
-              .toLocaleString("de-DE", {
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit"
-              })
-              .replace(",", "")
-          }}
+          {{ news.date_start | date : "dd.MM.yyyy" }}
         </span>
         <span>
           @if(news.author){, {{ news.author }}
@@ -57,9 +49,9 @@
     </h2>
     <div class="event-info-header">
       <div class="date">
-        {{ event.date_start.toLocaleString("de-DE", options).replace(",", "") }}
+        {{ event.date_start | date : "EE dd.MM.yyyy HH:mm" }}
         @if(event.date_end){ –
-        {{ event.date_end.toLocaleString("de-DE", options).replace(",", "") }}
+        {{ event.date_end | date : "EE dd.MM.yyyy HH:mm" }}
         }
       </div>
 
@@ -78,10 +70,10 @@
       <h4>Auf einen Blick</h4>
       <div class="bold">Datum</div>
       <div>
-        {{ event.date_start.toLocaleString("de-DE", options).replace(",", "") }}
+        {{ event.date_start | date : "EE dd.MM.yyyy HH:mm" }}
 
         @if(event.date_end){ –
-        {{ event.date_end.toLocaleString("de-DE", options).replace(",", "") }}
+        {{ event.date_end | date : "EE dd.MM.yyyy HH:mm" }}
         }
       </div>
       <div class="bold">Location</div>

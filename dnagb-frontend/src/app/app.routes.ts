@@ -18,7 +18,7 @@ import { EventDetailComponent } from './pages/news/event-detail/event-detail.com
 import { AssociationComponent } from './pages/dnagb/association/association.component';
 import { WhatIsComponent } from './pages/naginata/what-is/what-is.component';
 
-export const routes: Routes = [
+export let routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
@@ -71,8 +71,12 @@ export const routes: Routes = [
   },
   {
     path: 'naginata/geschichte',
-    component: HistoryComponent,
+    loadComponent: () =>
+      import('./components/custom-html/custom-html.component').then(
+        (m) => m.CustomHtmlComponent
+      ),
     title: 'Geschichte – DNagB',
+    // data: ['naginata', 'history'],
   },
   {
     path: 'info/pruefung',

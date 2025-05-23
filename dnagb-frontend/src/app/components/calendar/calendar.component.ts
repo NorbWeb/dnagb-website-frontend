@@ -149,6 +149,8 @@ export class CalendarComponent implements OnInit, OnDestroy {
     this.displayedDays = [...monthBefor, ...month, ...monthAfter];
   }
 
+  // TODO: check the behavior of the calendar when you click on change month and goToEvent
+  // Sometimes it will take two clicks to skip event
   nextMonth() {
     if (this.currentMonth === 11) {
       this.currentMonth = 0;

@@ -10,6 +10,7 @@ import {
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import localeDeExtra from '@angular/common/locales/extra/de';
+import { routes } from '../app.routes';
 
 @Injectable({
   providedIn: 'root',
@@ -230,7 +231,16 @@ export class AppInitializerService {
 
   private async getNaginata() {
     const res = await fetch(`${environment.cmsUrl}/items/naginata`);
-    return await res.json();
+    const json = await res.json();
+    let historyRoute = routes.find((r) => {
+      return r.path === 'naginata/geschichte';
+    });
+
+    if (historyRoute) {
+      historyRoute.data = { html: json.data.history };
+    }
+
+    return json;
   }
 
   private async getExamination() {

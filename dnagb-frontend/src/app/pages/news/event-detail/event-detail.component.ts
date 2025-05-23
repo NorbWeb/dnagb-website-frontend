@@ -1,37 +1,27 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StateService } from '../../../0_global-services/state.service';
 import { EventItem } from '../../../1_types-and-interfaces/NewsItem';
-import { CommonModule, Location } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { environment } from '../../../../environment/env';
 import { SafeHtmlPipe } from '../../../2_pipes/safeHtml';
 
 @Component({
   selector: 'app-event-detail',
-  imports: [CommonModule, SafeHtmlPipe],
+  imports: [CommonModule, SafeHtmlPipe, DatePipe],
   templateUrl: './event-detail.component.html',
   styleUrl: './event-detail.component.css',
   encapsulation: ViewEncapsulation.None,
 })
 export class EventDetailComponent implements OnInit {
+  route = inject(ActivatedRoute);
+  state = inject(StateService);
+
   event!: EventItem;
   news!: any;
   type!: 'event' | 'news';
   url = environment.cmsUrl;
   mapsLink!: string;
-  options: any = {
-    weekday: 'short',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-  };
-  constructor(
-    private route: ActivatedRoute,
-    private state: StateService,
-    private location: Location
-  ) {}
 
   goBackToPrevPage(): void {
     window.history.back();
