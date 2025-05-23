@@ -40,6 +40,8 @@ export class CalendarComponent implements OnInit, OnDestroy {
   };
   displayedDays: CalendarMonth[] = [];
   monthCounter: number = 0;
+  eventAfterSelectedDate: boolean = true;
+  eventBeforeSelectedDate: boolean = true;
 
   getDaysInMonth(year: number, month: number) {
     return new Date(year, month, 0).getDate();
@@ -149,8 +151,6 @@ export class CalendarComponent implements OnInit, OnDestroy {
     this.displayedDays = [...monthBefor, ...month, ...monthAfter];
   }
 
-  // TODO: check the behavior of the calendar when you click on change month and goToEvent
-  // Sometimes it will take two clicks to skip event
   nextMonth() {
     if (this.currentMonth === 11) {
       this.currentMonth = 0;
@@ -163,6 +163,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
     this.selectedDate = structuredClone(this.currentDate);
     this.initCalendar();
+    this.checkEventDate();
   }
 
   prevMonth() {
@@ -177,6 +178,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
     this.selectedDate = structuredClone(this.currentDate);
     this.initCalendar();
+    this.checkEventDate();
   }
 
   goToToday() {
@@ -185,81 +187,73 @@ export class CalendarComponent implements OnInit, OnDestroy {
     this.currentMonth = this.currentDate.getMonth();
     this.selectedDate = this.currentDate;
     this.initCalendar();
+    this.checkEventDate();
   }
 
   goToPrevEvent() {
-    let prevEvent = undefined;
-    let eventsCopy: EventItem[] = [];
-    // Skip events in same months, to switch to prev month
-    for (let i = 0; i < this.events.length; i++) {
-      const exists = eventsCopy.some(
-        (e) =>
-          e.date_start.getMonth() === this.events[i].date_start.getMonth() &&
-          e.date_start.getFullYear() === this.events[i].date_start.getFullYear()
-      );
-      if (!exists) {
-        eventsCopy.push(this.events[i]);
-      }
-    }
+    const currentMonth = this.selectedDate.getMonth();
+    const currentYear = this.selectedDate.getFullYear();
 
-    for (let i = 0; i < eventsCopy.length; i++) {
-      if (eventsCopy[i].date_start < this.selectedDate) {
-        prevEvent = eventsCopy[i];
-        this.currentDate =
-          typeof prevEvent.date_start === 'string'
-            ? new Date(prevEvent.date_start)
-            : structuredClone(prevEvent.date_start);
+    for (let i = 0; i <= this.events.length - 1; i++) {
+      const eventMonth = this.events[i].date_start.getMonth();
+      const eventYear = this.events[i].date_start.getFullYear();
+
+      if (
+        eventYear < currentYear ||
+        (eventYear === currentYear && eventMonth < currentMonth)
+      ) {
+        this.currentDate = structuredClone(this.events[i].date_start);
         this.currentMonth = this.currentDate.getMonth();
         this.currentYear = this.currentDate.getFullYear();
         this.selectedDate = structuredClone(this.currentDate);
         this.initCalendar();
+        this.checkEventDate();
 
         break;
       }
-    }
-    if (!prevEvent) {
-      return;
     }
   }
 
   goToNextEvent() {
-    let nextEvent = undefined;
-    let eventsCopy: EventItem[] = [];
-    // Skip events in same months, to switch to next month
-    for (let i = 0; i < this.events.length; i++) {
-      const exists = eventsCopy.some(
-        (e) =>
-          e.date_start.getMonth() === this.events[i].date_start.getMonth() &&
-          e.date_start.getFullYear() === this.events[i].date_start.getFullYear()
-      );
-      if (!exists) {
-        eventsCopy.push(this.events[i]);
-      }
-    }
+    const currentMonth = this.selectedDate.getMonth();
+    const currentYear = this.selectedDate.getFullYear();
 
-    for (let i = eventsCopy.length - 1; i >= 0; i--) {
-      if (eventsCopy[i].date_start > this.selectedDate) {
-        nextEvent = eventsCopy[i];
-        this.currentDate =
-          typeof nextEvent.date_start === 'string'
-            ? new Date(nextEvent.date_start)
-            : structuredClone(nextEvent.date_start);
+    for (let i = this.events.length - 1; i >= 0; i--) {
+      const eventMonth = this.events[i].date_start.getMonth();
+      const eventYear = this.events[i].date_start.getFullYear();
+
+      if (
+        eventYear > currentYear ||
+        (eventYear === currentYear && eventMonth > currentMonth)
+      ) {
+        this.currentDate = structuredClone(this.events[i].date_start);
         this.currentMonth = this.currentDate.getMonth();
         this.currentYear = this.currentDate.getFullYear();
         this.selectedDate = structuredClone(this.currentDate);
         this.initCalendar();
+        this.checkEventDate();
 
         break;
       }
     }
-    if (!nextEvent) {
-      return;
-    }
+  }
+
+  checkEventDate() {
+    this.eventAfterSelectedDate =
+      this.events.filter((item) => {
+        return item.date_start > this.selectedDate;
+      }).length > 0;
+
+    this.eventBeforeSelectedDate =
+      this.events.filter((item) => {
+        return item.date_start < this.selectedDate;
+      }).length > 0;
   }
 
   ngOnInit(): void {
     this.events = this.state.getConf().events;
     this.initCalendar();
+    this.checkEventDate();
   }
   ngOnDestroy(): void {}
 }
