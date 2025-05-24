@@ -79,7 +79,7 @@ li {
   line-height: 1.375rem;
 }
 
-a:not(.nav-link, .side-nav-link, .nav-link-logo) {
+a:not(.nav-link, .side-nav-link, .nav-link-logo, .copyright-footer-link) {
   color: var(--secondary);
   text-decoration: none;
   transition: all 250ms ease;
