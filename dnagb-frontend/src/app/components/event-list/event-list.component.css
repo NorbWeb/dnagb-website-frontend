@@ -24,6 +24,12 @@
   .event-item {
     padding: 0.5rem 0.5rem;
     cursor: pointer;
+    border-radius: var(--component-br);
+    transition: background-color 200ms ease;
+
+    &:before {
+      content: "🌸";
+    }
 
     &:hover,
     &:focus {
