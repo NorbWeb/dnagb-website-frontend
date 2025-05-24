@@ -1,6 +1,13 @@
 <div class="container page map-wrap">
   <section id="map" class="section"></section>
 
+  <dialog id="dojo-dialog" #dojoDialog>
+    <p>Greetings, one and all!</p>
+    <form method="dialog">
+      <button>OK</button>
+    </form>
+  </dialog>
+
   <section class="section dojo-info">
     @if(!showInfo){
     <h4 class="state-heading">Deutschland</h4>

@@ -1,4 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import {
   AttributionControl,
   LngLatLike,
@@ -15,10 +21,10 @@ import { DojoInfo } from './dojoInterfaces';
 import { covertToGeoJson } from './covertToGeoJson';
 
 @Component({
-    selector: 'app-dojos',
-    imports: [],
-    templateUrl: './dojos.component.html',
-    styleUrl: './dojos.component.css'
+  selector: 'app-dojos',
+  imports: [],
+  templateUrl: './dojos.component.html',
+  styleUrl: './dojos.component.css',
 })
 export class DojosComponent implements OnInit, OnDestroy {
   map: Map | undefined;
@@ -39,6 +45,7 @@ export class DojosComponent implements OnInit, OnDestroy {
     className: 'dojo-popup',
     maxWidth: '10rem',
   });
+  @ViewChild('dojoDialog') dojoDialog!: ElementRef<HTMLElement>;
 
   constructor(private state: StateService) {}
 
@@ -120,6 +127,9 @@ export class DojosComponent implements OnInit, OnDestroy {
           el.style.backgroundImage = `url(${this.url}/assets/${dojo.properties.logo})`;
           el.addEventListener('click', () => {
             this.setDojoInfo(dojo, 'geojson');
+
+            this.dojoDialog.nativeElement.setAttribute('open', '');
+            this.dojoDialog.nativeElement.innerText = dojo.properties.name;
           });
 
           if (this.map) {

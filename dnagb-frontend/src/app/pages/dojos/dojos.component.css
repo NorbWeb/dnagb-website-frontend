@@ -1,25 +1,26 @@
 .map-wrap {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  padding: 0;
 }
 
 /* TODO: edit responsive behavior */
 #map {
   width: 100%;
-  height: calc(
-    var(--main-height) - var(--footer-height) - 2 * var(--page-padding-value)
-  );
+  height: calc(var(--main-height) - var(--footer-height));
   padding: 0;
   position: sticky;
   top: calc(var(--page-padding-value) + var(--header-height));
+  margin-bottom: 0;
+  background-color: var(--gray-200);
 }
 
 .dojo-info {
   width: 50%;
-  max-height: calc(
-    var(--main-height) - var(--footer-height) - 2 * var(--page-padding-value)
-  );
+  height: calc(var(--main-height) - var(--footer-height));
+  max-height: calc(var(--main-height) - var(--footer-height));
+  margin-bottom: 0;
+  padding: 1rem;
 
   .stack {
     display: flex;
@@ -68,7 +69,7 @@
 }
 
 .state-heading {
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem 0;
 }
 
 .dojo-list {
@@ -82,11 +83,16 @@
     gap: 0.5rem;
     padding: 0.25rem;
     border-radius: var(--component-br);
-    transition: var(--transition);
+    transition: background-color 200ms ease;
     cursor: pointer;
 
-    &:hover {
-      background-color: var(--gray-100);
+    &:hover,
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.125);
+    }
+
+    &:active {
+      background-color: rgba(0, 0, 0, 0.25);
     }
 
     .mini-logo {
@@ -98,5 +104,11 @@
       background-size: cover;
       background-position: center;
     }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .dojo-info {
+    display: none;
   }
 }
