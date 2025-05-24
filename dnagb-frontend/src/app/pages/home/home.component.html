@@ -20,9 +20,15 @@
     <div class="bg-overlay"></div>
   </section>
   <section id="short-info" class="container">
-    <app-calendar></app-calendar>
+    <!-- <app-calendar></app-calendar> -->
+    <app-event-list></app-event-list>
     @for(item of frontpageNews; track $index){
-    <div class="flagship-news-card" (click)="openDetails('news', item.id)">
+    <div
+      class="flagship-news-card"
+      (click)="openDetails('news', item.id)"
+      (keyup.enter)="openDetails('news', item.id)"
+      tabindex="0"
+    >
       <div class="card-image">
         @if(item.image){
         <img

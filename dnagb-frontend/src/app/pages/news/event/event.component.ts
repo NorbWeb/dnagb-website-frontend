@@ -13,23 +13,15 @@ import { environment } from '../../../../environment/env';
   styleUrl: './event.component.css',
 })
 export class EventComponent implements OnInit, OnDestroy {
+  private state = inject(StateService);
+  private router = inject(Router);
+
   url = environment.cmsUrl;
   unsubscribeAll = new Subject();
   mobile: boolean = false;
   today: Date = new Date();
   events: EventItem[] = [];
   news: NewsItem[] = [];
-  // options: any = {
-  //   weekday: 'short',
-  //   year: 'numeric',
-  //   month: '2-digit',
-  //   day: '2-digit',
-  //   // hour: '2-digit',
-  //   // minute: '2-digit',
-  // };
-
-  private state = inject(StateService);
-  private router = inject(Router);
 
   openDetails(type: 'event' | 'news', id: number | string) {
     if (type === 'event') {

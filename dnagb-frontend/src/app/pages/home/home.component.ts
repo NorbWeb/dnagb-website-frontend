@@ -4,6 +4,7 @@ import { CalendarComponent } from '../../components/calendar/calendar.component'
 import { Router } from '@angular/router';
 import { environment } from '../../../environment/env';
 import { DatePipe } from '@angular/common';
+import { EventListComponent } from '../../components/event-list/event-list.component';
 
 interface Title {
   short: string;
@@ -13,7 +14,7 @@ interface Title {
 
 @Component({
   selector: 'app-home',
-  imports: [CalendarComponent, DatePipe],
+  imports: [CalendarComponent, EventListComponent, DatePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

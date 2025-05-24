@@ -22,7 +22,7 @@
   </nav>
   <nav class="nav">
     <ul class="container">
-      <li>
+      <li tabindex="0" (keyup.enter)="router.navigateByUrl('/home')">
         <a
           class="nav-link-logo"
           routerLink="/home"
@@ -37,7 +37,7 @@
         </a>
       </li>
       @for(item of navData; track $index){ @if(item.routerLink){
-      <li>
+      <li tabindex="0" (keyup.enter)="router.navigateByUrl(item.routerLink)">
         <a
           class="nav-link"
           routerLink="{{ item.routerLink }}"
@@ -54,7 +54,9 @@
           class="dropdown-button"
           routerLinkActive="active"
           ariaCurrentWhenActive="page"
+          tabindex="0"
           (click)="openDropdown(dropdown, $event)"
+          (keyup.enter)="openDropdown(dropdown, $event)"
         >
           {{ item.label }}
           <div #dropdown class="dropdown-content">
@@ -65,7 +67,9 @@
               routerLink="{{ subItem.routerLink }}"
               routerLinkActive="active"
               ariaCurrentWhenActive="page"
+              tabindex="0"
               (click)="closeDropdown(undefined, $event)"
+              (keyup.enter)="closeDropdown(undefined, $event)"
             >
               {{ subItem.label }}
             </a>

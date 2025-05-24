@@ -1,1 +1,23 @@
-<p>event-list works!</p>
+<h2 class="event-list-header">Nächsten Events</h2>
+<ul class="event-list">
+  @if(!list){
+  <li class="null-event-item">Es stehen gerade keine Events an.</li>
+  <li class="null-event-item">
+    Schau doch mal welche
+    <a (click)="router.navigateByUrl('/news#events')">Events</a>
+
+    es schon gab!
+  </li>
+
+  } @for(item of list;track $index){
+  <li
+    class="event-item"
+    (click)="openDetails('event', item.id)"
+    (keyup.enter)="openDetails('event', item.id)"
+    tabindex="0"
+    [title]="item.type"
+  >
+    {{ item.date_start | date : "EE dd.MM.yyyy" }}: {{ item.title }}
+  </li>
+  }
+</ul>

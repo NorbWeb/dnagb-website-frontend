@@ -6,8 +6,10 @@
   font-size: 1em;
   text-align: center;
   transition: var(--transition);
+  transition-property: border-color, background-color, box-shadow, color;
   border: 0.125rem solid;
   border-radius: var(--component-br);
+  cursor: pointer;
 
   &.button-sm {
     padding: 0.25rem 0.5rem;
@@ -25,7 +27,8 @@
       border-color: var(--button-fill-secondary-border);
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: var(--button-fill-hover-bg);
       color: var(--button-fill-hover-text);
       border-color: var(--button-fill-hover-border);
@@ -69,7 +72,8 @@
       border-color: var(--button-outline-secondary-border);
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: var(--button-outline-hover-bg);
       color: var(--button-outline-hover-text);
       border-color: var(--button-outline-hover-border);
