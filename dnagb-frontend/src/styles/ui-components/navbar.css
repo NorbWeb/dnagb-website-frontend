@@ -55,11 +55,11 @@
 
     &:hover {
       color: var(--nav-link-hover);
-      background-color: var(--grey-100);
+      background-color: var(--gray-100);
     }
     &.active {
       color: var(--nav-link-active);
-      background-color: var(--grey-100);
+      background-color: var(--gray-100);
       font-weight: 700;
     }
   }

@@ -9,11 +9,11 @@
   --component-br: 0.25rem;
 
   /* ~~~~~~~~~~ text ~~~~~~~~~~ */
-  --text: var(--grey-900);
-  --text-inverse: var(--grey-100);
+  --text: var(--gray-900);
+  --text-inverse: var(--gray-100);
 
   /* ~~~~~~~~~~ header ~~~~~~~~~~ */
-  --header-bg: var(--grey-900);
+  --header-bg: var(--gray-900);
   --header-height: 6rem;
   --header-height-sm: 4rem;
 
@@ -24,7 +24,7 @@
   --main-height-sm: calc(100dvh - var(--header-height-sm));
 
   /* ~~~~~~~~~~ footer ~~~~~~~~~~ */
-  --footer-bg: var(--grey-900);
+  --footer-bg: var(--gray-900);
   --footer-height: 4rem;
   --footer-text: var(--text-inverse);
 

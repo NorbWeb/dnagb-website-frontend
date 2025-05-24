@@ -5,22 +5,22 @@
   --primary-lighten: hsl(226, 79%, 67%);
   --primary: hsl(226, 79%, 50%);
   --primary-darken: hsl(226, 79%, 37.5%);
-  --primary-text:var(--grey-100)
+  --primary-text:var(--gray-100)
 
   --secondary-lighten: hsl(313, 69%, 72%);
   --secondary: hsl(313, 69%, 54%);
   --secondary-darken: hsl(313, 69%, 41%);
-  --secondary-text:var(--grey-100);
+  --secondary-text:var(--gray-100);
 
   --white: #ffffff;
-  --grey-100: #f1f2f4;
-  --grey-200: #d5d9dd;
-  --grey-300: #b9bfc6;
-  --grey-400: #9da6af;
-  --grey-500: #808c98;
-  --grey-600: #67737f;
-  --grey-700: #505962;
-  --grey-800: #394046;
-  --grey-900: #22262a;
+  --gray-100: #f1f2f4;
+  --gray-200: #d5d9dd;
+  --gray-300: #b9bfc6;
+  --gray-400: #9da6af;
+  --gray-500: #808c98;
+  --gray-600: #67737f;
+  --gray-700: #505962;
+  --gray-800: #394046;
+  --gray-900: #22262a;
   --black: #0b0d0e;
 }

@@ -26,8 +26,7 @@ export class EventListComponent {
 
   ngOnInit(): void {
     if (this.state.getConf().events[0].date_start >= new Date()) {
-      this.list = this.state.getConf().events;
     }
-    console.log(`🐦‍⬛: EventListComponent -> this.list`, this.list);
+    this.list = this.state.getConf().events;
   }
 }

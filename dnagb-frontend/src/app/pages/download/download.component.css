@@ -34,11 +34,11 @@
   transition: var(--transition);
 
   &:not(:last-of-type) {
-    border-bottom: 0.075rem solid var(--grey-200);
+    border-bottom: 0.075rem solid var(--gray-200);
   }
 
   &:hover {
-    background-color: var(--grey-100);
+    background-color: var(--gray-100);
   }
 }
 

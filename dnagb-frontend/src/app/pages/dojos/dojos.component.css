@@ -86,14 +86,14 @@
     cursor: pointer;
 
     &:hover {
-      background-color: var(--grey-100);
+      background-color: var(--gray-100);
     }
 
     .mini-logo {
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      border: 0.1rem solid var(--grey-500);
+      border: 0.1rem solid var(--gray-500);
       background-color: var(--white);
       background-size: cover;
       background-position: center;
