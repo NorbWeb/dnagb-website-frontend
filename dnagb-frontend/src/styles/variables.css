@@ -6,7 +6,7 @@
   /* ~~~~~~~~~~ section & component ~~~~~~~~~~ */
   --section-padding: 1rem 1.5rem;
   --section-bg: var(--white);
-  --component-br: 0.25rem;
+  --border-radius: 0.25rem;
 
   /* ~~~~~~~~~~ text ~~~~~~~~~~ */
   --text: var(--gray-900);

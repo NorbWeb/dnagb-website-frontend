@@ -4,7 +4,6 @@ import {
   OnDestroy,
   ViewChild,
   ElementRef,
-  ViewEncapsulation,
   inject,
 } from '@angular/core';
 import {
@@ -41,6 +40,13 @@ export class DojosComponent implements OnInit, OnDestroy {
     description: '',
     logo: '',
   };
+  popup = new Popup({
+    closeButton: false,
+    closeOnClick: false,
+    offset: 18,
+    className: 'dojo-popup',
+    maxWidth: '10rem',
+  });
 
   @ViewChild('dojoDialog') dojoDialog!: ElementRef<HTMLElement>;
 
@@ -72,22 +78,6 @@ export class DojosComponent implements OnInit, OnDestroy {
     //   console.log(this.map?.getZoom());
     // });
 
-    // this.map.on('load', () => {
-    //   this.map?.addSource('world-source', {
-    //     type: 'raster',
-    //     tiles: [
-    //       ' https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/Datenquellen_TopPlusOpen.html',
-    //     ],
-    //     tileSize: 256,
-    //   });
-    //   this.map?.addLayer({
-    //     id: 'world-layer',
-    //     type: 'raster',
-    //     source: 'world-source',
-    //     paint: {},
-    //   });
-    // });
-
     this.map.on('load', async () => {
       let dojos: any = covertToGeoJson(this.state.getConf().dojos);
 
@@ -116,6 +106,7 @@ export class DojosComponent implements OnInit, OnDestroy {
             this.setDojoInfo(dojo, 'geojson');
 
             this.dojoDialog.nativeElement.setAttribute('open', '');
+            this.dojoDialog.nativeElement.setAttribute('title', dojo.name);
           });
 
           if (this.map) {
@@ -125,6 +116,27 @@ export class DojosComponent implements OnInit, OnDestroy {
           }
         }
       }
+    });
+
+    this.map.on('mouseenter', 'dojos', (e: any) => {
+      this.popup.remove();
+
+      if (!this.map) return;
+
+      const coordinates = e.features[0].geometry.coordinates.slice();
+
+      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+      }
+
+      let html = `<div>${e.features[0].properties.name} | ${e.features[0].properties.city}</div>`;
+
+      this.popup.setLngLat(coordinates).setHTML(html).addTo(this.map);
+    });
+
+    this.map.on('mouseleave', 'dojos', () => {
+      if (!this.map) return;
+      this.popup.remove();
     });
   }
 

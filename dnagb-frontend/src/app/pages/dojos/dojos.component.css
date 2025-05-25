@@ -19,7 +19,7 @@
   width: 30rem;
   padding: 0;
   border: none;
-  border-radius: var(--component-br);
+  border-radius: var(--border-radius);
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
   top: 50%;
   translate: 0 -50%;
@@ -44,10 +44,15 @@
       font-size: 1.25rem;
     }
 
+    .dojo-city {
+      color: var(--gray-800);
+      font-style: italic;
+    }
+
     .dojo-logo {
       width: 5rem;
       height: auto;
-      border-radius: var(--component-br);
+      border-radius: var(--border-radius);
       filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
     }
   }

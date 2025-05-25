@@ -14,7 +14,7 @@
   font-family: "Heebo";
   font-weight: 600;
   font-size: 1.25rem;
-  border-radius: var(--component-br) var(--component-br) 0 0;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
 
   .month-button {
     cursor: pointer;
@@ -34,10 +34,10 @@
     }
 
     &.prev {
-      border-radius: var(--component-br) 0 0 0;
+      border-radius: var(--border-radius) 0 0 0;
     }
     &.next {
-      border-radius: 0 var(--component-br) 0 0;
+      border-radius: 0 var(--border-radius) 0 0;
     }
   }
 
@@ -71,7 +71,7 @@
 
 .days {
   padding: 0 1rem 1rem 1rem;
-  border-radius: 0 0 var(--component-br) var(--component-br);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
   background-color: var(--white);
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -99,7 +99,7 @@
     color: var(--text-inverse);
     color: var(--secondary-text);
     cursor: pointer;
-    border-radius: var(--component-br);
+    border-radius: var(--border-radius);
     background-color: var(--secondary);
     border: var(--offset) solid var(--secondary);
     padding: calc(0.5rem - var(--offset));
@@ -117,7 +117,7 @@
     position: relative;
     z-index: 100;
     border: var(--offset) solid rgb(255, 55, 0);
-    border-radius: var(--component-br);
+    border-radius: var(--border-radius);
 
     &:hover {
       border: var(--offset) solid rgb(255, 55, 0);

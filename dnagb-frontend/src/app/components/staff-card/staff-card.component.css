@@ -3,7 +3,7 @@
   height: 100%;
   min-height: 16.5rem;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  border-radius: var(--component-br);
+  border-radius: var(--border-radius);
   background-color: var(--white);
   padding: 1rem;
   /* cursor: pointer; */
@@ -35,7 +35,7 @@
       .contact-link {
         width: 100%;
         padding: 0.5rem 0rem;
-        border-radius: var(--component-br);
+        border-radius: var(--border-radius);
         cursor: default;
         word-break: break-all;
 
@@ -79,7 +79,7 @@
       height: calc(60% + 1rem);
       position: absolute;
       margin: -1rem;
-      border-radius: var(--component-br) var(--component-br) 0 0;
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
     }
   }
 
@@ -111,6 +111,6 @@
     color: var(--secondary);
     padding: 0.125rem 0.375rem;
     border: 0.125rem solid var(--secondary);
-    border-radius: var(--component-br);
+    border-radius: var(--border-radius);
   }
 }

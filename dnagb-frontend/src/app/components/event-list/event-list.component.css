@@ -1,6 +1,6 @@
 :host {
   padding: 0.75rem;
-  border-radius: var(--component-br);
+  border-radius: var(--border-radius);
   background-color: var(--white);
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
 }
@@ -24,7 +24,7 @@
   .event-item {
     padding: 0.5rem 0.5rem;
     cursor: pointer;
-    border-radius: var(--component-br);
+    border-radius: var(--border-radius);
     transition: background-color 200ms ease;
 
     &:before {

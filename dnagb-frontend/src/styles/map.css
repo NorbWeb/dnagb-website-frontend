@@ -19,20 +19,33 @@
 }
 
 .dojo-marker {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &:before {
     content: "📍";
-    width: 1rem;
-    height: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
-  width: 40px;
-  height: 40px;
   cursor: pointer;
   filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.25));
 
   &:hover {
     filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.75));
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -1.5rem;
+    }
   }
+}
+
+.dojo-popup {
+  filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.25));
+  border-radius: var(--border-radius);
 }
 
 .maplibregl-ctrl-compass {
