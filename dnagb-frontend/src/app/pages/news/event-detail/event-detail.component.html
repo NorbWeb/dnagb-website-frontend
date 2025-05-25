@@ -3,11 +3,11 @@
 
   @if(news){
   <section id="news-detail" class="section">
-    <div class="action-panel">
+    <!-- <div class="action-panel">
       <button class="nag_button button-fill back" (click)="goBackToPrevPage()">
         <span style="margin-right: 0.5rem">⮜</span>Zurück
       </button>
-    </div>
+    </div> -->
     <h2 class="news-title">
       {{ news.title }}
     </h2>
@@ -23,14 +23,14 @@
       </div>
     </div>
     <div class="news-content" [innerHTML]="news.article | safeHtml"></div>
-    <div class="mobile mobile-container">
+    <!-- <div class="mobile mobile-container">
       <button
         class="nag_button button-fill back mobile"
         (click)="goBackToPrevPage()"
       >
         Zurück
       </button>
-    </div>
+    </div> -->
   </section>
   }
 
@@ -38,11 +38,11 @@
 
   @if(event){
   <section id="event-detail" class="section">
-    <div class="action-panel">
+    <!-- <div class="action-panel">
       <button class="nag_button button-fill back" (click)="goBackToPrevPage()">
         Zurück
       </button>
-    </div>
+    </div> -->
     <h2 class="event-title">
       {{ event.title }}
     </h2>
@@ -85,14 +85,14 @@
 
       <a class="maps-link" [href]="mapsLink" target="_blank">Google Maps</a>
     </div>
-    <div class="mobile mobile-container">
+    <!-- <div class="mobile mobile-container">
       <button
         class="nag_button button-fill back mobile"
         (click)="goBackToPrevPage()"
       >
         Zurück
       </button>
-    </div>
+    </div> -->
   </section>
   }
 </div>
