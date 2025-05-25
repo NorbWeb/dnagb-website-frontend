@@ -1,5 +1,5 @@
 <div class="container page map-wrap">
-  <section id="map" class="section"></section>
+  <section id="map" class="section" (click)="closeDialog($event)"></section>
 
   <dialog id="dojo-dialog" #dojoDialog>
     <div class="dojo-header">
@@ -7,14 +7,19 @@
         <div class="dojo-name">{{ dojoInfo.name }}</div>
         <div class="dojo-city">{{ dojoInfo.city }}</div>
         <div class="dojo-link">
-          <a href="{{ dojoInfo.link }}" target="_blank">link zum Dojo</a>
+          <a
+            href="{{ dojoInfo.link }}"
+            target="_blank"
+            title="Link zum Dojo des {{ dojoInfo.name }}"
+            >link zum Dojo</a
+          >
         </div>
       </div>
       <div class="dojo-logo-wrapper">
         <img
           class="dojo-logo"
           src="{{ url }}/assets/{{ dojoInfo.logo }}"
-          alt=""
+          alt="Logo des {{ dojoInfo.name }}"
         />
       </div>
     </div>
@@ -22,8 +27,14 @@
       class="dojo-description"
       [innerHtml]="dojoInfo.description | safeHtml"
     ></div>
-    <form class="dialog-action" method="dialog">
-      <button class="nag_button button-outline button-sm">Schließen</button>
-    </form>
+    <div class="dialog-action">
+      <button
+        class="nag_button button-outline button-sm"
+        autofocus
+        (click)="closeDialog($event)"
+      >
+        Schließen
+      </button>
+    </div>
   </dialog>
 </div>

@@ -47,8 +47,19 @@ export class DojosComponent implements OnInit, OnDestroy {
     className: 'dojo-popup',
     maxWidth: '10rem',
   });
+  private justClosedDialog = false;
 
-  @ViewChild('dojoDialog') dojoDialog!: ElementRef<HTMLElement>;
+  @ViewChild('dojoDialog') dojoDialog!: ElementRef<HTMLDialogElement>;
+
+  closeDialog(e: Event) {
+    // e.stopPropagation();
+    // e.preventDefault();
+    this.justClosedDialog = true;
+    this.dojoDialog.nativeElement.close();
+    setTimeout(() => {
+      this.justClosedDialog = false;
+    }, 250);
+  }
 
   initMap() {
     this.map = new Map({
@@ -102,11 +113,23 @@ export class DojosComponent implements OnInit, OnDestroy {
 
           const el = document.createElement('div');
           el.className = 'dojo-marker';
-          el.addEventListener('click', () => {
+          el.tabIndex = 0;
+          el.addEventListener('click', (e: Event) => {
+            e.stopPropagation();
             this.setDojoInfo(dojo, 'geojson');
+            this.dojoDialog.nativeElement.show();
+          });
 
-            this.dojoDialog.nativeElement.setAttribute('open', '');
-            this.dojoDialog.nativeElement.setAttribute('title', dojo.name);
+          el.addEventListener('keyup', (e: KeyboardEvent) => {
+            if (e.code === 'Enter') {
+              e.stopPropagation();
+              if (this.justClosedDialog) {
+                // Ignore if dialog was just closed
+                return;
+              }
+              this.setDojoInfo(dojo, 'geojson');
+              this.dojoDialog.nativeElement.show();
+            }
           });
 
           if (this.map) {

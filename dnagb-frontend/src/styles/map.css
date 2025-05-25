@@ -21,7 +21,7 @@
 .dojo-marker {
   width: 2rem;
   height: 2rem;
-  border-radius: 50%;
+  border-radius: var(--border-radius);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,6 +29,7 @@
   &:before {
     content: "📍";
     font-size: 1.75rem;
+    line-height: 1.75rem;
   }
   cursor: pointer;
   filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.25));
