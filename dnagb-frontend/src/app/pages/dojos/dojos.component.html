@@ -1,5 +1,5 @@
 <div class="container page map-wrap">
-  <section id="map" class="section" (click)="closeDialog($event)"></section>
+  <section id="map" class="section" (click)="closeDialog()"></section>
 
   <dialog id="dojo-dialog" #dojoDialog>
     <div class="dojo-header">
@@ -31,7 +31,7 @@
       <button
         class="nag_button button-outline button-sm"
         autofocus
-        (click)="closeDialog($event)"
+        (click)="closeDialog()"
       >
         Schließen
       </button>

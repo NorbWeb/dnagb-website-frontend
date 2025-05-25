@@ -51,11 +51,16 @@ export class DojosComponent implements OnInit, OnDestroy {
 
   @ViewChild('dojoDialog') dojoDialog!: ElementRef<HTMLDialogElement>;
 
-  closeDialog(e: Event) {
-    // e.stopPropagation();
-    // e.preventDefault();
+  closeDialog() {
     this.justClosedDialog = true;
     this.dojoDialog.nativeElement.close();
+    this.dojoInfo = {
+      name: '',
+      city: '',
+      link: '',
+      description: '',
+      logo: '',
+    };
     setTimeout(() => {
       this.justClosedDialog = false;
     }, 250);
@@ -118,6 +123,7 @@ export class DojosComponent implements OnInit, OnDestroy {
             e.stopPropagation();
             this.setDojoInfo(dojo, 'geojson');
             this.dojoDialog.nativeElement.show();
+            this.dojoDialog.nativeElement.children[1].scrollTop = 0;
           });
 
           el.addEventListener('keyup', (e: KeyboardEvent) => {
