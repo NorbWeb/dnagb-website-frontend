@@ -4,6 +4,8 @@ import {
   OnDestroy,
   ViewChild,
   ElementRef,
+  ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import {
   AttributionControl,
@@ -19,14 +21,16 @@ import { environment } from '../../../environment/env';
 import { ZoomToExtendControl } from './zoomToExtend';
 import { DojoInfo } from './dojoInterfaces';
 import { covertToGeoJson } from './covertToGeoJson';
+import { SafeHtmlPipe } from '../../2_pipes/safeHtml';
 
 @Component({
   selector: 'app-dojos',
-  imports: [],
+  imports: [SafeHtmlPipe],
   templateUrl: './dojos.component.html',
   styleUrl: './dojos.component.css',
 })
 export class DojosComponent implements OnInit, OnDestroy {
+  state = inject(StateService);
   map: Map | undefined;
   url = environment.cmsUrl;
   allDojos!: any;
@@ -37,26 +41,8 @@ export class DojosComponent implements OnInit, OnDestroy {
     description: '',
     logo: '',
   };
-  showInfo: boolean = false;
-  popup = new Popup({
-    closeButton: false,
-    closeOnClick: false,
-    offset: 23,
-    className: 'dojo-popup',
-    maxWidth: '10rem',
-  });
+
   @ViewChild('dojoDialog') dojoDialog!: ElementRef<HTMLElement>;
-
-  constructor(private state: StateService) {}
-
-  closeInfo() {
-    this.showInfo = false;
-    // this.map?.easeTo({
-    //   center: [10.415, 51.356],
-    //   zoom: 5.3,
-    //   duration: 750,
-    // });
-  }
 
   initMap() {
     this.map = new Map({
@@ -122,14 +108,14 @@ export class DojosComponent implements OnInit, OnDestroy {
 
       for (const dojo of dojos.features) {
         if (dojo.properties.status === 'published') {
+          this.setDojoInfo(dojo, 'geojson');
+
           const el = document.createElement('div');
           el.className = 'dojo-marker';
-          el.style.backgroundImage = `url(${this.url}/assets/${dojo.properties.logo})`;
           el.addEventListener('click', () => {
             this.setDojoInfo(dojo, 'geojson');
 
             this.dojoDialog.nativeElement.setAttribute('open', '');
-            this.dojoDialog.nativeElement.innerText = dojo.properties.name;
           });
 
           if (this.map) {
@@ -139,33 +125,6 @@ export class DojosComponent implements OnInit, OnDestroy {
           }
         }
       }
-    });
-
-    this.map.on('mouseenter', 'dojos', (e: any) => {
-      this.popup.remove();
-
-      if (!this.map) return;
-
-      const coordinates = e.features[0].geometry.coordinates.slice();
-
-      // Ensure that if the map is zoomed out such that multiple
-      // copies of the feature are visible, the popup appears
-      // over the copy being pointed to.
-
-      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-      }
-
-      let html = `
-      <div>${e.features[0].properties.name}</div>
-      `;
-
-      this.popup.setLngLat(coordinates).setHTML(html).addTo(this.map);
-    });
-
-    this.map.on('mouseleave', 'dojos', () => {
-      if (!this.map) return;
-      this.popup.remove();
     });
   }
 
@@ -178,7 +137,7 @@ export class DojosComponent implements OnInit, OnDestroy {
   }
 
   setDojoInfo(dojo: any, type: 'geojson' | 'object') {
-    this.showInfo = true;
+    // this.showInfo = true;
     // this.map?.easeTo({
     //   center: dojo.geometry.coordinates,
     //   zoom: 8.5,
@@ -209,14 +168,10 @@ export class DojosComponent implements OnInit, OnDestroy {
     }
   }
 
-  listItemClick(dojo: any) {
-    this.easeToPoint(dojo.geometry.coordinates);
-    this.setDojoInfo(dojo, 'object');
-  }
-
   ngOnInit(): void {
     this.initMap();
     this.allDojos = this.state.getConf().dojos;
+    this.setDojoInfo(this.allDojos[0], 'geojson');
   }
 
   ngOnDestroy() {

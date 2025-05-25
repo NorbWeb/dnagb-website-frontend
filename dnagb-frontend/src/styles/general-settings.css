@@ -146,6 +146,18 @@ h2 {
   }
 }
 
+.close-button {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  background-color: unset;
+}
+
 @media screen and (max-width: 1400px) {
   .container {
     width: 100%;

@@ -11,36 +11,27 @@
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
   background: var(--white);
   border-radius: 4px;
-}
 
-.zoom-to-extent:hover {
-  background-color: #f2f2f2;
-}
-
-.dojo-marker {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 0.1rem solid var(--gray-500);
-  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
-  background-color: var(--white);
-  background-size: cover;
-  background-position: center;
-  cursor: pointer;
-
-  &:hover {
-    filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.75));
+  &:hover,
+  &:focus {
+    background-color: #f2f2f2;
   }
 }
 
-.dojo-popup {
-  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
-  font-weight: 600;
-  font-size: 1rem;
-  font-family: "Quattrocento Sans", "Open Sans", "Helvetica Neue", sans-serif;
+.dojo-marker {
+  &:before {
+    content: "📍";
+    width: 1rem;
+    height: 1rem;
+    font-size: 1.5rem;
+  }
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.25));
 
-  .maplibregl-popup-content {
-    border-radius: var(--component-br);
+  &:hover {
+    filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.75));
   }
 }
 
