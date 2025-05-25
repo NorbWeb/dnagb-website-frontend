@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
 import { SafeUrlPipe } from '../../2_pipes/safeUrl';
@@ -10,12 +10,13 @@ import { SafeUrlPipe } from '../../2_pipes/safeUrl';
   styleUrl: './download.component.css',
 })
 export class DownloadComponent {
+  state = inject(StateService);
   files!: any;
   headers: string[] = [];
   url = environment.cmsUrl;
   activeData!: string;
 
-  constructor(private state: StateService) {}
+  @ViewChild('pdfViewer') pdfViewer!: ElementRef<HTMLDialogElement>;
 
   directDownload(e: Event, url: string) {
     e.stopPropagation();
@@ -23,9 +24,18 @@ export class DownloadComponent {
   }
 
   setActiveData(first: string, last: string) {
-    let target = document.getElementById('pdfViewer');
-    // target?.setAttribute('data', `${first}/assets/${last}`);
+    // let target = document.getElementById('pdfViewer');
     this.activeData = `${first}/assets/${last}`;
+    this.pdfViewer.nativeElement.showModal();
+  }
+
+  closePdfViewerDialog() {
+    this.pdfViewer.nativeElement.close();
+  }
+
+  openDownload(url: string, id: string) {
+    console.log(`🐦‍⬛: DownloadComponent -> openDownload -> url`, url);
+    window.open(`${url}/assets/${id}?download`, '_blank');
   }
 
   ngOnInit(): void {
