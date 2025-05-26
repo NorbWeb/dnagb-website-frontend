@@ -237,7 +237,7 @@ export class AppInitializerService {
     });
 
     let equipmentRoute = routes.find((r) => {
-      return r.path === 'naginata/equipment';
+      return r.path === 'naginata/ausruestung';
     });
 
     let historyRoute = routes.find((r) => {

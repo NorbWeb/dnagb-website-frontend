@@ -39,21 +39,23 @@
         } }
       </div>
     </div>
+    } @if(activeData){
+    <div class="pdf-viewer-wrapper" (click)="restetActiveData()">
+      <div class="pdf-viewer-stack">
+        <object
+          id="pdfViewer"
+          class="viewer"
+          type="application/pdf"
+          [data]="activeData | safeUrl"
+        ></object>
+        <button
+          class="nag_button button-fill pdf-close-button"
+          (click)="restetActiveData()"
+        >
+          schließen
+        </button>
+      </div>
+    </div>
     }
-    <!-- TODO: open as modal and bigger view -->
-    <dialog id="pdf-viewer" #pdfViewer>
-      <!-- id="pdfViewer" -->
-      <object
-        class="viewer"
-        type="application/pdf"
-        [data]="activeData | safeUrl"
-      ></object>
-      <button
-        class="nag_button button-outline button-sm"
-        (click)="closePdfViewerDialog()"
-      >
-        schließen
-      </button>
-    </dialog>
   </section>
 </div>

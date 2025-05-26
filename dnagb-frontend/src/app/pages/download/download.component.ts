@@ -23,18 +23,15 @@ export class DownloadComponent {
     window.location.assign(url);
   }
 
-  setActiveData(first: string, last: string) {
-    // let target = document.getElementById('pdfViewer');
-    this.activeData = `${first}/assets/${last}`;
-    this.pdfViewer.nativeElement.showModal();
+  restetActiveData() {
+    this.activeData = '';
   }
 
-  closePdfViewerDialog() {
-    this.pdfViewer.nativeElement.close();
+  setActiveData(first: string, last: string) {
+    this.activeData = `${first}/assets/${last}`;
   }
 
   openDownload(url: string, id: string) {
-    console.log(`🐦‍⬛: DownloadComponent -> openDownload -> url`, url);
     window.open(`${url}/assets/${id}?download`, '_blank');
   }
 
