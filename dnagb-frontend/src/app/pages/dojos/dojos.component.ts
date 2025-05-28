@@ -2,7 +2,6 @@ import {
   Component,
   OnInit,
   OnDestroy,
-  ViewChild,
   ElementRef,
   inject,
   viewChild,
@@ -49,8 +48,8 @@ export class DojosComponent implements OnInit, OnDestroy {
     maxWidth: '10rem',
   });
   private justClosedDialog = false;
-
   dojoDialog = viewChild<ElementRef<HTMLDialogElement>>('dojoDialog');
+  protected isLoading: boolean = true;
 
   closeDialog() {
     this.justClosedDialog = true;
@@ -149,6 +148,15 @@ export class DojosComponent implements OnInit, OnDestroy {
           }
         }
       }
+
+      this.map?.on('sourcedataloading', (e) => {
+        if (!e.isSourceLoaded && e.sourceId === 'dojo-source') {
+          this.map?.on('idle', () => {
+            this.isLoading = false;
+            console.log('source loaded');
+          });
+        }
+      });
     });
 
     this.map.on('mouseenter', 'dojos', (e: any) => {

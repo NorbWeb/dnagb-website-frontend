@@ -1,4 +1,9 @@
 <div class="container page map-wrap">
+  @if(isLoading){
+  <div class="loader-backdrop">
+    <div class="loader"></div>
+  </div>
+  }
   <section id="map" class="section" (click)="closeDialog()"></section>
 
   <dialog id="dojo-dialog" #dojoDialog>
