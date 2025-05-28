@@ -4,3 +4,27 @@
     border-radius: var(--border-radius);
   }
 }
+
+.no-content {
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  .idle-image {
+    mask-image: linear-gradient(
+      to right bottom,
+      rgba(0, 0, 0, 0.35),
+      transparent
+    );
+  }
+
+  .message {
+    padding: 1rem;
+    position: absolute;
+    margin-top: 5%;
+
+    .message-title {
+      margin-bottom: 2rem;
+    }
+  }
+}
