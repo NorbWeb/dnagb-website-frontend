@@ -88,7 +88,7 @@ a:not(.nav-link, .side-nav-link, .nav-link-logo, .copyright-footer-link) {
 
   &:hover,
   &:focus {
-    color: var(--primary-lighten);
+    color: var(--primary-darken);
   }
 }
 

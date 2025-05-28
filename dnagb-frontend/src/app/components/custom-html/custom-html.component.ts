@@ -15,10 +15,14 @@ export class CustomHtmlComponent implements OnInit {
   route = inject(ActivatedRoute);
   state = inject(StateService);
   unsubscribeAll = new Subject();
+  protected currentPage: any = '';
 
   data!: any;
 
   ngOnInit(): void {
+    this.currentPage = document.title;
+    console.log(`🐦‍⬛: CustomHtmlComponent -> this.route`, document.title);
+
     this.route.data.pipe(takeUntil(this.unsubscribeAll)).subscribe({
       next: (res) => {
         if (res['status'] === 'published') {

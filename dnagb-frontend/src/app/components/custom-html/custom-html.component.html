@@ -6,19 +6,24 @@
     [innerHtml]="data | safeHtml"
   ></section>
   } @else {
-  <section class="section custom-html-content">
-    <!-- TODO: edit text for no published data -->
-    <div class="no-content">
-      <img class="idle-image" src="./assets/kirschbluetenbaum.jpg" alt="" />
-      <div class="message">
-        <h3 class="message-title">Nix los hier 🥱</h3>
-        <p>Es wurde anscheinend noch kein Inhalt für diese Seite erstellt.</p>
-        <p>
-          Bei Problemen melde dich direkt beim
-          <a href="mailto: webmaster@dnagb.de">Webmaster</a>.
-        </p>
-      </div>
-    </div>
-  </section>
+  <section
+    class="section no-content"
+    style="background-image: url('./assets/kirschbluetenbaum.jpg')"
+  ></section>
+  <div class="message">
+    <h3 class="message-title">Nix los hier 🥱</h3>
+    <p>
+      Es wurde anscheinend noch kein Inhalt für diese Seite erstellt: <br />
+      <i> {{ currentPage }} </i>
+    </p>
+    <p>
+      Bei Problemen melde dich direkt beim
+      <a
+        href="mailto: webmaster@dnagb.de"
+        title="E-Mail senden an webmaster@dnagb.de"
+        >Webmaster</a
+      >.
+    </p>
+  </div>
   }
 </div>

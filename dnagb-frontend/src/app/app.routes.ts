@@ -68,7 +68,7 @@ export let routes: Routes = [
       import('./components/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
-    title: 'Waffe & Rüstung · DNagB',
+    title: 'Aurüstung · DNagB',
   },
   {
     path: 'naginata/kampfsport',

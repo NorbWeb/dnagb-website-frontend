@@ -1,4 +1,5 @@
 #side-nav {
+  /* TODO: edit style to make it better responsive */
   display: none;
   width: 100vw;
   position: fixed;
