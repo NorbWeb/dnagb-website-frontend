@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
 import { SafeUrlPipe } from '../../2_pipes/safeUrl';
@@ -15,8 +15,6 @@ export class DownloadComponent {
   headers: string[] = [];
   url = environment.cmsUrl;
   activeData!: string;
-
-  @ViewChild('pdfViewer') pdfViewer!: ElementRef<HTMLDialogElement>;
 
   directDownload(e: Event, url: string) {
     e.stopPropagation();

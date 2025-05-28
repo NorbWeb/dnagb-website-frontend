@@ -5,6 +5,7 @@ import {
   ViewChild,
   ElementRef,
   inject,
+  viewChild,
 } from '@angular/core';
 import {
   AttributionControl,
@@ -49,11 +50,11 @@ export class DojosComponent implements OnInit, OnDestroy {
   });
   private justClosedDialog = false;
 
-  @ViewChild('dojoDialog') dojoDialog!: ElementRef<HTMLDialogElement>;
+  dojoDialog = viewChild<ElementRef<HTMLDialogElement>>('dojoDialog');
 
   closeDialog() {
     this.justClosedDialog = true;
-    this.dojoDialog.nativeElement.close();
+    this.dojoDialog()?.nativeElement.close();
     this.dojoInfo = {
       name: '',
       city: '',
@@ -122,8 +123,11 @@ export class DojosComponent implements OnInit, OnDestroy {
           el.addEventListener('click', (e: Event) => {
             e.stopPropagation();
             this.setDojoInfo(dojo, 'geojson');
-            this.dojoDialog.nativeElement.show();
-            this.dojoDialog.nativeElement.children[1].scrollTop = 0;
+            this.dojoDialog()?.nativeElement.show();
+            const dialog = this.dojoDialog();
+            if (dialog && dialog.nativeElement.children[1]) {
+              (dialog.nativeElement.children[1] as HTMLElement).scrollTop = 0;
+            }
           });
 
           el.addEventListener('keyup', (e: KeyboardEvent) => {
@@ -134,7 +138,7 @@ export class DojosComponent implements OnInit, OnDestroy {
                 return;
               }
               this.setDojoInfo(dojo, 'geojson');
-              this.dojoDialog.nativeElement.show();
+              this.dojoDialog()?.nativeElement.show();
             }
           });
 
