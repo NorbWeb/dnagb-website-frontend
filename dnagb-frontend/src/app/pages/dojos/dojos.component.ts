@@ -75,7 +75,6 @@ export class DojosComponent implements OnInit, OnDestroy {
       center: [10.415, 51.356],
       zoom: 5.3,
       maxZoom: 10,
-      minZoom: 4.5,
       attributionControl: false,
     });
 
