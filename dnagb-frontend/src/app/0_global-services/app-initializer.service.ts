@@ -38,7 +38,10 @@ export class AppInitializerService {
       await this.getContact().catch(reject);
       await this.getPlaning().catch(reject);
       await this.getMembership().catch(reject);
-      await this.getNaginata().catch(reject);
+      await this.getAboutNaginata().catch(reject);
+      await this.getMartialArt().catch(reject);
+      await this.getEquipment().catch(reject);
+      await this.getHistory().catch(reject);
 
       registerLocaleData(localeDe, 'de-DE', localeDeExtra);
 
@@ -226,50 +229,65 @@ export class AppInitializerService {
     return await res.json();
   }
 
-  private async getNaginata() {
-    const res = await fetch(`${environment.cmsUrl}/items/naginata`);
+  private async getAboutNaginata() {
+    const res = await fetch(`${environment.cmsUrl}/items/about_naginata`);
     const json = await res.json();
 
-    let whatIsNaginataRoute = routes.find((r) => {
+    let route = routes.find((r) => {
       return r.path === 'naginata/was-ist-naginata';
     });
 
-    let equipmentRoute = routes.find((r) => {
-      return r.path === 'naginata/ausruestung';
-    });
+    if (route) {
+      route.data = {
+        html: json.data['about_naginata_text'],
+        status: json.data.status,
+      };
+    }
+  }
 
-    let historyRoute = routes.find((r) => {
-      return r.path === 'naginata/geschichte';
-    });
+  private async getMartialArt() {
+    const res = await fetch(`${environment.cmsUrl}/items/martial_art`);
+    const json = await res.json();
 
-    let martialArtRoute = routes.find((r) => {
+    let route = routes.find((r) => {
       return r.path === 'naginata/kampfsport';
     });
 
-    if (equipmentRoute) {
-      equipmentRoute.data = {
-        html: json.data['equipment'],
+    if (route) {
+      route.data = {
+        html: json.data['martial_art_text'],
         status: json.data.status,
       };
     }
+  }
 
-    if (whatIsNaginataRoute) {
-      whatIsNaginataRoute.data = {
-        html: json.data['what_is'],
+  private async getEquipment() {
+    const res = await fetch(`${environment.cmsUrl}/items/equipment`);
+    const json = await res.json();
+
+    let route = routes.find((r) => {
+      return r.path === 'naginata/ausruestung';
+    });
+
+    if (route) {
+      route.data = {
+        html: json.data['equipment_text'],
         status: json.data.status,
       };
     }
+  }
 
-    if (historyRoute) {
-      historyRoute.data = {
-        html: json.data['history'],
-        status: json.data.status,
-      };
-    }
+  private async getHistory() {
+    const res = await fetch(`${environment.cmsUrl}/items/history`);
+    const json = await res.json();
 
-    if (martialArtRoute) {
-      martialArtRoute.data = {
-        html: json.data['martial_art'],
+    let route = routes.find((r) => {
+      return r.path === 'naginata/geschichte';
+    });
+
+    if (route) {
+      route.data = {
+        html: json.data['history_text'],
         status: json.data.status,
       };
     }
