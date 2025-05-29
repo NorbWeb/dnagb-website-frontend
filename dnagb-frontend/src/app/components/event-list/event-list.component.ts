@@ -13,20 +13,22 @@ import { Router } from '@angular/router';
 export class EventListComponent {
   state = inject(StateService);
   router = inject(Router);
-  list!: EventItem[];
+  list: EventItem[] = [];
 
   openDetails(type: 'event' | 'news', id: number | string) {
     if (type === 'event') {
-      this.router.navigateByUrl(`/event-details/${id}`);
+      this.router.navigateByUrl(`/news/event-details/${id}`);
     }
     if (type === 'news') {
-      this.router.navigateByUrl(`/news-details/${id}`);
+      this.router.navigateByUrl(`/news/news-details/${id}`);
     }
   }
 
   ngOnInit(): void {
-    if (this.state.getConf().events[0].date_start >= new Date()) {
-      this.list = this.state.getConf().events;
+    for (const event of this.state.getConf().events) {
+      if (event.date_start >= new Date() && event.status === 'published') {
+        this.list.push(event);
+      }
     }
   }
 }

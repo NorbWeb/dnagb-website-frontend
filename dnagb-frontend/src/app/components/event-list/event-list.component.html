@@ -1,6 +1,6 @@
 <h2 class="event-list-header">Nächste Events</h2>
 <ul class="event-list">
-  @if(!list){
+  @if(!list || !list.length){
   <li class="null-event-item">Es stehen gerade keine Events an.</li>
   <li class="null-event-item">
     Schau doch mal welche

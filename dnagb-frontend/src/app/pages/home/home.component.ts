@@ -32,10 +32,10 @@ export class HomeComponent implements OnInit {
 
   openDetails(type: 'event' | 'news', id: number | string) {
     if (type === 'event') {
-      this.router.navigateByUrl(`/event-details/${id}`);
+      this.router.navigateByUrl(`/news/event-details/${id}`);
     }
     if (type === 'news') {
-      this.router.navigateByUrl(`/news-details/${id}`);
+      this.router.navigateByUrl(`/news/news-details/${id}`);
     }
   }
 

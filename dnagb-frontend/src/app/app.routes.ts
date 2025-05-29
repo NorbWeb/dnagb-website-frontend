@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 export let routes: Routes = [
   {
@@ -17,7 +16,7 @@ export let routes: Routes = [
     title: 'Aktuelles · DNagB',
   },
   {
-    path: 'news-details/:id',
+    path: 'news/news-details/:id',
     loadComponent: () =>
       import('./pages/news/event-detail/event-detail.component').then(
         (m) => m.EventDetailComponent
@@ -25,7 +24,7 @@ export let routes: Routes = [
     title: 'Details · DNagB',
   },
   {
-    path: 'event-details/:id',
+    path: 'news/event-details/:id',
     loadComponent: () =>
       import('./pages/news/event-detail/event-detail.component').then(
         (m) => m.EventDetailComponent

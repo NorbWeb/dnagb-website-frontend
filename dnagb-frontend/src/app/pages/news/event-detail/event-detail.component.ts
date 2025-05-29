@@ -31,7 +31,7 @@ export class EventDetailComponent implements OnInit {
     const { id } = this.route.snapshot.params;
     const path = this.route.snapshot.routeConfig?.path;
 
-    if (path === 'event-details/:id') {
+    if (path === 'news/event-details/:id') {
       this.type = 'event';
       this.event = this.state
         .getConf()
@@ -46,7 +46,7 @@ export class EventDetailComponent implements OnInit {
       this.mapsLink = `https://www.google.de/maps/place/${street}+${number},+${postalCode}+${city}`;
     }
 
-    if (path === 'news-details/:id') {
+    if (path === 'news/news-details/:id') {
       this.type = 'news';
       this.news = this.state
         .getConf()

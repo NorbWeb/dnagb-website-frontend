@@ -21,10 +21,6 @@ export class AppInitializerService {
   init(): Promise<void> {
     return new Promise(async (resolve, reject) => {
       const associationText = await this.getAssociationText().catch(reject);
-      console.log(
-        `🐦‍⬛: AppInitializerService -> constructor -> associationText`,
-        associationText
-      );
       const news = await this.getNews().catch(reject);
       const events = await this.getEvents().catch(reject);
       const imprint = await this.getImprint().catch(reject);
@@ -151,8 +147,10 @@ export class AppInitializerService {
         element.date_end = new Date(element.date_end);
       }
       let typeLabel: EventType[] = [];
-      for (let item of element.type) {
-        typeLabel.push(type[item]);
+      if (element.type) {
+        for (let item of element.type) {
+          typeLabel.push(type[item]);
+        }
       }
       element.type = typeLabel;
       result.push(element);
