@@ -63,6 +63,11 @@
 
     &.active {
       background-color: rgba(0, 0, 0, 0.125);
+      background-color: var(--primary-lighten);
+
+      &:hover {
+        background-color: var(--primary);
+      }
     }
   }
 }
