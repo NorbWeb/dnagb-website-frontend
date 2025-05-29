@@ -1,5 +1,4 @@
 #side-nav {
-  /* TODO: edit style to make it better responsive */
   display: none;
   width: 100vw;
   position: fixed;
@@ -71,7 +70,6 @@ ul {
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  /* gap: 0.25rem; */
 }
 
 .list-header {

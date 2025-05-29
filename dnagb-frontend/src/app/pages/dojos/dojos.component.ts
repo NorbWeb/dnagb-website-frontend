@@ -152,7 +152,6 @@ export class DojosComponent implements OnInit, OnDestroy {
         if (!e.isSourceLoaded && e.sourceId === 'dojo-source') {
           this.map?.on('idle', () => {
             this.isLoading = false;
-            console.log('source loaded');
           });
         }
       });
