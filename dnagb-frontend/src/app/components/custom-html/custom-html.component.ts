@@ -21,7 +21,6 @@ export class CustomHtmlComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentPage = document.title;
-    console.log(`🐦‍⬛: CustomHtmlComponent -> this.route`, document.title);
 
     this.route.data.pipe(takeUntil(this.unsubscribeAll)).subscribe({
       next: (res) => {
