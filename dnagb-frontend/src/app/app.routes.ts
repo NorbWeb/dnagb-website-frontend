@@ -1,11 +1,13 @@
 import { Routes } from '@angular/router';
 
+let shortTitle = 'DNagB';
+// TODO : Make this configurable from conf()
 export let routes: Routes = [
   {
     path: 'home',
     loadComponent: () =>
       import('./pages/home/home.component').then((m) => m.HomeComponent),
-    title: 'Home · DNagB',
+    title: `Home · ${shortTitle}`,
   },
   {
     path: 'news',
@@ -13,7 +15,7 @@ export let routes: Routes = [
       import('./pages/news/event/event.component').then(
         (m) => m.EventComponent
       ),
-    title: 'Aktuelles · DNagB',
+    title: `Aktuelles · ${shortTitle}`,
   },
   {
     path: 'news/news-details/:id',
@@ -21,7 +23,7 @@ export let routes: Routes = [
       import('./pages/news/event-detail/event-detail.component').then(
         (m) => m.EventDetailComponent
       ),
-    title: 'Details · DNagB',
+    title: `Details · ${shortTitle}`,
   },
   {
     path: 'news/event-details/:id',
@@ -29,7 +31,7 @@ export let routes: Routes = [
       import('./pages/news/event-detail/event-detail.component').then(
         (m) => m.EventDetailComponent
       ),
-    title: 'Details · DNagB',
+    title: `Details · ${shortTitle}`,
   },
   {
     path: 'dnagb/vereinsstrukturen',
@@ -37,13 +39,13 @@ export let routes: Routes = [
       import('./pages/association/association.component').then(
         (m) => m.AssociationComponent
       ),
-    title: 'Vereinsstruktur · DNagB',
+    title: `Vereinsstruktur · ${shortTitle}`,
   },
   {
     path: 'naginata-gruppen',
     loadComponent: () =>
       import('./pages/dojos/dojos.component').then((m) => m.DojosComponent),
-    title: 'Naginata-Gruppen · DNagB',
+    title: `Naginata-Gruppen · ${shortTitle}`,
   },
   {
     path: 'dnagb/mitglied-werden',
@@ -51,7 +53,7 @@ export let routes: Routes = [
       import('./components/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
-    title: 'Mitglied werden · DNagB',
+    title: `Mitglied werden · ${shortTitle}`,
   },
   {
     path: 'naginata/was-ist-naginata',
@@ -59,7 +61,7 @@ export let routes: Routes = [
       import('./components/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
-    title: 'Was ist Naginata · DNagB',
+    title: `Was ist Naginata · ${shortTitle}`,
   },
   {
     path: 'naginata/ausruestung',
@@ -67,7 +69,7 @@ export let routes: Routes = [
       import('./components/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
-    title: 'Aurüstung · DNagB',
+    title: `Aurüstung · ${shortTitle}`,
   },
   {
     path: 'naginata/kampfsport',
@@ -75,7 +77,7 @@ export let routes: Routes = [
       import('./components/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
-    title: 'Der Kampfsport · DNagB',
+    title: `Der Kampfsport · ${shortTitle}`,
   },
   {
     path: 'naginata/geschichte',
@@ -83,7 +85,7 @@ export let routes: Routes = [
       import('./components/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
-    title: 'Geschichte · DNagB',
+    title: `Geschichte · ${shortTitle}`,
   },
   {
     path: 'info/pruefung',
@@ -91,7 +93,7 @@ export let routes: Routes = [
       import('./components/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
-    title: 'Prüfung · DNagB',
+    title: `Prüfung · ${shortTitle}`,
   },
   {
     path: 'info/nuetzliches',
@@ -99,7 +101,7 @@ export let routes: Routes = [
       import('./components/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
-    title: 'Nützliches · DNagB',
+    title: `Nützliches · ${shortTitle}`,
   },
   {
     path: 'info/veranstaltung-planen',
@@ -107,7 +109,7 @@ export let routes: Routes = [
       import('./components/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
-    title: 'Veranstaltung planen · DNagB',
+    title: `Veranstaltung planen · ${shortTitle}`,
   },
   {
     path: 'download',
@@ -115,7 +117,7 @@ export let routes: Routes = [
       import('./pages/download/download.component').then(
         (m) => m.DownloadComponent
       ),
-    title: 'Downloads · DNagB',
+    title: `Downloads · ${shortTitle}`,
   },
   {
     path: 'impressum',
@@ -123,7 +125,7 @@ export let routes: Routes = [
       import('./pages/imprint/imprint.component').then(
         (m) => m.ImprintComponent
       ),
-    title: 'Impressum · DNagB',
+    title: `Impressum · ${shortTitle}`,
   },
   {
     path: 'datenschutz',
@@ -131,7 +133,7 @@ export let routes: Routes = [
       import('./components/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
-    title: 'Datenschutz · DNagB',
+    title: `Datenschutz · ${shortTitle}`,
   },
   {
     path: 'kontakt',
@@ -139,7 +141,7 @@ export let routes: Routes = [
       import('./components/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
-    title: 'Kontakt · DNagB',
+    title: `Kontakt · ${shortTitle}`,
   },
   {
     path: '',

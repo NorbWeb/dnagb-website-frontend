@@ -1,0 +1,28 @@
+<div
+  class="card"
+  (click)="openDetails('news', data().id)"
+  (keyup.enter)="openDetails('news', data().id)"
+  tabindex="0"
+>
+  <div class="card-image">
+    @if(data().image){
+    <img
+      src="{{ url }}/assets/{{ data().image }}?quality=25"
+      alt="Bild von {{ data().title }}"
+    />
+    } @else {
+
+    <img src="./assets/placeholder.jpg" alt="" />
+    }
+  </div>
+  <div class="card-content">
+    <div class="title">{{ data().title }}</div>
+    <div class="date">
+      {{ data().date_start | date : "dd.MM.yyyy" }}
+    </div>
+    <p class="announcement">
+      {{ data().announcement }}
+    </p>
+    <div class="details">zum Artikel</div>
+  </div>
+</div>

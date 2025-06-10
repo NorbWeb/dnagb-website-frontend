@@ -6,10 +6,7 @@
 
 .banner_bg-fill {
   position: relative;
-  background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.squarespace-cdn.com%2Fcontent%2Fv1%2F5b6744898f5130d3cc91545f%2F405848cf-83da-4d4c-befe-c1e84386c4f8%2FKogetsuKai_Naginata_3.jpg&f=1&nofb=1&ipt=de4a2648ae230797eb82359ce0feceb8ff541ccd3999cc7f1a7038c648792086&ipo=images");
   background-position: right 50%;
-  /* background: url("https://www.travelarrangejapan.com/wp-content/uploads/2022/04/Naginata-Shubukan-2-scaled.jpg");
-  background-position: right 30%; */
   background-size: cover;
 
   .bg-overlay {
@@ -56,99 +53,6 @@
   gap: 1rem;
   padding: var(--section-padding);
   grid-template-columns: repeat(3, 1fr);
-}
-
-.flagship-news-card {
-  width: 100%;
-  background-color: var(--white);
-  overflow: hidden;
-  border-radius: var(--border-radius);
-  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
-  transition: var(--transition);
-
-  cursor: pointer;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-
-  &:hover {
-    filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.5));
-  }
-
-  .card-image {
-    position: relative;
-
-    img {
-      max-width: 100%;
-      width: 100%;
-      height: 10rem;
-      object-fit: cover;
-    }
-  }
-
-  .card-content {
-    padding: 0.75rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-
-    .title {
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-
-    .date {
-      font-size: 0.875rem;
-      color: var(--gray-800);
-      margin-bottom: 0.5rem;
-      font-style: italic;
-    }
-
-    .type {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .announcement {
-      margin: 0.5rem 0 1rem 0;
-    }
-
-    .details {
-      width: fit-content;
-      margin-top: auto;
-      margin-right: auto;
-      color: var(--secondary);
-      font-weight: 700;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      transition: var(--transition);
-      position: relative;
-
-      &::after {
-        transition: var(--transition);
-        content: "";
-        display: block;
-        position: absolute;
-        left: 0;
-        bottom: -0.125rem;
-        width: 0;
-        height: 0.125rem;
-        background-color: var(--secondary);
-      }
-    }
-  }
-
-  &:hover {
-    .card-content {
-      .details {
-        &::after {
-          width: 100%;
-        }
-      }
-    }
-  }
 }
 
 @media screen and (max-width: 992px) {

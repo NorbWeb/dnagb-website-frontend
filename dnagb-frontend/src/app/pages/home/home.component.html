@@ -1,5 +1,10 @@
 <div class="page">
-  <section id="banner" class="banner_bg-fill">
+  <section
+    id="banner"
+    class="banner_bg-fill"
+    [ngStyle]="{ 'background-image': bannerImage }"
+  >
+    <!-- [ngStyle]="background-image: center;" -->
     <div class="banner_content container">
       <h1 class="banner_title">{{ title.long_1 }}</h1>
       <div class="banner_stack">
@@ -23,34 +28,7 @@
     <!-- <app-calendar></app-calendar> -->
     <app-event-list></app-event-list>
     @for(item of frontpageNews; track $index){
-    <div
-      class="flagship-news-card"
-      (click)="openDetails('news', item.id)"
-      (keyup.enter)="openDetails('news', item.id)"
-      tabindex="0"
-    >
-      <div class="card-image">
-        @if(item.image){
-        <img
-          src="{{ url }}/assets/{{ item.image }}?quality=25"
-          alt="Bild von {{ item.title }}"
-        />
-        } @else {
-
-        <img src="./assets/placeholder.jpg" alt="" />
-        }
-      </div>
-      <div class="card-content">
-        <div class="title">{{ item.title }}</div>
-        <div class="date">
-          {{ item.date_start | date : "dd.MM.yyyy" }}
-        </div>
-        <p class="announcement">
-          {{ item.announcement }}
-        </p>
-        <div class="details">zum Artikel</div>
-      </div>
-    </div>
+    <app-card [data]="item"></app-card>
     }
   </section>
 </div>

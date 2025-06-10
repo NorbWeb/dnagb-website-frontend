@@ -61,6 +61,7 @@ export class AppInitializerService {
             short: settings.data.title_short,
           },
           logo: settings.data.logo,
+          banner: settings.data.banner,
         },
 
         association: {
