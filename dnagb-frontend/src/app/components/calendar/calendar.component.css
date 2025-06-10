@@ -145,7 +145,6 @@
     border: none;
     background-color: #fef4af;
     transition: var(--transition);
-    transition-property: filter;
     width: 3rem;
     padding: 0.5rem 0.25rem 0.5rem 0.25rem;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.125));

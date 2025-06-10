@@ -6,7 +6,6 @@
   font-size: 1em;
   text-align: center;
   transition: var(--transition);
-  transition-property: border-color, background-color, box-shadow, color;
   border: 0.125rem solid;
   border-radius: var(--border-radius);
   cursor: pointer;

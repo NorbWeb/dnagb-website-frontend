@@ -79,7 +79,7 @@ li {
 a:not(.nav-link, .side-nav-link, .nav-link-logo, .copyright-footer-link) {
   color: #0000ee;
   text-decoration: underline;
-  transition: all 250ms ease;
+  transition: var(--transition);
   position: relative;
   cursor: pointer;
 

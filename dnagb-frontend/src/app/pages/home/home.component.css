@@ -64,7 +64,8 @@
   overflow: hidden;
   border-radius: var(--border-radius);
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
-  transition: filter 250ms ease-in-out;
+  transition: var(--transition);
+
   cursor: pointer;
   height: 100%;
   display: flex;
@@ -122,11 +123,11 @@
       color: var(--secondary);
       font-weight: 700;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      transition: all 250ms ease;
+      transition: var(--transition);
       position: relative;
 
       &::after {
-        transition: all 250ms ease;
+        transition: var(--transition);
         content: "";
         display: block;
         position: absolute;
