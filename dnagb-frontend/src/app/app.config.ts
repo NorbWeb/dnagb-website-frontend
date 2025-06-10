@@ -3,6 +3,7 @@ import {
   inject,
   LOCALE_ID,
   provideAppInitializer,
+  provideZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter, withViewTransitions } from '@angular/router';
 
@@ -24,6 +25,7 @@ export const appConfig: ApplicationConfig = {
         skipInitialTransition: true,
       })
     ),
+    provideZonelessChangeDetection(),
     { provide: LOCALE_ID, useValue: 'de-DE' },
   ],
 };
