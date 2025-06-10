@@ -1,5 +1,5 @@
 <div class="container page map-wrap">
-  @if(isLoading){
+  @if((isLoading())){
   <div class="loader-backdrop">
     <div class="loader"></div>
   </div>
@@ -9,32 +9,32 @@
   <dialog id="dojo-dialog" #dojoDialog>
     <div class="dojo-header">
       <div class="dojo-info-wrapper">
-        <div class="dojo-name">{{ dojoInfo.name }}</div>
-        <div class="dojo-city">{{ dojoInfo.city }}</div>
-        @if(dojoInfo.link){
+        <div class="dojo-name">{{ dojoInfo().name }}</div>
+        <div class="dojo-city">{{ dojoInfo().city }}</div>
+        @if(dojoInfo().link){
         <div class="dojo-link">
           <a
-            href="{{ dojoInfo.link }}"
+            href="{{ dojoInfo().link }}"
             target="_blank"
-            title="Link zum Dojo des {{ dojoInfo.name }}"
+            title="Link zum Dojo des {{ dojoInfo().name }}"
             >link zum Dojo</a
           >
         </div>
         }
       </div>
       <div class="dojo-logo-wrapper">
-        @if(dojoInfo.logo){
+        @if(dojoInfo().logo){
         <img
           class="dojo-logo"
-          src="{{ url }}/assets/{{ dojoInfo.logo }}"
-          alt="Logo des {{ dojoInfo.name }}"
+          src="{{ url }}/assets/{{ dojoInfo().logo }}"
+          alt="Logo des {{ dojoInfo().name }}"
         />}
       </div>
     </div>
-    @if(dojoInfo.description){
+    @if(dojoInfo().description){
     <div
       class="dojo-description"
-      [innerHtml]="dojoInfo.description | safeHtml"
+      [innerHtml]="dojoInfo().description | safeHtml"
     ></div>
     }
     <div class="dialog-action">

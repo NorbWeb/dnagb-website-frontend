@@ -5,6 +5,8 @@ import {
   ElementRef,
   inject,
   viewChild,
+  signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import {
   AttributionControl,
@@ -32,14 +34,14 @@ export class DojosComponent implements OnInit, OnDestroy {
   state = inject(StateService);
   map: Map | undefined;
   url = environment.cmsUrl;
-  allDojos!: any;
-  dojoInfo: DojoInfo = {
+  allDojos = signal<any>([]);
+  dojoInfo = signal<DojoInfo>({
     name: '',
     city: '',
     link: '',
     description: '',
     logo: '',
-  };
+  });
   popup = new Popup({
     closeButton: false,
     closeOnClick: false,
@@ -49,18 +51,18 @@ export class DojosComponent implements OnInit, OnDestroy {
   });
   private justClosedDialog = false;
   dojoDialog = viewChild<ElementRef<HTMLDialogElement>>('dojoDialog');
-  protected isLoading: boolean = true;
+  protected isLoading = signal<boolean>(true);
 
   closeDialog() {
     this.justClosedDialog = true;
     this.dojoDialog()?.nativeElement.close();
-    this.dojoInfo = {
+    this.dojoInfo.set({
       name: '',
       city: '',
       link: '',
       description: '',
       logo: '',
-    };
+    });
     setTimeout(() => {
       this.justClosedDialog = false;
     }, 250);
@@ -121,6 +123,8 @@ export class DojosComponent implements OnInit, OnDestroy {
           el.addEventListener('click', (e: Event) => {
             e.stopPropagation();
             this.setDojoInfo(dojo, 'geojson');
+            console.log(this.dojoInfo);
+
             this.dojoDialog()?.nativeElement.show();
             const dialog = this.dojoDialog();
             if (dialog && dialog.nativeElement.children[1]) {
@@ -151,7 +155,7 @@ export class DojosComponent implements OnInit, OnDestroy {
       this.map?.on('sourcedataloading', (e) => {
         if (!e.isSourceLoaded && e.sourceId === 'dojo-source') {
           this.map?.on('idle', () => {
-            this.isLoading = false;
+            this.isLoading.set(false);
           });
         }
       });
@@ -188,41 +192,38 @@ export class DojosComponent implements OnInit, OnDestroy {
   }
 
   setDojoInfo(dojo: any, type: 'geojson' | 'object') {
-    // this.showInfo = true;
-    // this.map?.easeTo({
-    //   center: dojo.geometry.coordinates,
-    //   zoom: 8.5,
-    //   duration: 750,
-    // });
-    this.dojoInfo = {
+    this.dojoInfo.set({
       name: '',
       city: '',
       link: '',
       description: '',
       logo: '',
-    };
+    });
 
     if (type === 'geojson') {
-      this.dojoInfo.name = dojo.properties.name;
-      this.dojoInfo.city = dojo.properties.city;
-      this.dojoInfo.link = dojo.properties.link;
-      this.dojoInfo.description = dojo.properties.description;
-      this.dojoInfo.logo = dojo.properties.logo;
+      this.dojoInfo.set({
+        name: dojo.properties.name,
+        city: dojo.properties.city,
+        link: dojo.properties.link,
+        description: dojo.properties.description,
+        logo: dojo.properties.logo,
+      });
     }
 
     if (type === 'object') {
-      this.dojoInfo.name = dojo.name;
-      this.dojoInfo.city = dojo.city;
-      this.dojoInfo.link = dojo.link;
-      this.dojoInfo.description = dojo.description;
-      this.dojoInfo.logo = dojo.logo;
+      this.dojoInfo.set({
+        name: dojo.name,
+        city: dojo.city,
+        link: dojo.link,
+        description: dojo.description,
+        logo: dojo.logo,
+      });
     }
   }
 
   ngOnInit(): void {
     this.initMap();
-    this.allDojos = this.state.getConf().dojos;
-    this.setDojoInfo(this.allDojos[0], 'geojson');
+    this.allDojos.set(this.state.getConf().dojos);
   }
 
   ngOnDestroy() {

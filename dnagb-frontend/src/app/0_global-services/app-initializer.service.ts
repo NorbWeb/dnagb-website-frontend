@@ -25,7 +25,6 @@ export class AppInitializerService {
       const events = await this.getEvents().catch(reject);
       const imprint = await this.getImprint().catch(reject);
       const dojos = await this.getDojos().catch(reject);
-      // const dojos =this.allowOnlyPublishedItems( await this.getDojos().catch(reject));
       const speaker = await this.getSpeaker().catch(reject);
       const board = await this.getBoard().catch(reject);
       const downloads = await this.getDownloads().catch(reject);
