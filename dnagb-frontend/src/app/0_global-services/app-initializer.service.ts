@@ -25,6 +25,7 @@ export class AppInitializerService {
       const events = await this.getEvents().catch(reject);
       const imprint = await this.getImprint().catch(reject);
       const dojos = await this.getDojos().catch(reject);
+      // const dojos =this.allowOnlyPublishedItems( await this.getDojos().catch(reject));
       const speaker = await this.getSpeaker().catch(reject);
       const board = await this.getBoard().catch(reject);
       const downloads = await this.getDownloads().catch(reject);
@@ -69,7 +70,7 @@ export class AppInitializerService {
           speaker: speaker.data,
         },
 
-        dojos: dojos.data,
+        dojos: dojos.data.filter((item: any) => item.status === 'published'),
 
         imprint: imprint.data,
 
@@ -156,7 +157,10 @@ export class AppInitializerService {
         }
       }
       element.type = typeLabel;
-      result.push(element);
+
+      if (element.status === 'published') {
+        result.push(element);
+      }
     }
 
     result.sort((a: any, b: any) => {
@@ -170,7 +174,10 @@ export class AppInitializerService {
     let result = [];
     for (const element of rawData) {
       element.date_start = new Date(element.date_start);
-      result.push(element);
+
+      if (element.status === 'published') {
+        result.push(element);
+      }
     }
     result.sort((a: any, b: any) => {
       return b.date_start - a.date_start;

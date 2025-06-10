@@ -11,6 +11,7 @@
       <div class="dojo-info-wrapper">
         <div class="dojo-name">{{ dojoInfo.name }}</div>
         <div class="dojo-city">{{ dojoInfo.city }}</div>
+        @if(dojoInfo.link){
         <div class="dojo-link">
           <a
             href="{{ dojoInfo.link }}"
@@ -19,19 +20,23 @@
             >link zum Dojo</a
           >
         </div>
+        }
       </div>
       <div class="dojo-logo-wrapper">
+        @if(dojoInfo.logo){
         <img
           class="dojo-logo"
           src="{{ url }}/assets/{{ dojoInfo.logo }}"
           alt="Logo des {{ dojoInfo.name }}"
-        />
+        />}
       </div>
     </div>
+    @if(dojoInfo.description){
     <div
       class="dojo-description"
       [innerHtml]="dojoInfo.description | safeHtml"
     ></div>
+    }
     <div class="dialog-action">
       <button
         class="nag_button button-outline button-sm"
