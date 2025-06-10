@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
-import { CommonModule } from '@angular/common';
+
 import { Staff } from '../../1_types-and-interfaces/Staff';
 
 @Component({
   selector: 'app-association',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './association.component.html',
   styleUrl: './association.component.css',
 })
