@@ -27,8 +27,8 @@
   <section id="short-info" class="container">
     <!-- <app-calendar></app-calendar> -->
     <app-event-list></app-event-list>
-    @for(item of frontpageNews; track $index){
-    <app-card [data]="item"></app-card>
+    @for(item of news; track $index){
+    <app-news-card [data]="item"></app-news-card>
     }
   </section>
 </div>

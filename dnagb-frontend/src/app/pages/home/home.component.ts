@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 import { environment } from '../../../environment/env';
 import { NgStyle } from '@angular/common';
 import { EventListComponent } from '../../components/event-list/event-list.component';
-import { CardComponent } from '../../components/card/card.component';
+import { NewsCardComponent } from '../../components/card/news-card/news-card.component';
+import { NewsItem } from '../../1_types-and-interfaces/NewsItem';
 
 interface Title {
   short: string;
@@ -18,7 +19,7 @@ interface Title {
   imports: [
     // CalendarComponent,
     EventListComponent,
-    CardComponent,
+    NewsCardComponent,
     NgStyle,
   ],
   templateUrl: './home.component.html',
@@ -27,7 +28,7 @@ interface Title {
 export class HomeComponent implements OnInit {
   url = environment.cmsUrl;
   title!: Title;
-  frontpageNews: any[] = [];
+  news: NewsItem[] = [];
   bannerImage: string = 'url(./assets/placeholder.jpg)';
   private state = inject(StateService);
   private router = inject(Router);
@@ -38,7 +39,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.title = this.state.getConf().appSettings.title;
-    this.frontpageNews = [...this.state.getConf().news].splice(0, 2);
+    this.news = [...this.state.getConf().news].splice(0, 2);
     if (this.state.getConf().appSettings.banner) {
       this.bannerImage = `url(${this.url}/assets/${
         this.state.getConf().appSettings.banner

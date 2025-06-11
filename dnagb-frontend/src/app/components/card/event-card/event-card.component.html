@@ -1,0 +1,33 @@
+<div class="card" (click)="openDetails(data().id)">
+  <div class="card-image">
+    @if(data().image){
+    <img
+      src="{{ url }}/assets/{{ data().image }}?quality=25"
+      alt="Bild von {{ data().title }}"
+    />
+    } @else {
+
+    <img src="./assets/placeholder.jpg" alt="" />
+    }
+  </div>
+  <div class="card-content">
+    <div class="title">{{ data().title }}</div>
+    <div class="date">
+      {{ data().date_start | date : "EE dd.MM.yyyy" }}
+      @if(data().date_end){ -
+      {{ data().date_end | date : "EE dd.MM.yyyy" }}
+      }
+    </div>
+    @if(data().type.length){
+    <div class="type">
+      @for( type of data().type; track $index){
+      <div class="chip xs">{{ type }}</div>
+      }
+    </div>
+    }
+    <p class="announcement">
+      {{ data().announcement }}
+    </p>
+    <div class="details">zum Event</div>
+  </div>
+</div>

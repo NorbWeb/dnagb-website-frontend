@@ -2,73 +2,17 @@
   <section id="news" class="section">
     <h2>News</h2>
     <div class="news">
-      @for(item of news; track $index){ @if(item.status === "published") {
-      <!-- TODO : add card.component -->
-      <div class="news-card" (click)="openDetails('news', item.id)">
-        <div class="card-image">
-          @if(item.image){
-          <img
-            src="{{ url }}/assets/{{ item.image }}?quality=25"
-            alt="Bild von {{ item.title }}"
-          />
-          } @else {
-
-          <img src="./assets/placeholder.jpg" alt="" />
-          }
-        </div>
-        <div class="card-content">
-          <div class="title">{{ item.title }}</div>
-          <div class="date">
-            {{ item.date_start | date : "dd.MM.yyyy" }}
-          </div>
-          <p class="announcement">
-            {{ item.announcement }}
-          </p>
-          <div class="details">zum Artikel</div>
-        </div>
-      </div>
-      } }
+      @for(item of news; track $index){
+      <app-news-card [data]="item"></app-news-card>
+      }
     </div>
   </section>
   <section id="events" class="section">
     <h2>Events</h2>
     <div class="news">
-      @for(item of events; track $index){ @if(item.status === "published") {
-
-      <div class="news-card" (click)="openDetails('event', item.id)">
-        <div class="card-image">
-          @if(item.image){
-          <img
-            src="{{ url }}/assets/{{ item.image }}?quality=25"
-            alt="Bild von {{ item.title }}"
-          />
-          } @else {
-
-          <img src="./assets/placeholder.jpg" alt="" />
-          }
-        </div>
-        <div class="card-content">
-          <div class="title">{{ item.title }}</div>
-          <div class="date">
-            {{ item.date_start | date : "EE dd.MM.yyyy" }}
-            @if(item.date_end){ -
-            {{ item.date_end | date : "EE dd.MM.yyyy" }}
-            }
-          </div>
-          @if(item.type.length){
-          <div class="type">
-            @for( type of item.type; track $index){
-            <div class="chip xs">{{ type }}</div>
-            }
-          </div>
-          }
-          <p class="announcement">
-            {{ item.announcement }}
-          </p>
-          <div class="details">zum Event</div>
-        </div>
-      </div>
-      } }
+      @for(item of events; track $index){
+      <app-event-card [data]="item"></app-event-card>
+      }
     </div>
   </section>
 </div>

@@ -1,7 +1,7 @@
 <div
   class="card"
-  (click)="openDetails('news', data().id)"
-  (keyup.enter)="openDetails('news', data().id)"
+  (click)="openDetails(data().id)"
+  (keyup.enter)="openDetails(data().id)"
   tabindex="0"
 >
   <div class="card-image">
@@ -11,7 +11,6 @@
       alt="Bild von {{ data().title }}"
     />
     } @else {
-
     <img src="./assets/placeholder.jpg" alt="" />
     }
   </div>

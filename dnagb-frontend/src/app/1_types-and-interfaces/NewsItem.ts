@@ -1,7 +1,7 @@
 export interface EventItem {
   title: string;
   type: EventType[];
-  date_start: Date;
+  date_start: Date | string;
   date_end: Date | string | null;
   past: boolean;
   location_name: string;
