@@ -1,5 +1,6 @@
 <div id="side-nav" [ngClass]="{ open: open }" (click)="toggleSideNav()">
   <nav>
+    <!-- TODO : Make it dynamic; use nav.data.ts -->
     <div class="nav-list">
       <ul>
         <h4 class="list-header">Aktuelles</h4>
@@ -9,7 +10,7 @@
           routerLinkActive="active"
           ariaCurrentWhenActive="page"
         >
-          Events
+          News und Events
         </a>
       </ul>
       <ul>
