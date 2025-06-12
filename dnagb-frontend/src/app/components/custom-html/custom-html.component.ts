@@ -3,6 +3,7 @@ import { SafeHtmlPipe } from '../../2_pipes/safeHtml';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { StateService } from '../../0_global-services/state.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-custom-html',
@@ -14,6 +15,7 @@ import { StateService } from '../../0_global-services/state.service';
 export class CustomHtmlComponent implements OnInit {
   route = inject(ActivatedRoute);
   state = inject(StateService);
+  private titleService = inject(Title);
   unsubscribeAll = new Subject();
   protected currentPage: any = '';
 
@@ -24,6 +26,9 @@ export class CustomHtmlComponent implements OnInit {
 
     this.route.data.pipe(takeUntil(this.unsubscribeAll)).subscribe({
       next: (res) => {
+        if (res['title']) {
+          this.titleService.setTitle(res['title']);
+        }
         if (res['status'] === 'published') {
           this.data = res['html'];
         }

@@ -1,6 +1,9 @@
-import { AfterViewInit, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
 import { Board } from '../../1_types-and-interfaces/board';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-imprint',
@@ -8,8 +11,12 @@ import { Board } from '../../1_types-and-interfaces/board';
   templateUrl: './imprint.component.html',
   styleUrl: './imprint.component.css',
 })
-export class ImprintComponent implements AfterViewInit {
-  state = inject(StateService);
+export class ImprintComponent {
+  protected state = inject(StateService);
+  private route = inject(ActivatedRoute);
+  private titleService = inject(Title);
+  unsubscribeAll = new Subject();
+
   data!: any;
   repre!: Board;
 
@@ -48,6 +55,17 @@ export class ImprintComponent implements AfterViewInit {
       this.repre = this.state.getConf().association.board;
       this.createRepreBlock(this.repre);
     }
+
+    this.route.data.pipe(takeUntil(this.unsubscribeAll)).subscribe({
+      next: (res) => {
+        this.titleService.setTitle(
+          res['title'] + ` · ${this.state.getConf().appSettings.title.short}`
+        );
+        if (!res) {
+          return;
+        }
+      },
+    });
   }
 
   ngAfterViewInit(): void {
@@ -57,5 +75,10 @@ export class ImprintComponent implements AfterViewInit {
       this.createRepreBlock(this.repre)
     );
     console.log(`🐦‍⬛: ImprintComponent -> target`, target);
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribeAll.next(undefined);
+    this.unsubscribeAll.complete();
   }
 }

@@ -32,16 +32,6 @@ export class AppInitializerService {
       const settings = await this.getAppConf().catch(reject);
       const files = await this.getFiles();
       const folders = await this.getFolders();
-      await this.getExamination().catch(reject);
-      await this.getPrivacy().catch(reject);
-      await this.getUseful().catch(reject);
-      await this.getContact().catch(reject);
-      await this.getPlaning().catch(reject);
-      await this.getMembership().catch(reject);
-      await this.getAboutNaginata().catch(reject);
-      await this.getMartialArt().catch(reject);
-      await this.getEquipment().catch(reject);
-      await this.getHistory().catch(reject);
 
       registerLocaleData(localeDe, 'de-DE', localeDeExtra);
 
@@ -87,12 +77,24 @@ export class AppInitializerService {
         files: this.arrangeAllFiles(files.data, folders.data),
       });
 
+      await this.getExamination().catch(reject);
+      await this.getPrivacy().catch(reject);
+      await this.getUseful().catch(reject);
+      await this.getContact().catch(reject);
+      await this.getPlaning().catch(reject);
+      await this.getMembership().catch(reject);
+      await this.getAboutNaginata().catch(reject);
+      await this.getMartialArt().catch(reject);
+      await this.getEquipment().catch(reject);
+      await this.getHistory().catch(reject);
+
       console.log(
         '🐦‍⬛: AppInitializerService -> constructor -> ',
         this.state.getConf()
       );
 
       this.setFavIcon(settings.data.favicon);
+
       resolve();
     });
   }
@@ -200,6 +202,9 @@ export class AppInitializerService {
 
     if (route) {
       route.data = {
+        title: `Mitglied werden · ${
+          this.state.getConf().appSettings.title.short
+        }`,
         html: json.data['membership_text'],
         status: json.data.status,
       };
@@ -246,6 +251,9 @@ export class AppInitializerService {
 
     if (route) {
       route.data = {
+        title: `Was ist Naginata · ${
+          this.state.getConf().appSettings.title.short
+        }`,
         html: json.data['about_naginata_text'],
         status: json.data.status,
       };
@@ -262,6 +270,9 @@ export class AppInitializerService {
 
     if (route) {
       route.data = {
+        title: `Der Kampfsport · ${
+          this.state.getConf().appSettings.title.short
+        }`,
         html: json.data['martial_art_text'],
         status: json.data.status,
       };
@@ -278,6 +289,7 @@ export class AppInitializerService {
 
     if (route) {
       route.data = {
+        title: `Ausrüstung · ${this.state.getConf().appSettings.title.short}`,
         html: json.data['equipment_text'],
         status: json.data.status,
       };
@@ -294,6 +306,7 @@ export class AppInitializerService {
 
     if (route) {
       route.data = {
+        title: `Geschichte · ${this.state.getConf().appSettings.title.short}`,
         html: json.data['history_text'],
         status: json.data.status,
       };
@@ -310,6 +323,7 @@ export class AppInitializerService {
 
     if (route) {
       route.data = {
+        title: `Prüfung · ${this.state.getConf().appSettings.title.short}`,
         html: json.data['examination_text'],
         status: json.data.status,
       };
@@ -326,6 +340,7 @@ export class AppInitializerService {
 
     if (route) {
       route.data = {
+        title: `Nützliches · ${this.state.getConf().appSettings.title.short}`,
         html: json.data['useful_text'],
         status: json.data.status,
       };
@@ -342,6 +357,9 @@ export class AppInitializerService {
 
     if (route) {
       route.data = {
+        title: `Veranstaltung planen · ${
+          this.state.getConf().appSettings.title.short
+        }`,
         html: json.data['planing_text'],
         status: json.data.status,
       };
@@ -363,6 +381,7 @@ export class AppInitializerService {
 
     if (route) {
       route.data = {
+        title: `Datenschutz · ${this.state.getConf().appSettings.title.short}`,
         html: json.data['privacy_text'],
         status: json.data.status,
       };
@@ -379,6 +398,7 @@ export class AppInitializerService {
 
     if (route) {
       route.data = {
+        title: `Kontakt · ${this.state.getConf().appSettings.title.short}`,
         html: json.data['contact_text'],
         status: json.data.status,
       };

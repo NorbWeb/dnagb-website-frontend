@@ -6,7 +6,6 @@ import {
   inject,
   viewChild,
   signal,
-  ViewEncapsulation,
 } from '@angular/core';
 import {
   AttributionControl,
@@ -23,6 +22,9 @@ import { ZoomToExtendControl } from './zoomToExtend';
 import { DojoInfo } from './dojoInterfaces';
 import { covertToGeoJson } from './covertToGeoJson';
 import { SafeHtmlPipe } from '../../2_pipes/safeHtml';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-dojos',
@@ -31,7 +33,11 @@ import { SafeHtmlPipe } from '../../2_pipes/safeHtml';
   styleUrl: './dojos.component.css',
 })
 export class DojosComponent implements OnInit, OnDestroy {
-  state = inject(StateService);
+  protected state = inject(StateService);
+  private route = inject(ActivatedRoute);
+  private titleService = inject(Title);
+  unsubscribeAll = new Subject();
+
   map: Map | undefined;
   url = environment.cmsUrl;
   allDojos = signal<any>([]);
@@ -224,9 +230,22 @@ export class DojosComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initMap();
     this.allDojos.set(this.state.getConf().dojos);
+
+    this.route.data.pipe(takeUntil(this.unsubscribeAll)).subscribe({
+      next: (res) => {
+        this.titleService.setTitle(
+          res['title'] + ` · ${this.state.getConf().appSettings.title.short}`
+        );
+        if (!res) {
+          return;
+        }
+      },
+    });
   }
 
   ngOnDestroy() {
     this.map?.remove();
+    this.unsubscribeAll.next(undefined);
+    this.unsubscribeAll.complete();
   }
 }
