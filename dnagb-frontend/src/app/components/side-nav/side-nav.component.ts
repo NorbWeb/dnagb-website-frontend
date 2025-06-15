@@ -1,20 +1,21 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
 import { CommonModule } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { navData } from '../header/nav.data';
 
 @Component({
-    selector: 'app-side-nav',
-    imports: [CommonModule, RouterLink, RouterLinkActive],
-    templateUrl: './side-nav.component.html',
-    styleUrl: './side-nav.component.css'
+  selector: 'app-side-nav',
+  imports: [CommonModule, RouterLink, RouterLinkActive],
+  templateUrl: './side-nav.component.html',
+  styleUrl: './side-nav.component.css',
 })
-export class SideNavComponent implements OnInit, OnDestroy {
+export class SideNavComponent {
+  private state = inject(StateService);
   unsubscribeAll = new Subject();
   open: boolean = false;
-
-  constructor(private state: StateService) {}
+  protected navData = navData;
 
   toggleSideNav() {
     let state = this.state.getSideNavState();

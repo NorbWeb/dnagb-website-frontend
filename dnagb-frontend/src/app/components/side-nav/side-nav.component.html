@@ -1,7 +1,36 @@
 <div id="side-nav" [ngClass]="{ open: open }" (click)="toggleSideNav()">
   <nav>
-    <!-- TODO : Make it dynamic; use nav.data.ts -->
-    <div class="nav-list">
+    <ul class="nav-list">
+      @for(item of navData; track $index){
+      <li>
+        <h4 class="list-header">{{ item.label }}</h4>
+      </li>
+      @if(item.routerLink){
+      <li class="side-nav-item">
+        <a
+          class="side-nav-link"
+          [routerLink]="item.routerLink"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+        >
+          {{ item.label }}
+        </a>
+      </li>
+      } @if(item.subnav){ @for(subItem of item.subnav; track $index){
+      <li class="side-nav-item">
+        <a
+          class="side-nav-link"
+          [routerLink]="subItem.routerLink"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+        >
+          {{ subItem.label }}
+        </a>
+      </li>
+      } } }
+    </ul>
+
+    <!-- <div class="nav-list">
       <ul>
         <li>
           <h4 class="list-header">Aktuelles</h4>
@@ -174,7 +203,7 @@
           >
         </li>
       </ul>
-    </div>
+    </div> -->
     <div class="options">
       <!-- <button class="nag_button button-fill">Optionen</button> -->
       <span class="version">Version: 0.1.0</span>

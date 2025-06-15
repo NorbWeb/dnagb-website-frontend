@@ -49,7 +49,7 @@
           {{ item.label }}
         </a>
       </li>
-      } @if(item.dropdown){
+      } @if(item.subnav){
       <li class="dropdown">
         <div
           class="dropdown-button"
@@ -61,8 +61,7 @@
         >
           {{ item.label }}
           <div #dropdown class="dropdown-content">
-            @for(subItem of item.dropdown; track $index){
-            @if(subItem.routerLink){
+            @for(subItem of item.subnav; track $index){ @if(subItem.routerLink){
             <a
               class="nav-link"
               routerLink="{{ subItem.routerLink }}"

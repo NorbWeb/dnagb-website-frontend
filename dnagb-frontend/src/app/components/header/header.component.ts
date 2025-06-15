@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   url = environment.cmsUrl;
   logo!: string;
-  navData = navData;
+  protected navData = navData;
   subNavElements = viewChildren<any>('dropdown');
 
   closeSideNav() {

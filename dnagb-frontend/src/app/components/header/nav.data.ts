@@ -4,7 +4,7 @@ export const navData = [
     label: 'Aktuelles',
   },
   {
-    dropdown: [
+    subnav: [
       {
         routerLink: '/dnagb/vereinsstrukturen',
         label: 'Vereinsstruktur',
@@ -21,7 +21,7 @@ export const navData = [
     label: 'Naginata-Gruppen',
   },
   {
-    dropdown: [
+    subnav: [
       {
         routerLink: '/naginata/was-ist-naginata',
         label: 'Was ist Naginata?',
@@ -42,7 +42,7 @@ export const navData = [
     label: 'Naginata',
   },
   {
-    dropdown: [
+    subnav: [
       {
         routerLink: '/info/pruefung',
         label: 'Prüfung',
