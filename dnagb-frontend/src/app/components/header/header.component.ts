@@ -1,11 +1,4 @@
-import {
-  Component,
-  inject,
-  OnDestroy,
-  OnInit,
-  signal,
-  viewChildren,
-} from '@angular/core';
+import { Component, inject, signal, viewChildren } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
@@ -18,7 +11,7 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent {
   state = inject(StateService);
   router = inject(Router);
   unsubscribeAll = new Subject();
@@ -86,7 +79,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
         } else {
           this.showSideNav.set(false);
         }
-        console.log(`📢: HeaderComponent -> res`, this.showSideNav());
 
         if (!res) {
           return;
