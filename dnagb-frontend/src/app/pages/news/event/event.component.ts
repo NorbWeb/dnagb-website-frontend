@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { StateService } from '../../../0_global-services/state.service';
 import { EventItem, NewsItem } from '../../../1_types-and-interfaces/NewsItem';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { NewsCardComponent } from '../../../components/card/news-card/news-card.component';
 import { EventCardComponent } from '../../../components/card/event-card/event-card.component';
 import { Title } from '@angular/platform-browser';
@@ -10,7 +10,7 @@ import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-event',
-  imports: [CommonModule, DatePipe, NewsCardComponent, EventCardComponent],
+  imports: [CommonModule, NewsCardComponent, EventCardComponent],
   templateUrl: './event.component.html',
   styleUrl: './event.component.css',
 })

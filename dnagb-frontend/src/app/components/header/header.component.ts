@@ -3,12 +3,14 @@ import {
   inject,
   OnDestroy,
   OnInit,
+  signal,
   viewChildren,
 } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
 import { navData } from './nav.data';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -19,10 +21,11 @@ import { navData } from './nav.data';
 export class HeaderComponent implements OnInit, OnDestroy {
   state = inject(StateService);
   router = inject(Router);
-
+  unsubscribeAll = new Subject();
   url = environment.cmsUrl;
   logo!: string;
   protected navData = navData;
+  protected showSideNav = signal<boolean>(false);
   subNavElements = viewChildren<any>('dropdown');
 
   closeSideNav() {
@@ -71,9 +74,30 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.logo = this.state.getConf().appSettings.logo;
     this.windowClicked();
+
+    this.state.windowSize.pipe(takeUntil(this.unsubscribeAll)).subscribe({
+      next: (res) => {
+        if (
+          res.size === 'mobile' ||
+          res.size === 'tablet' ||
+          res.size === 'tablet_landscape'
+        ) {
+          this.showSideNav.set(true);
+        } else {
+          this.showSideNav.set(false);
+        }
+        console.log(`📢: HeaderComponent -> res`, this.showSideNav());
+
+        if (!res) {
+          return;
+        }
+      },
+    });
   }
 
   ngOnDestroy(): void {
     this.windowClicked(true);
+    this.unsubscribeAll.next(undefined);
+    this.unsubscribeAll.complete();
   }
 }

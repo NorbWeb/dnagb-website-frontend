@@ -1,4 +1,11 @@
 :root {
+  /* ~~~~~~~~~~ breakpoints ~~~~~~~~~~ */
+  --mobile: 576px;
+  --tablet: 768px;
+  --tablet_landscape: 992px;
+  --desktop: 1200px;
+  --desktop_large: 1400px;
+
   /* ~~~~~~~~~~ page ~~~~~~~~~~ */
   --page-padding-value: 1rem;
   --page-padding: var(--page-padding-value);

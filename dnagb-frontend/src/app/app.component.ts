@@ -40,9 +40,29 @@ export class AppComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
+    let screenType = 'desktop_large';
+    if (window.innerWidth <= 576) {
+      screenType = 'mobile';
+    }
+    if (window.innerWidth > 576 && window.innerWidth <= 768) {
+      screenType = 'tablet';
+    }
+    if (window.innerWidth > 768 && window.innerWidth <= 992) {
+      screenType = 'tablet_landscape';
+    }
+    if (window.innerWidth > 992 && window.innerWidth <= 1200) {
+      screenType = 'desktop';
+    }
+    if (window.innerWidth > 1200) {
+      screenType = 'desktop_large';
+    }
+
     this.state.updateWindowSize({
       screenWidth: window.innerWidth,
       screenHeight: window.innerHeight,
+      size: screenType,
     });
+
+    // console.log(`📢: size ->: ${this.state.getWindowSize().size}`);
   }
 }

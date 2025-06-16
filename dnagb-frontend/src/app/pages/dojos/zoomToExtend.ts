@@ -7,8 +7,9 @@ export class ZoomToExtendControl {
     this._map = map;
     this._container = document.createElement('button');
     this._container.setAttribute('title', 'Startansicht');
-    this._icon = document.createElement('img');
-    this._icon.setAttribute('src', '../assets/icons/recenter.svg');
+    this._icon = document.createElement('span');
+    this._icon.style =
+      'background-image: url(../assets/icons/recenter.svg); background-size: cover; width: 20px; height: 20px;';
     this._container.appendChild(this._icon);
     this._icon.classList.add('icon-resize-full-alt');
     this._container.addEventListener('click', () => {

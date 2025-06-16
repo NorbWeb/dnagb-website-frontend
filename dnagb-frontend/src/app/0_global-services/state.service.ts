@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { EventItem } from '../1_types-and-interfaces/NewsItem';
+import { ScreenSizes } from '../1_types-and-interfaces/screenSizes';
 
 @Injectable({
   providedIn: 'root',
@@ -32,10 +33,12 @@ export class StateService {
   });
   public readonly sideNav: Observable<any> = this._sideNav.asObservable();
 
-  private _windowSize: BehaviorSubject<any> = new BehaviorSubject<any>({
-    screenWidth: undefined,
-    screenHeight: undefined,
-  });
+  private _windowSize: BehaviorSubject<ScreenSizes> =
+    new BehaviorSubject<ScreenSizes>({
+      screenWidth: undefined,
+      screenHeight: undefined,
+      size: 'desktop', // default size
+    });
   public readonly windowSize: Observable<any> = this._windowSize.asObservable();
 
   constructor() {}

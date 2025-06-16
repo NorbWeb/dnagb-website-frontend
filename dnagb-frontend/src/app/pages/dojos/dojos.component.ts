@@ -126,6 +126,7 @@ export class DojosComponent implements OnInit, OnDestroy {
           const el = document.createElement('div');
           el.className = 'dojo-marker';
           el.tabIndex = 0;
+          el.setAttribute('role', 'button');
           el.addEventListener('click', (e: Event) => {
             e.stopPropagation();
             this.setDojoInfo(dojo, 'geojson');

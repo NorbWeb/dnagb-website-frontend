@@ -1,4 +1,5 @@
 <header id="header">
+  @if(showSideNav()){
   <nav class="menu-nav">
     <a
       class="nav-link-logo"
@@ -21,6 +22,7 @@
       <img src="./assets/icons/menu.svg" alt="" />
     </button>
   </nav>
+  } @else {
   <nav class="nav">
     <ul class="container">
       <li tabindex="0" (keyup.enter)="router.navigateByUrl('/home')">
@@ -80,4 +82,5 @@
       } }
     </ul>
   </nav>
+  }
 </header>

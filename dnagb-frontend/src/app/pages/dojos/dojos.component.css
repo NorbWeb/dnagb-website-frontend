@@ -15,6 +15,12 @@
   background-color: var(--gray-200);
 }
 
+.icon-resize-full-alt {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--gray-800);
+}
+
 #dojo-dialog {
   width: 30rem;
   padding: 0;
