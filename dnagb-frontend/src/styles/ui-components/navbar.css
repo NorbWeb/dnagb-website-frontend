@@ -12,7 +12,8 @@
   height: 100%;
   max-width: 10rem;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--nav-link-hover);
   }
   &.active {
@@ -64,7 +65,8 @@
       background-color: rgba(0, 0, 0, 0.125);
       background-color: var(--primary-lighten);
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: var(--primary);
       }
     }

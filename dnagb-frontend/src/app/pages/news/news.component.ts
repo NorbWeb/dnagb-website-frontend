@@ -1,20 +1,20 @@
 import { Component, inject } from '@angular/core';
-import { StateService } from '../../../0_global-services/state.service';
-import { EventItem, NewsItem } from '../../../1_types-and-interfaces/NewsItem';
+import { StateService } from '../../0_global-services/state.service';
+import { EventItem, NewsItem } from '../../1_types-and-interfaces/NewsItem';
 import { CommonModule } from '@angular/common';
-import { NewsCardComponent } from '../../../components/card/news-card/news-card.component';
-import { EventCardComponent } from '../../../components/card/event-card/event-card.component';
+import { NewsCardComponent } from '../../components/card/news-card/news-card.component';
+import { EventCardComponent } from '../../components/card/event-card/event-card.component';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-event',
+  selector: 'app-news',
   imports: [CommonModule, NewsCardComponent, EventCardComponent],
-  templateUrl: './event.component.html',
-  styleUrl: './event.component.css',
+  templateUrl: './news.component.html',
+  styleUrl: './news.component.css',
 })
-export class EventComponent {
+export class NewsComponent {
   private state = inject(StateService);
   private route = inject(ActivatedRoute);
   private titleService = inject(Title);

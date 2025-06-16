@@ -1,0 +1,32 @@
+<div class="container page">
+  <section id="news-detail" class="section">
+    <!-- <div class="action-panel">
+      <button class="nag_button button-fill back" (click)="goBackToPrevPage()">
+        <span style="margin-right: 0.5rem">⮜</span>Zurück
+      </button>
+    </div> -->
+    <h2 class="news-title">
+      {{ news.title }}
+    </h2>
+    <div class="news-info-header">
+      <div class="date">
+        <span>
+          {{ news.date_start | date : "dd.MM.yyyy" }}
+        </span>
+        <span>
+          @if(news.author){, {{ news.author }}
+          }
+        </span>
+      </div>
+    </div>
+    <div class="news-content" [innerHTML]="news.article | safeHtml"></div>
+    <!-- <div class="mobile mobile-container">
+      <button
+        class="nag_button button-fill back mobile"
+        (click)="goBackToPrevPage()"
+      >
+        Zurück
+      </button>
+    </div> -->
+  </section>
+</div>

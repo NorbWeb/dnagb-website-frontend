@@ -10,23 +10,21 @@ export let routes: Routes = [
   {
     path: 'news',
     loadComponent: () =>
-      import('./pages/news/event/event.component').then(
-        (m) => m.EventComponent
-      ),
+      import('./pages/news/news.component').then((m) => m.NewsComponent),
     data: { title: 'Aktuelles' },
   },
   {
     path: 'news/news-details/:id',
     loadComponent: () =>
-      import('./pages/news/event-detail/event-detail.component').then(
-        (m) => m.EventDetailComponent
+      import('./pages/details/news-detail/news-detail.component').then(
+        (m) => m.NewsDetailComponent
       ),
     data: { title: 'Details' },
   },
   {
     path: 'news/event-details/:id',
     loadComponent: () =>
-      import('./pages/news/event-detail/event-detail.component').then(
+      import('./pages/details/event-detail/event-detail.component').then(
         (m) => m.EventDetailComponent
       ),
     data: { title: 'Details' },

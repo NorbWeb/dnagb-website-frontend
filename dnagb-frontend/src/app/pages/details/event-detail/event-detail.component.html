@@ -1,42 +1,4 @@
 <div class="container page">
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~ news ~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-  @if(news){
-  <section id="news-detail" class="section">
-    <!-- <div class="action-panel">
-      <button class="nag_button button-fill back" (click)="goBackToPrevPage()">
-        <span style="margin-right: 0.5rem">⮜</span>Zurück
-      </button>
-    </div> -->
-    <h2 class="news-title">
-      {{ news.title }}
-    </h2>
-    <div class="news-info-header">
-      <div class="date">
-        <span>
-          {{ news.date_start | date : "dd.MM.yyyy" }}
-        </span>
-        <span>
-          @if(news.author){, {{ news.author }}
-          }
-        </span>
-      </div>
-    </div>
-    <div class="news-content" [innerHTML]="news.article | safeHtml"></div>
-    <!-- <div class="mobile mobile-container">
-      <button
-        class="nag_button button-fill back mobile"
-        (click)="goBackToPrevPage()"
-      >
-        Zurück
-      </button>
-    </div> -->
-  </section>
-  }
-
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~ event ~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-  @if(event){
   <section id="event-detail" class="section">
     <!-- <div class="action-panel">
       <button class="nag_button button-fill back" (click)="goBackToPrevPage()">
@@ -66,7 +28,7 @@
     <p class="description" [innerHTML]="event.description | safeHtml"></p>
 
     <div class="infocontainer">
-      <h4>Auf einen Blick</h4>
+      <h3>Auf einen Blick</h3>
       <div class="bold">Datum</div>
       <div>
         {{ event.date_start | date : "EE dd.MM.yyyy HH:mm" }}
@@ -94,5 +56,4 @@
       </button>
     </div> -->
   </section>
-  }
 </div>

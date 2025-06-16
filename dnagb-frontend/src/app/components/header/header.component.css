@@ -64,12 +64,4 @@
   #header {
     height: var(--header-height-sm);
   }
-
-  /* .menu-nav {
-    display: flex;
-  }
-
-  .nav {
-    display: none;
-  } */
 }

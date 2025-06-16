@@ -1,4 +1,9 @@
-<div class="card" (click)="openDetails(data().id)">
+<div
+  class="card"
+  (click)="openDetails(data().id)"
+  (keyup.enter)="openDetails(data().id)"
+  tabindex="0"
+>
   <div class="card-image">
     @if(data().image){
     <img

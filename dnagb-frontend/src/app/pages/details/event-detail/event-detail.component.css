@@ -1,12 +1,10 @@
-#event-detail,
-#news-detail {
+#event-detail {
   .action-panel {
     display: flex;
     justify-content: end;
   }
 
-  .event-info-header,
-  .news-info-header {
+  .event-info-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -16,8 +14,7 @@
     margin-bottom: 2rem;
   }
 
-  .event-title,
-  .news-title {
+  .event-title {
     margin-bottom: 1rem;
   }
 
@@ -74,8 +71,7 @@
 }
 
 @media screen and (max-width: 992px) {
-  #event-detail,
-  #news-detail {
+  #event-detail {
     .action-panel {
       display: none;
     }
