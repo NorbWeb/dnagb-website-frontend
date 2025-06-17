@@ -32,7 +32,7 @@ input[type="checkbox"] {
   z-index: 0;
   border-radius: 100vw;
   background-color: var(--color-message-error);
-  transition: 250ms;
+  transition: var(--transition);
   cursor: pointer;
 
   &:before {
