@@ -36,6 +36,8 @@ export class AppComponent implements OnInit {
         });
       }
     });
+
+    this.onWindowResize();
   }
 
   @HostListener('window:resize', ['$event'])

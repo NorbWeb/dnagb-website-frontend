@@ -87,6 +87,8 @@ export class HeaderComponent {
     });
   }
 
+  OnAfterViewInit(): void {}
+
   ngOnDestroy(): void {
     this.windowClicked(true);
     this.unsubscribeAll.next(undefined);
