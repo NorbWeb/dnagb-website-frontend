@@ -23,4 +23,8 @@
   --gray-800: #394046;
   --gray-900: #22262a;
   --black: #0b0d0e;
+  
+  --color-message-error: #FDECEE;
+  --color-message-success: #E2F1EB;
+
 }

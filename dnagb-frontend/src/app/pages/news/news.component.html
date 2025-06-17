@@ -8,7 +8,15 @@
     </div>
   </section>
   <section id="events" class="section">
-    <h2>Events</h2>
+    <h2 class="section-header">Events</h2>
+    <div class="action-panel">
+      <app-toggle-switch
+        label="Vergangene Events"
+        (output)="getOutputFromToggleButton($event)"
+        id="1001"
+      ></app-toggle-switch>
+    </div>
+
     <div class="news">
       @for(item of events; track $index){
       <app-event-card [data]="item"></app-event-card>

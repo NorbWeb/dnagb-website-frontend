@@ -1,0 +1,20 @@
+<div (change)="onToggleChange()">
+  <input
+    type="checkbox"
+    id="toggle-switch-{{ id() }}"
+    name="toggle-switch-input-{{ id() }}"
+    class="toggle-switch__input"
+    aria-label="Toggle Switch"
+    [checked]="checked"
+    [disabled]="disabled() === true"
+  />
+  <span class="toggle-switch__display" hidden>
+    <i class="toggle-switch__icon toggle-switch__icon--on" aria-hidden="true"
+      >✓</i
+    >
+    <i class="toggle-switch__icon toggle-switch__icon--off" aria-hidden="true"
+      >✗</i
+    >
+  </span>
+  <label for="toggle-switch-{{ id() }}">{{ label() }}</label>
+</div>
