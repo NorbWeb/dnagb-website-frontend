@@ -135,6 +135,10 @@ h2 {
 
   .section {
     max-width: 100%;
-    margin: 0rem 0 0rem 0;
+    margin: 2rem 0 0rem 0;
+
+    &:first-child {
+      margin: 0rem 0 0rem 0;
+    }
   }
 }
