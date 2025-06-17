@@ -46,56 +46,56 @@ export let routes: Routes = [
   {
     path: 'dnagb/mitglied-werden',
     loadComponent: () =>
-      import('./components/custom-html/custom-html.component').then(
+      import('./pages/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
   },
   {
     path: 'naginata/was-ist-naginata',
     loadComponent: () =>
-      import('./components/custom-html/custom-html.component').then(
+      import('./pages/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
   },
   {
     path: 'naginata/ausruestung',
     loadComponent: () =>
-      import('./components/custom-html/custom-html.component').then(
+      import('./pages/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
   },
   {
     path: 'naginata/kampfsport',
     loadComponent: () =>
-      import('./components/custom-html/custom-html.component').then(
+      import('./pages/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
   },
   {
     path: 'naginata/geschichte',
     loadComponent: () =>
-      import('./components/custom-html/custom-html.component').then(
+      import('./pages/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
   },
   {
     path: 'info/pruefung',
     loadComponent: () =>
-      import('./components/custom-html/custom-html.component').then(
+      import('./pages/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
   },
   {
     path: 'info/nuetzliches',
     loadComponent: () =>
-      import('./components/custom-html/custom-html.component').then(
+      import('./pages/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
   },
   {
     path: 'info/veranstaltung-planen',
     loadComponent: () =>
-      import('./components/custom-html/custom-html.component').then(
+      import('./pages/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
   },
@@ -118,14 +118,14 @@ export let routes: Routes = [
   {
     path: 'datenschutz',
     loadComponent: () =>
-      import('./components/custom-html/custom-html.component').then(
+      import('./pages/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
   },
   {
     path: 'kontakt',
     loadComponent: () =>
-      import('./components/custom-html/custom-html.component').then(
+      import('./pages/custom-html/custom-html.component').then(
         (m) => m.CustomHtmlComponent
       ),
   },

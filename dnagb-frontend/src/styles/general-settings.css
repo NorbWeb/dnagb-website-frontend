@@ -85,8 +85,12 @@ a:not(.nav-link, .side-nav-link, .nav-link-logo, .copyright-footer-link) {
 }
 
 .section {
-  margin: 0 auto 3rem auto;
+  margin: 2rem auto 3rem auto;
   max-width: 905px;
+
+  *:first-child {
+    margin-top: 0;
+  }
 }
 
 h2 {
@@ -127,5 +131,10 @@ h2 {
 
   .content {
     min-height: calc(var(--main-height-sm) - var(--footer-height));
+  }
+
+  .section {
+    max-width: 100%;
+    margin: 0rem 0 0rem 0;
   }
 }

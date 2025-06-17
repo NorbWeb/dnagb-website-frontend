@@ -4,6 +4,7 @@
   padding: 0;
   margin: 0;
   width: 100%;
+  position: relative;
 }
 
 #map {
@@ -28,8 +29,8 @@
   border-radius: var(--border-radius);
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
   top: 50%;
-  translate: 0 -50%;
-  left: 5rem;
+  translate: 0% -50%;
+  position: absolute;
 
   .dojo-header {
     display: flex;
@@ -95,11 +96,14 @@
     width: 100%;
     height: var(--main-height-sm);
     top: var(--header-height-sm);
+    left: 0;
     border-radius: 0;
     filter: none;
     display: flex;
     flex-direction: column;
     z-index: 10;
+    translate: 0;
+    position: fixed;
 
     .dojo-description {
       height: fit-content;
