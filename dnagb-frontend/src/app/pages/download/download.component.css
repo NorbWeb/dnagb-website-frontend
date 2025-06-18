@@ -7,6 +7,15 @@
   flex-direction: column;
 }
 
+.sub-section__header {
+  margin-top: 3rem;
+  margin-bottom: 0;
+}
+
+.sub-section:first-of-type .sub-section__header {
+  margin-top: 0;
+}
+
 .download {
   width: 100%;
   display: flex;
