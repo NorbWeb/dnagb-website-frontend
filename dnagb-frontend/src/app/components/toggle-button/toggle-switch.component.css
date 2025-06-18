@@ -1,11 +1,15 @@
 :host {
   position: relative;
+  --diameter: 1.5rem;
+  --offset: calc(var(--diameter) / 7.2);
+
+  user-select: none;
 }
 
 .toggle-switch__input {
   position: absolute;
   opacity: 0;
-  width: 5.9em;
+  width: calc(3.25 * var(--diameter));
   height: 100%;
   cursor: pointer;
   z-index: 1;
@@ -15,37 +19,35 @@ input[type="checkbox"] {
   box-sizing: border-box;
   padding: 0;
   min-height: auto;
-  margin: 0 0.5em 0 0;
+  margin: 0 0.5rem 0 0;
 }
 
 .toggle-switch__display {
-  --offset: 0.25em;
-  --diameter: 1.8em;
   display: inline-flex;
   align-items: center;
   justify-content: space-around;
-  width: 4.1em;
-  height: 2.3em;
+  width: calc(2.25 * var(--diameter));
+  height: calc(1.25 * var(--diameter));
   box-sizing: content-box;
   border: 2px solid var(--primary-darken);
   position: relative;
   z-index: 0;
-  border-radius: 100vw;
+  border-radius: 100dvw;
   background-color: var(--color-message-error);
   transition: var(--transition);
   cursor: pointer;
 
   &:before {
     content: "";
-    width: 1.8em;
-    height: 1.8em;
+    width: var(--diameter);
+    height: var(--diameter);
     border-radius: 50%;
     box-sizing: border-box;
     border: 2px solid var(--primary-darken);
     position: absolute;
     z-index: 2;
     top: 50%;
-    left: 0.25em;
+    left: var(--offset);
     transform: translate(0, -50%);
     background-color: var(--primary-lighten);
     transition: inherit;
@@ -54,7 +56,7 @@ input[type="checkbox"] {
 
 .toggle-switch__icon {
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: calc(var(--diameter) / 1.65);
 
   &.toggle-switch__icon--on {
     color: #1bb97a;
@@ -62,6 +64,10 @@ input[type="checkbox"] {
   &.toggle-switch__icon--off {
     color: #ea001c;
   }
+}
+
+.toggle-switch__label {
+  cursor: pointer;
 }
 
 .toggle-switch__input:checked + .toggle-switch__display {
