@@ -5,6 +5,11 @@
   gap: 2rem;
 }
 
+#news,
+#events {
+  max-width: 1400px;
+}
+
 .section-header {
   margin-bottom: 1rem;
 }
