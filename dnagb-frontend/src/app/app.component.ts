@@ -1,10 +1,11 @@
-import { Component, HostListener, inject, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnInit, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NoteBoxComponent } from './components/note-box/note-box.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { StateService } from './0_global-services/state.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -18,9 +19,11 @@ import { StateService } from './0_global-services/state.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   private router = inject(Router);
   private state = inject(StateService);
+  protected inertMain = signal<boolean>(false);
+  unsubscribeAll = new Subject();
 
   ngOnInit(): void {
     this.state.updateWindowSize({
@@ -35,6 +38,12 @@ export class AppComponent implements OnInit {
           behavior: 'smooth',
         });
       }
+    });
+
+    this.state.sideNav.pipe(takeUntil(this.unsubscribeAll)).subscribe({
+      next: (res: any) => {
+        this.inertMain.set(res.open);
+      },
     });
 
     this.onWindowResize();

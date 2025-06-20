@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
 import { CommonModule } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { navData } from '../header/nav.data';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { headerNavData } from '../header/header.nav.data';
+import { footerNavData } from '../footer/footer.nav.data';
 
 @Component({
   selector: 'app-side-nav',
@@ -13,19 +14,26 @@ import { navData } from '../header/nav.data';
 })
 export class SideNavComponent {
   private state = inject(StateService);
+  protected router = inject(Router);
   unsubscribeAll = new Subject();
-  open: boolean = false;
-  protected navData = navData;
+  protected open = signal<boolean>(false);
+  protected headerNavData = headerNavData;
+  protected footerNavData = footerNavData;
 
   toggleSideNav() {
     let state = this.state.getSideNavState();
     this.state.updateSideNavState({ ...state, open: !state });
   }
 
+  navigateToRoute(url: string) {
+    this.toggleSideNav();
+    this.router.navigateByUrl(url);
+  }
+
   ngOnInit(): void {
     this.state.sideNav.pipe(takeUntil(this.unsubscribeAll)).subscribe({
       next: (res: any) => {
-        this.open = res.open;
+        this.open.set(res.open);
       },
     });
   }

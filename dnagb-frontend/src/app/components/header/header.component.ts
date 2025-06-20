@@ -2,7 +2,7 @@ import { Component, inject, signal, viewChildren } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
-import { navData } from './nav.data';
+import { headerNavData } from './header.nav.data';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -17,7 +17,7 @@ export class HeaderComponent {
   unsubscribeAll = new Subject();
   url = environment.cmsUrl;
   logo!: string;
-  protected navData = navData;
+  protected headerNavData = headerNavData;
   protected showSideNav = signal<boolean>(false);
   subNavElements = viewChildren<any>('dropdown');
 

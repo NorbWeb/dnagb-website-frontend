@@ -1,7 +1,7 @@
 <app-header></app-header>
 <main id="main">
   <app-side-nav></app-side-nav>
-  <div class="content">
+  <div class="content" [inert]="inertMain()">
     <router-outlet />
   </div>
   <app-footer></app-footer>

@@ -1,4 +1,4 @@
-export const navData = [
+export const headerNavData = [
   {
     routerLink: '/news',
     label: 'Aktuelles',

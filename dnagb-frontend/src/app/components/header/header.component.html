@@ -39,7 +39,7 @@
           />
         </a>
       </li>
-      @for(item of navData; track $index){ @if(item.routerLink){
+      @for(item of headerNavData; track $index){ @if(item.routerLink){
       <li tabindex="0" (keyup.enter)="router.navigateByUrl(item.routerLink)">
         <a
           class="nav-link"
