@@ -56,10 +56,10 @@ ul {
 }
 
 .section-title {
-  padding: 1rem;
+  padding: 0.75rem 1rem;
+  color: var(--gray-700);
   font-weight: 700;
-  font-family: Helvetica, sans-serif;
-  font-size: 1.25rem;
+  font-size: 0.75rem;
 }
 
 .side-nav-link {
@@ -82,9 +82,10 @@ ul {
 
   &.active {
     &::after {
-      content: "👈";
-      width: 1rem;
-      height: 1rem;
+      content: "⮜";
+      width: 1.25rem;
+      height: 1.25rem;
+      font-size: 1.25rem;
       border-radius: 50%;
       display: inline-flex;
       justify-content: center;

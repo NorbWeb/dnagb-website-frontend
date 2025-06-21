@@ -2,7 +2,12 @@ import { Component, inject, signal } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
 import { CommonModule } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { headerNavData } from '../header/header.nav.data';
 import { footerNavData } from '../footer/footer.nav.data';
 
@@ -20,14 +25,22 @@ export class SideNavComponent {
   protected headerNavData = headerNavData;
   protected footerNavData = footerNavData;
 
-  toggleSideNav() {
-    let state = this.state.getSideNavState();
-    this.state.updateSideNavState({ ...state, open: !state });
+  clickBackdrop() {
+    this.closeSideNav();
   }
 
-  navigateToRoute(url: string) {
-    this.toggleSideNav();
-    this.router.navigateByUrl(url);
+  stopPropagation(e: Event) {
+    e.stopPropagation();
+  }
+
+  openSideNav() {
+    let state = this.state.getSideNavState();
+    this.state.updateSideNavState({ ...state, open: true });
+  }
+
+  closeSideNav() {
+    let state = this.state.getSideNavState();
+    this.state.updateSideNavState({ ...state, open: false });
   }
 
   ngOnInit(): void {
@@ -35,6 +48,11 @@ export class SideNavComponent {
       next: (res: any) => {
         this.open.set(res.open);
       },
+    });
+    this.router.events.pipe(takeUntil(this.unsubscribeAll)).subscribe((res) => {
+      if (res instanceof NavigationEnd) {
+        this.closeSideNav();
+      }
     });
   }
 

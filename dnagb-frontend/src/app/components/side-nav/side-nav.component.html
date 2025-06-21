@@ -1,8 +1,8 @@
-<div id="side-nav" [ngClass]="{ open: open() }" (click)="toggleSideNav()">
-  <nav arria-label="Main Navigation">
+<div id="side-nav" [ngClass]="{ open: open() }" (click)="clickBackdrop()">
+  <nav arria-label="Main Navigation" (click)="stopPropagation($event)">
     <section>
       <a
-        class="side-nav-link strong"
+        class="side-nav-link"
         routerLink="/home"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
