@@ -1,33 +1,17 @@
 <footer id="footer">
   <nav aria-label="Footer Navigation">
     <ul class="container">
-      <li class="no-mobile">
+      @for(item of footerNavData(); track $index){
+      <li>
         <a
-          class="nav-link"
-          routerLink="/impressum"
+          class="nav-link footer-nav-link"
+          [routerLink]="item.routerLink"
           routerLinkActive="active"
           ariaCurrentWhenActive="page"
-          >Impressum</a
+          >{{ item.label }}</a
         >
       </li>
-      <li class="no-mobile">
-        <a
-          class="nav-link"
-          routerLink="/kontakt"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          >Kontakt</a
-        >
-      </li>
-      <li class="no-mobile">
-        <a
-          class="nav-link"
-          routerLink="/datenschutz"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          >Datenschutz</a
-        >
-      </li>
+      }
       <li class="copyright-footer" title="E-Mail senden an webmaster@dnagb.de">
         <a class="copyright-footer-link" href="mailto:webmaster@dnagb.de"
           >&copy; Norbert Madauß</a
