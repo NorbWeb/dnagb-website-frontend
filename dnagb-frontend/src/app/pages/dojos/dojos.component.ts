@@ -244,6 +244,11 @@ export class DojosComponent implements OnInit, OnDestroy {
     });
   }
 
+  ngAfterViewInit() {
+    let mapCanvas = document.querySelector('.maplibregl-canvas');
+    mapCanvas?.removeAttribute('tabindex');
+  }
+
   ngOnDestroy() {
     this.map?.remove();
     this.unsubscribeAll.next(undefined);
