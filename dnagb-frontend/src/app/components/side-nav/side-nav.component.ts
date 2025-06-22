@@ -9,7 +9,6 @@ import {
   RouterLinkActive,
 } from '@angular/router';
 import { headerNavData } from '../header/header.nav.data';
-import { footerNavData } from '../footer/footer.nav.data';
 
 @Component({
   selector: 'app-side-nav',
@@ -23,7 +22,6 @@ export class SideNavComponent {
   unsubscribeAll = new Subject();
   protected open = signal<boolean>(false);
   protected headerNavData = headerNavData;
-  protected footerNavData = footerNavData;
 
   clickBackdrop() {
     this.closeSideNav();

@@ -12,148 +12,41 @@
       </a>
     </section>
     <div class="menu-seperator"></div>
+
+    @for(item of headerNavData; track $index){ @if(item.routerLink){
     <section>
       <a
         class="side-nav-link"
-        routerLink="/news"
+        [routerLink]="item.routerLink"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
         tabindex="0"
       >
-        Aktuelles
+        {{ item.label }}
       </a>
     </section>
     <div class="menu-seperator"></div>
+    } @if(item.subnav){
     <section>
-      <div class="section-title">Der DNagB</div>
+      <div class="section-title">{{ item.label }}</div>
+
       <ul>
+        @for(subItem of item.subnav; track $index){
         <li tabindex="0">
           <a
             class="side-nav-link"
-            routerLink="/dnagb/vereinsstrukturen"
+            [routerLink]="subItem.routerLink"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
+            tabindex="0"
           >
-            Vereinsstruktur
+            {{ subItem.label }}
           </a>
         </li>
-        <li tabindex="0">
-          <a
-            class="side-nav-link"
-            routerLink="/dnagb/mitglied-werden"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-          >
-            Mitglied werden
-          </a>
-        </li>
+        }
       </ul>
     </section>
     <div class="menu-seperator"></div>
-    <section>
-      <a
-        class="side-nav-link"
-        routerLink="/naginata-gruppen"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        tabindex="0"
-      >
-        Naginata-Gruppen
-      </a>
-    </section>
-    <div class="menu-seperator"></div>
-    <section>
-      <div class="section-title">Naginata</div>
-      <ul>
-        <li tabindex="0">
-          <a
-            class="side-nav-link"
-            routerLink="/naginata/was-ist-naginata"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-          >
-            Was ist Naginata?
-          </a>
-        </li>
-        <li tabindex="0">
-          <a
-            class="side-nav-link"
-            routerLink="/naginata/ausruestung"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-          >
-            Ausrüstung
-          </a>
-        </li>
-        <li tabindex="0">
-          <a
-            class="side-nav-link"
-            routerLink="/naginata/kampfsport"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-          >
-            Der Kampfsport
-          </a>
-        </li>
-        <li tabindex="0">
-          <a
-            class="side-nav-link"
-            routerLink="/naginata/geschichte"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-          >
-            Geschichte
-          </a>
-        </li>
-      </ul>
-    </section>
-    <div class="menu-seperator"></div>
-    <section>
-      <div class="section-title">Infos für Aktive</div>
-      <ul>
-        <li tabindex="0">
-          <a
-            class="side-nav-link"
-            routerLink="/info/pruefung"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-          >
-            Prüfung
-          </a>
-        </li>
-        <li tabindex="0">
-          <a
-            class="side-nav-link"
-            routerLink="/info/nuetzliches"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-          >
-            Nützliches
-          </a>
-        </li>
-        <li tabindex="0">
-          <a
-            class="side-nav-link"
-            routerLink="/info/veranstaltung-planen"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-          >
-            Eine Veranstaltung planen
-          </a>
-        </li>
-      </ul>
-    </section>
-    <div class="menu-seperator"></div>
-    <section>
-      <a
-        class="side-nav-link"
-        routerLink="/download"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        tabindex="0"
-      >
-        Formulare & Dokumente
-      </a>
-    </section>
+    } }
   </nav>
 </div>
