@@ -22,6 +22,7 @@ export class SideNavComponent {
   unsubscribeAll = new Subject();
   protected open = signal<boolean>(false);
   protected headerNavData = headerNavData;
+  protected version = signal<string>('');
 
   clickBackdrop() {
     this.closeSideNav();
@@ -52,6 +53,8 @@ export class SideNavComponent {
         this.closeSideNav();
       }
     });
+
+    this.version.set(this.state.getConf().version);
   }
 
   ngOnDestroy(): void {

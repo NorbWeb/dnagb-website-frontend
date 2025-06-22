@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   cmsUrl: 'http://localhost:8055',
+  version: '1.0.0',
 };
 
 /*

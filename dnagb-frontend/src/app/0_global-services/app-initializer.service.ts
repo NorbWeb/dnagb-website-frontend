@@ -75,6 +75,8 @@ export class AppInitializerService {
         ),
 
         files: this.arrangeAllFiles(files.data, folders.data),
+
+        version: environment.version,
       });
 
       await this.getExamination().catch(reject);
