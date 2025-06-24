@@ -9,7 +9,7 @@
 
 .sub-section__header {
   margin-top: 3rem;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 }
 
 .sub-section:first-of-type .sub-section__header {
