@@ -11,8 +11,8 @@
 }
 
 .event-list {
-  list-style-type: none;
-  padding: 0;
+  list-style-type: "\1F338";
+  padding-left: 1.5rem;
   margin: 0;
   overflow: auto;
   max-height: calc(7 * 2.4375rem);
@@ -26,10 +26,6 @@
     cursor: pointer;
     border-radius: var(--border-radius);
     transition: var(--transition);
-
-    &:before {
-      content: "🌸";
-    }
 
     &:hover,
     &:focus {

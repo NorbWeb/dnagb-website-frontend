@@ -38,6 +38,7 @@
     margin: 0;
     font-size: clamp(2.5rem, 1.45rem + 2.9126vw, 4rem);
     width: clamp(17.5rem, 8rem + 25vw, 28rem);
+    line-height: 1.25;
     font-family: Fira Sans;
     color: var(--text-inverse);
   }
@@ -50,12 +51,20 @@
 
 #short-info {
   display: grid;
-  gap: 1rem;
-  padding: var(--section-padding);
+  gap: 2rem;
+  padding: 2rem 1rem;
   grid-template-columns: repeat(3, 1fr);
 }
 
 @media screen and (max-width: 992px) {
+  .banner_bg-fill {
+    .bg-overlay {
+      height: 15rem;
+    }
+    .banner_content {
+      height: 15rem;
+    }
+  }
   #short-info {
     grid-template-columns: repeat(2, 1fr);
   }

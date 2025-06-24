@@ -45,7 +45,9 @@
       <div>{{ event.street }} {{ event.number }}</div>
       <div>{{ event.postal_code }} {{ event.city }}</div>
 
-      <a class="maps-link" [href]="mapsLink" target="_blank">Google Maps</a>
+      <a class="maps-link" [href]="mapsLink" target="_blank" tabindex="0"
+        >Google Maps</a
+      >
     </div>
     <!-- <div class="mobile mobile-container">
       <button
