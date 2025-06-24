@@ -129,6 +129,14 @@ export let routes: Routes = [
         (m) => m.CustomHtmlComponent
       ),
   },
+  // {
+  //   path: 'mitgliedschaft',
+  //   loadComponent: () =>
+  //     import('./pages/membership-form/membership-form.component').then(
+  //       (m) => m.MembershipFormComponent
+  //     ),
+  //   data: { title: 'Mitgliedschaft' },
+  // },
   {
     path: '',
     redirectTo: 'home',

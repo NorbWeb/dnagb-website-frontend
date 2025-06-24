@@ -1,0 +1,260 @@
+<div class="container page">
+  <section id="membership" class="section">
+    <h2>Mitgliedschaft beantragen</h2>
+    <form
+      [formGroup]="membershipForm"
+      id="membershipForm"
+      (ngSubmit)="submitForm()"
+    >
+      <fieldset>
+        <div class="one-line">
+          <div
+            class="form-group"
+            [ngClass]="{
+              invalid:
+                membershipForm.get('name')?.invalid &&
+                membershipForm?.get('name')?.touched
+            }"
+          >
+            <label for="name">Vorname</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              formControlName="name"
+            />
+            <div class="error-message">
+              @if(membershipForm.get('name')?.invalid &&
+              membershipForm?.get('name')?.touched){ Der Vorname ist
+              erforderlich. }
+            </div>
+          </div>
+          <div
+            class="form-group"
+            [ngClass]="{
+              invalid:
+                membershipForm.get('surname')?.invalid &&
+                membershipForm?.get('surname')?.touched
+            }"
+          >
+            <label for="surname">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="surname"
+              formControlName="surname"
+            />
+            <div class="error-message">
+              @if(membershipForm.get('surname')?.invalid &&
+              membershipForm?.get('surname')?.touched){ Der Name ist
+              erforderlich. }
+            </div>
+          </div>
+        </div>
+        <div
+          class="form-group"
+          [ngClass]="{
+            invalid:
+              membershipForm.get('email')?.invalid &&
+              membershipForm?.get('email')?.touched
+          }"
+        >
+          <label for="mail">E-Mail</label>
+          <input
+            type="mail"
+            class="form-control"
+            id="mail"
+            formControlName="email"
+          />
+          <div class="error-message">
+            @if(membershipForm.get('email')?.invalid &&
+            membershipForm?.get('email')?.touched){ Die E-Mail-Adresse ist
+            erforderlich. }
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <div
+          class="form-group"
+          [ngClass]="{
+            invalid:
+              membershipForm.get('birthday')?.invalid &&
+              membershipForm?.get('birthday')?.touched
+          }"
+        >
+          <label for="birthday">Geburtstag</label>
+          <input
+            type="date"
+            class="form-control"
+            id="birthday"
+            formControlName="birthday"
+          />
+          <div class="error-message">
+            @if(membershipForm.get('birthday')?.invalid &&
+            membershipForm?.get('birthday')?.touched){ Das Geburtsdatum ist
+            erforderlich. }
+          </div>
+        </div>
+        <div
+          class="form-group"
+          [ngClass]="{
+            invalid:
+              membershipForm.get('birthplace')?.invalid &&
+              membershipForm?.get('birthplace')?.touched
+          }"
+        >
+          <label for="birthplace">Geburtsort</label>
+          <input
+            type="text"
+            class="form-control"
+            id="birthplace"
+            formControlName="birthplace"
+          />
+          <div class="error-message">
+            @if(membershipForm.get('birthplace')?.invalid &&
+            membershipForm?.get('birthplace')?.touched){ Der Geburtsort ist
+            erforderlich. }
+          </div>
+        </div>
+      </fieldset>
+
+      <div
+        class="form-group"
+        [ngClass]="{
+          invalid:
+            membershipForm.get('nationality')?.invalid &&
+            membershipForm?.get('nationality')?.touched
+        }"
+      >
+        <label for="nationality">Nationalität</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nationality"
+          formControlName="nationality"
+        />
+        <div class="error-message">
+          @if(membershipForm.get('nationality')?.invalid &&
+          membershipForm?.get('nationality')?.touched){ Die Nationalität ist
+          erforderlich. }
+        </div>
+      </div>
+      <div
+        class="form-group"
+        [ngClass]="{
+          invalid:
+            membershipForm.get('street')?.invalid &&
+            membershipForm?.get('street')?.touched
+        }"
+      >
+        <label for="street">Straße</label>
+        <input
+          type="text"
+          class="form-control"
+          id="street"
+          formControlName="street"
+        />
+        <div class="error-message">
+          @if(membershipForm.get('street')?.invalid &&
+          membershipForm?.get('street')?.touched){ Die Straße ist erforderlich.
+          }
+        </div>
+      </div>
+      <fieldset>
+        <div class="one-line">
+          <div
+            class="form-group"
+            [ngClass]="{
+              invalid:
+                membershipForm.get('postcode')?.invalid &&
+                membershipForm?.get('postcode')?.touched
+            }"
+            style="width: 6rem; flex: 0"
+          >
+            <label for="postcode">Postleitzahl</label>
+            <input
+              type="text"
+              class="form-control"
+              id="postcode"
+              formControlName="postcode"
+            />
+            <div class="error-message">
+              @if(membershipForm.get('postcode')?.invalid &&
+              membershipForm?.get('postcode')?.touched){ Ist erforderlich. }
+            </div>
+          </div>
+          <div
+            class="form-group"
+            [ngClass]="{
+              invalid:
+                membershipForm.get('city')?.invalid &&
+                membershipForm?.get('city')?.touched
+            }"
+          >
+            <label for="city">Ort</label>
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              formControlName="city"
+            />
+            <div class="error-message">
+              @if(membershipForm.get('city')?.invalid &&
+              membershipForm?.get('city')?.touched){ Der Ort ist erforderlich. }
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <div
+        class="form-group"
+        [ngClass]="{
+          invalid:
+            membershipForm.get('phone')?.invalid &&
+            membershipForm?.get('phone')?.touched
+        }"
+      >
+        <label for="phone">Telefon</label>
+        <input
+          type="tel"
+          class="form-control"
+          id="phone"
+          formControlName="phone"
+        />
+        <div class="error-message">
+          @if(membershipForm.get('phone')?.invalid &&
+          membershipForm?.get('phone')?.touched){ Die Telefonnummer ist
+          erforderlich. }
+        </div>
+      </div>
+
+      <div
+        class="form-group"
+        [ngClass]="{
+          invalid:
+            membershipForm.get('group')?.invalid &&
+            membershipForm?.get('group')?.touched
+        }"
+      >
+        <label for="group">Verein / Gruppe</label>
+        <input
+          type="text"
+          class="form-control"
+          id="group"
+          formControlName="group"
+        />
+        <div class="error-message">
+          @if(membershipForm.get('group')?.invalid &&
+          membershipForm?.get('group')?.touched){ Der Verin / die Gruppe ist
+          erforderlich. }
+        </div>
+      </div>
+      <button
+        class="nag_button button-fill"
+        type="submit"
+        (click)="markFormAsTouched()"
+      >
+        Anmelden
+      </button>
+    </form>
+  </section>
+</div>
