@@ -37,8 +37,8 @@
     <div class="group-wrapper">
       <h2 class="sub-title">Referent*innen</h2>
       <div class="speaker">
-        @for(member of data.speaker; track $index){ @if(member.status ===
-        'published'){
+        @for(item of data.speaker; track $index){ @if(item.status ===
+        'published'){ @let member = item.translations[0];
         <div class="member">
           <img
             class="member-image"

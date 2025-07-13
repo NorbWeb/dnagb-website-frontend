@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
 
-import { Staff } from '../../1_types-and-interfaces/Staff';
+import { Speaker, Staff } from '../../1_types-and-interfaces/Staff';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
@@ -18,14 +18,10 @@ export class AssociationComponent {
   private route = inject(ActivatedRoute);
   private titleService = inject(Title);
   unsubscribeAll = new Subject();
-  data!: { board: Staff[]; speaker: Staff[]; who_we_are: string };
+  data!: { board: Staff[]; speaker: Speaker[]; who_we_are: string };
   url = environment.cmsUrl;
 
   editBoardRawData(rawData: any) {
-    if (rawData.status !== 'published') {
-      return [];
-    }
-
     let result = [
       {
         name: rawData.president_name,
@@ -60,13 +56,16 @@ export class AssociationComponent {
   }
 
   ngOnInit(): void {
-    let board = this.editBoardRawData(this.state.getConf().association.board);
+    let board = this.editBoardRawData(
+      this.state.getConf().association.board.translations[0]
+    );
     let speaker = this.state.getConf().association.speaker;
     let whoWeAre = this.state.getConf().association.who_we_are;
     this.data = {
       board: board,
       speaker: speaker,
-      who_we_are: whoWeAre.status === 'published' ? whoWeAre.who_we_are : '',
+      who_we_are:
+        whoWeAre.status === 'published' ? whoWeAre.translations[0].text : '',
     };
 
     this.route.data.pipe(takeUntil(this.unsubscribeAll)).subscribe({

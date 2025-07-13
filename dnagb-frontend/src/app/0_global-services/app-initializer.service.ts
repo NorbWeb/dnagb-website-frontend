@@ -11,22 +11,33 @@ import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import localeDeExtra from '@angular/common/locales/extra/de';
 import { routes } from '../app.routes';
+import { createDirectus, rest, readItems } from '@directus/sdk';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppInitializerService {
   constructor(private state: StateService) {}
+  languageCode = 'de-DE';
+  // languageCode = 'en-US';
   utils = inject(UtilsService);
   init(): Promise<void> {
     return new Promise(async (resolve, reject) => {
-      const associationText = await this.getAssociationText().catch(reject);
+      const associationText = await this.getItem(
+        'association_text',
+        this.languageCode
+      ).catch(reject);
+      const board = await this.getItem('board', this.languageCode).catch(
+        reject
+      );
+      const speaker = await this.getItem('speaker', this.languageCode).catch(
+        reject
+      );
+
       const news = await this.getNews().catch(reject);
       const events = await this.getEvents().catch(reject);
       const imprint = await this.getImprint().catch(reject);
       const dojos = await this.getDojos().catch(reject);
-      const speaker = await this.getSpeaker().catch(reject);
-      const board = await this.getBoard().catch(reject);
       const downloads = await this.getDownloads().catch(reject);
       const downloadsFiles = await this.getDownloadsFiles().catch(reject);
       const settings = await this.getAppConf().catch(reject);
@@ -34,7 +45,6 @@ export class AppInitializerService {
       const folders = await this.getFolders();
 
       registerLocaleData(localeDe, 'de-DE', localeDeExtra);
-
       this.setColors(
         settings.data.primary,
         settings.data.primary_text,
@@ -55,9 +65,9 @@ export class AppInitializerService {
         },
 
         association: {
-          who_we_are: associationText.data,
-          board: board.data,
-          speaker: speaker.data,
+          who_we_are: associationText,
+          board: board,
+          speaker: speaker,
         },
 
         dojos: dojos.data.filter((item: any) => item.status === 'published'),
@@ -84,7 +94,13 @@ export class AppInitializerService {
       await this.getUseful().catch(reject);
       await this.getContact().catch(reject);
       await this.getPlaning().catch(reject);
-      await this.getMembership().catch(reject);
+      // await this.getMembership().catch(reject);
+      await this.getCustomHtml(
+        'membership',
+        this.languageCode,
+        'dnagb/mitglied-werden',
+        'Mitglied werden'
+      ).catch(reject);
       await this.getAboutNaginata().catch(reject);
       await this.getMartialArt().catch(reject);
       await this.getEquipment().catch(reject);
@@ -194,6 +210,70 @@ export class AppInitializerService {
     return await res.json();
   }
 
+  private async getItem(itemName: string, language_code: string = 'de-DE') {
+    const directus = createDirectus(`${environment.cmsUrl}`).with(rest());
+    const res: any = await directus.request(
+      readItems(itemName, {
+        deep: {
+          translations: {
+            _filter: {
+              _and: [
+                {
+                  languages_code: { _eq: language_code },
+                },
+              ],
+            },
+          },
+        },
+        fields: ['*', { translations: ['*'] }],
+        // limit: 1,
+      })
+    );
+
+    return res;
+  }
+
+  private async getCustomHtml(
+    itemName: string,
+    language_code: string = 'de-DE',
+    path: string,
+    title: string
+  ) {
+    const directus = createDirectus(`${environment.cmsUrl}`).with(rest());
+    const res: any = await directus.request(
+      readItems(itemName, {
+        deep: {
+          translations: {
+            _filter: {
+              _and: [
+                {
+                  languages_code: { _eq: language_code },
+                },
+              ],
+            },
+          },
+        },
+        fields: ['*', { translations: ['*'] }],
+        // limit: 1,
+      })
+    );
+    console.log(`📢: res`, res);
+
+    let route = routes.find((r) => {
+      return r.path === path;
+    });
+
+    if (route) {
+      route.data = {
+        title: `${title} · ${this.state.getConf().appSettings.title.short}`,
+        html: res.translations[0].text,
+        status: res.status,
+      };
+    }
+
+    // return res;
+  }
+
   private async getMembership() {
     const res = await fetch(`${environment.cmsUrl}/items/membership`);
     const json = await res.json();
@@ -211,21 +291,6 @@ export class AppInitializerService {
         status: json.data.status,
       };
     }
-  }
-
-  private async getBoard() {
-    const res = await fetch(`${environment.cmsUrl}/items/board`);
-    return await res.json();
-  }
-
-  private async getSpeaker() {
-    const res = await fetch(`${environment.cmsUrl}/items/speaker`);
-    return await res.json();
-  }
-
-  private async getAssociationText() {
-    const res = await fetch(`${environment.cmsUrl}/items/association_text`);
-    return await res.json();
   }
 
   private async getEvents() {
