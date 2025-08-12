@@ -15,7 +15,6 @@ import {
   NavigationControl,
   Popup,
 } from 'maplibre-gl';
-import 'maplibre-gl/dist/maplibre-gl.css';
 import { StateService } from '../../0_global-services/state.service';
 import { environment } from '../../../environment/env';
 import { ZoomToExtendControl } from './zoomToExtend';
